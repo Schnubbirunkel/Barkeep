@@ -37,6 +37,8 @@ Der Barcode-Scanner nutzt die Google-Play-Dienste (keine Kamera-Berechtigung nö
 | [Open Food Facts](https://world.openfoodfacts.org) | Barcode-Produktdaten | ODbL |
 | Hugging Face `erwanlc/cocktails_recipe_no_brand` | Community-Sammlung | **unklare Lizenz** – wird nicht mitgeliefert, sondern erst nach Aktivierung direkt aufs Gerät geladen; nur privater Gebrauch |
 
+Schriften: [Plus Jakarta Sans](https://fonts.google.com/specimen/Plus+Jakarta+Sans) & [Inter](https://rsms.me/inter/) (SIL Open Font License).
+
 Rezeptdaten neu erzeugen: `python3 tools/gen_data.py` · Übersetzungen: `python3 tools/gen_strings.py`
 
 ## Bauen

@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -93,18 +94,15 @@ fun DiscoverScreen(vm: AppViewModel, nav: NavController) {
     val season = remember { Discovery.currentSeason() }
     val seasonal = remember(all) { curated.filter { r -> r.season.any { it in season } }.shuffled(java.util.Random(java.time.LocalDate.now().toEpochDay())) }
 
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text(stringResource(R.string.app_name)) },
-                actions = {
+    run {
+        // Header scrolls away with the content – nothing stays on top of the cards.
+        LazyColumn(contentPadding = PaddingValues(bottom = 24.dp + de.schnubbirunkel.barkeep.ui.LocalBottomBarSpace.current)) {
+            item {
+                Row(Modifier.fillMaxWidth().statusBarsPadding().padding(start = 22.dp, end = 8.dp, top = 6.dp), verticalAlignment = Alignment.CenterVertically) {
+                    Text(stringResource(R.string.app_name), style = de.schnubbirunkel.barkeep.ui.brandTitleStyle(), color = MaterialTheme.colorScheme.primary, modifier = Modifier.weight(1f))
                     IconButton(onClick = { nav.navigate(Routes.SETTINGS) }) { Icon(Icons.Filled.Settings, stringResource(R.string.settings)) }
-                },
-                colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.background),
-            )
-        },
-    ) { pad ->
-        LazyColumn(contentPadding = PaddingValues(top = pad.calculateTopPadding(), bottom = 24.dp + de.schnubbirunkel.barkeep.ui.LocalBottomBarSpace.current)) {
+                }
+            }
             item {
                 Column(Modifier.padding(horizontal = 20.dp)) {
                     Text(stringResource(R.string.greeting), style = MaterialTheme.typography.displaySmall)

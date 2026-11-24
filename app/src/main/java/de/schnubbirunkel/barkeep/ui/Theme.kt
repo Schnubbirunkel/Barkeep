@@ -9,7 +9,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.ExperimentalTextApi
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontVariation
+import de.schnubbirunkel.barkeep.R
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
@@ -35,11 +39,11 @@ private val Dark = darkColorScheme(
     tertiaryContainer = Color(0xFF4A1A16),
     onTertiaryContainer = Color(0xFFFFDAD5),
     background = Color.Transparent,
-    onBackground = Color(0xFFE7E9F1),
+    onBackground = Color(0xFFF4F5FA),
     surface = Color.Transparent,
-    onSurface = Color(0xFFE7E9F1),
+    onSurface = Color(0xFFF4F5FA),
     surfaceVariant = InkHigh,
-    onSurfaceVariant = Color(0xFFB7BCCD),
+    onSurfaceVariant = Color(0xFFB4BBCF),
     surfaceContainerLowest = Color(0xFF0A0E18),
     surfaceContainerLow = Color(0xFF131A2A),
     surfaceContainer = InkRaised,
@@ -68,19 +72,42 @@ private val Light = lightColorScheme(
     surfaceContainerHighest = Color(0xFFDFE1EA),
 )
 
-private val Display = FontFamily.Serif
+// Plus Jakarta Sans for headings, Inter for text – both variable fonts (SIL OFL), bundled in res/font.
+@OptIn(ExperimentalTextApi::class)
+private fun variable(res: Int, w: Int) = Font(res, FontWeight(w), variationSettings = FontVariation.Settings(FontVariation.weight(w)))
+
+private val Jakarta = FontFamily(
+    variable(R.font.plus_jakarta_sans, 500), variable(R.font.plus_jakarta_sans, 600),
+    variable(R.font.plus_jakarta_sans, 700), variable(R.font.plus_jakarta_sans, 800),
+)
+private val InterFont = FontFamily(
+    variable(R.font.inter, 400), variable(R.font.inter, 500), variable(R.font.inter, 600), variable(R.font.inter, 700),
+)
 
 private val AppTypography = Typography().let { t ->
+    fun h(st: TextStyle, w: FontWeight, ls: Double) = st.copy(fontFamily = Jakarta, fontWeight = w, letterSpacing = ls.sp)
+    fun b(st: TextStyle, w: FontWeight = FontWeight.Normal) = st.copy(fontFamily = InterFont, fontWeight = w)
     t.copy(
-        displaySmall = t.displaySmall.copy(fontFamily = Display, fontWeight = FontWeight.SemiBold),
-        headlineLarge = t.headlineLarge.copy(fontFamily = Display, fontWeight = FontWeight.SemiBold),
-        headlineMedium = t.headlineMedium.copy(fontFamily = Display, fontWeight = FontWeight.SemiBold),
-        headlineSmall = t.headlineSmall.copy(fontFamily = Display, fontWeight = FontWeight.SemiBold),
-        titleLarge = t.titleLarge.copy(fontFamily = Display, fontWeight = FontWeight.SemiBold),
-        labelSmall = TextStyle(fontSize = 11.sp, fontWeight = FontWeight.Medium, letterSpacing = 0.8.sp),
-        displayMedium = t.displayMedium.copy(fontFamily = Display, fontWeight = FontWeight.SemiBold, letterSpacing = (-0.5).sp),
+        displayLarge = h(t.displayLarge, FontWeight.ExtraBold, -1.2),
+        displayMedium = h(t.displayMedium, FontWeight.ExtraBold, -1.0),
+        displaySmall = h(t.displaySmall, FontWeight.ExtraBold, -0.8),
+        headlineLarge = h(t.headlineLarge, FontWeight.ExtraBold, -0.6),
+        headlineMedium = h(t.headlineMedium, FontWeight.Bold, -0.4),
+        headlineSmall = h(t.headlineSmall, FontWeight.Bold, -0.3),
+        titleLarge = h(t.titleLarge, FontWeight.Bold, -0.2),
+        titleMedium = b(t.titleMedium, FontWeight.SemiBold),
+        titleSmall = b(t.titleSmall, FontWeight.SemiBold),
+        bodyLarge = b(t.bodyLarge),
+        bodyMedium = b(t.bodyMedium),
+        bodySmall = b(t.bodySmall),
+        labelLarge = b(t.labelLarge, FontWeight.SemiBold),
+        labelMedium = b(t.labelMedium, FontWeight.Medium),
+        labelSmall = b(t.labelSmall, FontWeight.Medium).copy(letterSpacing = 0.4.sp),
     )
 }
+
+@Composable
+fun brandTitleStyle() = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.ExtraBold, letterSpacing = (-0.3).sp)
 
 val ACCENTS: Map<String, Pair<Color, Color>> = mapOf(
     // accent id -> (dark-theme colour, light-theme colour)

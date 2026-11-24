@@ -75,6 +75,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.platform.LocalContext
@@ -159,10 +160,19 @@ private fun RecipeDetail(vm: AppViewModel, nav: NavController, base: Recipe) {
     val steps = r.stepsFor(lang)
     val addedMsg = stringResource(R.string.added_to_list)
 
+    val topBehavior = TopAppBarDefaults.pinnedScrollBehavior()
     Scaffold(
+        modifier = Modifier.nestedScroll(topBehavior.nestedScrollConnection),
         topBar = {
             TopAppBar(
-                title = {},
+                scrollBehavior = topBehavior,
+                title = {
+                    // name fades in once the hero has scrolled under the bar
+                    val show = topBehavior.state.overlappedFraction > 0.5f
+                    androidx.compose.animation.AnimatedVisibility(show, enter = androidx.compose.animation.fadeIn(), exit = androidx.compose.animation.fadeOut()) {
+                        Text(base.displayName(lang), maxLines = 1, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis, style = MaterialTheme.typography.titleLarge)
+                    }
+                },
                 navigationIcon = { IconButton(onClick = { nav.popBackStack() }) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back)) } },
                 actions = {
                     IconButton(onClick = { vm.toggleFavorite(base) }) {
@@ -181,7 +191,10 @@ private fun RecipeDetail(vm: AppViewModel, nav: NavController, base: Recipe) {
                         IconButton(onClick = { nav.navigate(Routes.edit(base = base.id)) }) { Icon(Icons.Filled.Edit, stringResource(R.string.customize)) }
                     }
                 },
-                colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.background.copy(alpha = 0f)),
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = androidx.compose.ui.graphics.Color.Transparent,
+                    scrolledContainerColor = (if (isDarkUi()) Ink else androidx.compose.ui.graphics.Color(0xFFF2F3F8)).copy(alpha = 0.92f),
+                ),
             )
         },
     ) { pad ->
