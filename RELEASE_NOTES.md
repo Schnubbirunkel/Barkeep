@@ -1,4 +1,6 @@
-## Barkeep 1.5 – Neue Schrift & Feinschliff
+## Barkeep 1.5.1 – Neue Schrift & Feinschliff
+
+**1.5.1:** Navigationsleiste fast deckend, damit darunterliegender Text nicht mehr durchscheint. / Nav bar nearly opaque so content no longer shows through.
 
 **Deutsch**
 - **Neue Schriften:** Plus Jakarta Sans für Überschriften (kräftig, modern), Inter für Text – klarere Kontraste, hellere Schrift

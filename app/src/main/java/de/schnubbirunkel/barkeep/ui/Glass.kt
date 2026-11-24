@@ -155,7 +155,7 @@ fun GlassNavBar(items: List<NavItem>, selected: Int, onSelect: (Int) -> Unit, mo
     Box(
         modifier.navigationBarsPadding().padding(horizontal = 14.dp, vertical = 10.dp).fillMaxWidth().height(68.dp)
             .clip(shape)
-            .background(if (dark) Color(0xFF151B2C).copy(alpha = 0.86f) else Color.White.copy(alpha = 0.86f))
+            .background(if (dark) Color(0xFF121726).copy(alpha = 0.96f) else Color.White.copy(alpha = 0.96f))
             .glass(shape, 1.4f),
     ) {
         BoxWithConstraints(Modifier.fillMaxSize().padding(6.dp)) {
