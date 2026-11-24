@@ -24,6 +24,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.AddShoppingCart
 import androidx.compose.material.icons.filled.CameraAlt
+import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.QrCodeScanner
 import androidx.compose.material.icons.filled.Search
@@ -74,7 +75,7 @@ import de.schnubbirunkel.barkeep.data.MatchResult
 import de.schnubbirunkel.barkeep.ui.AppViewModel
 import de.schnubbirunkel.barkeep.ui.BarcodeState
 import de.schnubbirunkel.barkeep.ui.EmptyHint
-import de.schnubbirunkel.barkeep.ui.GlassDrawing
+import de.schnubbirunkel.barkeep.ui.BottleDrawing
 import de.schnubbirunkel.barkeep.ui.Labels
 import de.schnubbirunkel.barkeep.ui.LocalSnackbar
 import de.schnubbirunkel.barkeep.ui.Pill
@@ -88,34 +89,36 @@ import androidx.compose.ui.graphics.Color
 
 @Composable
 fun BarScreen(vm: AppViewModel, nav: NavController, initialTab: Int) {
-    var tab by rememberSaveable { mutableIntStateOf(initialTab) }
+    var tab by rememberSaveable { mutableIntStateOf(if (initialTab >= 2) 1 else 0) }
     Column(Modifier.statusBarsPadding()) {
-        Text(stringResource(R.string.nav_bar), style = MaterialTheme.typography.headlineMedium, modifier = Modifier.padding(start = 20.dp, top = 16.dp, bottom = 8.dp))
+        Row(Modifier.padding(start = 20.dp, top = 16.dp, end = 8.dp, bottom = 8.dp), verticalAlignment = Alignment.CenterVertically) {
+            Text(stringResource(R.string.nav_bar), style = MaterialTheme.typography.headlineMedium, modifier = Modifier.weight(1f))
+            de.schnubbirunkel.barkeep.ui.SettingsButton(nav)
+        }
         PrimaryTabRow(selectedTabIndex = tab) {
-            listOf(R.string.tab_bottles, R.string.tab_ingredients, R.string.tab_make).forEachIndexed { i, t ->
+            listOf(R.string.tab_stock, R.string.tab_make).forEachIndexed { i, t ->
                 Tab(selected = tab == i, onClick = { tab = i }, text = { Text(stringResource(t), maxLines = 1, overflow = TextOverflow.Ellipsis) })
             }
         }
-        when (tab) {
-            0 -> BottlesTab(vm, nav)
-            1 -> IngredientsTab(vm)
-            else -> MakeTab(vm, nav)
-        }
+        if (tab == 0) StockTab(vm, nav) else MakeTab(vm, nav)
     }
 }
 
-// ------------------------------------------------------------------ bottles
+// ------------------------------------------------------------------ stock (bottles + ingredients in one list)
 @Composable
-private fun BottlesTab(vm: AppViewModel, nav: NavController) {
+private fun StockTab(vm: AppViewModel, nav: NavController) {
     val lang = appLang()
     val ctx = LocalContext.current
     val snackbar = LocalSnackbar.current
     val scope = rememberCoroutineScope()
     val user by vm.user.collectAsState()
     val barcode by vm.barcode.collectAsState()
-    var manual by remember { mutableStateOf(false) }
+    var query by rememberSaveable { mutableStateOf("") }
+    var manualFor by remember { mutableStateOf<String?>(null) } // "" = any ingredient
     var editing by remember { mutableStateOf<Bottle?>(null) }
+    var removing by remember { mutableStateOf<String?>(null) }
     val unavailable = stringResource(R.string.barcode_unavailable)
+    val catalog = vm.catalog
 
     fun startScan() {
         val options = GmsBarcodeScannerOptions.Builder()
@@ -127,21 +130,70 @@ private fun BottlesTab(vm: AppViewModel, nav: NavController) {
             .addOnFailureListener { scope.launch { snackbar.showSnackbar(unavailable) } }
     }
 
+    val matches = remember(query) { catalog.search(query) }
+    val q = Catalog.spelling(Catalog.norm(query))
+    val owned = (user.inventory + user.bottles.map { it.ingredientId })
+        .filter { q.isEmpty() || it in matches || (it.startsWith("x:") && q in Catalog.spelling(it)) }
+    val bottlesBy = user.bottles.groupBy { it.ingredientId }
+
     LazyColumn(contentPadding = PaddingValues(bottom = 24.dp)) {
         item {
-            Row(Modifier.fillMaxWidth().padding(16.dp), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+            Row(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 12.dp), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                 ActionCard(Icons.Filled.QrCodeScanner, stringResource(R.string.scan_barcode), "EAN / UPC", Modifier.weight(1f)) { startScan() }
-                ActionCard(Icons.Filled.Add, stringResource(R.string.add_bottle), stringResource(R.string.bar_search), Modifier.weight(1f)) { manual = true }
+                ActionCard(Icons.Filled.Add, stringResource(R.string.add_bottle), stringResource(R.string.bar_search), Modifier.weight(1f)) { manualFor = "" }
                 ActionCard(Icons.Filled.CameraAlt, stringResource(R.string.scan_ingredients), "AI", Modifier.weight(1f)) { nav.navigate(Routes.scan("ingredients")) }
             }
+            OutlinedTextField(
+                query, { query = it }, modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
+                leadingIcon = { Icon(Icons.Filled.Search, null) }, placeholder = { Text(stringResource(R.string.bar_search)) },
+                singleLine = true, shape = RoundedCornerShape(18.dp),
+            )
         }
-        if (user.bottles.isEmpty()) item { EmptyHint(stringResource(R.string.bottles_empty)) }
-        val grouped = user.bottles.sortedBy { vm.catalog.name(it.ingredientId, lang) }
-            .groupBy { vm.catalog.category(it.ingredientId) }
+        // ---- what I have ----
+        item(key = "have") { SectionTitle(stringResource(R.string.stock_have, user.available.size)) }
+        if (user.available.isEmpty()) item { EmptyHint(stringResource(R.string.bar_empty)) }
+        val ownedByCat = owned.sortedBy { catalog.name(it, lang) }.groupBy { catalog.category(it) }
         Catalog.CATEGORY_ORDER.forEach { cat ->
-            val list = grouped[cat] ?: return@forEach
-            item(key = "h$cat") { SectionTitle(stringResource(Labels.cat.getValue(cat)) + " · " + list.size) }
-            items(list, key = { it.id }) { b -> BottleRow(b, vm.catalog, lang) { editing = b } }
+            val ids = ownedByCat[cat] ?: return@forEach
+            item(key = "oc$cat") {
+                Text(stringResource(Labels.cat.getValue(cat)), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(start = 20.dp, top = 8.dp))
+            }
+            items(ids, key = { "o$it" }) { id ->
+                Column {
+                    Row(Modifier.fillMaxWidth().padding(start = 8.dp, end = 4.dp), verticalAlignment = Alignment.CenterVertically) {
+                        IconButton(onClick = { removing = id }) { Icon(Icons.Filled.CheckCircle, null, tint = MaterialTheme.colorScheme.secondary) }
+                        Text(catalog.name(id, lang), style = MaterialTheme.typography.bodyLarge, modifier = Modifier.weight(1f))
+                        TextButton(onClick = { manualFor = id }) { Icon(Icons.Filled.Add, null, Modifier.size(16.dp)); Text(stringResource(R.string.stock_add_bottle_for)) }
+                    }
+                    bottlesBy[id].orEmpty().forEach { b -> BottleRow(b, catalog, lang) { editing = b } }
+                }
+            }
+        }
+        // ---- add more ----
+        item(key = "add") { SectionTitle(stringResource(R.string.stock_add_more)) }
+        val notOwned = catalog.ingredients.filter { it.key !in Catalog.PANTRY && it.key !in user.available && it.key in matches }
+        if (query.isNotBlank() && notOwned.isEmpty() && owned.isEmpty()) item {
+            Text(stringResource(R.string.stock_no_match, query.trim()), modifier = Modifier.padding(horizontal = 20.dp), color = MaterialTheme.colorScheme.onSurfaceVariant)
+        }
+        if (query.isNotBlank() && catalog.resolve(query) == null) item {
+            TextButton(onClick = { vm.toggleInventory(catalog.freeId(query.trim())); query = "" }, modifier = Modifier.padding(horizontal = 8.dp)) {
+                Icon(Icons.Filled.Add, null); Text(stringResource(R.string.bar_add_custom, query.trim()))
+            }
+        }
+        val notOwnedByCat = notOwned.groupBy { it.category }
+        Catalog.CATEGORY_ORDER.forEach { cat ->
+            val list = notOwnedByCat[cat]?.sortedBy { if (lang == "de") it.de else it.en } ?: return@forEach
+            item(key = "nc$cat") {
+                Text(stringResource(Labels.cat.getValue(cat)), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(start = 20.dp, top = 12.dp, bottom = 4.dp))
+                FlowRow(Modifier.padding(horizontal = 16.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    list.forEach { c ->
+                        FilterChip(false, { vm.toggleInventory(c.key) }, { Text(if (lang == "de") c.de else c.en) },
+                            leadingIcon = { Icon(Icons.Filled.Add, null, Modifier.size(16.dp)) })
+                    }
+                }
+            }
         }
     }
 
@@ -163,21 +215,32 @@ private fun BottlesTab(vm: AppViewModel, nav: NavController) {
         }
         is BarcodeState.Error -> {
             val msg = stringResource(R.string.barcode_error, s.message)
-            androidx.compose.runtime.LaunchedEffect(s) { snackbar.showSnackbar(msg); vm.resetBarcode(); manual = true }
+            androidx.compose.runtime.LaunchedEffect(s) { snackbar.showSnackbar(msg); vm.resetBarcode(); manualFor = "" }
         }
     }
-    if (manual) BottleDialog(vm, stringResource(R.string.add_bottle), null, "", "", null, null, { manual = false }) { n, b, i ->
-        vm.addBottle(n, b, i); manual = false
+    manualFor?.let { forId ->
+        BottleDialog(vm, stringResource(R.string.add_bottle), null, "", "", forId.ifEmpty { null }, null, { manualFor = null }) { n, b, i ->
+            vm.addBottle(n, b, i); manualFor = null
+        }
     }
     editing?.let { b -> EditBottleDialog(vm, b) { editing = null } }
+    removing?.let { id ->
+        AlertDialog(
+            onDismissRequest = { removing = null },
+            title = { Text(stringResource(R.string.stock_remove_q, catalog.name(id, lang))) },
+            text = if (bottlesBy[id].isNullOrEmpty()) null else ({ Text(stringResource(R.string.stock_remove_bottles)) }),
+            confirmButton = { TextButton(onClick = { vm.removeFromBar(id); removing = null }) { Text(stringResource(R.string.delete)) } },
+            dismissButton = { TextButton(onClick = { removing = null }) { Text(stringResource(R.string.cancel)) } },
+        )
+    }
 }
 
 @Composable
 private fun BottleRow(b: Bottle, catalog: Catalog, lang: String, onClick: () -> Unit) {
-    Row(Modifier.fillMaxWidth().clickable(onClick = onClick).padding(horizontal = 16.dp, vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
-        Box(Modifier.size(52.dp).clip(RoundedCornerShape(12.dp))) {
-            if (b.imageUrl != null) AsyncImage(b.imageUrl, null, contentScale = ContentScale.Crop, modifier = Modifier.size(52.dp))
-            else GlassDrawing("highball", fillColor(b.fill), Modifier.size(52.dp).padding(6.dp))
+    Row(Modifier.fillMaxWidth().clickable(onClick = onClick).padding(start = 56.dp, end = 16.dp, top = 4.dp, bottom = 6.dp), verticalAlignment = Alignment.CenterVertically) {
+        Box(Modifier.size(44.dp).clip(RoundedCornerShape(12.dp))) {
+            if (b.imageUrl != null) AsyncImage(b.imageUrl, null, contentScale = ContentScale.Crop, modifier = Modifier.size(44.dp))
+            else BottleDrawing(fillColor(b.fill), b.fill, Modifier.size(44.dp).padding(4.dp))
         }
         Spacer(Modifier.width(12.dp))
         Column(Modifier.weight(1f)) {
@@ -266,10 +329,10 @@ fun BottleDialog(
 @Composable
 fun IngredientPicker(vm: AppViewModel, initialQuery: String = "", onPick: (String) -> Unit) {
     val lang = appLang()
-    var q by remember { mutableStateOf(vm.catalog.resolve(initialQuery)?.let { "" } ?: "") }
+    var q by remember { mutableStateOf("") }
     val list = remember(q) {
-        val n = Catalog.norm(q)
-        vm.catalog.ingredients.filter { n.isEmpty() || n in Catalog.norm(it.en) || n in Catalog.norm(it.de) }.take(40)
+        val m = vm.catalog.search(q)
+        vm.catalog.ingredients.filter { it.key in m }.take(60)
     }
     Column {
         OutlinedTextField(q, { q = it }, leadingIcon = { Icon(Icons.Filled.Search, null) }, placeholder = { Text(stringResource(R.string.bar_search)) }, singleLine = true)
@@ -283,65 +346,6 @@ fun IngredientPicker(vm: AppViewModel, initialQuery: String = "", onPick: (Strin
             }
         }
     }
-}
-
-// ------------------------------------------------------------------ ingredients
-@Composable
-private fun IngredientsTab(vm: AppViewModel) {
-    val lang = appLang()
-    val user by vm.user.collectAsState()
-    var q by rememberSaveable { mutableStateOf("") }
-    var confirmClear by remember { mutableStateOf(false) }
-    val n = Catalog.norm(q)
-    val bottleIds = user.bottles.map { it.ingredientId }.toSet()
-    LazyColumn(contentPadding = PaddingValues(bottom = 24.dp)) {
-        item {
-            Row(Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
-                OutlinedTextField(q, { q = it }, modifier = Modifier.weight(1f), leadingIcon = { Icon(Icons.Filled.Search, null) },
-                    placeholder = { Text(stringResource(R.string.bar_search)) }, singleLine = true, shape = RoundedCornerShape(18.dp))
-                IconButton(onClick = { confirmClear = true }) { Icon(Icons.Filled.Delete, stringResource(R.string.clear_bar)) }
-            }
-            Text(stringResource(R.string.bar_have, user.available.size), style = MaterialTheme.typography.labelLarge,
-                color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(horizontal = 20.dp))
-            if (user.available.isEmpty()) EmptyHint(stringResource(R.string.bar_empty))
-            if (q.isNotBlank() && vm.catalog.resolve(q) == null) {
-                TextButton(onClick = { vm.toggleInventory(vm.catalog.freeId(q.trim())); q = "" }, modifier = Modifier.padding(horizontal = 8.dp)) {
-                    Text(stringResource(R.string.bar_add_custom, q.trim()))
-                }
-            }
-        }
-        val custom = user.inventory.filter { it.startsWith("x:") && (n.isEmpty() || n in it) }
-        if (custom.isNotEmpty()) item {
-            FlowRow(Modifier.padding(horizontal = 16.dp, vertical = 8.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                custom.forEach { id -> FilterChip(true, { vm.toggleInventory(id) }, { Text(vm.catalog.name(id, lang)) }) }
-            }
-        }
-        Catalog.CATEGORY_ORDER.forEach { cat ->
-            val list = vm.catalog.ingredients.filter { it.category == cat && it.key !in Catalog.PANTRY }
-                .filter { n.isEmpty() || n in Catalog.norm(it.en) || n in Catalog.norm(it.de) }
-                .sortedBy { if (lang == "de") it.de else it.en }
-            if (list.isEmpty()) return@forEach
-            item(key = "cat$cat") {
-                SectionTitle(stringResource(Labels.cat.getValue(cat)) + " · " + list.count { it.key in user.available })
-                FlowRow(Modifier.padding(horizontal = 16.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    list.forEach { c ->
-                        val fromBottle = c.key in bottleIds
-                        FilterChip(
-                            selected = c.key in user.available,
-                            onClick = { if (!fromBottle) vm.toggleInventory(c.key) },
-                            label = { Text((if (lang == "de") c.de else c.en) + if (fromBottle) " 🍾" else "") },
-                        )
-                    }
-                }
-            }
-        }
-    }
-    if (confirmClear) AlertDialog(
-        onDismissRequest = { confirmClear = false },
-        title = { Text(stringResource(R.string.clear_bar)) },
-        confirmButton = { TextButton(onClick = { vm.clearInventory(); confirmClear = false }) { Text(stringResource(R.string.delete)) } },
-        dismissButton = { TextButton(onClick = { confirmClear = false }) { Text(stringResource(R.string.cancel)) } },
-    )
 }
 
 // ------------------------------------------------------------------ what can I make

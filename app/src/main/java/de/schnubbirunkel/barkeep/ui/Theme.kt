@@ -4,7 +4,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Typography
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
@@ -77,7 +79,26 @@ private val AppTypography = Typography().let { t ->
     )
 }
 
+val ACCENTS: Map<String, Pair<Color, Color>> = mapOf(
+    // accent id -> (dark-theme colour, light-theme colour)
+    "citrus" to (Citrus to Color(0xFF7A5F00)),
+    "mint" to (Mint to Color(0xFF006B54)),
+    "coral" to (Coral to Color(0xFFB3261E)),
+    "lavender" to (Color(0xFFB9A6FF) to Color(0xFF5B45B0)),
+    "ocean" to (Color(0xFF6CC4FF) to Color(0xFF00639B)),
+)
+
 @Composable
-fun BarkeepTheme(dark: Boolean = true, content: @Composable () -> Unit) {
-    MaterialTheme(colorScheme = if (dark) Dark else Light, typography = AppTypography, content = content)
+fun BarkeepTheme(theme: String = "dark", accent: String = "citrus", content: @Composable () -> Unit) {
+    val dark = when (theme) { "light" -> false; "system" -> isSystemInDarkTheme(); else -> true }
+    val (accDark, accLight) = ACCENTS[accent] ?: ACCENTS.getValue("citrus")
+    val base = if (dark) Dark else Light
+    val acc = if (dark) accDark else accLight
+    val scheme = if (accent == "citrus") base else base.copy(
+        primary = acc,
+        onPrimary = if (dark) Color(0xFF101010) else Color.White,
+        primaryContainer = if (dark) acc.copy(alpha = 0.22f).compositeOver(base.surface) else acc.copy(alpha = 0.18f).compositeOver(base.surface),
+        onPrimaryContainer = if (dark) acc else Color(0xFF1A1A1A),
+    )
+    MaterialTheme(colorScheme = scheme, typography = AppTypography, content = content)
 }

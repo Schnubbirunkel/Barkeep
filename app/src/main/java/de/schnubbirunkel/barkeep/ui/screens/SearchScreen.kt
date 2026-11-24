@@ -68,7 +68,7 @@ private val SEARCH_STYLES = listOf("sour", "highball", "tiki", "spritz", "stirre
 /** Text search over names (en/de), ingredients (en/de) and styles. */
 fun matchesQuery(r: Recipe, q: String, catalog: Catalog): Boolean {
     if (q.isBlank()) return true
-    val words = Catalog.norm(q).split(' ').filter { it.isNotBlank() }
+    val words = Catalog.spelling(Catalog.norm(q)).split(' ').filter { it.isNotBlank() }
     val hay = haystack(r, catalog)
     return words.all { it in hay }
 }
@@ -78,13 +78,12 @@ fun haystack(r: Recipe, catalog: Catalog): String = buildString {
         r.nameDe?.let { append(Catalog.norm(it)); append(' ') }
         r.ingredients.forEach { i ->
             val id = catalog.idOf(i)
-            append(Catalog.norm(catalog.name(id, "en"))); append(' ')
-            append(Catalog.norm(catalog.name(id, "de"))); append(' ')
+            append(catalog.terms(id)); append(' ')
             i.name?.let { append(Catalog.norm(it)); append(' ') }
         }
         r.styles.forEach { append(it); append(' ') }
         append(r.type)
-    }
+    }.let { Catalog.spelling(it) }
 
 @Composable
 fun SearchScreen(vm: AppViewModel, nav: NavController, initStyle: String, initType: String, initQuery: String) {
@@ -103,7 +102,7 @@ fun SearchScreen(vm: AppViewModel, nav: NavController, initStyle: String, initTy
     val index = remember(all) { HashMap<String, String>(all.size * 2).apply { all.forEach { put(it.id, haystack(it, vm.catalog)) } } }
     val results by remember(all, user.available) {
         derivedStateOf {
-            val words = Catalog.norm(query).split(' ').filter { it.isNotBlank() }
+            val words = Catalog.spelling(Catalog.norm(query)).split(' ').filter { it.isNotBlank() }
             all.asSequence()
                 .filter { type.isEmpty() || it.type == type }
                 .filter { style.isEmpty() || style in it.styles }
@@ -120,14 +119,17 @@ fun SearchScreen(vm: AppViewModel, nav: NavController, initStyle: String, initTy
 
     LazyColumn(Modifier.statusBarsPadding()) {
         item {
+            Row(verticalAlignment = androidx.compose.ui.Alignment.CenterVertically) {
             OutlinedTextField(
                 value = query, onValueChange = { query = it },
-                modifier = Modifier.fillMaxWidth().padding(16.dp),
+                modifier = Modifier.weight(1f).padding(start = 16.dp, top = 16.dp, bottom = 16.dp),
                 placeholder = { Text(stringResource(R.string.search_hint)) },
                 leadingIcon = { Icon(Icons.Filled.Search, null) },
                 trailingIcon = { if (query.isNotEmpty()) IconButton(onClick = { query = "" }) { Icon(Icons.Filled.Clear, null) } },
                 singleLine = true, shape = RoundedCornerShape(18.dp),
             )
+            de.schnubbirunkel.barkeep.ui.SettingsButton(nav)
+            }
             ChipRow {
                 FilterChip(type.isEmpty(), { type = "" }, { Text(stringResource(R.string.type_all)) })
                 listOf("cocktail", "mocktail", "punch", "smoothie", "shot").forEach { t ->

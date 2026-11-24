@@ -52,7 +52,11 @@ sealed interface ScanState {
     data class Error(val message: String) : ScanState
 }
 
-class AppViewModel @JvmOverloads constructor(app: Application, storeFile: String = "user.json") : AndroidViewModel(app) {
+class AppViewModel @JvmOverloads constructor(
+    app: Application,
+    storeFile: String = "user.json",
+    private val autoDownload: Boolean = true,
+) : AndroidViewModel(app) {
     private val local = LocalData(app)
     val catalog: Catalog = local.catalog
     private val store = UserStore(app, storeFile)
@@ -77,9 +81,17 @@ class AppViewModel @JvmOverloads constructor(app: Application, storeFile: String
         .stateIn(viewModelScope, SharingStarted.Eagerly, buildAll(user.value, emptyMap()))
 
     private fun buildAll(u: UserData, src: Map<String, List<Recipe>>): List<Recipe> {
+        // Photos from TheCocktailDB are reused for every recipe with the same name.
+        val photos = HashMap<String, String>()
+        (src[SourceIds.COCKTAILDB].orEmpty() + u.savedOnline).forEach { r -> r.imageUrl?.let { photos.putIfAbsent(photoKey(r.name), it) } }
         val seen = HashSet<String>()
         val out = ArrayList<Recipe>()
-        fun addAll(list: List<Recipe>) = list.forEach { r -> if (seen.add(Catalog.norm(r.name))) out += r }
+        fun addAll(list: List<Recipe>) = list.forEach { r ->
+            if (seen.add(Catalog.norm(r.name))) {
+                val photo = if (r.imageUrl == null) photos[photoKey(r.name)] ?: r.nameDe?.let { photos[photoKey(it)] } else null
+                out += if (photo != null) r.copy(imageUrl = photo) else r
+            }
+        }
         addAll(u.custom)
         addAll(local.recipes)
         if (SourceIds.COCKTAILDB in u.settings.sources) addAll(src[SourceIds.COCKTAILDB].orEmpty())
@@ -87,6 +99,8 @@ class AppViewModel @JvmOverloads constructor(app: Application, storeFile: String
         if (SourceIds.COMMUNITY in u.settings.sources) addAll(src[SourceIds.COMMUNITY].orEmpty())
         return if (u.settings.showAlcoholic) out else out.filter { !it.isAlcoholic }
     }
+
+    private fun photoKey(name: String) = Catalog.spelling(Catalog.norm(name)).replace(Regex("[^a-z0-9]"), "")
 
     // ---------- downloadable sources ----------
     /** source id -> progress 0..1, or null if idle */
@@ -110,7 +124,7 @@ class AppViewModel @JvmOverloads constructor(app: Application, storeFile: String
         downloadSource(id)
     }
 
-    fun downloadSource(id: String) {
+    fun downloadSource(id: String, quiet: Boolean = false) {
         if (id in _downloading.value) return
         _downloading.value = _downloading.value + (id to 0f)
         viewModelScope.launch {
@@ -121,9 +135,9 @@ class AppViewModel @JvmOverloads constructor(app: Application, storeFile: String
                 val list = withContext(Dispatchers.IO) { downloads.load(id) }
                 sourceData.value = sourceData.value + (id to list)
                 updateSettings { it.copy(sources = it.sources + id) }
-                _downloadMessage.value = "OK:$n"
+                if (!quiet) _downloadMessage.value = "OK:$n"
             } catch (e: Exception) {
-                _downloadMessage.value = "ERR:" + (e.message ?: e.javaClass.simpleName)
+                if (!quiet) _downloadMessage.value = "ERR:" + (e.message ?: e.javaClass.simpleName)
             } finally {
                 _downloading.value = _downloading.value - id
             }
@@ -138,7 +152,9 @@ class AppViewModel @JvmOverloads constructor(app: Application, storeFile: String
 
     val localRecipes: List<Recipe> get() = local.recipes
 
-    fun recipe(id: String): Recipe? =
+    fun recipe(id: String): Recipe? = allRecipes.value.firstOrNull { it.id == id } ?: rawRecipe(id)
+
+    private fun rawRecipe(id: String): Recipe? =
         user.value.custom.firstOrNull { it.id == id }
             ?: local.recipes.firstOrNull { it.id == id }
             ?: user.value.savedOnline.firstOrNull { it.id == id }
@@ -183,6 +199,11 @@ class AppViewModel @JvmOverloads constructor(app: Application, storeFile: String
 
     fun addInventory(ids: Collection<String>) = store.update { it.copy(inventory = it.inventory + ids) }
     fun clearInventory() = store.update { it.copy(inventory = emptySet()) }
+
+    /** Removes an ingredient from the bar, including its bottles. */
+    fun removeFromBar(id: String) = store.update { u ->
+        u.copy(inventory = u.inventory - id, bottles = u.bottles.filter { it.ingredientId != id })
+    }
 
     // ---------- bottles & barcode ----------
     private val barcodeLookup = BarcodeLookup(catalog)
@@ -346,4 +367,13 @@ class AppViewModel @JvmOverloads constructor(app: Application, storeFile: String
         steps = mapOf(lang to g.steps),
         source = RecipeSource.CUSTOM,
     )
+
+    init {
+        // First start: fetch TheCocktailDB once so recipes get photos and the collection grows.
+        val st = user.value.settings
+        if (autoDownload && st.useOnline && !st.autoDownloadTried && !downloads.isDownloaded(SourceIds.COCKTAILDB)) {
+            updateSettings { it.copy(autoDownloadTried = true) }
+            downloadSource(SourceIds.COCKTAILDB, quiet = true)
+        }
+    }
 }

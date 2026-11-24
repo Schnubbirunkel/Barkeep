@@ -42,6 +42,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.material.icons.filled.Settings
 import coil3.compose.AsyncImage
 import de.schnubbirunkel.barkeep.R
 import de.schnubbirunkel.barkeep.data.Catalog
@@ -281,3 +282,31 @@ fun EmptyHint(text: String, modifier: Modifier = Modifier) {
 }
 
 val ScreenPadding = Arrangement.spacedBy(12.dp)
+
+@Composable
+fun SettingsButton(nav: androidx.navigation.NavController) {
+    androidx.compose.material3.IconButton(onClick = { nav.navigate(Routes.SETTINGS) }) {
+        androidx.compose.material3.Icon(androidx.compose.material.icons.Icons.Filled.Settings, stringResource(R.string.settings))
+    }
+}
+
+/** Simple bottle silhouette showing the fill level. */
+@Composable
+fun BottleDrawing(liquid: Color, fill: Int, modifier: Modifier = Modifier) {
+    val outline = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.75f)
+    Canvas(modifier) {
+        val w = size.width
+        val h = size.height
+        val body = Path().apply {
+            moveTo(w * 0.42f, h * 0.04f); lineTo(w * 0.58f, h * 0.04f)
+            lineTo(w * 0.58f, h * 0.28f)
+            cubicTo(w * 0.74f, h * 0.34f, w * 0.76f, h * 0.4f, w * 0.76f, h * 0.48f)
+            lineTo(w * 0.76f, h * 0.94f); lineTo(w * 0.24f, h * 0.94f); lineTo(w * 0.24f, h * 0.48f)
+            cubicTo(w * 0.24f, h * 0.4f, w * 0.26f, h * 0.34f, w * 0.42f, h * 0.28f)
+            close()
+        }
+        val top = h * 0.94f - (h * 0.6f) * (fill.coerceIn(0, 100) / 100f)
+        clipPath(body) { drawRect(liquid, topLeft = Offset(0f, top), size = Size(w, h - top)) }
+        drawPath(body, outline, style = Stroke(width = w * 0.05f))
+    }
+}

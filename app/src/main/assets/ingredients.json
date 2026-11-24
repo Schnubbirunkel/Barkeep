@@ -62,8 +62,8 @@
 },
 {
 "key": "bourbon",
-"en": "Bourbon",
-"de": "Bourbon",
+"en": "Bourbon whiskey",
+"de": "Bourbon Whiskey",
 "category": "spirit"
 },
 {
@@ -74,14 +74,14 @@
 },
 {
 "key": "scotch",
-"en": "Blended Scotch",
-"de": "Blended Scotch",
+"en": "Scotch whisky",
+"de": "Scotch Whisky",
 "category": "spirit"
 },
 {
 "key": "islay_scotch",
-"en": "Islay Scotch",
-"de": "Islay-Scotch",
+"en": "Islay Scotch whisky (smoky)",
+"de": "Islay Scotch Whisky (rauchig)",
 "category": "spirit"
 },
 {
@@ -2009,5 +2009,401 @@
 "en": "pint glass",
 "de": "Pintglas"
 }
+},
+"families": {
+"whisky": [
+"bourbon",
+"rye",
+"scotch",
+"islay_scotch",
+"irish_whiskey"
+],
+"whiskey": [
+"bourbon",
+"rye",
+"scotch",
+"islay_scotch",
+"irish_whiskey"
+],
+"whiskies": [
+"bourbon",
+"rye",
+"scotch",
+"islay_scotch",
+"irish_whiskey"
+],
+"whiskys": [
+"bourbon",
+"rye",
+"scotch",
+"islay_scotch",
+"irish_whiskey"
+],
+"rum": [
+"white_rum",
+"dark_rum",
+"aged_rum",
+"overproof_rum",
+"rhum_agricole",
+"coconut_rum",
+"cachaca"
+],
+"rhum": [
+"white_rum",
+"dark_rum",
+"aged_rum",
+"overproof_rum",
+"rhum_agricole",
+"coconut_rum",
+"cachaca"
+],
+"ron": [
+"white_rum",
+"dark_rum",
+"aged_rum",
+"overproof_rum",
+"rhum_agricole",
+"coconut_rum",
+"cachaca"
+],
+"tequila": [
+"tequila",
+"reposado",
+"mezcal"
+],
+"agave": [
+"tequila",
+"reposado",
+"mezcal"
+],
+"brandy": [
+"cognac",
+"brandy",
+"calvados",
+"pisco"
+],
+"weinbrand": [
+"cognac",
+"brandy",
+"calvados",
+"pisco"
+],
+"vermouth": [
+"sweet_vermouth",
+"dry_vermouth",
+"blanc_vermouth"
+],
+"wermut": [
+"sweet_vermouth",
+"dry_vermouth",
+"blanc_vermouth"
+],
+"wermuth": [
+"sweet_vermouth",
+"dry_vermouth",
+"blanc_vermouth"
+],
+"sekt": [
+"sparkling_wine",
+"champagne",
+"prosecco"
+],
+"schaumwein": [
+"sparkling_wine",
+"champagne",
+"prosecco"
+],
+"sparkling": [
+"sparkling_wine",
+"champagne",
+"prosecco"
+],
+"bubbly": [
+"sparkling_wine",
+"champagne",
+"prosecco"
+],
+"wein": [
+"red_wine",
+"white_wine",
+"sparkling_wine",
+"champagne",
+"prosecco"
+],
+"wine": [
+"red_wine",
+"white_wine",
+"sparkling_wine",
+"champagne",
+"prosecco"
+],
+"amaro": [
+"campari",
+"aperol",
+"fernet",
+"amaro_nonino",
+"cynar",
+"jagermeister"
+],
+"bitterlikör": [
+"campari",
+"aperol",
+"fernet",
+"amaro_nonino",
+"cynar",
+"jagermeister"
+],
+"likör": [
+"triple_sec",
+"cointreau",
+"campari",
+"aperol",
+"maraschino",
+"green_chartreuse",
+"yellow_chartreuse",
+"benedictine",
+"coffee_liqueur",
+"amaretto",
+"irish_cream",
+"creme_de_cacao",
+"creme_de_menthe",
+"creme_de_cassis",
+"creme_de_mure",
+"creme_de_violette",
+"elderflower_liqueur",
+"peach_schnapps",
+"apricot_brandy",
+"cherry_heering",
+"galliano",
+"falernum",
+"allspice_dram",
+"orange_curacao",
+"blue_curacao",
+"fernet",
+"amaro_nonino",
+"sloe_gin",
+"limoncello",
+"jagermeister",
+"drambuie",
+"banana_liqueur",
+"melon_liqueur",
+"hazelnut_liqueur",
+"raspberry_liqueur",
+"lychee_liqueur",
+"coconut_rum",
+"pimms",
+"cynar",
+"strega",
+"gentian"
+],
+"liqueur": [
+"cointreau",
+"triple_sec",
+"orange_curacao",
+"blue_curacao"
+],
+"saft": [
+"lime_juice",
+"lemon_juice",
+"orange_juice",
+"grapefruit_juice",
+"pineapple_juice",
+"cranberry_juice",
+"tomato_juice",
+"apple_juice",
+"passion_fruit_juice",
+"mango_juice",
+"pomegranate_juice",
+"peach_juice",
+"cherry_juice",
+"guava_juice",
+"blood_orange_juice"
+],
+"juice": [
+"lime_juice",
+"lemon_juice",
+"orange_juice",
+"grapefruit_juice",
+"pineapple_juice",
+"cranberry_juice",
+"tomato_juice",
+"apple_juice",
+"passion_fruit_juice",
+"mango_juice",
+"pomegranate_juice",
+"peach_juice",
+"cherry_juice",
+"guava_juice",
+"blood_orange_juice"
+],
+"sirup": [
+"simple_syrup",
+"honey_syrup",
+"agave_syrup",
+"demerara_syrup",
+"grenadine",
+"orgeat",
+"raspberry_syrup",
+"ginger_syrup",
+"elderflower_syrup",
+"cinnamon_syrup",
+"vanilla_syrup",
+"cream_of_coconut",
+"sugar",
+"sugar_cube",
+"honey",
+"maple_syrup",
+"strawberry_syrup",
+"passion_fruit_syrup",
+"rosemary_syrup",
+"lavender_syrup"
+],
+"syrup": [
+"simple_syrup",
+"honey_syrup",
+"agave_syrup",
+"demerara_syrup",
+"grenadine",
+"orgeat",
+"raspberry_syrup",
+"ginger_syrup",
+"elderflower_syrup",
+"cinnamon_syrup",
+"vanilla_syrup",
+"cream_of_coconut",
+"sugar",
+"sugar_cube",
+"honey",
+"maple_syrup",
+"strawberry_syrup",
+"passion_fruit_syrup",
+"rosemary_syrup",
+"lavender_syrup"
+],
+"bitter": [
+"angostura",
+"orange_bitters",
+"peychauds",
+"chocolate_bitters"
+],
+"bitters": [
+"angostura",
+"orange_bitters",
+"peychauds",
+"chocolate_bitters"
+],
+"gin": [
+"gin",
+"sloe_gin",
+"genever"
+],
+"wodka": [
+"vodka"
+],
+"vodka": [
+"vodka"
+],
+"orangenlikör": [
+"cointreau",
+"triple_sec",
+"orange_curacao",
+"blue_curacao"
+],
+"orange": [
+"cointreau",
+"triple_sec",
+"orange_curacao",
+"blue_curacao"
+],
+"kaffee": [
+"coffee_liqueur",
+"espresso",
+"coffee"
+],
+"coffee": [
+"coffee_liqueur",
+"espresso",
+"coffee"
+],
+"zitrus": [
+"lime_juice",
+"lemon_juice",
+"lime",
+"lemon",
+"orange",
+"grapefruit",
+"orange_juice",
+"grapefruit_juice"
+],
+"citrus": [
+"lime_juice",
+"lemon_juice",
+"lime",
+"lemon",
+"orange",
+"grapefruit",
+"orange_juice",
+"grapefruit_juice"
+],
+"sahne": [
+"cream",
+"milk",
+"irish_cream"
+],
+"cream": [
+"cream",
+"milk",
+"irish_cream"
+],
+"milch": [
+"cream",
+"milk",
+"irish_cream"
+],
+"milk": [
+"cream",
+"milk",
+"irish_cream"
+],
+"limo": [
+"soda",
+"tonic",
+"cola",
+"ginger_ale",
+"ginger_beer",
+"lemon_soda",
+"grapefruit_soda",
+"bitter_lemon"
+],
+"soda": [
+"soda",
+"tonic",
+"cola",
+"ginger_ale",
+"ginger_beer",
+"lemon_soda",
+"grapefruit_soda",
+"bitter_lemon"
+],
+"filler": [
+"soda",
+"tonic",
+"cola",
+"ginger_ale",
+"ginger_beer",
+"lemon_soda",
+"grapefruit_soda",
+"bitter_lemon"
+],
+"mixer": [
+"soda",
+"tonic",
+"cola",
+"ginger_ale",
+"ginger_beer",
+"lemon_soda",
+"grapefruit_soda",
+"bitter_lemon"
+]
 }
 }

@@ -26,7 +26,7 @@ abstract class ScreenshotBase(private val lang: String) {
 
     private fun shoot(name: String, route: String?, setup: (AppViewModel) -> Unit = {}) {
         val app = ApplicationProvider.getApplicationContext<Application>()
-        val vm = AppViewModel(app, "shot-$name-$lang.json")
+        val vm = AppViewModel(app, "shot-$name-$lang.json", false)
         vm.setOnboarded()
         seed(vm)
         setup(vm)
@@ -60,7 +60,7 @@ abstract class ScreenshotBase(private val lang: String) {
     @Test fun detail() = shoot("2_detail", Routes.recipe("whiskey_sour"))
     @Test fun bar() = shoot("3_bar_bottles", Routes.bar(0))
     @Test fun make() = shoot("4_what_can_i_make", Routes.bar(2))
-    @Test fun search() = shoot("5_search", Routes.search(style = "tiki"))
+    @Test fun search() = shoot("5_search", Routes.search(q = "whisky"))
     @Test fun favorites() = shoot("6_favorites", Routes.FAVORITES)
     @Test fun settings() = shoot("7_settings", Routes.SETTINGS)
 }

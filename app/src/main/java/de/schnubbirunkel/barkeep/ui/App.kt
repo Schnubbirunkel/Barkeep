@@ -129,7 +129,7 @@ fun BarkeepApp(vm: AppViewModel, start: String = Routes.DISCOVER, nav: NavHostCo
                     BarScreen(vm, nav, e.arguments?.getInt("tab") ?: 0)
                 }
                 composable(Routes.FAVORITES) { FavoritesScreen(vm, nav) }
-                composable(Routes.SHOPPING) { ShoppingScreen(vm) }
+                composable(Routes.SHOPPING) { ShoppingScreen(vm, nav) }
                 composable(Routes.RECIPE, arguments = listOf(navArgument("id") { type = NavType.StringType })) { e ->
                     DetailScreen(vm, nav, e.arguments?.getString("id").orEmpty())
                 }

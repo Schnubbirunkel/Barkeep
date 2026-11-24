@@ -83,6 +83,11 @@ data class Settings(
     val aiModel: String = "",
     val showAlcoholic: Boolean = true,
     val beginnerMode: Boolean = true,
+    /** system, dark, light */
+    val theme: String = "dark",
+    /** citrus, mint, coral, lavender */
+    val accent: String = "citrus",
+    val autoDownloadTried: Boolean = false,
     /** Downloaded sources the user switched on (see SourceIds). */
     val sources: Set<String> = emptySet(),
 )
@@ -119,4 +124,5 @@ data class CatalogFile(
     val aliases: Map<String, String>,
     val substitutions: Map<String, List<Substitution>>,
     val glasses: Map<String, LocalizedText>,
+    val families: Map<String, List<String>> = emptyMap(),
 )

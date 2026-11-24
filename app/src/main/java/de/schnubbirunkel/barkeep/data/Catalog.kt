@@ -13,6 +13,27 @@ class Catalog(file: CatalogFile) {
         file.aliases.forEach { (k, v) -> put(norm(k), v) }
     }
     private val subs = file.substitutions
+    private val families = file.families
+    private val familyWordsByKey: Map<String, List<String>> = buildMap<String, MutableList<String>> {
+        families.forEach { (word, keys) -> keys.forEach { k -> getOrPut(k) { mutableListOf() }.add(word) } }
+    }
+    private val aliasWordsByKey: Map<String, List<String>> = buildMap<String, MutableList<String>> {
+        file.aliases.forEach { (a, k) -> getOrPut(k) { mutableListOf() }.add(norm(a)) }
+    }
+
+    /** All words an ingredient can be found by (names, aliases, family words like "whisky"). */
+    fun terms(key: String): String {
+        val c = byKey[key] ?: return norm(key.removePrefix("x:"))
+        return (listOf(norm(c.en), norm(c.de), key.replace('_', ' ')) + aliasWordsByKey[key].orEmpty() + familyWordsByKey[key].orEmpty())
+            .joinToString(" ")
+    }
+
+    /** Ingredient keys matching a free search query (handles whisky/whiskey, families, aliases). */
+    fun search(query: String): Set<String> {
+        val q = spelling(norm(query))
+        if (q.isEmpty()) return ingredients.map { it.key }.toSet()
+        return ingredients.filter { spelling(terms(it.key)).contains(q) }.map { it.key }.toSet()
+    }
     private val glasses = file.glasses
 
     fun get(key: String): CatalogIngredient? = byKey[key]
@@ -57,6 +78,10 @@ class Catalog(file: CatalogFile) {
         fun norm(s: String) = s.trim().lowercase()
             .replace('’', '\'')
             .replace(Regex("\\s+"), " ")
+
+        /** Folds common spelling variants so either form matches. */
+        fun spelling(s: String) = s.replace("whiskey", "whisky").replace("ä", "ae").replace("ö", "oe").replace("ü", "ue").replace("ß", "ss")
+            .replace("é", "e").replace("ç", "c").replace("ñ", "n").replace("à", "a")
 
         /** Ingredients that do not count when checking what can be made. */
         val PANTRY = setOf("ice", "crushed_ice", "water", "hot_water")

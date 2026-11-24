@@ -41,7 +41,7 @@ import de.schnubbirunkel.barkeep.ui.AppViewModel
 import de.schnubbirunkel.barkeep.ui.EmptyHint
 
 @Composable
-fun ShoppingScreen(vm: AppViewModel) {
+fun ShoppingScreen(vm: AppViewModel, nav: androidx.navigation.NavController) {
     val ctx = LocalContext.current
     val user by vm.user.collectAsState()
     var text by remember { mutableStateOf("") }
@@ -53,6 +53,7 @@ fun ShoppingScreen(vm: AppViewModel) {
                 val body = title + "\n\n" + user.shopping.joinToString("\n") { (if (it.done) "☑ " else "☐ ") + it.text }
                 ctx.startActivity(Intent.createChooser(Intent(Intent.ACTION_SEND).apply { type = "text/plain"; putExtra(Intent.EXTRA_TEXT, body) }, null))
             }) { Icon(Icons.Filled.Share, stringResource(R.string.share)) }
+            de.schnubbirunkel.barkeep.ui.SettingsButton(nav)
         }
         Row(Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
             OutlinedTextField(

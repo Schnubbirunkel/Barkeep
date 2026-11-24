@@ -68,6 +68,7 @@ fun FavoritesScreen(vm: AppViewModel, nav: NavController) {
             Row(Modifier.padding(start = 20.dp, top = 16.dp, end = 8.dp), verticalAlignment = Alignment.CenterVertically) {
                 Text(stringResource(R.string.nav_favorites), style = MaterialTheme.typography.headlineMedium, modifier = Modifier.weight(1f))
                 IconButton(onClick = { dialog = "new" }) { Icon(Icons.Filled.CreateNewFolder, stringResource(R.string.new_folder)) }
+                de.schnubbirunkel.barkeep.ui.SettingsButton(nav)
                 if (folder != MINE && folder != UserData.DEFAULT_FOLDER) {
                     IconButton(onClick = { dialog = "rename" }) { Icon(Icons.Filled.DriveFileRenameOutline, stringResource(R.string.rename)) }
                     IconButton(onClick = { confirmDelete = true }) { Icon(Icons.Filled.Delete, stringResource(R.string.delete)) }

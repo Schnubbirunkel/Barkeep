@@ -6,7 +6,9 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -88,6 +90,18 @@ fun SettingsScreen(vm: AppViewModel, nav: NavController) {
                 FilterChip(current.isEmpty(), { AppCompatDelegate.setApplicationLocales(LocaleListCompat.getEmptyLocaleList()) }, { Text(stringResource(R.string.lang_system)) })
                 FilterChip(current.startsWith("de"), { AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("de")) }, { Text("Deutsch") })
                 FilterChip(current.startsWith("en"), { AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("en")) }, { Text("English") })
+            }
+            SectionTitle(stringResource(R.string.settings_theme))
+            ChipRow {
+                listOf("system" to R.string.theme_system, "dark" to R.string.theme_dark, "light" to R.string.theme_light).forEach { (id, label) ->
+                    FilterChip(s.theme == id, { vm.updateSettings { it.copy(theme = id) } }, { Text(stringResource(label)) })
+                }
+            }
+            ChipRow {
+                listOf("citrus" to R.string.accent_citrus, "mint" to R.string.accent_mint, "coral" to R.string.accent_coral, "lavender" to R.string.accent_lavender, "ocean" to R.string.accent_ocean).forEach { (id, label) ->
+                    FilterChip(s.accent == id, { vm.updateSettings { it.copy(accent = id) } }, { Text(stringResource(label)) },
+                        leadingIcon = { androidx.compose.foundation.layout.Box(Modifier.size(14.dp).background(de.schnubbirunkel.barkeep.ui.ACCENTS.getValue(id).first, androidx.compose.foundation.shape.CircleShape)) })
+                }
             }
             SectionTitle(stringResource(R.string.settings_units))
             ChipRow { listOf("ml", "cl", "oz").forEach { u -> FilterChip(s.unitSystem == u, { vm.updateSettings { it.copy(unitSystem = u) } }, { Text(u) }) } }

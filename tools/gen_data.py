@@ -2,7 +2,7 @@
 """Generates app/src/main/assets/{recipes,ingredients}.json from the Python data files."""
 import json, os, sys
 sys.path.insert(0, os.path.dirname(__file__))
-from data_ingredients import ING, ALIASES, SUBS, GLASS
+from data_ingredients import ING, ALIASES, SUBS, GLASS, FAMILIES
 from data_recipes import RECIPES as _R1
 from data_recipes2 import RECIPES2
 RECIPES = _R1 + RECIPES2
@@ -174,6 +174,18 @@ def steps_for(r, lang):
     return s
 
 
+def fams():
+    cat = {"likör liqueur": "liqueur", "saft juice": "juice", "sirup syrup": "syrup"}
+    out = {}
+    for words, keys in FAMILIES.items():
+        ks = list(keys) or [k for k, v in ING.items() if v[2] == cat[words]]
+        for k in ks:
+            assert k in ING, k
+        for w in words.split():
+            out[w] = ks
+    return out
+
+
 def main():
     os.makedirs(OUT, exist_ok=True)
     ids = set()
@@ -200,6 +212,7 @@ def main():
         "aliases": ALIASES,
         "substitutions": {k: [{"key": s[0], "en": s[1], "de": s[2]} for s in v] for k, v in SUBS.items() if v and k in ING},
         "glasses": {k: {"en": v[0], "de": v[1]} for k, v in GLASS.items()},
+        "families": fams(),
     }
     for k, v in SUBS.items():
         for s in v:

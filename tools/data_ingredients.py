@@ -12,10 +12,10 @@ ING = {
     "tequila": ("Tequila blanco", "Tequila blanco", "spirit"),
     "reposado": ("Tequila reposado", "Tequila reposado", "spirit"),
     "mezcal": ("Mezcal", "Mezcal", "spirit"),
-    "bourbon": ("Bourbon", "Bourbon", "spirit"),
+    "bourbon": ("Bourbon whiskey", "Bourbon Whiskey", "spirit"),
     "rye": ("Rye whiskey", "Rye Whiskey", "spirit"),
-    "scotch": ("Blended Scotch", "Blended Scotch", "spirit"),
-    "islay_scotch": ("Islay Scotch", "Islay-Scotch", "spirit"),
+    "scotch": ("Scotch whisky", "Scotch Whisky", "spirit"),
+    "islay_scotch": ("Islay Scotch whisky (smoky)", "Islay Scotch Whisky (rauchig)", "spirit"),
     "irish_whiskey": ("Irish whiskey", "Irischer Whiskey", "spirit"),
     "cognac": ("Cognac", "Cognac", "spirit"),
     "brandy": ("Brandy", "Weinbrand", "spirit"),
@@ -346,4 +346,28 @@ GLASS = {
     "nick_nora": ("Nick & Nora glass", "Nick-&-Nora-Glas"),
     "julep": ("julep cup", "Julep-Becher"),
     "pint": ("pint glass", "Pintglas"),
+}
+
+
+# Generic search words -> ingredient keys (so "Whisky" finds every whisky etc.)
+FAMILIES = {
+    "whisky whiskey whiskies whiskys": ["bourbon", "rye", "scotch", "islay_scotch", "irish_whiskey"],
+    "rum rhum ron": ["white_rum", "dark_rum", "aged_rum", "overproof_rum", "rhum_agricole", "coconut_rum", "cachaca"],
+    "tequila agave": ["tequila", "reposado", "mezcal"],
+    "brandy weinbrand": ["cognac", "brandy", "calvados", "pisco"],
+    "vermouth wermut wermuth": ["sweet_vermouth", "dry_vermouth", "blanc_vermouth"],
+    "sekt schaumwein sparkling bubbly": ["sparkling_wine", "champagne", "prosecco"],
+    "wein wine": ["red_wine", "white_wine", "sparkling_wine", "champagne", "prosecco"],
+    "amaro bitterlikör": ["campari", "aperol", "fernet", "amaro_nonino", "cynar", "jagermeister"],
+    "likör liqueur": [],  # filled by category
+    "saft juice": [],
+    "sirup syrup": [],
+    "bitter bitters": ["angostura", "orange_bitters", "peychauds", "chocolate_bitters"],
+    "gin": ["gin", "sloe_gin", "genever"],
+    "wodka vodka": ["vodka"],
+    "orangenlikör orange liqueur": ["cointreau", "triple_sec", "orange_curacao", "blue_curacao"],
+    "kaffee coffee": ["coffee_liqueur", "espresso", "coffee"],
+    "zitrus citrus": ["lime_juice", "lemon_juice", "lime", "lemon", "orange", "grapefruit", "orange_juice", "grapefruit_juice"],
+    "sahne cream milch milk": ["cream", "milk", "irish_cream"],
+    "limo soda filler mixer": ["soda", "tonic", "cola", "ginger_ale", "ginger_beer", "lemon_soda", "grapefruit_soda", "bitter_lemon"],
 }

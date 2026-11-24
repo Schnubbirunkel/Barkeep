@@ -1,16 +1,10 @@
-## Barkeep 1.0 🍸
+## Barkeep 1.1
 
 **Deutsch**
-- Meine Bar: Flaschen per Barcode-Scanner (Open Food Facts), Suche oder KI-Foto erfassen – mit Füllstand; frische Zutaten zum Abhaken
-- „Was kann ich mixen?“ inkl. Ersatz-Zutaten und Kauftipp
-- 361 eigene Rezepte (DE/EN) + optional TheCocktailDB offline (~600) + Community-Sammlung (~7.000, privat)
-- KI-Fotoerkennung (Gemini / Claude / OpenAI, eigener Schlüssel)
-- Schritt-für-Schritt-Modus, ml/cl/oz, Skalierung & Batching, Food-Pairing, ähnliche Drinks
-- Eigene Rezepte, Favoriten-Ordner, Einkaufsliste, Drink des Tages, Zufall
+- **Bestand statt zwei Reitern:** Flaschen und Zutaten in einer Liste – jede Zutat zeigt ihre Flaschen mit Füllstand, „+ Flasche“ direkt an der Zutat
+- **Bessere Suche:** Oberbegriffe und Schreibweisen – „Whisky“ findet Bourbon, Rye, Scotch & Irish; ebenso Rum, Wermut, Sekt, Likör, Saft, Sirup …
+- **Fotos:** TheCocktailDB wird beim ersten Start automatisch geladen; deren Fotos erscheinen auch bei gleichnamigen eigenen Rezepten
+- **Erscheinungsbild:** System / Dunkel / Hell und fünf Akzentfarben; Einstellungen jetzt in jedem Reiter oben rechts (⚙)
 
 **English**
-- My Bar with barcode scanner, fill levels and fresh ingredients · What can I make (with substitutes & best next buy)
-- 361 built-in recipes + optional TheCocktailDB offline + community collection (private use)
-- AI photo recognition with your own key · step-by-step mode · unit conversion · batching · custom recipes · folders · shopping list
-
-Installation: APK herunterladen und installieren (Android 8+). / Download the APK and install (Android 8+).
+- One “My stock” list for bottles and ingredients · smarter ingredient search (whisky/whiskey, families) · automatic TheCocktailDB download with photos reused for matching recipes · themes (system/dark/light, 5 accents) · settings reachable from every tab
