@@ -6,12 +6,18 @@ class Catalog(file: CatalogFile) {
     private val byKey = file.ingredients.associateBy { it.key }
     private val aliases: Map<String, String> = buildMap {
         file.ingredients.forEach {
-            put(norm(it.en), it.key)
-            put(norm(it.de), it.key)
-            put(norm(it.key.replace('_', ' ')), it.key)
+            put(spelling(norm(it.en)), it.key)
+            put(spelling(norm(it.de)), it.key)
+            put(spelling(norm(it.key.replace('_', ' '))), it.key)
         }
-        file.aliases.forEach { (k, v) -> put(norm(k), v) }
+        file.aliases.forEach { (k, v) -> put(spelling(norm(k)), v) }
     }
+    /** Alias words sorted longest first, for "ends with" matching ("london dry gin" -> gin). */
+    private val aliasBySuffix: List<Pair<String, String>> = aliases.entries.filter { it.key.length >= 3 }
+        .sortedByDescending { it.key.length }.map { it.key to it.value }
+    private val resolveCache = java.util.concurrent.ConcurrentHashMap<String, String>()
+    private val termsCache = java.util.concurrent.ConcurrentHashMap<String, String>()
+
     private val subs = file.substitutions
     private val families = file.families
     private val familyWordsByKey: Map<String, List<String>> = buildMap<String, MutableList<String>> {
@@ -22,30 +28,57 @@ class Catalog(file: CatalogFile) {
     }
 
     /** All words an ingredient can be found by (names, aliases, family words like "whisky"). */
-    fun terms(key: String): String {
-        val c = byKey[key] ?: return norm(key.removePrefix("x:"))
-        return (listOf(norm(c.en), norm(c.de), key.replace('_', ' ')) + aliasWordsByKey[key].orEmpty() + familyWordsByKey[key].orEmpty())
-            .joinToString(" ")
+    fun terms(key: String): String = termsCache.getOrPut(key) {
+        val c = byKey[key]
+        if (c == null) spelling(norm(key.removePrefix("x:")))
+        else spelling((listOf(norm(c.en), norm(c.de), key.replace('_', ' ')) + aliasWordsByKey[key].orEmpty() + familyWordsByKey[key].orEmpty())
+            .joinToString(" | "))
+    }
+
+    /** A brand/alias of [key] that matches the query but is not part of its display name (shown as a hint). */
+    fun matchedAlias(key: String, query: String): String? {
+        val q = spelling(norm(query))
+        if (q.length < 2) return null
+        val c = byKey[key] ?: return null
+        if (spelling(norm(c.en)).contains(q) || spelling(norm(c.de)).contains(q)) return null
+        return aliasWordsByKey[key].orEmpty().firstOrNull { spelling(it).contains(q) }
+            ?.split(' ')?.joinToString(" ") { w -> w.replaceFirstChar { it.uppercase() } }
     }
 
     /** Ingredient keys matching a free search query (handles whisky/whiskey, families, aliases). */
     fun search(query: String): Set<String> {
         val q = spelling(norm(query))
         if (q.isEmpty()) return ingredients.map { it.key }.toSet()
-        return ingredients.filter { spelling(terms(it.key)).contains(q) }.map { it.key }.toSet()
+        return ingredients.filter { terms(it.key).contains(q) }.map { it.key }.toSet()
     }
     private val glasses = file.glasses
 
     fun get(key: String): CatalogIngredient? = byKey[key]
 
-    /** Map free text to a catalog key, if possible. */
+    /** Map free text to a catalog key, if possible (memoised – called for thousands of recipes). */
     fun resolve(name: String?): String? {
         if (name.isNullOrBlank()) return null
-        val n = norm(name)
+        val cached = resolveCache[name]
+        if (cached != null) return cached.ifEmpty { null }
+        val r = resolveUncached(name)
+        resolveCache[name] = r ?: ""
+        return r
+    }
+
+    private val noise = Regex("\\b(fresh(ly)?( squeezed)?|chilled|cold|homemade|home-made|premium|good quality|quality|organic|frischer?|frisch gepresst(er)?|selbstgemacht(er)?)\\b")
+
+    private fun resolveUncached(raw: String): String? {
+        val n = spelling(norm(raw))
         aliases[n]?.let { return it }
-        val stripped = n.removePrefix("fresh ").removePrefix("frischer ").removePrefix("frische ")
-        aliases[stripped]?.let { return it }
-        aliases[n.removeSuffix("s")]?.let { return it }
+        val cleaned = n.replace(Regex("\\(.*?\\)"), " ").replace(noise, " ").replace(Regex("[^a-z0-9 &'.-]"), " ")
+            .replace(Regex("\\s+"), " ").trim()
+        aliases[cleaned]?.let { return it }
+        if (cleaned.endsWith("s")) aliases[cleaned.dropLast(1)]?.let { return it }
+        if (cleaned.endsWith("es")) aliases[cleaned.dropLast(2)]?.let { return it }
+        // "london dry gin" -> "gin", "angostura aromatic bitters" -> "bitters", "chilled soda water" -> "soda water"
+        for ((alias, key) in aliasBySuffix) {
+            if (cleaned.endsWith(" $alias") || cleaned.startsWith("$alias ")) return key
+        }
         return null
     }
 

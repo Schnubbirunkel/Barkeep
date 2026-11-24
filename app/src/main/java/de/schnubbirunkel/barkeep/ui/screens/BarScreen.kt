@@ -189,7 +189,8 @@ private fun StockTab(vm: AppViewModel, nav: NavController) {
                     modifier = Modifier.padding(start = 20.dp, top = 12.dp, bottom = 4.dp))
                 FlowRow(Modifier.padding(horizontal = 16.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     list.forEach { c ->
-                        FilterChip(false, { vm.toggleInventory(c.key) }, { Text(if (lang == "de") c.de else c.en) },
+                        val hint = catalog.matchedAlias(c.key, query)
+                        FilterChip(false, { vm.toggleInventory(c.key) }, { Text((if (lang == "de") c.de else c.en) + (hint?.let { " · $it" } ?: "")) },
                             leadingIcon = { Icon(Icons.Filled.Add, null, Modifier.size(16.dp)) })
                     }
                 }
@@ -338,7 +339,8 @@ fun IngredientPicker(vm: AppViewModel, initialQuery: String = "", onPick: (Strin
         OutlinedTextField(q, { q = it }, leadingIcon = { Icon(Icons.Filled.Search, null) }, placeholder = { Text(stringResource(R.string.bar_search)) }, singleLine = true)
         LazyColumn(Modifier.heightIn(max = 220.dp)) {
             items(list, key = { it.key }) { c ->
-                Text(if (lang == "de") c.de else c.en, modifier = Modifier.fillMaxWidth().clickable { onPick(c.key) }.padding(vertical = 10.dp, horizontal = 4.dp))
+                Text((if (lang == "de") c.de else c.en) + (vm.catalog.matchedAlias(c.key, q)?.let { " · $it" } ?: ""),
+                    modifier = Modifier.fillMaxWidth().clickable { onPick(c.key) }.padding(vertical = 10.dp, horizontal = 4.dp))
             }
             if (q.isNotBlank() && list.none { Catalog.norm(it.en) == Catalog.norm(q) || Catalog.norm(it.de) == Catalog.norm(q) }) item {
                 Text(stringResource(R.string.bar_add_custom, q.trim()), color = MaterialTheme.colorScheme.primary,
@@ -355,7 +357,12 @@ private fun MakeTab(vm: AppViewModel, nav: NavController) {
     val user by vm.user.collectAsState()
     val all by vm.allRecipes.collectAsState()
     val inv = user.available
-    val matches = remember(all, inv) { Matcher.all(all, inv, vm.catalog) }
+    val matchesOrNull by vm.matches.collectAsState()
+    if (matchesOrNull == null && inv.isNotEmpty()) {
+        Box(Modifier.fillMaxWidth().padding(32.dp), contentAlignment = Alignment.Center) { CircularProgressIndicator() }
+        return
+    }
+    val matches = matchesOrNull.orEmpty()
     val ready = matches.filter { it.missingCount == 0 }
     val swaps = matches.filter { it.missingCount > 0 && it.missingAfterSwaps == 0 }
     val one = matches.filter { it.missingCount == 1 && it.missingAfterSwaps == 1 }

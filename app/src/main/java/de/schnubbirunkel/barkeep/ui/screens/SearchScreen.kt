@@ -100,22 +100,12 @@ fun SearchScreen(vm: AppViewModel, nav: NavController, initStyle: String, initTy
     var onlyMakeable by rememberSaveable { mutableStateOf(false) }
     val styleLabels = SEARCH_STYLES.associateWith { styleLabel(it) }
 
-    val index = remember(all) { HashMap<String, String>(all.size * 2).apply { all.forEach { put(it.id, haystack(it, vm.catalog)) } } }
-    val results by remember(all, user.available) {
-        derivedStateOf {
-            val words = Catalog.spelling(Catalog.norm(query)).split(' ').filter { it.isNotBlank() }
-            all.asSequence()
-                .filter { type.isEmpty() || it.type == type }
-                .filter { style.isEmpty() || style in it.styles }
-                .filter { spirit.isEmpty() || it.ingredients.any { i -> vm.catalog.idOf(i) in SPIRIT_GROUPS[spirit].orEmpty() } }
-                .filter { !onlyMakeable || Matcher.match(it, user.available, vm.catalog).missingCount == 0 }
-                .filter { r -> words.isEmpty() || index[r.id].orEmpty().let { h -> words.all { it in h } } }
-                .sortedWith(compareBy<Recipe> { if (query.isNotBlank() && Catalog.norm(it.displayName(lang)).startsWith(Catalog.norm(query))) 0 else 1 }
-                    .thenBy { when (it.source) { "custom" -> 0; "local" -> 1; "online" -> 2; else -> 3 } }
-                    .thenBy { it.displayName(lang) })
-                .toList()
-        }
+    // Filtering runs in the ViewModel on a background thread – typing never waits for it.
+    LaunchedEffect(query, type, spirit, style, onlyMakeable, lang) {
+        vm.setSearch(AppViewModel.SearchQuery(query, type, spirit, style, onlyMakeable, lang))
     }
+    val resultsOrNull by vm.searchResults.collectAsState()
+    val results = resultsOrNull.orEmpty()
     LaunchedEffect(query) { vm.searchOnline(query) }
 
     LazyColumn(Modifier.statusBarsPadding(), contentPadding = PaddingValues(bottom = 16.dp + de.schnubbirunkel.barkeep.ui.LocalBottomBarSpace.current)) {
@@ -148,10 +138,11 @@ fun SearchScreen(vm: AppViewModel, nav: NavController, initStyle: String, initTy
                     FilterChip(style == s, { style = if (style == s) "" else s }, { Text(styleLabels.getValue(s)) })
                 }
             }
+            if (resultsOrNull == null) androidx.compose.material3.LinearProgressIndicator(Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 8.dp))
             Text(stringResource(R.string.results, results.size), style = MaterialTheme.typography.labelMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(horizontal = 20.dp, vertical = 6.dp))
         }
-        if (results.isEmpty() && online.isEmpty()) item { EmptyHint(stringResource(R.string.no_results)) }
+        if (resultsOrNull != null && results.isEmpty() && online.isEmpty()) item { EmptyHint(stringResource(R.string.no_results)) }
         items(results.take(400), key = { it.id }) { r ->
             RecipeRow(r, vm.catalog, lang, { nav.navigate(Routes.recipe(r.id)) }, Modifier.animateItem(), "search") {
                 when (r.source) {

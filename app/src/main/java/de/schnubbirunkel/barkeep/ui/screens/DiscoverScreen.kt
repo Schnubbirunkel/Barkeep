@@ -81,13 +81,8 @@ fun DiscoverScreen(vm: AppViewModel, nav: NavController) {
     var dailyOffset by remember { mutableIntStateOf(0) }
     val inv = user.available
     val curated = remember(all) { all.filter { it.source == "local" || it.source == "custom" } }
-    val favorites = remember(all, user.folders) { vm.favoriteRecipes() }
-    val forYou = remember(all, favorites) { de.schnubbirunkel.barkeep.data.Finder.forYou(favorites, all, vm.catalog) }
-    val becauseOf = remember(all, favorites) {
-        favorites.shuffled(java.util.Random(java.time.LocalDate.now().toEpochDay())).take(2)
-            .map { f -> f to Discovery.similar(f, all, vm.catalog, 10).filter { s -> favorites.none { it.id == s.id } } }
-            .filter { it.second.isNotEmpty() }
-    }
+    val forYou by vm.forYou.collectAsState()
+    val becauseOf by vm.becauseOf.collectAsState()
     val daily = remember(forYou, curated, dailyOffset) { Discovery.daily(forYou.take(10).ifEmpty { curated }, offset = dailyOffset) }
     val makeable = remember(daily, inv) { daily != null && inv.isNotEmpty() && Matcher.match(daily, inv, vm.catalog).missingCount == 0 }
     val popular = remember(all) { Discovery.POPULAR.mapNotNull { id -> all.firstOrNull { it.id == id } } }

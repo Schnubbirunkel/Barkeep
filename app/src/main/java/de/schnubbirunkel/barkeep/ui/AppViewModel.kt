@@ -31,6 +31,9 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -166,6 +169,58 @@ class AppViewModel @JvmOverloads constructor(
         if (!id.startsWith(CocktailDb.PREFIX)) return null
         return runCatching { cdb.lookup(id) }.getOrNull()?.also { onlineCache[it.id] = it }
     }
+
+    // ---------- local search (background) ----------
+    data class SearchQuery(val text: String = "", val type: String = "", val spirit: String = "", val style: String = "", val onlyMakeable: Boolean = false, val lang: String = "en")
+
+    private val searchQuery = MutableStateFlow(SearchQuery())
+    fun setSearch(q: SearchQuery) { searchQuery.value = q }
+
+    /** Search text per recipe id, built once in the background whenever the recipe set changes. */
+    private val searchIndex: StateFlow<Map<String, String>?> = allRecipes
+        .map { list -> HashMap<String, String>(list.size * 2).apply { list.forEach { put(it.id, de.schnubbirunkel.barkeep.ui.screens.haystack(it, catalog)) } } as Map<String, String> }
+        .flowOn(Dispatchers.Default)
+        .stateIn(viewModelScope, SharingStarted.Eagerly, null)
+
+    @OptIn(kotlinx.coroutines.FlowPreview::class)
+    val searchResults: StateFlow<List<Recipe>?> = combine(
+        searchQuery.debounce(120), searchIndex, allRecipes, user.map { it.available }.distinctUntilChanged(),
+    ) { q, index, all, inv ->
+        if (index == null) return@combine null
+        val words = Catalog.spelling(Catalog.norm(q.text)).split(' ').filter { it.isNotBlank() }
+        val group = de.schnubbirunkel.barkeep.data.Finder.SPIRIT_GROUPS[q.spirit].orEmpty()
+        val nq = Catalog.norm(q.text)
+        all.asSequence()
+            .filter { q.type.isEmpty() || it.type == q.type }
+            .filter { q.style.isEmpty() || q.style in it.styles }
+            .filter { r -> words.isEmpty() || index[r.id].orEmpty().let { h -> words.all { it in h } } }
+            .filter { q.spirit.isEmpty() || it.ingredients.any { i -> catalog.idOf(i) in group } }
+            .filter { !q.onlyMakeable || de.schnubbirunkel.barkeep.data.Matcher.match(it, inv, catalog).missingCount == 0 }
+            .sortedWith(compareBy<Recipe> { if (nq.isNotEmpty() && Catalog.norm(it.displayName(q.lang)).startsWith(nq)) 0 else 1 }
+                .thenBy { when (it.source) { "custom" -> 0; "local" -> 1; "online" -> 2; else -> 3 } }
+                .thenBy { if (it.imageUrl != null) 0 else 1 }
+                .thenBy { it.displayName(q.lang) })
+            .toList()
+    }.flowOn(Dispatchers.Default).stateIn(viewModelScope, SharingStarted.Lazily, null)
+
+    // ---------- heavy lists for Discover / Mixbar (background) ----------
+    val forYou: StateFlow<List<Recipe>> = combine(allRecipes, user.map { it.folders }.distinctUntilChanged()) { all, folders ->
+        val favs = folders.values.flatten().distinct().mapNotNull { id -> all.firstOrNull { it.id == id } ?: rawRecipe(id) }
+        de.schnubbirunkel.barkeep.data.Finder.forYou(favs, all, catalog)
+    }.flowOn(Dispatchers.Default).stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
+
+    val becauseOf: StateFlow<List<Pair<Recipe, List<Recipe>>>> = combine(allRecipes, user.map { it.folders }.distinctUntilChanged()) { all, folders ->
+        val ids = folders.values.flatten().distinct()
+        val favs = ids.mapNotNull { id -> all.firstOrNull { it.id == id } ?: rawRecipe(id) }
+        favs.shuffled(java.util.Random(java.time.LocalDate.now().toEpochDay())).take(2)
+            .map { f -> f to de.schnubbirunkel.barkeep.data.Discovery.similar(f, all, catalog, 10).filter { s -> s.id !in ids } }
+            .filter { it.second.isNotEmpty() }
+    }.flowOn(Dispatchers.Default).stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
+
+    val matches: StateFlow<List<de.schnubbirunkel.barkeep.data.MatchResult>?> =
+        combine(allRecipes, user.map { it.available }.distinctUntilChanged()) { all, inv ->
+            de.schnubbirunkel.barkeep.data.Matcher.all(all, inv, catalog)
+        }.flowOn(Dispatchers.Default).stateIn(viewModelScope, SharingStarted.Lazily, null)
 
     // ---------- online search ----------
     private val _online = MutableStateFlow<List<Recipe>>(emptyList())

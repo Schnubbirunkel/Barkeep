@@ -351,9 +351,13 @@ GLASS = {
 
 # Generic search words -> ingredient keys (so "Whisky" finds every whisky etc.)
 FAMILIES = {
-    "whisky whiskey whiskies whiskys": ["bourbon", "rye", "scotch", "islay_scotch", "irish_whiskey"],
-    "rum rhum ron": ["white_rum", "dark_rum", "aged_rum", "overproof_rum", "rhum_agricole", "coconut_rum", "cachaca"],
-    "tequila agave": ["tequila", "reposado", "mezcal"],
+    "whisky whiskey whiskies whiskys": ["bourbon", "rye", "scotch", "islay_scotch", "irish_whiskey", "tennessee_whiskey", "japanese_whisky", "canadian_whisky", "single_malt", "cinnamon_whisky", "honey_whiskey", "moonshine"],
+    "rum rhum ron": ["white_rum", "dark_rum", "aged_rum", "spiced_rum", "overproof_rum", "rhum_agricole", "coconut_rum", "cachaca", "arrack"],
+    "tequila agave": ["tequila", "reposado", "anejo_tequila", "mezcal"],
+    "anis anise anisette": ["sambuca", "ouzo", "pastis", "raki", "anisette", "absinthe"],
+    "kräuter kraeuter herbal kräuterlikör": ["jagermeister", "green_chartreuse", "yellow_chartreuse", "benedictine", "strega", "underberg", "becherovka", "ramazzotti", "averna", "montenegro", "chartreuse_elixir", "galliano", "drambuie"],
+    "obst frucht fruit früchte": [],
+    "schnaps schnapps brand": ["korn", "obstler", "williams", "grappa", "slivovitz", "kirsch", "peach_schnapps", "peppermint_schnapps", "butterscotch_schnapps", "apple_schnapps", "goldschlager"],
     "brandy weinbrand": ["cognac", "brandy", "calvados", "pisco"],
     "vermouth wermut wermuth": ["sweet_vermouth", "dry_vermouth", "blanc_vermouth"],
     "sekt schaumwein sparkling bubbly": ["sparkling_wine", "champagne", "prosecco"],
@@ -363,11 +367,43 @@ FAMILIES = {
     "saft juice": [],
     "sirup syrup": [],
     "bitter bitters": ["angostura", "orange_bitters", "peychauds", "chocolate_bitters"],
-    "gin": ["gin", "sloe_gin", "genever"],
-    "wodka vodka": ["vodka"],
-    "orangenlikör orange liqueur": ["cointreau", "triple_sec", "orange_curacao", "blue_curacao"],
+    "gin": ["gin", "sloe_gin", "genever", "pink_gin", "old_tom_gin"],
+    "wodka vodka": ["vodka", "vanilla_vodka", "citrus_vodka", "raspberry_vodka"],
+    "orangenlikör orange liqueur": ["cointreau", "triple_sec", "orange_curacao", "blue_curacao", "grand_marnier"],
+    "zimt cinnamon": ["cinnamon_whisky", "goldschlager", "cinnamon_syrup", "cinnamon_stick", "cinnamon_ground"],
+    "minze mint pfefferminz": ["mint", "creme_de_menthe", "peppermint_schnapps", "berliner_luft", "mint_syrup"],
     "kaffee coffee": ["coffee_liqueur", "espresso", "coffee"],
     "zitrus citrus": ["lime_juice", "lemon_juice", "lime", "lemon", "orange", "grapefruit", "orange_juice", "grapefruit_juice"],
     "sahne cream milch milk": ["cream", "milk", "irish_cream"],
     "limo soda filler mixer": ["soda", "tonic", "cola", "ginger_ale", "ginger_beer", "lemon_soda", "grapefruit_soda", "bitter_lemon"],
 }
+
+
+from data_ingredients_more import MORE, DROP, BRANDS
+for _k, _v in MORE.items():
+    if _k not in DROP and _k not in ING:
+        ING[_k] = _v
+for _a, _k in BRANDS.items():
+    ALIASES[_a] = DROP.get(_k, _k)
+FAMILIES["sirup syrup"] = []
+SUBS.update({
+    "spiced_rum": [("dark_rum", "Less vanilla & spice; add a dash of Angostura.", "Weniger Vanille & Gewürz; einen Spritzer Angostura dazu.")],
+    "cinnamon_whisky": [("bourbon", "Add 10 ml cinnamon syrup.", "10 ml Zimtsirup ergänzen."), ("goldschlager", "Sweeter, clear schnapps.", "Süßer, klarer Schnaps.")],
+    "grand_marnier": [("cointreau", "Lighter, no cognac base.", "Leichter, ohne Cognac-Basis."), ("orange_curacao", "Very close.", "Sehr ähnlich.")],
+    "tia_maria": [("coffee_liqueur", "Practically interchangeable.", "Praktisch austauschbar.")],
+    "chambord": [("raspberry_liqueur", "Interchangeable.", "Austauschbar."), ("creme_de_cassis", "Blackcurrant instead of raspberry.", "Johannisbeere statt Himbeere.")],
+    "pastis": [("ouzo", "Similar anise flavour.", "Ähnlicher Anisgeschmack."), ("absinthe", "Stronger; use half.", "Stärker; halbe Menge.")],
+    "sambuca": [("ouzo", "Drier anise.", "Trockener Anis."), ("pastis", "Herbal anise.", "Kräuteriger Anis.")],
+    "ouzo": [("pastis", "Very similar.", "Sehr ähnlich."), ("sambuca", "Sweeter.", "Süßer.")],
+    "lime_cordial": [("lime_juice", "Add 15 ml simple syrup per 15 ml juice.", "Pro 15 ml Saft 15 ml Zuckersirup."), ("lime_syrup", "Interchangeable.", "Austauschbar.")],
+    "sour_mix": [("lemon_juice", "Mix equal parts lemon juice & simple syrup.", "Zitronensaft & Zuckersirup zu gleichen Teilen.")],
+    "rich_syrup": [("simple_syrup", "Use 1.5× the amount.", "1,5-fache Menge.")],
+    "tennessee_whiskey": [("bourbon", "Very similar.", "Sehr ähnlich.")],
+    "single_malt": [("scotch", "Less character.", "Weniger Charakter.")],
+    "honey_whiskey": [("bourbon", "Add honey syrup.", "Honigsirup ergänzen.")],
+    "passoa": [("passion_fruit_syrup", "Non-alcoholic, sweeter.", "Alkoholfrei, süßer.")],
+    "southern_comfort": [("bourbon", "Add a little peach schnapps.", "Etwas Pfirsichlikör ergänzen.")],
+    "licor_43": [("vanilla_liqueur", "Similar vanilla notes.", "Ähnliche Vanillenoten.")],
+    "pink_gin": [("gin", "Add a few drops of raspberry syrup.", "Ein paar Tropfen Himbeersirup dazu.")],
+    "anejo_tequila": [("reposado", "Lighter oak.", "Weniger Holz.")],
+})

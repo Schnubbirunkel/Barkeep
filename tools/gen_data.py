@@ -175,7 +175,7 @@ def steps_for(r, lang):
 
 
 def fams():
-    cat = {"likör liqueur": "liqueur", "saft juice": "juice", "sirup syrup": "syrup"}
+    cat = {"likör liqueur": "liqueur", "saft juice": "juice", "sirup syrup": "syrup", "obst frucht fruit früchte": "fruit"}
     out = {}
     for words, keys in FAMILIES.items():
         ks = list(keys) or [k for k, v in ING.items() if v[2] == cat[words]]

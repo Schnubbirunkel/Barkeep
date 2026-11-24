@@ -31,6 +31,20 @@ class LogicTest {
         assertEquals(listOf(listOf("a", "b", "c"), listOf("1", "x, \"y\"\nz", "3")), rows)
     }
 
+    @Test fun resolveIngredients() {
+        val file = de.schnubbirunkel.barkeep.data.AppJson.decodeFromString(
+            de.schnubbirunkel.barkeep.data.CatalogFile.serializer(), java.io.File("src/main/assets/ingredients.json").readText())
+        val c = de.schnubbirunkel.barkeep.data.Catalog(file)
+        assertEquals("gin", c.resolve("London Dry Gin"))
+        assertEquals("angostura", c.resolve("Angostura aromatic bitters"))
+        assertEquals("cinnamon_whisky", c.resolve("Fireball"))
+        assertEquals("lime_juice", c.resolve("freshly squeezed lime juice"))
+        assertEquals("simple_syrup", c.resolve("Sugar syrup (1:1)"))
+        assertEquals(true, "bourbon" in c.search("whisky"))
+        assertEquals(true, "cinnamon_whisky" in c.search("fireball"))
+        assertEquals(true, "woodruff_syrup" in c.search("Waldmeister"))
+    }
+
     @Test fun pyPairs() {
         val p = DownloadedSources.parsePyPairs("[['4.5 cl', 'gin'], ['2 dash', \"peychaud's\"]]")
         assertEquals(listOf("4.5 cl" to "gin", "2 dash" to "peychaud's"), p)

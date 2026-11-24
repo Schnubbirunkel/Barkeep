@@ -1,13 +1,10 @@
-## Barkeep 1.5.1 – Neue Schrift & Feinschliff
-
-**1.5.1:** Navigationsleiste fast deckend, damit darunterliegender Text nicht mehr durchscheint. / Nav bar nearly opaque so content no longer shows through.
+## Barkeep 1.6 – Schneller & viel mehr Zutaten
 
 **Deutsch**
-- **Neue Schriften:** Plus Jakarta Sans für Überschriften (kräftig, modern), Inter für Text – klarere Kontraste, hellere Schrift
-- **Entdecken:** Titel „Barkeep“ und Zahnrad scrollen jetzt mit weg, nichts überlappt mehr
-- **Rezept:** Die obere Leiste wird beim Scrollen dunkel hinterlegt und zeigt den Drink-Namen
-- Dunklerer, ruhigerer Hintergrund; keine schwarze Schrift mehr; Pillen, Portionen-Regler und Einheiten im Glas-Stil
-- Community-Sammlung lädt als eine Datei (kein HTTP 429 mehr)
+- **Flüssige Suche auch mit allen Quellen:** Suchindex und Filter laufen jetzt im Hintergrund – die Tastatur reagiert sofort, Ergebnisse folgen nach Bruchteilen einer Sekunde. Auch „Für dich“, „Weil du … magst“, „Mixbar“ und „Ähnliche Drinks“ rechnen im Hintergrund.
+- **Zutatenkatalog von 191 auf 402 Einträge:** über 40 Sirupsorten (Waldmeister, Rhabarber, Lebkuchen, Salted Caramel …), viele Obstsorten und Kräuter, Liköre & Kräuterliköre (Sambuca, Ouzo, Pastis, Averna, Ramazzotti, Eierlikör, Kleiner Feigling, Berliner Luft …), Zimt-Whisky, Gewürzrum, Tennessee/Japan/Kanada-Whisky, Filler (Club-Mate, Root Beer, Pink Tonic …)
+- **Über 400 Markennamen** werden gefunden und der passenden Zutat zugeordnet – „Fireball“, „Baileys“, „Kahlúa“, „Jack Daniel's“, „Malibu“, „Captain Morgan“, „St-Germain“ … (in der Liste als „Zimt-Whisky · Fireball“)
+- **Bessere Zuordnung** von Zutaten aus heruntergeladenen Sammlungen („London Dry Gin“ → Gin, „frisch gepresster Limettensaft“ → Limettensaft) – dadurch stimmt „Was kann ich mixen?“ auch für diese Rezepte
 
 **English**
-- New typography (Plus Jakarta Sans + Inter), header on Discover scrolls away, recipe top bar becomes solid with title on scroll, darker background, readable text everywhere
+- Search, For-you lists and Mixbar computed in the background – no more input lag with all sources on · ingredient catalog doubled to 402 (syrups, fruit, liqueurs, regional favourites) plus 400+ brand names · smarter matching of downloaded recipes' ingredients

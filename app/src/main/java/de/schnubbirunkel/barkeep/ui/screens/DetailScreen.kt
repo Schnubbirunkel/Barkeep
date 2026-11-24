@@ -340,7 +340,9 @@ private fun RecipeDetail(vm: AppViewModel, nav: NavController, base: Recipe) {
                 }
             }
             item {
-                val similar = remember(base.id, all.size) { Discovery.similar(base, all, catalog) }
+                val similar by androidx.compose.runtime.produceState(emptyList<Recipe>(), base.id, all.size) {
+                    value = kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.Default) { Discovery.similar(base, all, catalog) }
+                }
                 if (similar.isNotEmpty()) {
                     SectionTitle(stringResource(R.string.similar))
                     LazyRow(contentPadding = PaddingValues(horizontal = 12.dp)) {
