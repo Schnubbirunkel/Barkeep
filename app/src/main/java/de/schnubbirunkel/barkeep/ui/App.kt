@@ -1,8 +1,28 @@
-@file:OptIn(ExperimentalMaterial3Api::class)
+@file:OptIn(ExperimentalMaterial3Api::class, ExperimentalSharedTransitionApi::class)
 
 package de.schnubbirunkel.barkeep.ui
 
 import android.net.Uri
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.ExperimentalSharedTransitionApi
+import androidx.compose.animation.SharedTransitionLayout
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.unit.dp
+import androidx.navigation.NamedNavArgument
+import androidx.navigation.NavBackStackEntry
+import androidx.navigation.NavGraphBuilder
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
@@ -11,13 +31,7 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material.icons.filled.Liquor
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.Badge
-import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
@@ -87,65 +101,77 @@ fun BarkeepApp(vm: AppViewModel, start: String = Routes.DISCOVER, nav: NavHostCo
         Tab(Routes.FAVORITES, Routes.FAVORITES, R.string.nav_favorites, Icons.Filled.Favorite),
         Tab(Routes.SHOPPING, Routes.SHOPPING, R.string.nav_shopping, Icons.Filled.ShoppingCart),
     )
-    val showBar = tabs.any { it.route == current } || current == null
-    CompositionLocalProvider(LocalSnackbar provides snackbar) {
-        Scaffold(
-            snackbarHost = { SnackbarHost(snackbar) },
-            bottomBar = {
-                if (showBar) NavigationBar {
-                    tabs.forEach { t ->
-                        NavigationBarItem(
-                            selected = current == t.route,
-                            onClick = {
-                                nav.navigate(t.nav) {
-                                    popUpTo(nav.graph.findStartDestination().id) { saveState = true }
-                                    launchSingleTop = true
-                                    restoreState = true
-                                }
-                            },
-                            icon = {
-                                val open = user.shopping.count { !it.done }
-                                if (t.route == Routes.SHOPPING && open > 0) BadgedBox(badge = { Badge { Text("$open") } }) { Icon(t.icon, null) }
-                                else Icon(t.icon, null)
-                            },
-                            label = { Text(stringResource(t.label), maxLines = 1) },
-                        )
+    val selected = tabs.indexOfFirst { it.route == current }
+    val showBar = selected >= 0 || current == null
+    val barSpace = if (showBar) 96.dp + WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding() else 0.dp
+    val open = user.shopping.count { !it.done }
+    val fast = tween<Float>(200)
+
+    CompositionLocalProvider(LocalSnackbar provides snackbar, LocalBottomBarSpace provides barSpace) {
+        ProvideHero {
+            Box(Modifier.fillMaxSize()) {
+                LiquidBackground()
+                SharedTransitionLayout {
+                    CompositionLocalProvider(LocalSharedScope provides this) {
+                        NavHost(
+                            nav, startDestination = start, modifier = Modifier.fillMaxSize(),
+                            enterTransition = { fadeIn(tween(220)) + scaleIn(tween(220), initialScale = 0.97f) },
+                            exitTransition = { fadeOut(tween(160)) },
+                            popEnterTransition = { fadeIn(tween(220)) },
+                            popExitTransition = { fadeOut(tween(160)) + scaleOut(fast, targetScale = 0.97f) },
+                        ) {
+                            screen(Routes.DISCOVER) { DiscoverScreen(vm, nav) }
+                            screen(
+                                Routes.SEARCH,
+                                listOf(
+                                    navArgument("style") { type = NavType.StringType; defaultValue = "" },
+                                    navArgument("type") { type = NavType.StringType; defaultValue = "" },
+                                    navArgument("q") { type = NavType.StringType; defaultValue = "" },
+                                ),
+                            ) { e ->
+                                SearchScreen(vm, nav, e.arguments?.getString("style").orEmpty(), e.arguments?.getString("type").orEmpty(), e.arguments?.getString("q").orEmpty())
+                            }
+                            screen(Routes.BAR, listOf(navArgument("tab") { type = NavType.IntType; defaultValue = 0 })) { e ->
+                                BarScreen(vm, nav, e.arguments?.getInt("tab") ?: 0)
+                            }
+                            screen(Routes.FAVORITES) { FavoritesScreen(vm, nav) }
+                            screen(Routes.SHOPPING) { ShoppingScreen(vm, nav) }
+                            screen(Routes.RECIPE, listOf(navArgument("id") { type = NavType.StringType })) { e ->
+                                DetailScreen(vm, nav, e.arguments?.getString("id").orEmpty())
+                            }
+                            screen(
+                                Routes.EDIT,
+                                listOf(
+                                    navArgument("id") { type = NavType.StringType; defaultValue = "" },
+                                    navArgument("base") { type = NavType.StringType; defaultValue = "" },
+                                ),
+                            ) { e -> EditorScreen(vm, nav, e.arguments?.getString("id").orEmpty(), e.arguments?.getString("base").orEmpty()) }
+                            screen(Routes.SCAN, listOf(navArgument("mode") { type = NavType.StringType; defaultValue = "cocktail" })) { e ->
+                                ScanScreen(vm, nav, e.arguments?.getString("mode") ?: "cocktail")
+                            }
+                            screen(Routes.SETTINGS) { SettingsScreen(vm, nav) }
+                            screen(Routes.FINDER) { de.schnubbirunkel.barkeep.ui.screens.FinderScreen(vm, nav) }
+                        }
                     }
                 }
-            },
-        ) { pad ->
-            NavHost(nav, startDestination = start, modifier = Modifier.padding(bottom = pad.calculateBottomPadding())) {
-                composable(Routes.DISCOVER) { DiscoverScreen(vm, nav) }
-                composable(
-                    Routes.SEARCH,
-                    arguments = listOf(
-                        navArgument("style") { type = NavType.StringType; defaultValue = "" },
-                        navArgument("type") { type = NavType.StringType; defaultValue = "" },
-                        navArgument("q") { type = NavType.StringType; defaultValue = "" },
-                    ),
-                ) { e ->
-                    SearchScreen(vm, nav, e.arguments?.getString("style").orEmpty(), e.arguments?.getString("type").orEmpty(), e.arguments?.getString("q").orEmpty())
+                AnimatedVisibility(
+                    visible = showBar, modifier = Modifier.align(Alignment.BottomCenter),
+                    enter = slideInVertically(tween(220)) { it } + fadeIn(tween(180)),
+                    exit = slideOutVertically(tween(180)) { it } + fadeOut(tween(140)),
+                ) {
+                    GlassNavBar(
+                        items = tabs.map { NavItem(stringResource(it.label), it.icon, if (it.route == Routes.SHOPPING) open else 0) },
+                        selected = selected,
+                        onSelect = { i ->
+                            nav.navigate(tabs[i].nav) {
+                                popUpTo(nav.graph.findStartDestination().id) { saveState = true }
+                                launchSingleTop = true
+                                restoreState = true
+                            }
+                        },
+                    )
                 }
-                composable(Routes.BAR, arguments = listOf(navArgument("tab") { type = NavType.IntType; defaultValue = 0 })) { e ->
-                    BarScreen(vm, nav, e.arguments?.getInt("tab") ?: 0)
-                }
-                composable(Routes.FAVORITES) { FavoritesScreen(vm, nav) }
-                composable(Routes.SHOPPING) { ShoppingScreen(vm, nav) }
-                composable(Routes.RECIPE, arguments = listOf(navArgument("id") { type = NavType.StringType })) { e ->
-                    DetailScreen(vm, nav, e.arguments?.getString("id").orEmpty())
-                }
-                composable(
-                    Routes.EDIT,
-                    arguments = listOf(
-                        navArgument("id") { type = NavType.StringType; defaultValue = "" },
-                        navArgument("base") { type = NavType.StringType; defaultValue = "" },
-                    ),
-                ) { e -> EditorScreen(vm, nav, e.arguments?.getString("id").orEmpty(), e.arguments?.getString("base").orEmpty()) }
-                composable(Routes.SCAN, arguments = listOf(navArgument("mode") { type = NavType.StringType; defaultValue = "cocktail" })) { e ->
-                    ScanScreen(vm, nav, e.arguments?.getString("mode") ?: "cocktail")
-                }
-                composable(Routes.SETTINGS) { SettingsScreen(vm, nav) }
-                composable(Routes.FINDER) { de.schnubbirunkel.barkeep.ui.screens.FinderScreen(vm, nav) }
+                SnackbarHost(snackbar, Modifier.align(Alignment.BottomCenter).padding(bottom = barSpace))
             }
         }
         if (!user.onboarded && start == Routes.DISCOVER) {
@@ -158,6 +184,15 @@ fun BarkeepApp(vm: AppViewModel, start: String = Routes.DISCOVER, nav: NavHostCo
             )
         }
     }
+}
+
+/** composable() that also exposes its AnimatedVisibilityScope for shared element transitions. */
+private fun NavGraphBuilder.screen(
+    route: String,
+    arguments: List<NamedNavArgument> = emptyList(),
+    content: @Composable (NavBackStackEntry) -> Unit,
+) = composable(route, arguments) { e ->
+    CompositionLocalProvider(LocalNavAnimScope provides this) { content(e) }
 }
 
 @Composable

@@ -44,6 +44,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.material.icons.filled.Settings
 import coil3.compose.AsyncImage
+import coil3.request.crossfade
+import androidx.compose.foundation.border
 import de.schnubbirunkel.barkeep.R
 import de.schnubbirunkel.barkeep.data.Catalog
 import de.schnubbirunkel.barkeep.data.Recipe
@@ -62,13 +64,22 @@ fun parseColor(hex: String, fallback: Color = Color(0xFFE8C77A)): Color = try {
 
 /** Recipe picture: photo when available, otherwise a drawn glass in the drink's colour. */
 @Composable
-fun DrinkArt(recipe: Recipe, modifier: Modifier = Modifier, corner: Dp = 16.dp) {
-    val bg = Brush.verticalGradient(listOf(MaterialTheme.colorScheme.surfaceContainerHigh, MaterialTheme.colorScheme.surfaceContainerLow))
-    Box(modifier.clip(RoundedCornerShape(corner)).background(bg), contentAlignment = Alignment.Center) {
+fun DrinkArt(recipe: Recipe, modifier: Modifier = Modifier, corner: Dp = 20.dp, sharedKey: String? = null) {
+    val tint = parseColor(recipe.color)
+    val bg = Brush.linearGradient(listOf(tint.copy(alpha = 0.30f), tint.copy(alpha = 0.06f), Color.White.copy(alpha = 0.05f)))
+    val ctx = androidx.compose.ui.platform.LocalContext.current
+    Box(
+        modifier.sharedArt(sharedKey).clip(RoundedCornerShape(corner)).background(bg)
+            .border(1.dp, Brush.linearGradient(listOf(Color.White.copy(alpha = 0.30f), Color.White.copy(alpha = 0.03f))), RoundedCornerShape(corner)),
+        contentAlignment = Alignment.Center,
+    ) {
         if (recipe.imageUrl != null) {
-            AsyncImage(model = recipe.imageUrl, contentDescription = recipe.name, contentScale = ContentScale.Crop, modifier = Modifier.fillMaxSize())
+            AsyncImage(
+                model = coil3.request.ImageRequest.Builder(ctx).data(recipe.imageUrl).crossfade(250).build(),
+                contentDescription = recipe.name, contentScale = ContentScale.Crop, modifier = Modifier.fillMaxSize(),
+            )
         } else {
-            GlassDrawing(recipe.glass, parseColor(recipe.color), Modifier.fillMaxSize().padding(10.dp))
+            GlassDrawing(recipe.glass, tint, Modifier.fillMaxSize().padding(10.dp))
         }
     }
 }
@@ -228,35 +239,45 @@ fun styleLabel(style: String): String = Labels.style[style]?.let { stringResourc
 
 @Composable
 fun SectionTitle(text: String, modifier: Modifier = Modifier, action: (@Composable () -> Unit)? = null) {
-    Row(modifier.fillMaxWidth().padding(start = 20.dp, end = 12.dp, top = 20.dp, bottom = 8.dp), verticalAlignment = Alignment.CenterVertically) {
-        Text(text.uppercase(), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary, modifier = Modifier.weight(1f))
+    Row(modifier.fillMaxWidth().padding(start = 22.dp, end = 12.dp, top = 26.dp, bottom = 10.dp), verticalAlignment = Alignment.CenterVertically) {
+        Text(text, style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.onSurface, modifier = Modifier.weight(1f))
         action?.invoke()
     }
 }
 
-/** Compact card used in horizontal rows. */
+/** Tall glass tile used in horizontal rows; the picture morphs into the detail screen. */
 @Composable
-fun RecipeTile(recipe: Recipe, lang: String, onClick: () -> Unit, modifier: Modifier = Modifier, subtitle: String? = null) {
-    Column(modifier.width(132.dp).clip(RoundedCornerShape(18.dp)).clickable(onClick = onClick).padding(4.dp)) {
-        DrinkArt(recipe, Modifier.fillMaxWidth().height(132.dp))
-        Spacer(Modifier.height(6.dp))
-        Text(recipe.displayName(lang), style = MaterialTheme.typography.titleSmall, maxLines = 1, overflow = TextOverflow.Ellipsis)
+fun RecipeTile(recipe: Recipe, lang: String, onClick: () -> Unit, modifier: Modifier = Modifier, subtitle: String? = null, section: String = "tile") {
+    val hero = LocalHeroKey.current
+    val key = "$section/${recipe.id}"
+    Column(modifier.padding(horizontal = 5.dp).width(148.dp).bouncyClick { hero.value = key; onClick() }.glass(RoundedCornerShape(24.dp)).padding(6.dp)) {
+        DrinkArt(recipe, Modifier.fillMaxWidth().height(148.dp), corner = 19.dp, sharedKey = key)
+        Spacer(Modifier.height(8.dp))
+        Text(recipe.displayName(lang), style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.SemiBold, maxLines = 1, overflow = TextOverflow.Ellipsis,
+            modifier = Modifier.padding(horizontal = 6.dp))
         Text(subtitle ?: styleLabel(recipe.styles.firstOrNull() ?: recipe.type), style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis)
+            color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis,
+            modifier = Modifier.padding(start = 6.dp, end = 6.dp, bottom = 6.dp))
     }
 }
 
-/** List row with ingredients summary and an optional trailing badge. */
+/** List row (One UI style card) with ingredients summary and an optional trailing badge. */
 @Composable
-fun RecipeRow(recipe: Recipe, catalog: Catalog, lang: String, onClick: () -> Unit, badge: (@Composable () -> Unit)? = null) {
+fun RecipeRow(
+    recipe: Recipe, catalog: Catalog, lang: String, onClick: () -> Unit,
+    modifier: Modifier = Modifier, section: String = "row", badge: (@Composable () -> Unit)? = null,
+) {
+    val hero = LocalHeroKey.current
+    val key = "$section/${recipe.id}"
     Row(
-        Modifier.fillMaxWidth().clickable(onClick = onClick).padding(horizontal = 16.dp, vertical = 8.dp),
+        modifier.fillMaxWidth().padding(horizontal = 14.dp, vertical = 5.dp)
+            .bouncyClick { hero.value = key; onClick() }.glass(RoundedCornerShape(22.dp)).padding(10.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        DrinkArt(recipe, Modifier.size(60.dp), corner = 14.dp)
+        DrinkArt(recipe, Modifier.size(64.dp), corner = 16.dp, sharedKey = key)
         Spacer(Modifier.width(14.dp))
         Column(Modifier.weight(1f)) {
-            Text(recipe.displayName(lang), style = MaterialTheme.typography.titleMedium, maxLines = 1, overflow = TextOverflow.Ellipsis)
+            Text(recipe.displayName(lang), style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold, maxLines = 1, overflow = TextOverflow.Ellipsis)
             Text(
                 recipe.ingredients.filter { it.flag != "r" }.joinToString(" · ") { catalog.name(it, lang) },
                 style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant,
@@ -269,7 +290,8 @@ fun RecipeRow(recipe: Recipe, catalog: Catalog, lang: String, onClick: () -> Uni
 
 @Composable
 fun Pill(text: String, container: Color, content: Color, modifier: Modifier = Modifier) {
-    Surface(color = container, contentColor = content, shape = RoundedCornerShape(50), modifier = modifier) {
+    Surface(color = container.copy(alpha = (container.alpha * 0.85f).coerceAtLeast(0.35f)), contentColor = content, shape = RoundedCornerShape(50), modifier = modifier,
+        border = androidx.compose.foundation.BorderStroke(1.dp, Color.White.copy(alpha = 0.12f))) {
         Text(text, style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.SemiBold, modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp))
     }
 }

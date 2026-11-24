@@ -60,7 +60,7 @@ fun FavoritesScreen(vm: AppViewModel, nav: NavController) {
 
     Scaffold(
         floatingActionButton = {
-            ExtendedFloatingActionButton(onClick = { nav.navigate(Routes.edit()) }, icon = { Icon(Icons.Filled.Add, null) },
+            ExtendedFloatingActionButton(modifier = Modifier.padding(bottom = de.schnubbirunkel.barkeep.ui.LocalBottomBarSpace.current), onClick = { nav.navigate(Routes.edit()) }, icon = { Icon(Icons.Filled.Add, null) },
                 text = { Text(stringResource(R.string.new_recipe)) })
         },
     ) { pad ->
@@ -81,9 +81,9 @@ fun FavoritesScreen(vm: AppViewModel, nav: NavController) {
                 }
             }
             val recipes = if (folder == MINE) user.custom else user.folders[folder].orEmpty().mapNotNull { vm.recipe(it) }
-            LazyColumn(contentPadding = PaddingValues(bottom = pad.calculateBottomPadding() + 80.dp)) {
+            LazyColumn(contentPadding = PaddingValues(bottom = 96.dp + de.schnubbirunkel.barkeep.ui.LocalBottomBarSpace.current)) {
                 if (recipes.isEmpty()) item { EmptyHint(stringResource(R.string.empty_folder)) }
-                items(recipes, key = { it.id }) { r -> RecipeRow(r, vm.catalog, lang, { nav.navigate(Routes.recipe(r.id)) }) }
+                items(recipes, key = { it.id }) { r -> RecipeRow(r, vm.catalog, lang, { nav.navigate(Routes.recipe(r.id)) }, Modifier.animateItem(), "fav") }
             }
         }
     }

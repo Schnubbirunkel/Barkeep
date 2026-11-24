@@ -95,6 +95,11 @@ import de.schnubbirunkel.barkeep.data.SourceIds
 import de.schnubbirunkel.barkeep.data.Units
 import de.schnubbirunkel.barkeep.ui.AppViewModel
 import de.schnubbirunkel.barkeep.ui.DrinkArt
+import de.schnubbirunkel.barkeep.ui.Ink
+import de.schnubbirunkel.barkeep.ui.glass
+import de.schnubbirunkel.barkeep.ui.isDarkUi
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.ui.graphics.graphicsLayer
 import de.schnubbirunkel.barkeep.ui.Labels
 import de.schnubbirunkel.barkeep.ui.LocalSnackbar
 import de.schnubbirunkel.barkeep.ui.Pill
@@ -143,6 +148,9 @@ private fun RecipeDetail(vm: AppViewModel, nav: NavController, base: Recipe) {
     var folderDialog by remember { mutableStateOf(false) }
     var confirmDelete by remember { mutableStateOf(false) }
 
+    val listState = androidx.compose.foundation.lazy.rememberLazyListState()
+    val heroState = de.schnubbirunkel.barkeep.ui.LocalHeroKey.current
+    val heroKey = remember(base.id) { heroState.value?.takeIf { it.endsWith("/" + base.id) } }
     val factor = if (volumeFactor > 0) volumeFactor else servings.toDouble() / base.servings.coerceAtLeast(1)
     val r = Units.scale(base, factor)
     val match = Matcher.match(base, user.available, catalog)
@@ -177,11 +185,21 @@ private fun RecipeDetail(vm: AppViewModel, nav: NavController, base: Recipe) {
             )
         },
     ) { pad ->
-        LazyColumn(contentPadding = PaddingValues(bottom = 32.dp)) {
+        LazyColumn(state = listState, contentPadding = PaddingValues(bottom = 40.dp)) {
             item {
                 Box(Modifier.fillMaxWidth().background(Brush.verticalGradient(listOf(accent.copy(alpha = 0.35f), MaterialTheme.colorScheme.background)))
                     .padding(top = pad.calculateTopPadding()), contentAlignment = Alignment.Center) {
-                    DrinkArt(base, Modifier.size(220.dp).padding(bottom = 8.dp), corner = 28.dp)
+                    DrinkArt(
+                        base,
+                        Modifier.padding(top = 8.dp, bottom = 12.dp).fillMaxWidth(0.74f).aspectRatio(1f)
+                            .graphicsLayer {
+                                // gentle parallax while scrolling away
+                                val off = if (listState.firstVisibleItemIndex == 0) listState.firstVisibleItemScrollOffset.toFloat() else 0f
+                                translationY = off * 0.35f
+                                alpha = 1f - (off / 1400f).coerceIn(0f, 0.6f)
+                            },
+                        corner = 32.dp, sharedKey = heroKey,
+                    )
                 }
                 Column(Modifier.padding(horizontal = 20.dp)) {
                     Text(base.displayName(lang), style = MaterialTheme.typography.headlineLarge)
@@ -238,7 +256,9 @@ private fun RecipeDetail(vm: AppViewModel, nav: NavController, base: Recipe) {
                 val have = iid in Catalog.PANTRY || iid !in match.missing
                 val swap = match.swaps[iid]
                 Row(
-                    Modifier.fillMaxWidth().clickable { subsFor = iid }.padding(horizontal = 20.dp, vertical = 10.dp),
+                    Modifier.fillMaxWidth().padding(horizontal = 14.dp, vertical = 2.dp)
+                        .glass(RoundedCornerShape(if (idx == 0) 22.dp else 10.dp, if (idx == 0) 22.dp else 10.dp, if (idx == r.ingredients.lastIndex) 22.dp else 10.dp, if (idx == r.ingredients.lastIndex) 22.dp else 10.dp))
+                        .clickable { subsFor = iid }.padding(horizontal = 14.dp, vertical = 12.dp),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Icon(
@@ -280,7 +300,7 @@ private fun RecipeDetail(vm: AppViewModel, nav: NavController, base: Recipe) {
                     TextButton(onClick = { stepMode = true }) { Icon(Icons.Filled.PlayArrow, null); Text(stringResource(R.string.step_mode)) }
                 })
                 steps.forEachIndexed { i, s ->
-                    Row(Modifier.padding(horizontal = 20.dp, vertical = 6.dp)) {
+                    Row(Modifier.fillMaxWidth().padding(horizontal = 14.dp, vertical = 4.dp).glass(RoundedCornerShape(20.dp)).padding(14.dp)) {
                         Box(Modifier.size(26.dp).clip(CircleShape).background(accent.copy(alpha = 0.3f)), contentAlignment = Alignment.Center) {
                             Text("${i + 1}", style = MaterialTheme.typography.labelLarge)
                         }
@@ -311,7 +331,7 @@ private fun RecipeDetail(vm: AppViewModel, nav: NavController, base: Recipe) {
                 if (similar.isNotEmpty()) {
                     SectionTitle(stringResource(R.string.similar))
                     LazyRow(contentPadding = PaddingValues(horizontal = 12.dp)) {
-                        items(similar, key = { it.id }) { s -> RecipeTile(s, lang, { nav.navigate(Routes.recipe(s.id)) }) }
+                        items(similar, key = { it.id }) { s -> RecipeTile(s, lang, { nav.navigate(Routes.recipe(s.id)) }, section = "similar") }
                     }
                 }
                 val credit = when {
@@ -464,7 +484,7 @@ private fun StepByStep(title: String, steps: List<String>, accent: androidx.comp
     var i by remember { mutableIntStateOf(0) }
     Dialog(onDismissRequest = onClose, properties = DialogProperties(usePlatformDefaultWidth = false)) {
         Column(
-            Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background).padding(24.dp),
+            Modifier.fillMaxSize().background(if (isDarkUi()) Ink else androidx.compose.ui.graphics.Color(0xFFF2F3F8)).padding(24.dp),
             verticalArrangement = Arrangement.SpaceBetween,
         ) {
             Column {

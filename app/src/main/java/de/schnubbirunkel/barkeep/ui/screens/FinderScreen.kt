@@ -105,10 +105,10 @@ fun FinderScreen(vm: AppViewModel, nav: NavController) {
                 }
                 if (res.isEmpty()) item { EmptyHint(stringResource(R.string.finder_none)) }
                 items(res, key = { it.recipe.id }) { sug ->
-                    Card(
+                    Card(border = de.schnubbirunkel.barkeep.ui.glassBorder(),
                         onClick = { nav.navigate(Routes.recipe(sug.recipe.id)) },
                         modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 6.dp),
-                        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainer),
+                        colors = CardDefaults.cardColors(containerColor = de.schnubbirunkel.barkeep.ui.glassFill()),
                     ) {
                         Row(Modifier.padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
                             DrinkArt(sug.recipe, Modifier.size(72.dp), corner = 14.dp)

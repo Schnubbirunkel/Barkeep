@@ -5,6 +5,7 @@ package de.schnubbirunkel.barkeep.ui.screens
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -117,7 +118,7 @@ fun SearchScreen(vm: AppViewModel, nav: NavController, initStyle: String, initTy
     }
     LaunchedEffect(query) { vm.searchOnline(query) }
 
-    LazyColumn(Modifier.statusBarsPadding()) {
+    LazyColumn(Modifier.statusBarsPadding(), contentPadding = PaddingValues(bottom = 16.dp + de.schnubbirunkel.barkeep.ui.LocalBottomBarSpace.current)) {
         item {
             Row(verticalAlignment = androidx.compose.ui.Alignment.CenterVertically) {
             OutlinedTextField(
@@ -152,7 +153,7 @@ fun SearchScreen(vm: AppViewModel, nav: NavController, initStyle: String, initTy
         }
         if (results.isEmpty() && online.isEmpty()) item { EmptyHint(stringResource(R.string.no_results)) }
         items(results.take(400), key = { it.id }) { r ->
-            RecipeRow(r, vm.catalog, lang, { nav.navigate(Routes.recipe(r.id)) }) {
+            RecipeRow(r, vm.catalog, lang, { nav.navigate(Routes.recipe(r.id)) }, Modifier.animateItem(), "search") {
                 when (r.source) {
                     "custom" -> Pill(stringResource(R.string.custom_badge), MaterialTheme.colorScheme.tertiaryContainer, MaterialTheme.colorScheme.onTertiaryContainer)
                     "local" -> {}
@@ -163,7 +164,7 @@ fun SearchScreen(vm: AppViewModel, nav: NavController, initStyle: String, initTy
         if (online.isNotEmpty() && type.isEmpty() && style.isEmpty() && spirit.isEmpty() && !onlyMakeable) {
             item { SectionTitle(stringResource(R.string.online_results)) }
             items(online, key = { "o" + it.id }) { r ->
-                RecipeRow(r, vm.catalog, lang, { nav.navigate(Routes.recipe(r.id)) }) {
+                RecipeRow(r, vm.catalog, lang, { nav.navigate(Routes.recipe(r.id)) }, Modifier.animateItem(), "online") {
                     Pill(stringResource(R.string.online_badge), MaterialTheme.colorScheme.secondaryContainer, MaterialTheme.colorScheme.onSecondaryContainer)
                 }
             }

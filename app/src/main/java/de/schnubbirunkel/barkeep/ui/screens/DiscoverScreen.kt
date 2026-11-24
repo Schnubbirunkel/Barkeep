@@ -104,26 +104,30 @@ fun DiscoverScreen(vm: AppViewModel, nav: NavController) {
             )
         },
     ) { pad ->
-        LazyColumn(contentPadding = PaddingValues(top = pad.calculateTopPadding(), bottom = 24.dp)) {
+        LazyColumn(contentPadding = PaddingValues(top = pad.calculateTopPadding(), bottom = 24.dp + de.schnubbirunkel.barkeep.ui.LocalBottomBarSpace.current)) {
             item {
                 Column(Modifier.padding(horizontal = 20.dp)) {
-                    Text(stringResource(R.string.greeting), style = MaterialTheme.typography.headlineMedium)
+                    Text(stringResource(R.string.greeting), style = MaterialTheme.typography.displaySmall)
                     Text(stringResource(R.string.total_recipes, all.size), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 }
             }
             item {
-                Card(
+                Card(border = de.schnubbirunkel.barkeep.ui.glassBorder(),
                     onClick = { nav.navigate(Routes.FINDER) },
                     modifier = Modifier.fillMaxWidth().padding(start = 16.dp, end = 16.dp, top = 16.dp),
                     shape = RoundedCornerShape(24.dp),
-                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
+                    colors = CardDefaults.cardColors(containerColor = androidx.compose.ui.graphics.Color.Transparent),
                 ) {
-                    Row(Modifier.padding(18.dp), verticalAlignment = Alignment.CenterVertically) {
-                        Icon(Icons.Filled.AutoAwesome, null, tint = MaterialTheme.colorScheme.onPrimaryContainer, modifier = Modifier.size(36.dp))
+                    Row(
+                        Modifier.background(Brush.linearGradient(listOf(MaterialTheme.colorScheme.primary.copy(alpha = 0.45f), MaterialTheme.colorScheme.tertiary.copy(alpha = 0.30f), MaterialTheme.colorScheme.secondary.copy(alpha = 0.20f))))
+                            .padding(20.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Icon(Icons.Filled.AutoAwesome, null, tint = MaterialTheme.colorScheme.onSurface, modifier = Modifier.size(36.dp))
                         Spacer(Modifier.width(14.dp))
                         Column(Modifier.weight(1f)) {
-                            Text(stringResource(R.string.finder_title), style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.onPrimaryContainer)
-                            Text(stringResource(R.string.finder_sub), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onPrimaryContainer)
+                            Text(stringResource(R.string.finder_title), style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.onSurface)
+                            Text(stringResource(R.string.finder_sub), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f))
                         }
                     }
                 }
@@ -133,7 +137,7 @@ fun DiscoverScreen(vm: AppViewModel, nav: NavController) {
                 if (forYou.isEmpty()) Text(stringResource(R.string.for_you_empty), style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(horizontal = 20.dp))
                 else LazyRow(contentPadding = PaddingValues(horizontal = 12.dp)) {
-                    items(forYou, key = { it.id }) { r -> RecipeTile(r, lang, { nav.navigate(Routes.recipe(r.id)) }) }
+                    items(forYou, key = { it.id }) { r -> RecipeTile(r, lang, { nav.navigate(Routes.recipe(r.id)) }, section = "foryou") }
                 }
             }
             if (daily != null) item {
@@ -141,11 +145,11 @@ fun DiscoverScreen(vm: AppViewModel, nav: NavController) {
                     IconButton(onClick = { dailyOffset++ }) { Icon(Icons.Filled.Shuffle, stringResource(R.string.random)) }
                 })
                 val c = parseColor(daily.color)
-                Card(
+                Card(border = de.schnubbirunkel.barkeep.ui.glassBorder(),
                     onClick = { nav.navigate(Routes.recipe(daily.id)) },
                     modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
                     shape = RoundedCornerShape(24.dp),
-                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainer),
+                    colors = CardDefaults.cardColors(containerColor = de.schnubbirunkel.barkeep.ui.glassFill()),
                 ) {
                     Row(
                         Modifier.background(Brush.horizontalGradient(listOf(c.copy(alpha = 0.22f), c.copy(alpha = 0.02f)))).padding(16.dp),
@@ -170,7 +174,7 @@ fun DiscoverScreen(vm: AppViewModel, nav: NavController) {
                 item(key = "because" + fav.id) {
                     SectionTitle(stringResource(R.string.because_you_like, fav.displayName(lang)))
                     LazyRow(contentPadding = PaddingValues(horizontal = 12.dp)) {
-                        items(list, key = { it.id }) { r -> RecipeTile(r, lang, { nav.navigate(Routes.recipe(r.id)) }) }
+                        items(list, key = { it.id }) { r -> RecipeTile(r, lang, { nav.navigate(Routes.recipe(r.id)) }, section = "because" + fav.id) }
                     }
                 }
             }
@@ -195,13 +199,13 @@ fun DiscoverScreen(vm: AppViewModel, nav: NavController) {
             if (seasonal.isNotEmpty()) item {
                 SectionTitle(stringResource(R.string.seasonal))
                 LazyRow(contentPadding = PaddingValues(horizontal = 12.dp)) {
-                    items(seasonal.take(15), key = { it.id }) { r -> RecipeTile(r, lang, { nav.navigate(Routes.recipe(r.id)) }) }
+                    items(seasonal.take(15), key = { it.id }) { r -> RecipeTile(r, lang, { nav.navigate(Routes.recipe(r.id)) }, section = "season") }
                 }
             }
             item {
                 SectionTitle(stringResource(R.string.popular))
                 LazyRow(contentPadding = PaddingValues(horizontal = 12.dp)) {
-                    items(popular, key = { it.id }) { r -> RecipeTile(r, lang, { nav.navigate(Routes.recipe(r.id)) }) }
+                    items(popular, key = { it.id }) { r -> RecipeTile(r, lang, { nav.navigate(Routes.recipe(r.id)) }, section = "popular") }
                 }
             }
             item {
@@ -227,8 +231,8 @@ private fun StyleChip(text: String, onClick: () -> Unit) {
 
 @Composable
 fun ActionCard(icon: ImageVector, title: String, sub: String, modifier: Modifier = Modifier, onClick: () -> Unit) {
-    Card(onClick = onClick, modifier = modifier, shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerHigh)) {
+    Card(border = de.schnubbirunkel.barkeep.ui.glassBorder(),onClick = onClick, modifier = modifier, shape = RoundedCornerShape(20.dp),
+        colors = CardDefaults.cardColors(containerColor = de.schnubbirunkel.barkeep.ui.glassFill())) {
         Column(Modifier.padding(14.dp)) {
             Icon(icon, null, tint = MaterialTheme.colorScheme.primary)
             Spacer(Modifier.height(8.dp))

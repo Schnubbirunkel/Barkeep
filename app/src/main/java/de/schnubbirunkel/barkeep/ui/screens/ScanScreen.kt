@@ -144,7 +144,7 @@ fun ScanScreen(vm: AppViewModel, nav: NavController, initialMode: String) {
 private fun CocktailResult(vm: AppViewModel, nav: NavController, s: ScanState.Cocktail, lang: String) {
     val g = s.guess
     if (!g.isDrink) { Text(stringResource(R.string.scan_not_drink)); return }
-    Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerHigh)) {
+    Card(colors = CardDefaults.cardColors(containerColor = de.schnubbirunkel.barkeep.ui.glassFill())) {
         Column(Modifier.padding(16.dp)) {
             Text(stringResource(R.string.scan_found, s.match?.displayName(lang) ?: g.name), style = MaterialTheme.typography.headlineSmall)
             Text(stringResource(R.string.scan_confidence, (g.confidence * 100).roundToInt()), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)

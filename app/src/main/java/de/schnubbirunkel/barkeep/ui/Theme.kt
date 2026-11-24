@@ -34,9 +34,9 @@ private val Dark = darkColorScheme(
     onTertiary = Color(0xFF2E0603),
     tertiaryContainer = Color(0xFF4A1A16),
     onTertiaryContainer = Color(0xFFFFDAD5),
-    background = Ink,
+    background = Color.Transparent,
     onBackground = Color(0xFFE7E9F1),
-    surface = Ink,
+    surface = Color.Transparent,
     onSurface = Color(0xFFE7E9F1),
     surfaceVariant = InkHigh,
     onSurfaceVariant = Color(0xFFB7BCCD),
@@ -58,8 +58,10 @@ private val Light = lightColorScheme(
     secondaryContainer = Color(0xFF9DF3D4),
     tertiary = Color(0xFFB3261E),
     tertiaryContainer = Color(0xFFFFDAD5),
-    background = Color(0xFFF7F7FB),
-    surface = Color(0xFFF7F7FB),
+    background = Color.Transparent,
+    surface = Color.Transparent,
+    onBackground = Color(0xFF151824),
+    onSurface = Color(0xFF151824),
     surfaceVariant = Color(0xFFE3E5EE),
     surfaceContainer = Color(0xFFEDEEF5),
     surfaceContainerHigh = Color(0xFFE6E8F0),
@@ -76,6 +78,7 @@ private val AppTypography = Typography().let { t ->
         headlineSmall = t.headlineSmall.copy(fontFamily = Display, fontWeight = FontWeight.SemiBold),
         titleLarge = t.titleLarge.copy(fontFamily = Display, fontWeight = FontWeight.SemiBold),
         labelSmall = TextStyle(fontSize = 11.sp, fontWeight = FontWeight.Medium, letterSpacing = 0.8.sp),
+        displayMedium = t.displayMedium.copy(fontFamily = Display, fontWeight = FontWeight.SemiBold, letterSpacing = (-0.5).sp),
     )
 }
 

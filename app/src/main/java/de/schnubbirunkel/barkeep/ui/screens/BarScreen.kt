@@ -136,7 +136,7 @@ private fun StockTab(vm: AppViewModel, nav: NavController) {
         .filter { q.isEmpty() || it in matches || (it.startsWith("x:") && q in Catalog.spelling(it)) }
     val bottlesBy = user.bottles.groupBy { it.ingredientId }
 
-    LazyColumn(contentPadding = PaddingValues(bottom = 24.dp)) {
+    LazyColumn(contentPadding = PaddingValues(bottom = 24.dp + de.schnubbirunkel.barkeep.ui.LocalBottomBarSpace.current)) {
         item {
             Row(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 12.dp), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                 ActionCard(Icons.Filled.QrCodeScanner, stringResource(R.string.scan_barcode), "EAN / UPC", Modifier.weight(1f)) { startScan() }
@@ -365,12 +365,12 @@ private fun MakeTab(vm: AppViewModel, nav: NavController) {
             .entries.sortedByDescending { it.value }.take(8)
     }
     if (inv.isEmpty()) { EmptyHint(stringResource(R.string.bar_empty)); return }
-    LazyColumn(contentPadding = PaddingValues(bottom = 24.dp)) {
+    LazyColumn(contentPadding = PaddingValues(bottom = 24.dp + de.schnubbirunkel.barkeep.ui.LocalBottomBarSpace.current)) {
         if (bestBuys.isNotEmpty()) item {
             SectionTitle(stringResource(R.string.best_buy))
             LazyRow(contentPadding = PaddingValues(horizontal = 12.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 items(bestBuys, key = { it.key }) { (id, n) ->
-                    Card(onClick = { vm.addShopping(vm.catalog.name(id, lang), id) }, colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerHigh)) {
+                    Card(border = de.schnubbirunkel.barkeep.ui.glassBorder(),onClick = { vm.addShopping(vm.catalog.name(id, lang), id) }, colors = CardDefaults.cardColors(containerColor = de.schnubbirunkel.barkeep.ui.glassFill())) {
                         Column(Modifier.padding(12.dp).width(140.dp)) {
                             Text(vm.catalog.name(id, lang), style = MaterialTheme.typography.titleSmall, maxLines = 1, overflow = TextOverflow.Ellipsis)
                             Text(stringResource(R.string.best_buy_sub, n), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.secondary)
@@ -396,7 +396,7 @@ private fun androidx.compose.foundation.lazy.LazyListScope.section(
     if (list.isEmpty()) return
     item(key = "s$title") { SectionTitle(stringResource(title, list.size)) }
     items(list.take(150), key = { "$title-" + it.recipe.id }) { m ->
-        RecipeRow(m.recipe, vm.catalog, lang, { nav.navigate(Routes.recipe(m.recipe.id)) }) {
+        RecipeRow(m.recipe, vm.catalog, lang, { nav.navigate(Routes.recipe(m.recipe.id)) }, Modifier.animateItem(), "make$title") {
             if (badgeStyle != null) {
                 val text = if (badgeStyle == MaterialTheme_primary) m.swaps.values.joinToString { vm.catalog.name(it, lang) }
                 else m.missing.joinToString { vm.catalog.name(it, lang) }

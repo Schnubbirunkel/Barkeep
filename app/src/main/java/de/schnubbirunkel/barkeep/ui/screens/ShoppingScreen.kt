@@ -46,7 +46,7 @@ fun ShoppingScreen(vm: AppViewModel, nav: androidx.navigation.NavController) {
     val user by vm.user.collectAsState()
     var text by remember { mutableStateOf("") }
     val title = stringResource(R.string.shopping_share_title)
-    Column(Modifier.statusBarsPadding()) {
+    Column(Modifier.statusBarsPadding().padding(bottom = de.schnubbirunkel.barkeep.ui.LocalBottomBarSpace.current)) {
         Row(Modifier.padding(start = 20.dp, top = 16.dp, end = 8.dp), verticalAlignment = Alignment.CenterVertically) {
             Text(stringResource(R.string.nav_shopping), style = MaterialTheme.typography.headlineMedium, modifier = Modifier.weight(1f))
             IconButton(enabled = user.shopping.isNotEmpty(), onClick = {
