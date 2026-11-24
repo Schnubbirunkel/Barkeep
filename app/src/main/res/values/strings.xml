@@ -172,7 +172,7 @@
     <string name="source_community_credit">Recipe: community dataset (private use)</string>
     <string name="tab_bottles">Bottles</string>
     <string name="tab_ingredients">Ingredients</string>
-    <string name="tab_make">What can I make?</string>
+    <string name="tab_make">Can make</string>
     <string name="scan_barcode">Scan barcode</string>
     <string name="add_bottle">Add bottle</string>
     <string name="bottles_empty">No bottles yet. Scan a barcode or add one by hand.</string>

@@ -887,6 +887,264 @@
 "en": "Chia seeds",
 "de": "Chiasamen",
 "category": "other"
+},
+{
+"key": "drambuie",
+"en": "Drambuie",
+"de": "Drambuie",
+"category": "liqueur"
+},
+{
+"key": "banana_liqueur",
+"en": "Banana liqueur",
+"de": "Bananenlikör",
+"category": "liqueur"
+},
+{
+"key": "melon_liqueur",
+"en": "Melon liqueur",
+"de": "Melonenlikör",
+"category": "liqueur"
+},
+{
+"key": "hazelnut_liqueur",
+"en": "Hazelnut liqueur",
+"de": "Haselnusslikör",
+"category": "liqueur"
+},
+{
+"key": "raspberry_liqueur",
+"en": "Raspberry liqueur",
+"de": "Himbeerlikör",
+"category": "liqueur"
+},
+{
+"key": "lychee_liqueur",
+"en": "Lychee liqueur",
+"de": "Litschilikör",
+"category": "liqueur"
+},
+{
+"key": "coconut_rum",
+"en": "Coconut rum",
+"de": "Kokosrum",
+"category": "liqueur"
+},
+{
+"key": "kirsch",
+"en": "Kirsch",
+"de": "Kirschwasser",
+"category": "spirit"
+},
+{
+"key": "genever",
+"en": "Genever",
+"de": "Genever",
+"category": "spirit"
+},
+{
+"key": "aquavit",
+"en": "Aquavit",
+"de": "Aquavit",
+"category": "spirit"
+},
+{
+"key": "rhum_agricole",
+"en": "Rhum agricole",
+"de": "Rhum Agricole",
+"category": "spirit"
+},
+{
+"key": "pimms",
+"en": "Pimm's No. 1",
+"de": "Pimm's No. 1",
+"category": "liqueur"
+},
+{
+"key": "cynar",
+"en": "Cynar",
+"de": "Cynar",
+"category": "liqueur"
+},
+{
+"key": "strega",
+"en": "Strega",
+"de": "Strega",
+"category": "liqueur"
+},
+{
+"key": "gentian",
+"en": "Gentian aperitif (Suze)",
+"de": "Enzian-Aperitif (Suze)",
+"category": "liqueur"
+},
+{
+"key": "cocchi_americano",
+"en": "Cocchi Americano",
+"de": "Cocchi Americano",
+"category": "wine"
+},
+{
+"key": "tawny_port",
+"en": "Tawny port",
+"de": "Tawny Port",
+"category": "wine"
+},
+{
+"key": "sake",
+"en": "Sake",
+"de": "Sake",
+"category": "wine"
+},
+{
+"key": "cider",
+"en": "Hard cider",
+"de": "Cidre",
+"category": "mixer"
+},
+{
+"key": "stout",
+"en": "Stout",
+"de": "Stout",
+"category": "mixer"
+},
+{
+"key": "bitter_lemon",
+"en": "Bitter lemon",
+"de": "Bitter Lemon",
+"category": "mixer"
+},
+{
+"key": "energy_drink",
+"en": "Energy drink",
+"de": "Energydrink",
+"category": "mixer"
+},
+{
+"key": "hot_chocolate",
+"en": "Hot chocolate",
+"de": "Heiße Schokolade",
+"category": "mixer"
+},
+{
+"key": "chai",
+"en": "Chai tea",
+"de": "Chai-Tee",
+"category": "mixer"
+},
+{
+"key": "green_tea",
+"en": "Green tea",
+"de": "Grüner Tee",
+"category": "mixer"
+},
+{
+"key": "peach_juice",
+"en": "Peach nectar",
+"de": "Pfirsichnektar",
+"category": "juice"
+},
+{
+"key": "cherry_juice",
+"en": "Cherry juice",
+"de": "Kirschsaft",
+"category": "juice"
+},
+{
+"key": "guava_juice",
+"en": "Guava juice",
+"de": "Guavensaft",
+"category": "juice"
+},
+{
+"key": "blood_orange_juice",
+"en": "Blood orange juice",
+"de": "Blutorangensaft",
+"category": "juice"
+},
+{
+"key": "lemonade",
+"en": "Lemonade",
+"de": "Zitronenlimonade (still)",
+"category": "mixer"
+},
+{
+"key": "maple_syrup",
+"en": "Maple syrup",
+"de": "Ahornsirup",
+"category": "syrup"
+},
+{
+"key": "strawberry_syrup",
+"en": "Strawberry syrup",
+"de": "Erdbeersirup",
+"category": "syrup"
+},
+{
+"key": "passion_fruit_syrup",
+"en": "Passion fruit syrup",
+"de": "Maracujasirup",
+"category": "syrup"
+},
+{
+"key": "rosemary_syrup",
+"en": "Rosemary syrup",
+"de": "Rosmarinsirup",
+"category": "syrup"
+},
+{
+"key": "lavender_syrup",
+"en": "Lavender syrup",
+"de": "Lavendelsirup",
+"category": "syrup"
+},
+{
+"key": "chocolate_bitters",
+"en": "Chocolate bitters",
+"de": "Schokoladenbitter",
+"category": "bitters"
+},
+{
+"key": "egg_yolk",
+"en": "Egg yolk",
+"de": "Eigelb",
+"category": "dairy"
+},
+{
+"key": "jalapeno",
+"en": "Jalapeño",
+"de": "Jalapeño",
+"category": "fruit"
+},
+{
+"key": "blackberries",
+"en": "Blackberries",
+"de": "Brombeeren",
+"category": "fruit"
+},
+{
+"key": "grapefruit",
+"en": "Grapefruit",
+"de": "Grapefruit",
+"category": "fruit"
+},
+{
+"key": "thyme",
+"en": "Thyme",
+"de": "Thymian",
+"category": "fruit"
+},
+{
+"key": "matcha",
+"en": "Matcha powder",
+"de": "Matcha-Pulver",
+"category": "other"
+},
+{
+"key": "cocoa",
+"en": "Cocoa powder",
+"de": "Kakaopulver",
+"category": "other"
 }
 ],
 "aliases": {
@@ -1047,6 +1305,27 @@
 "limoncello": "limoncello",
 "jägermeister": "jagermeister",
 "port": "port",
+"tawny port": "tawny_port",
+"midori melon liqueur": "melon_liqueur",
+"frangelico": "hazelnut_liqueur",
+"malibu rum": "coconut_rum",
+"creme de banane": "banana_liqueur",
+"drambuie": "drambuie",
+"kirschwasser": "kirsch",
+"pimm's": "pimms",
+"cider": "cider",
+"guinness stout": "stout",
+"maple syrup": "maple_syrup",
+"egg yolk": "egg_yolk",
+"blackberries": "blackberries",
+"bitter lemon": "bitter_lemon",
+"red bull": "energy_drink",
+"lemonade": "lemonade",
+"hot chocolate": "hot_chocolate",
+"cocoa powder": "cocoa",
+"sake": "sake",
+"aquavit": "aquavit",
+"genever": "genever",
 "sherry": "dry_sherry",
 "fernet branca": "fernet",
 "benedictine": "benedictine"

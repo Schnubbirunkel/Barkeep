@@ -3,7 +3,9 @@
 import json, os, sys
 sys.path.insert(0, os.path.dirname(__file__))
 from data_ingredients import ING, ALIASES, SUBS, GLASS
-from data_recipes import RECIPES
+from data_recipes import RECIPES as _R1
+from data_recipes2 import RECIPES2
+RECIPES = _R1 + RECIPES2
 
 OUT = os.path.join(os.path.dirname(__file__), "..", "app", "src", "main", "assets")
 

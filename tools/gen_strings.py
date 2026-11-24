@@ -176,7 +176,7 @@ S = {
     "source_community_credit": ("Recipe: community dataset (private use)", "Rezept: Community-Datensatz (privater Gebrauch)"),
     "tab_bottles": ("Bottles", "Flaschen"),
     "tab_ingredients": ("Ingredients", "Zutaten"),
-    "tab_make": ("What can I make?", "Was kann ich mixen?"),
+    "tab_make": ("Can make", "Mixbar"),
     "scan_barcode": ("Scan barcode", "Barcode scannen"),
     "add_bottle": ("Add bottle", "Flasche hinzufügen"),
     "bottles_empty": ("No bottles yet. Scan a barcode or add one by hand.", "Noch keine Flaschen. Barcode scannen oder von Hand hinzufügen."),

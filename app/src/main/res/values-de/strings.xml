@@ -172,7 +172,7 @@
     <string name="source_community_credit">Rezept: Community-Datensatz (privater Gebrauch)</string>
     <string name="tab_bottles">Flaschen</string>
     <string name="tab_ingredients">Zutaten</string>
-    <string name="tab_make">Was kann ich mixen?</string>
+    <string name="tab_make">Mixbar</string>
     <string name="scan_barcode">Barcode scannen</string>
     <string name="add_bottle">Flasche hinzufügen</string>
     <string name="bottles_empty">Noch keine Flaschen. Barcode scannen oder von Hand hinzufügen.</string>
