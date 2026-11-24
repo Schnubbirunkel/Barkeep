@@ -25,6 +25,12 @@ class LogicTest {
         assertNull(d.amount)
     }
 
+    @Test fun csv() {
+        val rows = ArrayList<List<String>>()
+        de.schnubbirunkel.barkeep.data.Csv.records(java.io.StringReader("a,b,c\r\n1,\"x, \"\"y\"\"\nz\",3\n")) { rows += it }
+        assertEquals(listOf(listOf("a", "b", "c"), listOf("1", "x, \"y\"\nz", "3")), rows)
+    }
+
     @Test fun pyPairs() {
         val p = DownloadedSources.parsePyPairs("[['4.5 cl', 'gin'], ['2 dash', \"peychaud's\"]]")
         assertEquals(listOf("4.5 cl" to "gin", "2 dash" to "peychaud's"), p)

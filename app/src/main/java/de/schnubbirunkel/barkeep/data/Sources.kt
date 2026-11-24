@@ -62,6 +62,50 @@ class DownloadedSources(context: Context, private val catalog: Catalog) {
      * public datasets-server API in pages of 100 rows. For private use only.
      */
     suspend fun downloadCommunity(progress: (Float) -> Unit): Int = withContext(Dispatchers.IO) {
+        // Preferred: the whole dataset as one CSV file – a single request, no rate limit trouble.
+        val out = try {
+            downloadCommunityCsv(progress)
+        } catch (e: Exception) {
+            if (e is kotlinx.coroutines.CancellationException) throw e
+            downloadCommunityPaged(progress)
+        }
+        if (out.isEmpty()) throw IllegalStateException("No data")
+        save(SourceIds.COMMUNITY, out)
+        out.size
+    }
+
+    private fun downloadCommunityCsv(progress: (Float) -> Unit): List<Recipe> {
+        val url = "https://huggingface.co/datasets/erwanlc/cocktails_recipe_no_brand/resolve/main/train.csv"
+        val c = (URL(url).openConnection() as HttpURLConnection).apply {
+            connectTimeout = 20000; readTimeout = 60000; instanceFollowRedirects = true
+            setRequestProperty("User-Agent", "Barkeep-Android")
+        }
+        try {
+            if (c.responseCode !in 200..299) throw IllegalStateException("HTTP ${c.responseCode}")
+            val total = c.contentLengthLong.takeIf { it > 0 } ?: 20_000_000L
+            val counting = CountingStream(c.inputStream)
+            val reader = counting.bufferedReader(Charsets.UTF_8)
+            val out = ArrayList<Recipe>()
+            var header: List<String>? = null
+            var index = 0
+            var lastReport = 0L
+            Csv.records(reader) { fields ->
+                val h = header
+                if (h == null) { header = fields.map { it.trim().lowercase() }; return@records }
+                val row = h.indices.associate { i -> h[i] to fields.getOrElse(i) { "" } }
+                parseCommunityMap(row, index++)?.let { out += Enrich.apply(it, catalog) }
+                if (counting.count - lastReport > 200_000) {
+                    lastReport = counting.count
+                    progress((counting.count.toFloat() / total).coerceAtMost(0.99f))
+                }
+            }
+            progress(1f)
+            return out
+        } finally { c.disconnect() }
+    }
+
+    /** Fallback: datasets-server pages, slowly and with back-off (it answers 429 when hit too fast). */
+    private fun downloadCommunityPaged(progress: (Float) -> Unit): List<Recipe> {
         val base = "https://datasets-server.huggingface.co/rows?dataset=erwanlc%2Fcocktails_recipe_no_brand&config=default&split=train"
         val out = ArrayList<Recipe>()
         var offset = 0
@@ -71,10 +115,11 @@ class DownloadedSources(context: Context, private val catalog: Catalog) {
             val page = try {
                 AppJson.parseToJsonElement(get("$base&offset=$offset&length=100")).jsonObject
             } catch (e: Exception) {
-                if (++failures > 4) throw e
-                Thread.sleep(1500L * failures)
+                if (++failures > 8) throw e
+                Thread.sleep(minOf(60_000L, 2_000L shl failures))
                 continue
             }
+            failures = 0
             total = page["num_rows_total"]?.jsonPrimitive?.int ?: 0
             val rows = page["rows"] as? JsonArray ?: break
             if (rows.isEmpty()) break
@@ -84,10 +129,16 @@ class DownloadedSources(context: Context, private val catalog: Catalog) {
             }
             offset += rows.size
             progress((offset.toFloat() / total).coerceAtMost(1f))
+            Thread.sleep(700)
         }
-        if (out.isEmpty()) throw IllegalStateException("No data")
-        save(SourceIds.COMMUNITY, out)
-        out.size
+        return out
+    }
+
+    private fun parseCommunityMap(row: Map<String, String>, index: Int): Recipe? {
+        val o = kotlinx.serialization.json.buildJsonObject {
+            row.forEach { (k, v) -> put(k, kotlinx.serialization.json.JsonPrimitive(v)) }
+        }
+        return parseCommunity(o, index)
     }
 
     private fun JsonObject.s(k: String) = (this[k] as? JsonPrimitive)?.contentOrNull?.trim().orEmpty()
@@ -117,6 +168,13 @@ class DownloadedSources(context: Context, private val catalog: Catalog) {
             if (c.responseCode !in 200..299) throw IllegalStateException("HTTP ${c.responseCode}")
             return c.inputStream.bufferedReader().use { it.readText() }
         } finally { c.disconnect() }
+    }
+
+    private class CountingStream(private val inner: java.io.InputStream) : java.io.InputStream() {
+        var count = 0L
+        override fun read(): Int = inner.read().also { if (it >= 0) count++ }
+        override fun read(b: ByteArray, off: Int, len: Int): Int = inner.read(b, off, len).also { if (it > 0) count += it }
+        override fun close() = inner.close()
     }
 
     companion object {
@@ -174,5 +232,36 @@ object Enrich {
         if (sweet) flavors += "sweet"
         val color = colorHints.firstOrNull { it.first in ids }?.second ?: r.color
         return r.copy(type = type, styles = styles.toList(), flavors = flavors.toList(), color = color)
+    }
+}
+
+/** Minimal streaming CSV reader (RFC 4180: quotes, escaped quotes, newlines inside quotes). */
+object Csv {
+    fun records(reader: java.io.Reader, onRecord: (List<String>) -> Unit) {
+        val fields = ArrayList<String>()
+        val sb = StringBuilder()
+        var inQuotes = false
+        var c = reader.read()
+        var any = false
+        while (c != -1) {
+            val ch = c.toChar()
+            if (inQuotes) {
+                if (ch == '"') {
+                    val n = reader.read()
+                    if (n == '"'.code) sb.append('"') else { inQuotes = false; c = n; continue }
+                } else sb.append(ch)
+            } else when (ch) {
+                '"' -> { inQuotes = true; any = true }
+                ',' -> { fields += sb.toString(); sb.setLength(0); any = true }
+                '\r' -> {}
+                '\n' -> {
+                    if (any || sb.isNotEmpty()) { fields += sb.toString(); onRecord(ArrayList(fields)) }
+                    fields.clear(); sb.setLength(0); any = false
+                }
+                else -> { sb.append(ch); any = true }
+            }
+            c = reader.read()
+        }
+        if (any || sb.isNotEmpty()) { fields += sb.toString(); onRecord(fields) }
     }
 }

@@ -1,4 +1,7 @@
-## Barkeep 1.4 – Neues Design
+## Barkeep 1.4.1 – Neues Design
+
+**Fix:** Community-Sammlung wird jetzt als eine Datei geladen – kein „HTTP 429“ mehr. / Community collection now downloads as a single file – no more HTTP 429.
+
 
 **Deutsch**
 - **Liquid-Glass-Look:** fließender Farbhintergrund passend zur Akzentfarbe, Glasflächen mit Lichtkante, schwebende Navigationsleiste mit elastisch gleitender Markierung
