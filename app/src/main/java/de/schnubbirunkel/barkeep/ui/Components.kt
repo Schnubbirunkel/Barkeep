@@ -290,7 +290,7 @@ fun RecipeRow(
 
 @Composable
 fun Pill(text: String, container: Color, content: Color, modifier: Modifier = Modifier) {
-    Surface(color = container.copy(alpha = (container.alpha * 0.85f).coerceAtLeast(0.35f)), contentColor = content, shape = RoundedCornerShape(50), modifier = modifier,
+    Surface(color = container, contentColor = content, shape = RoundedCornerShape(50), modifier = modifier,
         border = androidx.compose.foundation.BorderStroke(1.dp, Color.White.copy(alpha = 0.12f))) {
         Text(text, style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.SemiBold, modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp))
     }

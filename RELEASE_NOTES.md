@@ -1,4 +1,6 @@
-## Barkeep 1.4.1 – Neues Design
+## Barkeep 1.4.2 – Neues Design
+
+**Fix 1.4.2:** dunklerer, ruhigerer Hintergrund für bessere Lesbarkeit; keine schwarze Schrift mehr auf dunklem Grund; Pillen, Portionen-Regler und Einheiten-Umschalter im Glas-Stil. / Darker background, no more black text, remaining controls in glass style.
 
 **Fix:** Community-Sammlung wird jetzt als eine Datei geladen – kein „HTTP 429“ mehr. / Community collection now downloads as a single file – no more HTTP 429.
 

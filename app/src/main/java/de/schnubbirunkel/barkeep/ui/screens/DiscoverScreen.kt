@@ -224,7 +224,7 @@ fun DiscoverScreen(vm: AppViewModel, nav: NavController) {
 @Composable
 private fun StyleChip(text: String, onClick: () -> Unit) {
     Box(
-        Modifier.clip(RoundedCornerShape(14.dp)).background(MaterialTheme.colorScheme.surfaceContainerHigh)
+        Modifier.clip(RoundedCornerShape(14.dp)).background(de.schnubbirunkel.barkeep.ui.glassFill(true))
             .clickable(onClick = onClick).padding(horizontal = 14.dp, vertical = 10.dp),
     ) { Text(text, style = MaterialTheme.typography.labelLarge) }
 }

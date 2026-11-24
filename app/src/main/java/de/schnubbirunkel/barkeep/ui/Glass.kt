@@ -124,7 +124,7 @@ fun LiquidBackground(modifier: Modifier = Modifier) {
     val cs = MaterialTheme.colorScheme
     val dark = isDarkUi()
     val base = if (dark) Ink else Color(0xFFF2F3F8)
-    val a = if (dark) 0.42f else 0.30f
+    val a = if (dark) 0.20f else 0.22f
     val colors = listOf(cs.primary.copy(alpha = a), cs.secondary.copy(alpha = a * 0.9f), cs.tertiary.copy(alpha = a * 0.75f))
     val t = rememberInfiniteTransition(label = "liquid")
     val p by t.animateFloat(0f, (2 * Math.PI).toFloat(), infiniteRepeatable(tween(26000, easing = LinearEasing), RepeatMode.Restart), label = "phase")
@@ -140,6 +140,8 @@ fun LiquidBackground(modifier: Modifier = Modifier) {
         centers.forEachIndexed { i, c ->
             drawCircle(Brush.radialGradient(listOf(colors[i], Color.Transparent), center = c, radius = r), radius = r, center = c)
         }
+        // keep text readable: darken (or lighten) the middle where content sits
+        drawRect(Brush.verticalGradient(listOf(base.copy(alpha = 0.25f), base.copy(alpha = 0.55f), base.copy(alpha = 0.35f))))
     }
 }
 

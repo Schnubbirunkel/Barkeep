@@ -207,7 +207,7 @@ private fun RecipeDetail(vm: AppViewModel, nav: NavController, base: Recipe) {
                         Text(base.name, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     Spacer(Modifier.height(10.dp))
                     FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                        val chip = MaterialTheme.colorScheme.surfaceContainerHigh
+                        val chip = de.schnubbirunkel.barkeep.ui.glassFill(true)
                         val on = MaterialTheme.colorScheme.onSurface
                         Pill(typeLabel(base.type), chip, on)
                         if (!base.isAlcoholic) Pill(stringResource(R.string.alcohol_free), MaterialTheme.colorScheme.secondaryContainer, MaterialTheme.colorScheme.onSecondaryContainer)
@@ -226,7 +226,7 @@ private fun RecipeDetail(vm: AppViewModel, nav: NavController, base: Recipe) {
             item {
                 SectionTitle(stringResource(R.string.ingredients))
                 Row(Modifier.fillMaxWidth().padding(horizontal = 16.dp), verticalAlignment = Alignment.CenterVertically) {
-                    Row(Modifier.clip(RoundedCornerShape(50)).background(MaterialTheme.colorScheme.surfaceContainerHigh), verticalAlignment = Alignment.CenterVertically) {
+                    Row(Modifier.clip(RoundedCornerShape(50)).background(de.schnubbirunkel.barkeep.ui.glassFill(true)), verticalAlignment = Alignment.CenterVertically) {
                         IconButton(onClick = { volumeFactor = 0.0; servings = (servings - 1).coerceAtLeast(1) }) { Icon(Icons.Filled.Remove, null) }
                         Text(if (volumeFactor > 0) "×" + Units.fraction(volumeFactor, 4) else "$servings", style = MaterialTheme.typography.titleMedium)
                         IconButton(onClick = { volumeFactor = 0.0; servings = (servings + 1).coerceAtMost(200) }) { Icon(Icons.Filled.Add, null) }
@@ -236,7 +236,7 @@ private fun RecipeDetail(vm: AppViewModel, nav: NavController, base: Recipe) {
                     TextButton(onClick = { showVolume = true }) { Text(stringResource(R.string.batch)) }
                 }
                 Row(Modifier.padding(horizontal = 16.dp, vertical = 6.dp)) {
-                    SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
+                    SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth().clip(RoundedCornerShape(50)).background(de.schnubbirunkel.barkeep.ui.glassFill())) {
                         listOf("ml", "cl", "oz").forEachIndexed { i, u ->
                             SegmentedButton(
                                 selected = user.settings.unitSystem == u,
@@ -323,7 +323,7 @@ private fun RecipeDetail(vm: AppViewModel, nav: NavController, base: Recipe) {
             item {
                 SectionTitle(stringResource(R.string.food_pairing))
                 FlowRow(Modifier.padding(horizontal = 16.dp), horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                    Discovery.pairings(base, catalog, lang).forEach { Pill(it, MaterialTheme.colorScheme.surfaceContainerHigh, MaterialTheme.colorScheme.onSurface) }
+                    Discovery.pairings(base, catalog, lang).forEach { Pill(it, de.schnubbirunkel.barkeep.ui.glassFill(true), MaterialTheme.colorScheme.onSurface) }
                 }
             }
             item {

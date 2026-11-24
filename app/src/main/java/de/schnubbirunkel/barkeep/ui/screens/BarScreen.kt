@@ -247,7 +247,7 @@ private fun BottleRow(b: Bottle, catalog: Catalog, lang: String, onClick: () -> 
             Text(listOf(b.brand, b.name).filter { it.isNotBlank() }.distinct().joinToString(" · "), style = MaterialTheme.typography.titleSmall, maxLines = 1, overflow = TextOverflow.Ellipsis)
             Text(catalog.name(b.ingredientId, lang), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
-        Pill("${b.fill}%", MaterialTheme.colorScheme.surfaceContainerHigh, if (b.fill <= 15) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.onSurface)
+        Pill("${b.fill}%", de.schnubbirunkel.barkeep.ui.glassFill(true), if (b.fill <= 15) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.onSurface)
     }
 }
 

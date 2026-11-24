@@ -107,7 +107,11 @@ fun BarkeepApp(vm: AppViewModel, start: String = Routes.DISCOVER, nav: NavHostCo
     val open = user.shopping.count { !it.done }
     val fast = tween<Float>(200)
 
-    CompositionLocalProvider(LocalSnackbar provides snackbar, LocalBottomBarSpace provides barSpace) {
+    // Screens sit directly on the liquid background (no opaque Surface), so set the text colour explicitly.
+    CompositionLocalProvider(
+        LocalSnackbar provides snackbar, LocalBottomBarSpace provides barSpace,
+        androidx.compose.material3.LocalContentColor provides androidx.compose.material3.MaterialTheme.colorScheme.onSurface,
+    ) {
         ProvideHero {
             Box(Modifier.fillMaxSize()) {
                 LiquidBackground()

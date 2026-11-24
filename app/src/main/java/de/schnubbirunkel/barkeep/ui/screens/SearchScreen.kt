@@ -157,7 +157,7 @@ fun SearchScreen(vm: AppViewModel, nav: NavController, initStyle: String, initTy
                 when (r.source) {
                     "custom" -> Pill(stringResource(R.string.custom_badge), MaterialTheme.colorScheme.tertiaryContainer, MaterialTheme.colorScheme.onTertiaryContainer)
                     "local" -> {}
-                    else -> if (lang == "de" && r.steps["de"].isNullOrEmpty()) Pill("EN", MaterialTheme.colorScheme.surfaceContainerHighest, MaterialTheme.colorScheme.onSurfaceVariant)
+                    else -> if (lang == "de" && r.steps["de"].isNullOrEmpty()) Pill("EN", de.schnubbirunkel.barkeep.ui.glassFill(true), MaterialTheme.colorScheme.onSurfaceVariant)
                 }
             }
         }
