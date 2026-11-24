@@ -28,8 +28,15 @@ jobs:
       - name: Version
         id: v
         run: |
-          if [[ "$GITHUB_REF" == refs/tags/v* ]]; then NAME="${GITHUB_REF#refs/tags/v}"; else NAME="0.0.${GITHUB_RUN_NUMBER}-dev"; fi
+          VERSION="$(cat VERSION | tr -d '[:space:]')"
+          if [[ "$GITHUB_REF" == refs/tags/v* ]]; then NAME="${GITHUB_REF#refs/tags/v}"; else NAME="$VERSION"; fi
           echo "name=$NAME" >> "$GITHUB_OUTPUT"
+          # release when VERSION has no release yet (on main) or a tag was pushed
+          if [[ "$GITHUB_REF" == refs/tags/v* ]] || { [[ "$GITHUB_REF" == refs/heads/main ]] && ! git ls-remote --exit-code --tags origin "refs/tags/v$VERSION" >/dev/null; }; then
+            echo "release=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "release=false" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Unit tests & screenshots
         run: gradle :app:recordRoborazziDebug --stacktrace
@@ -59,9 +66,12 @@ jobs:
           git diff --cached --quiet || (git commit -m "docs: update screenshots [skip ci]" && git push)
 
       - name: Release
-        if: startsWith(github.ref, 'refs/tags/v')
+        if: steps.v.outputs.release == 'true'
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: v${{ steps.v.outputs.name }}
+          name: Barkeep ${{ steps.v.outputs.name }}
+          target_commitish: ${{ github.sha }}
           files: |
             out/Barkeep-${{ steps.v.outputs.name }}.apk
             out/screenshots.zip
