@@ -1,4 +1,4 @@
-## Barkeep 1.1
+## Barkeep 1.2
 
 **Deutsch**
 - **Entdecken neu:** „Für dich“-Vorschläge aus deinen Favoriten und „Weil du … magst“
