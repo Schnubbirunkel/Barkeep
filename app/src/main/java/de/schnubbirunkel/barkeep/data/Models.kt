@@ -81,6 +81,7 @@ data class Settings(
     val aiProvider: String = "gemini", // gemini, anthropic, openai
     val aiKey: String = "",
     val aiModel: String = "",
+    val aiBaseUrl: String = "",
     val showAlcoholic: Boolean = true,
     val beginnerMode: Boolean = true,
     /** system, dark, light */

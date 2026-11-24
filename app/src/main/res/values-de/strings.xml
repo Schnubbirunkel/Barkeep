@@ -196,6 +196,15 @@
     <string name="settings_ai_provider">Anbieter</string>
     <string name="settings_ai_key">API-Schlüssel</string>
     <string name="settings_ai_model">Modell (optional)</string>
+    <string name="ai_rate_limit">Das Gratis-Kontingent dieses Modells ist aufgebraucht. %1$s warten oder in den Einstellungen ein „lite“-Modell wählen (Modelle laden).</string>
+    <string name="ai_wait_seconds">%1$d Sekunden</string>
+    <string name="ai_wait_later">etwas</string>
+    <string name="settings_ai_custom">Eigener Server</string>
+    <string name="settings_ai_base_url">Server-Adresse (OpenAI-kompatibel)</string>
+    <string name="settings_ai_base_url_sub">z. B. https://ollama.example.com/v1 – das Modell muss Bilder verstehen</string>
+    <string name="settings_ai_key_optional">API-Schlüssel (optional)</string>
+    <string name="settings_ai_load_models">Modelle laden</string>
+    <string name="settings_ai_gemini_hint">Kostenloser Schlüssel: aistudio.google.com → „Get API key“. Lite-Modelle haben das größte Gratis-Kontingent.</string>
     <string name="settings_ai_key_sub">Wird nur auf diesem Gerät gespeichert.</string>
     <string name="settings_data">Datensicherung</string>
     <string name="settings_export">Exportieren (JSON teilen)</string>

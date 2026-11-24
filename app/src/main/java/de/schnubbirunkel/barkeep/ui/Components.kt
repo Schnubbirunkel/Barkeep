@@ -310,3 +310,17 @@ fun BottleDrawing(liquid: Color, fill: Int, modifier: Modifier = Modifier) {
         drawPath(body, outline, style = Stroke(width = w * 0.05f))
     }
 }
+
+/** Human readable text for AI errors (rate limit, missing key, HTTP errors). */
+@Composable
+fun aiErrorText(message: String?): String {
+    val m = message.orEmpty()
+    return when {
+        m.startsWith("RATE_LIMIT:") -> {
+            val secs = m.removePrefix("RATE_LIMIT:").toIntOrNull()
+            stringResource(R.string.ai_rate_limit, if (secs != null) stringResource(R.string.ai_wait_seconds, secs) else stringResource(R.string.ai_wait_later))
+        }
+        m == "NO_KEY" -> stringResource(R.string.scan_no_key)
+        else -> m
+    }
+}

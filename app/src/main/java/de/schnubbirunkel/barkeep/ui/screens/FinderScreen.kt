@@ -189,15 +189,15 @@ fun FinderScreen(vm: AppViewModel, nav: NavController) {
                     aiBusy = true; aiError = null
                     scope.launch {
                         vm.parseWish(aiText).onSuccess { wish = it; step = STEPS }
-                            .onFailure { aiError = if (it.message == "NO_KEY") noKey else it.message }
+                            .onFailure { aiError = if (it.message == "NO_KEY") noKey else (it.message ?: "?") }
                         aiBusy = false
                     }
                 }) {
                     if (aiBusy) CircularProgressIndicator(Modifier.size(18.dp)) else Icon(Icons.Filled.AutoAwesome, null)
                     Spacer(Modifier.width(8.dp)); Text(stringResource(R.string.finder_ai_go))
                 }
-                aiError?.let { Text(it, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodySmall) }
-                if (user.settings.aiKey.isBlank()) Text(noKey, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                aiError?.let { Text(de.schnubbirunkel.barkeep.ui.aiErrorText(it), color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodySmall) }
+                if (user.settings.aiKey.isBlank() && user.settings.aiProvider != "custom") Text(noKey, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
         }
     }

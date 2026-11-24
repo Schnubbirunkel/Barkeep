@@ -1,13 +1,12 @@
-## Barkeep 1.2
+## Barkeep 1.3
 
 **Deutsch**
-- **Entdecken neu:** „Für dich“-Vorschläge aus deinen Favoriten und „Weil du … magst“
-- **Drink-Finder:** Fragen zu Alkohol, Geschmack, Spirituose, Stärke, Anlass und Bestand → passende Drinks mit Trefferquote – komplett offline; optional Wunsch frei beschreiben (KI)
-- **Bestand statt zwei Reitern:** Flaschen und Zutaten in einer Liste – jede Zutat zeigt ihre Flaschen mit Füllstand, „+ Flasche“ direkt an der Zutat
-- **Bessere Suche:** Oberbegriffe und Schreibweisen – „Whisky“ findet Bourbon, Rye, Scotch & Irish; ebenso Rum, Wermut, Sekt, Likör, Saft, Sirup …
-- **Fotos:** TheCocktailDB wird beim ersten Start automatisch geladen; deren Fotos erscheinen auch bei gleichnamigen eigenen Rezepten
-- **Erscheinungsbild:** System / Dunkel / Hell und fünf Akzentfarben; Einstellungen jetzt in jedem Reiter oben rechts (⚙)
+- **KI ohne Abo-Probleme:** Standardmodell jetzt `gemini-flash-lite-latest` (größtes Gratis-Kontingent, übersteht Modell-Abschaltungen)
+- Bei „zu viele Anfragen“ (429) wechselt die App automatisch auf ein Lite-Modell und sagt verständlich, wie lange zu warten ist
+- **„Modelle laden“**: zeigt alle Gemini-Modelle, die dein Schlüssel nutzen darf, zum Antippen
+- **Eigener Server**: beliebige OpenAI-kompatible Adresse (z. B. Ollama über Cloudflare-Tunnel), Schlüssel optional
 
 **English**
-- New Discover with “For you” suggestions from your favourites · Drink finder questionnaire (offline, optional free-text via AI)
-- One “My stock” list for bottles and ingredients · smarter ingredient search (whisky/whiskey, families) · automatic TheCocktailDB download with photos reused for matching recipes · themes (system/dark/light, 5 accents) · settings reachable from every tab
+- Default Gemini model `gemini-flash-lite-latest`, automatic fallback on rate limits with a clear message, “Load models” picker, new “Own server” provider for any OpenAI-compatible endpoint (e.g. Ollama)
+
+Kostenloser Gemini-Schlüssel / free Gemini key: https://aistudio.google.com → Get API key

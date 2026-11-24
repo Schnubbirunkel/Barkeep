@@ -131,7 +131,7 @@ fun ScanScreen(vm: AppViewModel, nav: NavController, initialMode: String) {
                     if (s.message == "NO_KEY") {
                         Text(stringResource(R.string.scan_no_key))
                         FilledTonalButton(onClick = { nav.navigate(Routes.SETTINGS) }) { Text(stringResource(R.string.settings)) }
-                    } else Text(stringResource(R.string.scan_error, s.message), color = MaterialTheme.colorScheme.error)
+                    } else Text(stringResource(R.string.scan_error, de.schnubbirunkel.barkeep.ui.aiErrorText(s.message)), color = MaterialTheme.colorScheme.error)
                 }
                 is ScanState.Cocktail -> CocktailResult(vm, nav, s, lang)
                 is ScanState.Ingredients -> IngredientResult(vm, nav, s.ids, lang)

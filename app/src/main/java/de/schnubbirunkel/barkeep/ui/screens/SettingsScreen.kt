@@ -118,12 +118,26 @@ fun SettingsScreen(vm: AppViewModel, nav: NavController) {
             SectionTitle(stringResource(R.string.settings_ai))
             Text(stringResource(R.string.settings_ai_provider), style = MaterialTheme.typography.labelLarge, modifier = Modifier.padding(horizontal = 20.dp))
             ChipRow {
-                listOf("gemini" to "Google Gemini", "anthropic" to "Claude", "openai" to "OpenAI").forEach { (id, label) ->
-                    FilterChip(s.aiProvider == id, { vm.updateSettings { it.copy(aiProvider = id) } }, { Text(label) })
+                listOf("gemini" to "Google Gemini", "anthropic" to "Claude", "openai" to "OpenAI", "custom" to stringResource(R.string.settings_ai_custom)).forEach { (id, label) ->
+                    FilterChip(s.aiProvider == id, { vm.updateSettings { it.copy(aiProvider = id, aiModel = "") } }, { Text(label) })
                 }
             }
-            Field(stringResource(R.string.settings_ai_key), s.aiKey, stringResource(R.string.settings_ai_key_sub), secret = true) { v -> vm.updateSettings { it.copy(aiKey = v.trim()) } }
+            if (s.aiProvider == "gemini") Text(stringResource(R.string.settings_ai_gemini_hint), style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(horizontal = 20.dp, vertical = 4.dp))
+            if (s.aiProvider == "custom") Field(stringResource(R.string.settings_ai_base_url), s.aiBaseUrl, stringResource(R.string.settings_ai_base_url_sub)) { v -> vm.updateSettings { it.copy(aiBaseUrl = v.trim()) } }
+            Field(stringResource(if (s.aiProvider == "custom") R.string.settings_ai_key_optional else R.string.settings_ai_key), s.aiKey, stringResource(R.string.settings_ai_key_sub), secret = true) { v -> vm.updateSettings { it.copy(aiKey = v.trim()) } }
             Field(stringResource(R.string.settings_ai_model), s.aiModel, VisionClient.defaultModel(s.aiProvider)) { v -> vm.updateSettings { it.copy(aiModel = v.trim()) } }
+            if (s.aiProvider == "gemini" && s.aiKey.isNotBlank()) {
+                var models by remember { mutableStateOf<List<String>>(emptyList()) }
+                var modelError by remember { mutableStateOf<String?>(null) }
+                TextButton(onClick = {
+                    scope.launch { vm.geminiModels().onSuccess { models = it; modelError = null }.onFailure { modelError = it.message } }
+                }, modifier = Modifier.padding(horizontal = 8.dp)) { Text(stringResource(R.string.settings_ai_load_models)) }
+                modelError?.let { Text(it, color = MaterialTheme.colorScheme.error, modifier = Modifier.padding(horizontal = 20.dp)) }
+                if (models.isNotEmpty()) ChipRow {
+                    models.forEach { m -> FilterChip(s.aiModel == m, { vm.updateSettings { it.copy(aiModel = m) } }, { Text(m) }) }
+                }
+            }
 
             SectionTitle(stringResource(R.string.settings_data))
             TextButton(onClick = {

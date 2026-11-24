@@ -326,12 +326,12 @@ class AppViewModel @JvmOverloads constructor(
 
     fun scanImage(bitmap: Bitmap, ingredientsMode: Boolean, lang: String) {
         val s = user.value.settings
-        if (s.aiKey.isBlank()) { _scan.value = ScanState.Error("NO_KEY"); return }
+        if (s.aiKey.isBlank() && s.aiProvider != "custom") { _scan.value = ScanState.Error("NO_KEY"); return }
         _scan.value = ScanState.Working
         viewModelScope.launch {
             try {
                 val b64 = withContext(Dispatchers.Default) { VisionClient.encode(bitmap) }
-                val client = VisionClient(s.aiProvider, s.aiKey, s.aiModel)
+                val client = VisionClient(s.aiProvider, s.aiKey, s.aiModel, s.aiBaseUrl)
                 if (ingredientsMode) {
                     val g = client.identifyIngredients(b64)
                     _scan.value = ScanState.Ingredients(g.ingredients.map { catalog.idForText(it) }.distinct())
@@ -351,9 +351,11 @@ class AppViewModel @JvmOverloads constructor(
     /** Free-text wish -> criteria via the user's AI provider. */
     suspend fun parseWish(text: String): Result<de.schnubbirunkel.barkeep.data.Wish> = runCatching {
         val s = user.value.settings
-        if (s.aiKey.isBlank()) throw AiException("NO_KEY")
-        VisionClient(s.aiProvider, s.aiKey, s.aiModel).parseWish(text)
+        if (s.aiKey.isBlank() && s.aiProvider != "custom") throw AiException("NO_KEY")
+        VisionClient(s.aiProvider, s.aiKey, s.aiModel, s.aiBaseUrl).parseWish(text)
     }
+
+    suspend fun geminiModels(): Result<List<String>> = runCatching { VisionClient.listGeminiModels(user.value.settings.aiKey) }
 
     fun favoriteRecipes(): List<Recipe> = user.value.folders.values.flatten().distinct().mapNotNull { recipe(it) }
 

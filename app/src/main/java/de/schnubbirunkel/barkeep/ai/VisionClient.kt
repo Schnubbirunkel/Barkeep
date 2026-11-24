@@ -40,7 +40,10 @@ data class CocktailGuess(
 @Serializable
 data class IngredientGuess(val ingredients: List<String> = emptyList())
 
-class AiException(message: String) : Exception(message)
+open class AiException(message: String) : Exception(message)
+
+/** HTTP 429 – quota / rate limit reached. */
+class RateLimitException(val retrySeconds: Int?) : AiException("RATE_LIMIT:" + (retrySeconds ?: ""))
 
 /**
  * Image recognition through the user's own API key.
@@ -50,12 +53,32 @@ class VisionClient(
     private val provider: String,
     private val apiKey: String,
     private val model: String,
+    /** Base URL for provider "custom" (OpenAI-compatible, e.g. http://host:11434/v1). */
+    private val baseUrl: String = "",
 ) {
     companion object {
         fun defaultModel(provider: String) = when (provider) {
             "anthropic" -> "claude-haiku-5-5"
             "openai" -> "gpt-4.1-mini"
-            else -> "gemini-2.5-flash"
+            "custom" -> "qwen2.5vl"
+            else -> "gemini-flash-lite-latest"
+        }
+
+        /** Lists Gemini models usable with generateContent for this key. */
+        suspend fun listGeminiModels(apiKey: String): List<String> = withContext(Dispatchers.IO) {
+            val c = (URL("https://generativelanguage.googleapis.com/v1beta/models?pageSize=200").openConnection() as HttpURLConnection).apply {
+                setRequestProperty("x-goog-api-key", apiKey); connectTimeout = 15000; readTimeout = 20000
+            }
+            try {
+                if (c.responseCode !in 200..299) throw AiException("HTTP ${c.responseCode}")
+                val root = AppJson.parseToJsonElement(c.inputStream.bufferedReader().use { it.readText() }).jsonObject
+                (root["models"] as? JsonArray).orEmpty().mapNotNull { m ->
+                    val o = m.jsonObject
+                    val methods = (o["supportedGenerationMethods"] as? JsonArray)?.mapNotNull { (it as? JsonPrimitive)?.contentOrNull }.orEmpty()
+                    val name = (o["name"] as? JsonPrimitive)?.contentOrNull?.removePrefix("models/") ?: return@mapNotNull null
+                    name.takeIf { "generateContent" in methods && name.startsWith("gemini") && "tts" !in name && "image" !in name && "embedding" !in name }
+                }.sortedWith(compareBy<String> { if ("lite" in it) 0 else if ("flash" in it) 1 else 2 }.thenByDescending { it })
+            } finally { c.disconnect() }
         }
 
         fun encode(bitmap: Bitmap, maxSide: Int = 1024): String {
@@ -119,15 +142,22 @@ class VisionClient(
     }
 
     private suspend fun ask(prompt: String, imageB64: String?): String = withContext(Dispatchers.IO) {
-        if (apiKey.isBlank()) throw AiException("NO_KEY")
+        if (apiKey.isBlank() && provider != "custom") throw AiException("NO_KEY")
         when (provider) {
             "anthropic" -> anthropic(prompt, imageB64)
             "openai" -> openai(prompt, imageB64)
-            else -> gemini(prompt, imageB64)
+            "custom" -> openai(prompt, imageB64)
+            else -> try {
+                gemini(prompt, imageB64, usedModel)
+            } catch (e: RateLimitException) {
+                // Free-tier quota exhausted for this model: retry once with a lite model.
+                val fallback = listOf("gemini-flash-lite-latest", "gemini-flash-latest").firstOrNull { it != usedModel } ?: throw e
+                try { gemini(prompt, imageB64, fallback) } catch (e2: RateLimitException) { throw e }
+            }
         }
     }
 
-    private fun gemini(prompt: String, img: String?): String {
+    private fun gemini(prompt: String, img: String?, model: String): String {
         val body = buildJsonObject {
             putJsonArray("contents") {
                 addJsonObject {
@@ -139,7 +169,7 @@ class VisionClient(
             }
             putJsonObject("generationConfig") { put("responseMimeType", "application/json"); put("temperature", 0.2) }
         }
-        val res = post("https://generativelanguage.googleapis.com/v1beta/models/$usedModel:generateContent",
+        val res = post("https://generativelanguage.googleapis.com/v1beta/models/$model:generateContent",
             body.toString(), mapOf("x-goog-api-key" to apiKey))
         val root = AppJson.parseToJsonElement(res).jsonObject
         return root["candidates"]?.jsonArray?.firstOrNull()?.jsonObject?.get("content")?.jsonObject
@@ -173,7 +203,7 @@ class VisionClient(
     private fun openai(prompt: String, img: String?): String {
         val body = buildJsonObject {
             put("model", usedModel)
-            putJsonObject("response_format") { put("type", "json_object") }
+            if (provider == "openai") putJsonObject("response_format") { put("type", "json_object") }
             putJsonArray("messages") {
                 addJsonObject {
                     put("role", "user")
@@ -187,7 +217,9 @@ class VisionClient(
                 }
             }
         }
-        val res = post("https://api.openai.com/v1/chat/completions", body.toString(), mapOf("Authorization" to "Bearer $apiKey"))
+        val url = if (provider == "custom") baseUrl.trim().trimEnd('/').let { if (it.endsWith("/chat/completions")) it else "$it/chat/completions" }
+            else "https://api.openai.com/v1/chat/completions"
+        val res = post(url, body.toString(), if (apiKey.isBlank()) emptyMap() else mapOf("Authorization" to "Bearer $apiKey"))
         val root = AppJson.parseToJsonElement(res).jsonObject
         return root["choices"]?.jsonArray?.firstOrNull()?.jsonObject?.get("message")?.jsonObject
             ?.get("content")?.jsonPrimitive?.contentOrNull ?: throw AiException("Empty answer")
@@ -212,6 +244,11 @@ class VisionClient(
                     val o = AppJson.parseToJsonElement(text).jsonObject
                     (o["error"] as? JsonObject)?.get("message")?.jsonPrimitive?.contentOrNull
                 }.getOrNull()
+                if (code == 429) {
+                    val wait = Regex("retry in ([\\d.]+)s", RegexOption.IGNORE_CASE).find(msg ?: text)?.groupValues?.get(1)?.toDoubleOrNull()
+                        ?: Regex("\"retryDelay\":\\s*\"(\\d+)s\"").find(text)?.groupValues?.get(1)?.toDoubleOrNull()
+                    throw RateLimitException(wait?.toInt())
+                }
                 throw AiException("HTTP $code: ${msg ?: text.take(200)}")
             }
             return text
