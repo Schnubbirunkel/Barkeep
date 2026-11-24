@@ -1,0 +1,1734 @@
+{
+"ingredients": [
+{
+"key": "vodka",
+"en": "Vodka",
+"de": "Wodka",
+"category": "spirit"
+},
+{
+"key": "gin",
+"en": "Gin",
+"de": "Gin",
+"category": "spirit"
+},
+{
+"key": "white_rum",
+"en": "White rum",
+"de": "Weißer Rum",
+"category": "spirit"
+},
+{
+"key": "dark_rum",
+"en": "Dark rum",
+"de": "Dunkler Rum",
+"category": "spirit"
+},
+{
+"key": "aged_rum",
+"en": "Aged rum",
+"de": "Gereifter Rum",
+"category": "spirit"
+},
+{
+"key": "overproof_rum",
+"en": "Overproof rum",
+"de": "Overproof-Rum",
+"category": "spirit"
+},
+{
+"key": "cachaca",
+"en": "Cachaça",
+"de": "Cachaça",
+"category": "spirit"
+},
+{
+"key": "tequila",
+"en": "Tequila blanco",
+"de": "Tequila blanco",
+"category": "spirit"
+},
+{
+"key": "reposado",
+"en": "Tequila reposado",
+"de": "Tequila reposado",
+"category": "spirit"
+},
+{
+"key": "mezcal",
+"en": "Mezcal",
+"de": "Mezcal",
+"category": "spirit"
+},
+{
+"key": "bourbon",
+"en": "Bourbon",
+"de": "Bourbon",
+"category": "spirit"
+},
+{
+"key": "rye",
+"en": "Rye whiskey",
+"de": "Rye Whiskey",
+"category": "spirit"
+},
+{
+"key": "scotch",
+"en": "Blended Scotch",
+"de": "Blended Scotch",
+"category": "spirit"
+},
+{
+"key": "islay_scotch",
+"en": "Islay Scotch",
+"de": "Islay-Scotch",
+"category": "spirit"
+},
+{
+"key": "irish_whiskey",
+"en": "Irish whiskey",
+"de": "Irischer Whiskey",
+"category": "spirit"
+},
+{
+"key": "cognac",
+"en": "Cognac",
+"de": "Cognac",
+"category": "spirit"
+},
+{
+"key": "brandy",
+"en": "Brandy",
+"de": "Weinbrand",
+"category": "spirit"
+},
+{
+"key": "calvados",
+"en": "Calvados",
+"de": "Calvados",
+"category": "spirit"
+},
+{
+"key": "pisco",
+"en": "Pisco",
+"de": "Pisco",
+"category": "spirit"
+},
+{
+"key": "absinthe",
+"en": "Absinthe",
+"de": "Absinth",
+"category": "spirit"
+},
+{
+"key": "triple_sec",
+"en": "Triple sec",
+"de": "Triple Sec",
+"category": "liqueur"
+},
+{
+"key": "cointreau",
+"en": "Cointreau",
+"de": "Cointreau",
+"category": "liqueur"
+},
+{
+"key": "campari",
+"en": "Campari",
+"de": "Campari",
+"category": "liqueur"
+},
+{
+"key": "aperol",
+"en": "Aperol",
+"de": "Aperol",
+"category": "liqueur"
+},
+{
+"key": "sweet_vermouth",
+"en": "Sweet vermouth",
+"de": "Roter Wermut",
+"category": "wine"
+},
+{
+"key": "dry_vermouth",
+"en": "Dry vermouth",
+"de": "Trockener Wermut",
+"category": "wine"
+},
+{
+"key": "blanc_vermouth",
+"en": "Bianco vermouth",
+"de": "Weißer Wermut (Bianco)",
+"category": "wine"
+},
+{
+"key": "lillet",
+"en": "Lillet Blanc",
+"de": "Lillet Blanc",
+"category": "wine"
+},
+{
+"key": "maraschino",
+"en": "Maraschino liqueur",
+"de": "Maraschino-Likör",
+"category": "liqueur"
+},
+{
+"key": "green_chartreuse",
+"en": "Green Chartreuse",
+"de": "Grüne Chartreuse",
+"category": "liqueur"
+},
+{
+"key": "yellow_chartreuse",
+"en": "Yellow Chartreuse",
+"de": "Gelbe Chartreuse",
+"category": "liqueur"
+},
+{
+"key": "benedictine",
+"en": "Bénédictine",
+"de": "Bénédictine",
+"category": "liqueur"
+},
+{
+"key": "coffee_liqueur",
+"en": "Coffee liqueur",
+"de": "Kaffeelikör",
+"category": "liqueur"
+},
+{
+"key": "amaretto",
+"en": "Amaretto",
+"de": "Amaretto",
+"category": "liqueur"
+},
+{
+"key": "irish_cream",
+"en": "Irish cream liqueur",
+"de": "Irish-Cream-Likör",
+"category": "liqueur"
+},
+{
+"key": "creme_de_cacao",
+"en": "Crème de cacao",
+"de": "Crème de Cacao",
+"category": "liqueur"
+},
+{
+"key": "creme_de_menthe",
+"en": "Crème de menthe",
+"de": "Crème de Menthe",
+"category": "liqueur"
+},
+{
+"key": "creme_de_cassis",
+"en": "Crème de cassis",
+"de": "Crème de Cassis",
+"category": "liqueur"
+},
+{
+"key": "creme_de_mure",
+"en": "Crème de mûre",
+"de": "Brombeerlikör",
+"category": "liqueur"
+},
+{
+"key": "creme_de_violette",
+"en": "Crème de violette",
+"de": "Veilchenlikör",
+"category": "liqueur"
+},
+{
+"key": "elderflower_liqueur",
+"en": "Elderflower liqueur",
+"de": "Holunderblütenlikör",
+"category": "liqueur"
+},
+{
+"key": "peach_schnapps",
+"en": "Peach schnapps",
+"de": "Pfirsichlikör",
+"category": "liqueur"
+},
+{
+"key": "apricot_brandy",
+"en": "Apricot liqueur",
+"de": "Aprikosenlikör",
+"category": "liqueur"
+},
+{
+"key": "cherry_heering",
+"en": "Cherry liqueur",
+"de": "Kirschlikör",
+"category": "liqueur"
+},
+{
+"key": "galliano",
+"en": "Galliano",
+"de": "Galliano",
+"category": "liqueur"
+},
+{
+"key": "falernum",
+"en": "Falernum",
+"de": "Falernum",
+"category": "liqueur"
+},
+{
+"key": "allspice_dram",
+"en": "Allspice dram",
+"de": "Piment-Likör",
+"category": "liqueur"
+},
+{
+"key": "orange_curacao",
+"en": "Orange curaçao",
+"de": "Orange Curaçao",
+"category": "liqueur"
+},
+{
+"key": "blue_curacao",
+"en": "Blue curaçao",
+"de": "Blue Curaçao",
+"category": "liqueur"
+},
+{
+"key": "fernet",
+"en": "Fernet-Branca",
+"de": "Fernet-Branca",
+"category": "liqueur"
+},
+{
+"key": "amaro_nonino",
+"en": "Amaro Nonino",
+"de": "Amaro Nonino",
+"category": "liqueur"
+},
+{
+"key": "sloe_gin",
+"en": "Sloe gin",
+"de": "Schlehen-Gin",
+"category": "liqueur"
+},
+{
+"key": "limoncello",
+"en": "Limoncello",
+"de": "Limoncello",
+"category": "liqueur"
+},
+{
+"key": "jagermeister",
+"en": "Herbal liqueur (Jägermeister)",
+"de": "Kräuterlikör (Jägermeister)",
+"category": "liqueur"
+},
+{
+"key": "port",
+"en": "Ruby port",
+"de": "Ruby Port",
+"category": "wine"
+},
+{
+"key": "dry_sherry",
+"en": "Fino sherry",
+"de": "Fino Sherry",
+"category": "wine"
+},
+{
+"key": "sparkling_wine",
+"en": "Sparkling wine",
+"de": "Sekt",
+"category": "wine"
+},
+{
+"key": "champagne",
+"en": "Champagne",
+"de": "Champagner",
+"category": "wine"
+},
+{
+"key": "prosecco",
+"en": "Prosecco",
+"de": "Prosecco",
+"category": "wine"
+},
+{
+"key": "red_wine",
+"en": "Red wine",
+"de": "Rotwein",
+"category": "wine"
+},
+{
+"key": "white_wine",
+"en": "Dry white wine",
+"de": "Trockener Weißwein",
+"category": "wine"
+},
+{
+"key": "beer",
+"en": "Lager beer",
+"de": "Helles Bier",
+"category": "mixer"
+},
+{
+"key": "ginger_beer",
+"en": "Ginger beer",
+"de": "Ginger Beer",
+"category": "mixer"
+},
+{
+"key": "soda",
+"en": "Soda water",
+"de": "Sodawasser",
+"category": "mixer"
+},
+{
+"key": "tonic",
+"en": "Tonic water",
+"de": "Tonic Water",
+"category": "mixer"
+},
+{
+"key": "cola",
+"en": "Cola",
+"de": "Cola",
+"category": "mixer"
+},
+{
+"key": "ginger_ale",
+"en": "Ginger ale",
+"de": "Ginger Ale",
+"category": "mixer"
+},
+{
+"key": "lemon_soda",
+"en": "Lemon-lime soda",
+"de": "Zitronenlimonade",
+"category": "mixer"
+},
+{
+"key": "grapefruit_soda",
+"en": "Grapefruit soda",
+"de": "Grapefruitlimonade",
+"category": "mixer"
+},
+{
+"key": "espresso",
+"en": "Espresso",
+"de": "Espresso",
+"category": "mixer"
+},
+{
+"key": "coffee",
+"en": "Hot coffee",
+"de": "Heißer Kaffee",
+"category": "mixer"
+},
+{
+"key": "black_tea",
+"en": "Black tea",
+"de": "Schwarzer Tee",
+"category": "mixer"
+},
+{
+"key": "water",
+"en": "Water",
+"de": "Wasser",
+"category": "mixer"
+},
+{
+"key": "hot_water",
+"en": "Hot water",
+"de": "Heißes Wasser",
+"category": "mixer"
+},
+{
+"key": "coconut_water",
+"en": "Coconut water",
+"de": "Kokoswasser",
+"category": "mixer"
+},
+{
+"key": "lime_juice",
+"en": "Lime juice",
+"de": "Limettensaft",
+"category": "juice"
+},
+{
+"key": "lemon_juice",
+"en": "Lemon juice",
+"de": "Zitronensaft",
+"category": "juice"
+},
+{
+"key": "orange_juice",
+"en": "Orange juice",
+"de": "Orangensaft",
+"category": "juice"
+},
+{
+"key": "grapefruit_juice",
+"en": "Grapefruit juice",
+"de": "Grapefruitsaft",
+"category": "juice"
+},
+{
+"key": "pineapple_juice",
+"en": "Pineapple juice",
+"de": "Ananassaft",
+"category": "juice"
+},
+{
+"key": "cranberry_juice",
+"en": "Cranberry juice",
+"de": "Cranberrysaft",
+"category": "juice"
+},
+{
+"key": "tomato_juice",
+"en": "Tomato juice",
+"de": "Tomatensaft",
+"category": "juice"
+},
+{
+"key": "apple_juice",
+"en": "Apple juice",
+"de": "Apfelsaft",
+"category": "juice"
+},
+{
+"key": "passion_fruit_juice",
+"en": "Passion fruit juice",
+"de": "Maracujasaft",
+"category": "juice"
+},
+{
+"key": "mango_juice",
+"en": "Mango juice",
+"de": "Mangosaft",
+"category": "juice"
+},
+{
+"key": "pomegranate_juice",
+"en": "Pomegranate juice",
+"de": "Granatapfelsaft",
+"category": "juice"
+},
+{
+"key": "simple_syrup",
+"en": "Simple syrup",
+"de": "Zuckersirup",
+"category": "syrup"
+},
+{
+"key": "honey_syrup",
+"en": "Honey syrup",
+"de": "Honigsirup",
+"category": "syrup"
+},
+{
+"key": "agave_syrup",
+"en": "Agave syrup",
+"de": "Agavendicksaft",
+"category": "syrup"
+},
+{
+"key": "demerara_syrup",
+"en": "Demerara syrup",
+"de": "Rohrzuckersirup",
+"category": "syrup"
+},
+{
+"key": "grenadine",
+"en": "Grenadine",
+"de": "Grenadine",
+"category": "syrup"
+},
+{
+"key": "orgeat",
+"en": "Orgeat (almond syrup)",
+"de": "Orgeat (Mandelsirup)",
+"category": "syrup"
+},
+{
+"key": "raspberry_syrup",
+"en": "Raspberry syrup",
+"de": "Himbeersirup",
+"category": "syrup"
+},
+{
+"key": "ginger_syrup",
+"en": "Ginger syrup",
+"de": "Ingwersirup",
+"category": "syrup"
+},
+{
+"key": "elderflower_syrup",
+"en": "Elderflower cordial",
+"de": "Holunderblütensirup",
+"category": "syrup"
+},
+{
+"key": "cinnamon_syrup",
+"en": "Cinnamon syrup",
+"de": "Zimtsirup",
+"category": "syrup"
+},
+{
+"key": "vanilla_syrup",
+"en": "Vanilla syrup",
+"de": "Vanillesirup",
+"category": "syrup"
+},
+{
+"key": "cream_of_coconut",
+"en": "Cream of coconut",
+"de": "Kokoscreme (gesüßt)",
+"category": "syrup"
+},
+{
+"key": "sugar",
+"en": "Sugar",
+"de": "Zucker",
+"category": "syrup"
+},
+{
+"key": "sugar_cube",
+"en": "Sugar cube",
+"de": "Zuckerwürfel",
+"category": "syrup"
+},
+{
+"key": "honey",
+"en": "Honey",
+"de": "Honig",
+"category": "syrup"
+},
+{
+"key": "angostura",
+"en": "Angostura bitters",
+"de": "Angostura Bitter",
+"category": "bitters"
+},
+{
+"key": "orange_bitters",
+"en": "Orange bitters",
+"de": "Orangenbitter",
+"category": "bitters"
+},
+{
+"key": "peychauds",
+"en": "Peychaud's bitters",
+"de": "Peychaud's Bitter",
+"category": "bitters"
+},
+{
+"key": "cream",
+"en": "Heavy cream",
+"de": "Sahne",
+"category": "dairy"
+},
+{
+"key": "milk",
+"en": "Milk",
+"de": "Milch",
+"category": "dairy"
+},
+{
+"key": "egg_white",
+"en": "Egg white",
+"de": "Eiweiß",
+"category": "dairy"
+},
+{
+"key": "whole_egg",
+"en": "Whole egg",
+"de": "Ganzes Ei",
+"category": "dairy"
+},
+{
+"key": "yogurt",
+"en": "Yogurt",
+"de": "Joghurt",
+"category": "dairy"
+},
+{
+"key": "coconut_milk",
+"en": "Coconut milk",
+"de": "Kokosmilch",
+"category": "dairy"
+},
+{
+"key": "vanilla_ice_cream",
+"en": "Vanilla ice cream",
+"de": "Vanilleeis",
+"category": "dairy"
+},
+{
+"key": "aquafaba",
+"en": "Aquafaba",
+"de": "Aquafaba (Kichererbsenwasser)",
+"category": "dairy"
+},
+{
+"key": "lime",
+"en": "Lime",
+"de": "Limette",
+"category": "fruit"
+},
+{
+"key": "lemon",
+"en": "Lemon",
+"de": "Zitrone",
+"category": "fruit"
+},
+{
+"key": "orange",
+"en": "Orange",
+"de": "Orange",
+"category": "fruit"
+},
+{
+"key": "mint",
+"en": "Mint",
+"de": "Minze",
+"category": "fruit"
+},
+{
+"key": "basil",
+"en": "Basil",
+"de": "Basilikum",
+"category": "fruit"
+},
+{
+"key": "cucumber",
+"en": "Cucumber",
+"de": "Gurke",
+"category": "fruit"
+},
+{
+"key": "strawberries",
+"en": "Strawberries",
+"de": "Erdbeeren",
+"category": "fruit"
+},
+{
+"key": "raspberries",
+"en": "Raspberries",
+"de": "Himbeeren",
+"category": "fruit"
+},
+{
+"key": "blueberries",
+"en": "Blueberries",
+"de": "Heidelbeeren",
+"category": "fruit"
+},
+{
+"key": "banana",
+"en": "Banana",
+"de": "Banane",
+"category": "fruit"
+},
+{
+"key": "mango",
+"en": "Mango",
+"de": "Mango",
+"category": "fruit"
+},
+{
+"key": "pineapple",
+"en": "Pineapple",
+"de": "Ananas",
+"category": "fruit"
+},
+{
+"key": "peach_puree",
+"en": "Peach purée",
+"de": "Pfirsichpüree",
+"category": "fruit"
+},
+{
+"key": "watermelon",
+"en": "Watermelon",
+"de": "Wassermelone",
+"category": "fruit"
+},
+{
+"key": "apple",
+"en": "Apple",
+"de": "Apfel",
+"category": "fruit"
+},
+{
+"key": "spinach",
+"en": "Spinach",
+"de": "Spinat",
+"category": "fruit"
+},
+{
+"key": "ginger",
+"en": "Fresh ginger",
+"de": "Frischer Ingwer",
+"category": "fruit"
+},
+{
+"key": "rosemary",
+"en": "Rosemary",
+"de": "Rosmarin",
+"category": "fruit"
+},
+{
+"key": "cherry",
+"en": "Cocktail cherry",
+"de": "Cocktailkirsche",
+"category": "fruit"
+},
+{
+"key": "olive",
+"en": "Olive",
+"de": "Olive",
+"category": "fruit"
+},
+{
+"key": "celery",
+"en": "Celery stalk",
+"de": "Staudensellerie",
+"category": "fruit"
+},
+{
+"key": "nutmeg",
+"en": "Nutmeg",
+"de": "Muskatnuss",
+"category": "other"
+},
+{
+"key": "cinnamon_stick",
+"en": "Cinnamon stick",
+"de": "Zimtstange",
+"category": "other"
+},
+{
+"key": "cloves",
+"en": "Cloves",
+"de": "Gewürznelken",
+"category": "other"
+},
+{
+"key": "star_anise",
+"en": "Star anise",
+"de": "Sternanis",
+"category": "other"
+},
+{
+"key": "salt",
+"en": "Salt",
+"de": "Salz",
+"category": "other"
+},
+{
+"key": "pepper",
+"en": "Black pepper",
+"de": "Schwarzer Pfeffer",
+"category": "other"
+},
+{
+"key": "worcestershire",
+"en": "Worcestershire sauce",
+"de": "Worcestershiresauce",
+"category": "other"
+},
+{
+"key": "hot_sauce",
+"en": "Hot sauce",
+"de": "Scharfe Soße",
+"category": "other"
+},
+{
+"key": "ice",
+"en": "Ice",
+"de": "Eis",
+"category": "other"
+},
+{
+"key": "crushed_ice",
+"en": "Crushed ice",
+"de": "Crushed Ice",
+"category": "other"
+},
+{
+"key": "coffee_beans",
+"en": "Coffee beans",
+"de": "Kaffeebohnen",
+"category": "other"
+},
+{
+"key": "chocolate",
+"en": "Dark chocolate",
+"de": "Zartbitterschokolade",
+"category": "other"
+},
+{
+"key": "oats",
+"en": "Rolled oats",
+"de": "Haferflocken",
+"category": "other"
+},
+{
+"key": "peanut_butter",
+"en": "Peanut butter",
+"de": "Erdnussbutter",
+"category": "other"
+},
+{
+"key": "chia",
+"en": "Chia seeds",
+"de": "Chiasamen",
+"category": "other"
+}
+],
+"aliases": {
+"light rum": "white_rum",
+"white rum": "white_rum",
+"rum": "white_rum",
+"silver rum": "white_rum",
+"gold rum": "aged_rum",
+"añejo rum": "aged_rum",
+"anejo rum": "aged_rum",
+"spiced rum": "dark_rum",
+"dark rum": "dark_rum",
+"black rum": "dark_rum",
+"151 proof rum": "overproof_rum",
+"tequila": "tequila",
+"blanco tequila": "tequila",
+"silver tequila": "tequila",
+"bourbon": "bourbon",
+"whiskey": "bourbon",
+"whisky": "scotch",
+"rye whiskey": "rye",
+"rye": "rye",
+"scotch": "scotch",
+"blended scotch": "scotch",
+"irish whiskey": "irish_whiskey",
+"brandy": "brandy",
+"cognac": "cognac",
+"apple brandy": "calvados",
+"applejack": "calvados",
+"triple sec": "triple_sec",
+"cointreau": "cointreau",
+"grand marnier": "orange_curacao",
+"sweet vermouth": "sweet_vermouth",
+"red vermouth": "sweet_vermouth",
+"rosso vermouth": "sweet_vermouth",
+"dry vermouth": "dry_vermouth",
+"vermouth": "dry_vermouth",
+"lillet blanc": "lillet",
+"lillet": "lillet",
+"kahlua": "coffee_liqueur",
+"kahlúa": "coffee_liqueur",
+"coffee liqueur": "coffee_liqueur",
+"baileys irish cream": "irish_cream",
+"baileys": "irish_cream",
+"creme de cacao": "creme_de_cacao",
+"white creme de cacao": "creme_de_cacao",
+"dark creme de cacao": "creme_de_cacao",
+"creme de menthe": "creme_de_menthe",
+"green creme de menthe": "creme_de_menthe",
+"creme de cassis": "creme_de_cassis",
+"chambord raspberry liqueur": "raspberry_syrup",
+"elderflower cordial": "elderflower_syrup",
+"st. germain": "elderflower_liqueur",
+"peach schnapps": "peach_schnapps",
+"apricot brandy": "apricot_brandy",
+"cherry brandy": "cherry_heering",
+"maraschino liqueur": "maraschino",
+"green chartreuse": "green_chartreuse",
+"yellow chartreuse": "yellow_chartreuse",
+"champagne": "champagne",
+"prosecco": "prosecco",
+"sparkling wine": "sparkling_wine",
+"red wine": "red_wine",
+"white wine": "white_wine",
+"dry white wine": "white_wine",
+"beer": "beer",
+"lager": "beer",
+"carbonated water": "soda",
+"soda water": "soda",
+"club soda": "soda",
+"sparkling water": "soda",
+"tonic water": "tonic",
+"coca-cola": "cola",
+"cola": "cola",
+"7-up": "lemon_soda",
+"sprite": "lemon_soda",
+"lemon-lime soda": "lemon_soda",
+"ginger ale": "ginger_ale",
+"ginger beer": "ginger_beer",
+"lime juice": "lime_juice",
+"fresh lime juice": "lime_juice",
+"lemon juice": "lemon_juice",
+"fresh lemon juice": "lemon_juice",
+"orange juice": "orange_juice",
+"grapefruit juice": "grapefruit_juice",
+"pineapple juice": "pineapple_juice",
+"cranberry juice": "cranberry_juice",
+"tomato juice": "tomato_juice",
+"apple juice": "apple_juice",
+"passion fruit juice": "passion_fruit_juice",
+"mango juice": "mango_juice",
+"sugar syrup": "simple_syrup",
+"simple syrup": "simple_syrup",
+"syrup": "simple_syrup",
+"grenadine": "grenadine",
+"orgeat syrup": "orgeat",
+"honey syrup": "honey_syrup",
+"agave syrup": "agave_syrup",
+"sugar": "sugar",
+"powdered sugar": "sugar",
+"superfine sugar": "sugar",
+"brown sugar": "sugar",
+"sugar cube": "sugar_cube",
+"honey": "honey",
+"angostura bitters": "angostura",
+"bitters": "angostura",
+"orange bitters": "orange_bitters",
+"peychaud bitters": "peychauds",
+"cream": "cream",
+"heavy cream": "cream",
+"light cream": "cream",
+"milk": "milk",
+"egg white": "egg_white",
+"egg": "whole_egg",
+"coconut milk": "coconut_milk",
+"cream of coconut": "cream_of_coconut",
+"coconut cream": "cream_of_coconut",
+"lime": "lime",
+"lemon": "lemon",
+"orange": "orange",
+"mint": "mint",
+"fresh mint": "mint",
+"basil": "basil",
+"cucumber": "cucumber",
+"strawberries": "strawberries",
+"raspberries": "raspberries",
+"banana": "banana",
+"mango": "mango",
+"pineapple": "pineapple",
+"ginger": "ginger",
+"maraschino cherry": "cherry",
+"cherry": "cherry",
+"olive": "olive",
+"celery": "celery",
+"nutmeg": "nutmeg",
+"cinnamon": "cinnamon_stick",
+"salt": "salt",
+"pepper": "pepper",
+"worcestershire sauce": "worcestershire",
+"tabasco sauce": "hot_sauce",
+"ice": "ice",
+"crushed ice": "crushed_ice",
+"espresso": "espresso",
+"coffee": "coffee",
+"water": "water",
+"absinthe": "absinthe",
+"galliano": "galliano",
+"campari": "campari",
+"aperol": "aperol",
+"amaretto": "amaretto",
+"mezcal": "mezcal",
+"pisco": "pisco",
+"cachaca": "cachaca",
+"vodka": "vodka",
+"gin": "gin",
+"blue curacao": "blue_curacao",
+"sloe gin": "sloe_gin",
+"limoncello": "limoncello",
+"jägermeister": "jagermeister",
+"port": "port",
+"sherry": "dry_sherry",
+"fernet branca": "fernet",
+"benedictine": "benedictine"
+},
+"substitutions": {
+"cointreau": [
+{
+"key": "triple_sec",
+"en": "Slightly sweeter and less intense orange.",
+"de": "Etwas süßer, weniger intensive Orange."
+},
+{
+"key": "orange_curacao",
+"en": "Richer, brandy-like orange notes.",
+"de": "Vollere Orangennoten mit Weinbrand-Charakter."
+}
+],
+"triple_sec": [
+{
+"key": "cointreau",
+"en": "Drier and stronger, cleaner orange.",
+"de": "Trockener und kräftiger, klarere Orange."
+},
+{
+"key": "orange_curacao",
+"en": "Deeper, rounder orange.",
+"de": "Tiefere, rundere Orange."
+}
+],
+"orange_curacao": [
+{
+"key": "cointreau",
+"en": "Brighter and drier.",
+"de": "Frischer und trockener."
+},
+{
+"key": "triple_sec",
+"en": "Lighter body.",
+"de": "Leichterer Körper."
+}
+],
+"lime_juice": [
+{
+"key": "lemon_juice",
+"en": "Softer, less sharp sourness.",
+"de": "Weichere, weniger spitze Säure."
+}
+],
+"lemon_juice": [
+{
+"key": "lime_juice",
+"en": "Sharper, more tropical acidity.",
+"de": "Spitzere, tropischere Säure."
+}
+],
+"simple_syrup": [
+{
+"key": "agave_syrup",
+"en": "Use 2/3 of the amount; earthy sweetness.",
+"de": "2/3 der Menge nehmen; erdige Süße."
+},
+{
+"key": "honey_syrup",
+"en": "Floral, rounder sweetness.",
+"de": "Blumige, rundere Süße."
+},
+{
+"key": "demerara_syrup",
+"en": "Caramel notes, great with dark spirits.",
+"de": "Karamellnoten, passt zu dunklen Spirituosen."
+}
+],
+"honey_syrup": [
+{
+"key": "simple_syrup",
+"en": "Neutral sweetness, loses floral notes.",
+"de": "Neutrale Süße, ohne Blütennoten."
+},
+{
+"key": "agave_syrup",
+"en": "Use slightly less.",
+"de": "Etwas weniger verwenden."
+}
+],
+"agave_syrup": [
+{
+"key": "simple_syrup",
+"en": "Use 1.5× the amount, more neutral.",
+"de": "1,5-fache Menge, neutraler."
+},
+{
+"key": "honey_syrup",
+"en": "Floral twist.",
+"de": "Blumige Note."
+}
+],
+"demerara_syrup": [
+{
+"key": "simple_syrup",
+"en": "Lighter, less caramel.",
+"de": "Leichter, weniger Karamell."
+}
+],
+"sugar": [
+{
+"key": "simple_syrup",
+"en": "Use 15 ml syrup per teaspoon of sugar.",
+"de": "15 ml Sirup pro Teelöffel Zucker."
+},
+{
+"key": "agave_syrup",
+"en": "Use 10 ml per teaspoon.",
+"de": "10 ml pro Teelöffel."
+}
+],
+"sugar_cube": [
+{
+"key": "simple_syrup",
+"en": "One cube ≈ 5 ml syrup.",
+"de": "Ein Würfel ≈ 5 ml Sirup."
+},
+{
+"key": "sugar",
+"en": "One cube ≈ 1 tsp sugar.",
+"de": "Ein Würfel ≈ 1 TL Zucker."
+}
+],
+"white_rum": [
+{
+"key": "aged_rum",
+"en": "More vanilla and oak.",
+"de": "Mehr Vanille und Holz."
+},
+{
+"key": "cachaca",
+"en": "Grassier, funkier.",
+"de": "Grasiger, wilder."
+},
+{
+"key": "vodka",
+"en": "Neutral; loses sugarcane character.",
+"de": "Neutral; ohne Zuckerrohr-Charakter."
+}
+],
+"aged_rum": [
+{
+"key": "dark_rum",
+"en": "Heavier molasses notes.",
+"de": "Schwerere Melassenoten."
+},
+{
+"key": "white_rum",
+"en": "Lighter and crisper.",
+"de": "Leichter und frischer."
+}
+],
+"dark_rum": [
+{
+"key": "aged_rum",
+"en": "Drier, less molasses.",
+"de": "Trockener, weniger Melasse."
+}
+],
+"bourbon": [
+{
+"key": "rye",
+"en": "Spicier and drier.",
+"de": "Würziger und trockener."
+},
+{
+"key": "irish_whiskey",
+"en": "Lighter and smoother.",
+"de": "Leichter und milder."
+}
+],
+"rye": [
+{
+"key": "bourbon",
+"en": "Sweeter, rounder.",
+"de": "Süßer, runder."
+},
+{
+"key": "scotch",
+"en": "Maltier, possibly smoky.",
+"de": "Malziger, eventuell rauchig."
+}
+],
+"scotch": [
+{
+"key": "irish_whiskey",
+"en": "Softer, no smoke.",
+"de": "Weicher, ohne Rauch."
+},
+{
+"key": "bourbon",
+"en": "Sweeter vanilla notes.",
+"de": "Süßere Vanillenoten."
+}
+],
+"tequila": [
+{
+"key": "reposado",
+"en": "Rounder with light oak.",
+"de": "Runder mit leichtem Holz."
+},
+{
+"key": "mezcal",
+"en": "Smoky and bold.",
+"de": "Rauchig und kräftig."
+}
+],
+"reposado": [
+{
+"key": "tequila",
+"en": "Brighter agave.",
+"de": "Frischere Agave."
+}
+],
+"mezcal": [
+{
+"key": "tequila",
+"en": "No smoke; brighter.",
+"de": "Ohne Rauch; frischer."
+}
+],
+"cognac": [
+{
+"key": "brandy",
+"en": "Usually less complex.",
+"de": "Meist weniger komplex."
+},
+{
+"key": "calvados",
+"en": "Apple-forward.",
+"de": "Betont Apfel."
+}
+],
+"brandy": [
+{
+"key": "cognac",
+"en": "More refined.",
+"de": "Feiner."
+}
+],
+"gin": [
+{
+"key": "vodka",
+"en": "Loses botanicals; cleaner.",
+"de": "Ohne Botanicals; neutraler."
+}
+],
+"vodka": [
+{
+"key": "gin",
+"en": "Adds juniper and herbs.",
+"de": "Bringt Wacholder und Kräuter."
+},
+{
+"key": "white_rum",
+"en": "Slight sweetness.",
+"de": "Leichte Süße."
+}
+],
+"sweet_vermouth": [
+{
+"key": "port",
+"en": "Fruitier and sweeter; use a little less.",
+"de": "Fruchtiger und süßer; etwas weniger nehmen."
+}
+],
+"dry_vermouth": [
+{
+"key": "blanc_vermouth",
+"en": "Sweeter.",
+"de": "Süßer."
+},
+{
+"key": "lillet",
+"en": "Fruitier, softer.",
+"de": "Fruchtiger, weicher."
+},
+{
+"key": "dry_sherry",
+"en": "Nutty and saline.",
+"de": "Nussig und salzig."
+}
+],
+"lillet": [
+{
+"key": "blanc_vermouth",
+"en": "More herbal.",
+"de": "Kräuteriger."
+},
+{
+"key": "dry_vermouth",
+"en": "Drier; add a dash of syrup.",
+"de": "Trockener; einen Spritzer Sirup ergänzen."
+}
+],
+"campari": [
+{
+"key": "aperol",
+"en": "Lighter, sweeter, less bitter.",
+"de": "Leichter, süßer, weniger bitter."
+}
+],
+"aperol": [
+{
+"key": "campari",
+"en": "More bitter and stronger; use less.",
+"de": "Bitterer und stärker; weniger nehmen."
+}
+],
+"champagne": [
+{
+"key": "prosecco",
+"en": "Fruitier and sweeter.",
+"de": "Fruchtiger und süßer."
+},
+{
+"key": "sparkling_wine",
+"en": "Works great.",
+"de": "Funktioniert prima."
+}
+],
+"prosecco": [
+{
+"key": "sparkling_wine",
+"en": "Usually drier.",
+"de": "Meist trockener."
+},
+{
+"key": "champagne",
+"en": "Drier, yeastier.",
+"de": "Trockener, hefiger."
+}
+],
+"sparkling_wine": [
+{
+"key": "prosecco",
+"en": "Fruitier.",
+"de": "Fruchtiger."
+},
+{
+"key": "champagne",
+"en": "Finer bubbles.",
+"de": "Feinere Perlage."
+}
+],
+"ginger_beer": [
+{
+"key": "ginger_ale",
+"en": "Milder and sweeter ginger.",
+"de": "Milderer, süßerer Ingwer."
+},
+{
+"key": "ginger_syrup",
+"en": "Add syrup + soda water.",
+"de": "Sirup + Sodawasser verwenden."
+}
+],
+"ginger_ale": [
+{
+"key": "ginger_beer",
+"en": "Spicier and stronger.",
+"de": "Schärfer und intensiver."
+}
+],
+"soda": [
+{
+"key": "tonic",
+"en": "Adds bitterness and sweetness.",
+"de": "Bringt Bitterkeit und Süße."
+},
+{
+"key": "lemon_soda",
+"en": "Sweeter and citrusy.",
+"de": "Süßer und zitroniger."
+}
+],
+"tonic": [
+{
+"key": "soda",
+"en": "Drier, no quinine bitterness.",
+"de": "Trockener, ohne Chininbitter."
+}
+],
+"lemon_soda": [
+{
+"key": "soda",
+"en": "Add a little syrup and lemon.",
+"de": "Etwas Sirup und Zitrone ergänzen."
+}
+],
+"egg_white": [
+{
+"key": "aquafaba",
+"en": "Vegan foam; use 20–30 ml.",
+"de": "Veganer Schaum; 20–30 ml verwenden."
+}
+],
+"aquafaba": [
+{
+"key": "egg_white",
+"en": "Classic silky foam.",
+"de": "Klassischer seidiger Schaum."
+}
+],
+"cream": [
+{
+"key": "coconut_milk",
+"en": "Vegan, tropical note.",
+"de": "Vegan, tropische Note."
+},
+{
+"key": "milk",
+"en": "Lighter texture.",
+"de": "Leichtere Textur."
+}
+],
+"milk": [
+{
+"key": "cream",
+"en": "Richer; use less.",
+"de": "Reichhaltiger; weniger nehmen."
+},
+{
+"key": "coconut_milk",
+"en": "Dairy-free.",
+"de": "Laktosefrei."
+}
+],
+"cream_of_coconut": [
+{
+"key": "coconut_milk",
+"en": "Add 10 ml syrup per 30 ml.",
+"de": "Pro 30 ml 10 ml Sirup ergänzen."
+}
+],
+"coconut_milk": [
+{
+"key": "cream_of_coconut",
+"en": "Much sweeter; reduce other sugar.",
+"de": "Deutlich süßer; anderen Zucker reduzieren."
+}
+],
+"orgeat": [
+{
+"key": "amaretto",
+"en": "Boozy almond; reduce spirit slightly.",
+"de": "Alkoholische Mandel; Spirituose leicht reduzieren."
+}
+],
+"amaretto": [
+{
+"key": "orgeat",
+"en": "Non-alcoholic almond, sweeter.",
+"de": "Alkoholfreie Mandel, süßer."
+}
+],
+"grenadine": [
+{
+"key": "raspberry_syrup",
+"en": "Berry instead of pomegranate.",
+"de": "Beere statt Granatapfel."
+}
+],
+"raspberry_syrup": [
+{
+"key": "grenadine",
+"en": "Pomegranate tartness.",
+"de": "Granatapfel-Säure."
+}
+],
+"angostura": [
+{
+"key": "orange_bitters",
+"en": "Brighter, citrusy.",
+"de": "Frischer, zitrusbetont."
+},
+{
+"key": "peychauds",
+"en": "Anise and cherry.",
+"de": "Anis und Kirsche."
+}
+],
+"orange_bitters": [
+{
+"key": "angostura",
+"en": "Spicier; use one dash less.",
+"de": "Würziger; einen Spritzer weniger."
+}
+],
+"peychauds": [
+{
+"key": "angostura",
+"en": "Spicier, less anise.",
+"de": "Würziger, weniger Anis."
+}
+],
+"coffee_liqueur": [
+{
+"key": "espresso",
+"en": "Add 10 ml syrup; non-alcoholic.",
+"de": "10 ml Sirup ergänzen; alkoholfrei."
+}
+],
+"espresso": [
+{
+"key": "coffee",
+"en": "Use strong brewed coffee.",
+"de": "Starken Filterkaffee nehmen."
+}
+],
+"elderflower_liqueur": [
+{
+"key": "elderflower_syrup",
+"en": "Non-alcoholic, sweeter; use less.",
+"de": "Alkoholfrei, süßer; weniger nehmen."
+}
+],
+"elderflower_syrup": [
+{
+"key": "elderflower_liqueur",
+"en": "Boozier, less sweet.",
+"de": "Alkoholischer, weniger süß."
+}
+],
+"maraschino": [
+{
+"key": "cherry_heering",
+"en": "Fruitier, red cherry.",
+"de": "Fruchtiger, rote Kirsche."
+}
+],
+"cherry_heering": [
+{
+"key": "maraschino",
+"en": "Drier and funkier.",
+"de": "Trockener, eigenwilliger."
+}
+],
+"green_chartreuse": [
+{
+"key": "yellow_chartreuse",
+"en": "Sweeter and milder.",
+"de": "Süßer und milder."
+}
+],
+"yellow_chartreuse": [
+{
+"key": "green_chartreuse",
+"en": "Stronger, more herbal.",
+"de": "Stärker, kräuteriger."
+},
+{
+"key": "benedictine",
+"en": "Honeyed herbs.",
+"de": "Honigartige Kräuter."
+}
+],
+"creme_de_mure": [
+{
+"key": "creme_de_cassis",
+"en": "Blackcurrant instead of blackberry.",
+"de": "Johannisbeere statt Brombeere."
+}
+],
+"creme_de_cassis": [
+{
+"key": "creme_de_mure",
+"en": "Blackberry instead of blackcurrant.",
+"de": "Brombeere statt Johannisbeere."
+}
+],
+"absinthe": [
+{
+"key": "star_anise",
+"en": "Infuse star anise in the glass.",
+"de": "Sternanis im Glas ziehen lassen."
+}
+],
+"falernum": [
+{
+"key": "orgeat",
+"en": "Almond instead of spice; add a dash of Angostura.",
+"de": "Mandel statt Gewürz; Spritzer Angostura dazu."
+}
+],
+"allspice_dram": [
+{
+"key": "angostura",
+"en": "Use 2 dashes for spice.",
+"de": "2 Spritzer für Würze."
+}
+],
+"cachaca": [
+{
+"key": "white_rum",
+"en": "Cleaner, less grassy.",
+"de": "Sauberer, weniger grasig."
+}
+],
+"pisco": [
+{
+"key": "brandy",
+"en": "Less floral.",
+"de": "Weniger blumig."
+}
+],
+"calvados": [
+{
+"key": "brandy",
+"en": "Loses apple.",
+"de": "Ohne Apfel."
+}
+]
+},
+"glasses": {
+"coupe": {
+"en": "coupe",
+"de": "Coupette"
+},
+"martini": {
+"en": "martini glass",
+"de": "Martiniglas"
+},
+"rocks": {
+"en": "rocks glass",
+"de": "Tumbler"
+},
+"highball": {
+"en": "highball glass",
+"de": "Longdrinkglas"
+},
+"collins": {
+"en": "Collins glass",
+"de": "Collinsglas"
+},
+"copper_mug": {
+"en": "copper mug",
+"de": "Kupferbecher"
+},
+"wine": {
+"en": "wine glass",
+"de": "Weinglas"
+},
+"flute": {
+"en": "champagne flute",
+"de": "Sektflöte"
+},
+"hurricane": {
+"en": "hurricane glass",
+"de": "Hurricane-Glas"
+},
+"tiki": {
+"en": "tiki mug",
+"de": "Tiki-Becher"
+},
+"shot": {
+"en": "shot glass",
+"de": "Schnapsglas"
+},
+"mug": {
+"en": "heat-proof mug",
+"de": "hitzefester Becher"
+},
+"punch_bowl": {
+"en": "punch bowl",
+"de": "Bowleschüssel"
+},
+"nick_nora": {
+"en": "Nick & Nora glass",
+"de": "Nick-&-Nora-Glas"
+},
+"julep": {
+"en": "julep cup",
+"de": "Julep-Becher"
+},
+"pint": {
+"en": "pint glass",
+"de": "Pintglas"
+}
+}
+}

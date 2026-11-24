@@ -1,0 +1,7 @@
+-keepattributes *Annotation*, InnerClasses
+-dontnote kotlinx.serialization.**
+-keepclassmembers class kotlinx.serialization.json.** { *** Companion; }
+-keep,includedescriptorclasses class de.schnubbirunkel.barkeep.**$$serializer { *; }
+-keepclassmembers class de.schnubbirunkel.barkeep.** { *** Companion; }
+-keepclasseswithmembers class de.schnubbirunkel.barkeep.** { kotlinx.serialization.KSerializer serializer(...); }
+-dontwarn org.slf4j.**

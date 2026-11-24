@@ -1,0 +1,7756 @@
+[
+{
+"id": "margarita",
+"name": "Margarita",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"sour",
+"classic",
+"agave"
+],
+"glass": "coupe",
+"method": "shake_up",
+"color": "#E9E7A6",
+"flavors": [
+"sour",
+"fresh",
+"strong"
+],
+"season": [
+"summer"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "tequila",
+"amount": 50,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "cointreau",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lime_juice",
+"amount": 25,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "agave_syrup",
+"amount": 5,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "lime wheel",
+"de": "Limettenscheibe"
+},
+"about": {
+"en": "A Mexican-American classic from the 1930s/40s; several bartenders claim to have invented it.",
+"de": "Ein mexikanisch-amerikanischer Klassiker aus den 1930er/40er Jahren; mehrere Barkeeper beanspruchen die Erfindung."
+},
+"steps": {
+"en": [
+"Chill the coupe with ice water or in the freezer.",
+"Add tequila blanco, Cointreau, lime juice and agave syrup to a shaker.",
+"Fill with ice and shake hard for 10–15 seconds.",
+"Double-strain into the chilled coupe.",
+"Optional: rim half the glass with salt before pouring.",
+"Garnish: lime wheel."
+],
+"de": [
+"Glas (Coupette) mit Eiswasser oder im Gefrierfach vorkühlen.",
+"Tequila blanco, Cointreau, Limettensaft und Agavendicksaft in einen Shaker geben.",
+"Mit Eis füllen und 10–15 Sekunden kräftig shaken.",
+"Doppelt ins vorgekühlte Glas abseihen (Fein- und Barsieb).",
+"Optional: den Glasrand vorher zur Hälfte mit Salz versehen.",
+"Garnitur: Limettenscheibe."
+]
+}
+},
+{
+"id": "tommys_margarita",
+"name": "Tommy's Margarita",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"sour",
+"modern",
+"agave"
+],
+"glass": "rocks",
+"method": "shake_rocks",
+"color": "#E2E39B",
+"flavors": [
+"sour",
+"fresh"
+],
+"season": [
+"summer"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "tequila",
+"amount": 60,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lime_juice",
+"amount": 30,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "agave_syrup",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "lime wedge",
+"de": "Limettenspalte"
+},
+"about": {
+"en": "Created in the 1990s at a San Francisco Mexican restaurant; agave syrup replaces the orange liqueur.",
+"de": "In den 1990ern in einem mexikanischen Restaurant in San Francisco entstanden; Agavensirup ersetzt den Orangenlikör."
+},
+"steps": {
+"en": [
+"Add tequila blanco, lime juice and agave syrup to a shaker.",
+"Fill with ice and shake hard for 10–15 seconds.",
+"Strain into a rocks glass over fresh ice.",
+"Garnish: lime wedge."
+],
+"de": [
+"Tequila blanco, Limettensaft und Agavendicksaft in einen Shaker geben.",
+"Mit Eis füllen und 10–15 Sekunden kräftig shaken.",
+"Auf frisches Eis ins Glas (Tumbler) abseihen.",
+"Garnitur: Limettenspalte."
+]
+}
+},
+{
+"id": "daiquiri",
+"name": "Daiquiri",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"sour",
+"classic",
+"rum"
+],
+"glass": "coupe",
+"method": "shake_up",
+"color": "#EEF0C8",
+"flavors": [
+"sour",
+"fresh"
+],
+"season": [
+"summer"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "white_rum",
+"amount": 60,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lime_juice",
+"amount": 25,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "simple_syrup",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "lime wheel",
+"de": "Limettenscheibe"
+},
+"about": {
+"en": "Named after a beach near Santiago de Cuba; a favourite of Hemingway and JFK.",
+"de": "Benannt nach einem Strand bei Santiago de Cuba; ein Liebling von Hemingway und JFK."
+},
+"steps": {
+"en": [
+"Chill the coupe with ice water or in the freezer.",
+"Add white rum, lime juice and simple syrup to a shaker.",
+"Fill with ice and shake hard for 10–15 seconds.",
+"Double-strain into the chilled coupe.",
+"Garnish: lime wheel."
+],
+"de": [
+"Glas (Coupette) mit Eiswasser oder im Gefrierfach vorkühlen.",
+"Weißer Rum, Limettensaft und Zuckersirup in einen Shaker geben.",
+"Mit Eis füllen und 10–15 Sekunden kräftig shaken.",
+"Doppelt ins vorgekühlte Glas abseihen (Fein- und Barsieb).",
+"Garnitur: Limettenscheibe."
+]
+}
+},
+{
+"id": "whiskey_sour",
+"name": "Whiskey Sour",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"sour",
+"classic",
+"whiskey"
+],
+"glass": "rocks",
+"method": "dry_shake",
+"color": "#E8C77A",
+"flavors": [
+"sour",
+"sweet",
+"creamy"
+],
+"season": [
+"autumn"
+],
+"servings": 1,
+"difficulty": 2,
+"ingredients": [
+{
+"key": "bourbon",
+"amount": 60,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lemon_juice",
+"amount": 25,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "simple_syrup",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "egg_white",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "angostura",
+"amount": 2,
+"unit": "dash",
+"flag": "f"
+}
+],
+"garnish": {
+"en": "Angostura drops on the foam",
+"de": "Angostura-Tropfen auf dem Schaum"
+},
+"about": {
+"en": "Sours appear in print in the 1860s; egg white makes the texture silky.",
+"de": "Sours tauchen ab den 1860ern in Barbüchern auf; Eiweiß sorgt für die seidige Textur."
+},
+"steps": {
+"en": [
+"Add bourbon, lemon juice, simple syrup and egg white to a shaker.",
+"Shake without ice for 10 seconds to build foam.",
+"Add ice and shake hard again.",
+"Strain into a rocks glass over fresh ice.",
+"Gently float Angostura bitters on top.",
+"Garnish: Angostura drops on the foam."
+],
+"de": [
+"Bourbon, Zitronensaft, Zuckersirup und Eiweiß in einen Shaker geben.",
+"Ohne Eis 10 Sekunden shaken, um Schaum aufzubauen (Dry Shake).",
+"Eis dazugeben und nochmal kräftig shaken.",
+"Auf frisches Eis ins Glas (Tumbler) abseihen.",
+"Angostura Bitter vorsichtig obenauf gießen (floaten).",
+"Garnitur: Angostura-Tropfen auf dem Schaum."
+]
+}
+},
+{
+"id": "amaretto_sour",
+"name": "Amaretto Sour",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"sour",
+"modern"
+],
+"glass": "rocks",
+"method": "dry_shake",
+"color": "#E7B260",
+"flavors": [
+"sweet",
+"sour",
+"nutty"
+],
+"season": [
+"autumn",
+"winter"
+],
+"servings": 1,
+"difficulty": 2,
+"ingredients": [
+{
+"key": "amaretto",
+"amount": 45,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "bourbon",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lemon_juice",
+"amount": 30,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "simple_syrup",
+"amount": 5,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "egg_white",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "cocktail cherry",
+"de": "Cocktailkirsche"
+},
+"about": null,
+"steps": {
+"en": [
+"Add Amaretto, bourbon, lemon juice, simple syrup and egg white to a shaker.",
+"Shake without ice for 10 seconds to build foam.",
+"Add ice and shake hard again.",
+"Strain into a rocks glass over fresh ice.",
+"Garnish: cocktail cherry."
+],
+"de": [
+"Amaretto, Bourbon, Zitronensaft, Zuckersirup und Eiweiß in einen Shaker geben.",
+"Ohne Eis 10 Sekunden shaken, um Schaum aufzubauen (Dry Shake).",
+"Eis dazugeben und nochmal kräftig shaken.",
+"Auf frisches Eis ins Glas (Tumbler) abseihen.",
+"Garnitur: Cocktailkirsche."
+]
+}
+},
+{
+"id": "pisco_sour",
+"name": "Pisco Sour",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"sour",
+"classic"
+],
+"glass": "coupe",
+"method": "dry_shake",
+"color": "#F2EBC2",
+"flavors": [
+"sour",
+"fresh",
+"creamy"
+],
+"season": [],
+"servings": 1,
+"difficulty": 2,
+"ingredients": [
+{
+"key": "pisco",
+"amount": 60,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lime_juice",
+"amount": 30,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "simple_syrup",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "egg_white",
+"amount": 25,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "angostura",
+"amount": 3,
+"unit": "dash",
+"flag": "f"
+}
+],
+"garnish": {
+"en": "3 drops of bitters",
+"de": "3 Tropfen Bitter"
+},
+"about": {
+"en": "National drink of both Peru and Chile – the two still argue about its origin.",
+"de": "Nationalgetränk von Peru und Chile – beide streiten bis heute über die Herkunft."
+},
+"steps": {
+"en": [
+"Chill the coupe with ice water or in the freezer.",
+"Add pisco, lime juice, simple syrup and egg white to a shaker.",
+"Shake without ice for 10 seconds to build foam.",
+"Add ice and shake hard again.",
+"Double-strain into the chilled coupe.",
+"Gently float Angostura bitters on top.",
+"Garnish: 3 drops of bitters."
+],
+"de": [
+"Glas (Coupette) mit Eiswasser oder im Gefrierfach vorkühlen.",
+"Pisco, Limettensaft, Zuckersirup und Eiweiß in einen Shaker geben.",
+"Ohne Eis 10 Sekunden shaken, um Schaum aufzubauen (Dry Shake).",
+"Eis dazugeben und nochmal kräftig shaken.",
+"Doppelt ins vorgekühlte Glas abseihen (Fein- und Barsieb).",
+"Angostura Bitter vorsichtig obenauf gießen (floaten).",
+"Garnitur: 3 Tropfen Bitter."
+]
+}
+},
+{
+"id": "sidecar",
+"name": "Sidecar",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"sour",
+"classic",
+"brandy"
+],
+"glass": "coupe",
+"method": "shake_up",
+"color": "#E3A65A",
+"flavors": [
+"sour",
+"fruity",
+"strong"
+],
+"season": [
+"autumn",
+"winter"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "cognac",
+"amount": 50,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "cointreau",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lemon_juice",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "orange twist",
+"de": "Orangenzeste"
+},
+"about": {
+"en": "A Paris or London bar invention from the end of World War I.",
+"de": "Eine Barerfindung aus Paris oder London gegen Ende des Ersten Weltkriegs."
+},
+"steps": {
+"en": [
+"Chill the coupe with ice water or in the freezer.",
+"Add Cognac, Cointreau and lemon juice to a shaker.",
+"Fill with ice and shake hard for 10–15 seconds.",
+"Double-strain into the chilled coupe.",
+"Garnish: orange twist."
+],
+"de": [
+"Glas (Coupette) mit Eiswasser oder im Gefrierfach vorkühlen.",
+"Cognac, Cointreau und Zitronensaft in einen Shaker geben.",
+"Mit Eis füllen und 10–15 Sekunden kräftig shaken.",
+"Doppelt ins vorgekühlte Glas abseihen (Fein- und Barsieb).",
+"Garnitur: Orangenzeste."
+]
+}
+},
+{
+"id": "gimlet",
+"name": "Gimlet",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"sour",
+"classic",
+"gin"
+],
+"glass": "coupe",
+"method": "shake_up",
+"color": "#E1EEC0",
+"flavors": [
+"sour",
+"fresh"
+],
+"season": [],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "gin",
+"amount": 60,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lime_juice",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "simple_syrup",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "lime wheel",
+"de": "Limettenscheibe"
+},
+"about": {
+"en": "Linked to the British navy, where lime helped prevent scurvy.",
+"de": "Verbunden mit der britischen Marine, wo Limette gegen Skorbut half."
+},
+"steps": {
+"en": [
+"Chill the coupe with ice water or in the freezer.",
+"Add gin, lime juice and simple syrup to a shaker.",
+"Fill with ice and shake hard for 10–15 seconds.",
+"Double-strain into the chilled coupe.",
+"Garnish: lime wheel."
+],
+"de": [
+"Glas (Coupette) mit Eiswasser oder im Gefrierfach vorkühlen.",
+"Gin, Limettensaft und Zuckersirup in einen Shaker geben.",
+"Mit Eis füllen und 10–15 Sekunden kräftig shaken.",
+"Doppelt ins vorgekühlte Glas abseihen (Fein- und Barsieb).",
+"Garnitur: Limettenscheibe."
+]
+}
+},
+{
+"id": "cosmopolitan",
+"name": "Cosmopolitan",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"sour",
+"modern",
+"vodka"
+],
+"glass": "martini",
+"method": "shake_up",
+"color": "#E85C7A",
+"flavors": [
+"fruity",
+"sour"
+],
+"season": [],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "vodka",
+"amount": 40,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "cointreau",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "cranberry_juice",
+"amount": 30,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lime_juice",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "orange twist",
+"de": "Orangenzeste"
+},
+"about": {
+"en": "Popularised in 1980s New York and made famous by TV in the 1990s.",
+"de": "In den 1980ern in New York populär geworden, in den 1990ern durchs Fernsehen berühmt."
+},
+"steps": {
+"en": [
+"Chill the martini glass with ice water or in the freezer.",
+"Add vodka, Cointreau, cranberry juice and lime juice to a shaker.",
+"Fill with ice and shake hard for 10–15 seconds.",
+"Double-strain into the chilled martini glass.",
+"Garnish: orange twist."
+],
+"de": [
+"Glas (Martiniglas) mit Eiswasser oder im Gefrierfach vorkühlen.",
+"Wodka, Cointreau, Cranberrysaft und Limettensaft in einen Shaker geben.",
+"Mit Eis füllen und 10–15 Sekunden kräftig shaken.",
+"Doppelt ins vorgekühlte Glas abseihen (Fein- und Barsieb).",
+"Garnitur: Orangenzeste."
+]
+}
+},
+{
+"id": "bees_knees",
+"name": "Bee's Knees",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"sour",
+"classic",
+"gin"
+],
+"glass": "coupe",
+"method": "shake_up",
+"color": "#F1DA86",
+"flavors": [
+"sweet",
+"sour",
+"floral"
+],
+"season": [
+"spring"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "gin",
+"amount": 60,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lemon_juice",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "honey_syrup",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "lemon twist",
+"de": "Zitronenzeste"
+},
+"about": {
+"en": "Prohibition-era slang for 'the best'.",
+"de": "Prohibitions-Slang für „das Beste vom Besten“."
+},
+"steps": {
+"en": [
+"Chill the coupe with ice water or in the freezer.",
+"Add gin, lemon juice and honey syrup to a shaker.",
+"Fill with ice and shake hard for 10–15 seconds.",
+"Double-strain into the chilled coupe.",
+"Garnish: lemon twist."
+],
+"de": [
+"Glas (Coupette) mit Eiswasser oder im Gefrierfach vorkühlen.",
+"Gin, Zitronensaft und Honigsirup in einen Shaker geben.",
+"Mit Eis füllen und 10–15 Sekunden kräftig shaken.",
+"Doppelt ins vorgekühlte Glas abseihen (Fein- und Barsieb).",
+"Garnitur: Zitronenzeste."
+]
+}
+},
+{
+"id": "gold_rush",
+"name": "Gold Rush",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"sour",
+"modern",
+"whiskey"
+],
+"glass": "rocks",
+"method": "shake_rocks",
+"color": "#E2B158",
+"flavors": [
+"sweet",
+"sour"
+],
+"season": [
+"autumn"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "bourbon",
+"amount": 60,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lemon_juice",
+"amount": 25,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "honey_syrup",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "lemon twist",
+"de": "Zitronenzeste"
+},
+"about": {
+"en": "A 2000s New York modern classic – essentially a whiskey Bee's Knees.",
+"de": "Ein New Yorker Modern Classic der 2000er – im Grunde ein Bee's Knees mit Whiskey."
+},
+"steps": {
+"en": [
+"Add bourbon, lemon juice and honey syrup to a shaker.",
+"Fill with ice and shake hard for 10–15 seconds.",
+"Strain into a rocks glass over fresh ice.",
+"Garnish: lemon twist."
+],
+"de": [
+"Bourbon, Zitronensaft und Honigsirup in einen Shaker geben.",
+"Mit Eis füllen und 10–15 Sekunden kräftig shaken.",
+"Auf frisches Eis ins Glas (Tumbler) abseihen.",
+"Garnitur: Zitronenzeste."
+]
+}
+},
+{
+"id": "penicillin",
+"name": "Penicillin",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"sour",
+"modern",
+"whiskey",
+"smoky"
+],
+"glass": "rocks",
+"method": "shake_rocks",
+"color": "#E0B05C",
+"flavors": [
+"smoky",
+"sour",
+"spicy"
+],
+"season": [
+"winter"
+],
+"servings": 1,
+"difficulty": 2,
+"ingredients": [
+{
+"key": "scotch",
+"amount": 50,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lemon_juice",
+"amount": 25,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "honey_syrup",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "ginger_syrup",
+"amount": 10,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "islay_scotch",
+"amount": 7,
+"unit": "ml",
+"flag": "f"
+}
+],
+"garnish": {
+"en": "candied ginger",
+"de": "kandierter Ingwer"
+},
+"about": {
+"en": "Created in New York in 2005; the smoky float sits on top.",
+"de": "2005 in New York entstanden; der rauchige Float bleibt oben."
+},
+"steps": {
+"en": [
+"Add Blended Scotch, lemon juice, honey syrup and ginger syrup to a shaker.",
+"Fill with ice and shake hard for 10–15 seconds.",
+"Strain into a rocks glass over fresh ice.",
+"Gently float Islay Scotch on top.",
+"Garnish: candied ginger."
+],
+"de": [
+"Blended Scotch, Zitronensaft, Honigsirup und Ingwersirup in einen Shaker geben.",
+"Mit Eis füllen und 10–15 Sekunden kräftig shaken.",
+"Auf frisches Eis ins Glas (Tumbler) abseihen.",
+"Islay-Scotch vorsichtig obenauf gießen (floaten).",
+"Garnitur: kandierter Ingwer."
+]
+}
+},
+{
+"id": "last_word",
+"name": "Last Word",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"classic",
+"herbal",
+"gin"
+],
+"glass": "coupe",
+"method": "shake_up",
+"color": "#C9DB8A",
+"flavors": [
+"herbal",
+"sour",
+"strong"
+],
+"season": [],
+"servings": 1,
+"difficulty": 2,
+"ingredients": [
+{
+"key": "gin",
+"amount": 22,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "green_chartreuse",
+"amount": 22,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "maraschino",
+"amount": 22,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lime_juice",
+"amount": 22,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "cocktail cherry",
+"de": "Cocktailkirsche"
+},
+"about": {
+"en": "A Detroit Prohibition drink, rediscovered in Seattle in the 2000s.",
+"de": "Ein Prohibitionsdrink aus Detroit, in den 2000ern in Seattle wiederentdeckt."
+},
+"steps": {
+"en": [
+"Chill the coupe with ice water or in the freezer.",
+"Add gin, Green Chartreuse, maraschino liqueur and lime juice to a shaker.",
+"Fill with ice and shake hard for 10–15 seconds.",
+"Double-strain into the chilled coupe.",
+"Garnish: cocktail cherry."
+],
+"de": [
+"Glas (Coupette) mit Eiswasser oder im Gefrierfach vorkühlen.",
+"Gin, Grüne Chartreuse, Maraschino-Likör und Limettensaft in einen Shaker geben.",
+"Mit Eis füllen und 10–15 Sekunden kräftig shaken.",
+"Doppelt ins vorgekühlte Glas abseihen (Fein- und Barsieb).",
+"Garnitur: Cocktailkirsche."
+]
+}
+},
+{
+"id": "paper_plane",
+"name": "Paper Plane",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"modern",
+"bitter",
+"whiskey"
+],
+"glass": "coupe",
+"method": "shake_up",
+"color": "#E58A3E",
+"flavors": [
+"bitter",
+"sour",
+"fruity"
+],
+"season": [],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "bourbon",
+"amount": 25,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "aperol",
+"amount": 25,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "amaro_nonino",
+"amount": 25,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lemon_juice",
+"amount": 25,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": null,
+"about": {
+"en": "An equal-parts modern classic from 2008.",
+"de": "Ein Equal-Parts-Modern-Classic aus dem Jahr 2008."
+},
+"steps": {
+"en": [
+"Chill the coupe with ice water or in the freezer.",
+"Add bourbon, Aperol, Amaro Nonino and lemon juice to a shaker.",
+"Fill with ice and shake hard for 10–15 seconds.",
+"Double-strain into the chilled coupe."
+],
+"de": [
+"Glas (Coupette) mit Eiswasser oder im Gefrierfach vorkühlen.",
+"Bourbon, Aperol, Amaro Nonino und Zitronensaft in einen Shaker geben.",
+"Mit Eis füllen und 10–15 Sekunden kräftig shaken.",
+"Doppelt ins vorgekühlte Glas abseihen (Fein- und Barsieb)."
+]
+}
+},
+{
+"id": "aviation",
+"name": "Aviation",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"classic",
+"floral",
+"gin"
+],
+"glass": "coupe",
+"method": "shake_up",
+"color": "#C8C4E8",
+"flavors": [
+"floral",
+"sour"
+],
+"season": [
+"spring"
+],
+"servings": 1,
+"difficulty": 2,
+"ingredients": [
+{
+"key": "gin",
+"amount": 50,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "maraschino",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "creme_de_violette",
+"amount": 7,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lemon_juice",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "cocktail cherry",
+"de": "Cocktailkirsche"
+},
+"about": {
+"en": "Its pale sky colour comes from violet liqueur.",
+"de": "Die zarte Himmelsfarbe stammt vom Veilchenlikör."
+},
+"steps": {
+"en": [
+"Chill the coupe with ice water or in the freezer.",
+"Add gin, maraschino liqueur, crème de violette and lemon juice to a shaker.",
+"Fill with ice and shake hard for 10–15 seconds.",
+"Double-strain into the chilled coupe.",
+"Garnish: cocktail cherry."
+],
+"de": [
+"Glas (Coupette) mit Eiswasser oder im Gefrierfach vorkühlen.",
+"Gin, Maraschino-Likör, Veilchenlikör und Zitronensaft in einen Shaker geben.",
+"Mit Eis füllen und 10–15 Sekunden kräftig shaken.",
+"Doppelt ins vorgekühlte Glas abseihen (Fein- und Barsieb).",
+"Garnitur: Cocktailkirsche."
+]
+}
+},
+{
+"id": "clover_club",
+"name": "Clover Club",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"sour",
+"classic",
+"gin"
+],
+"glass": "coupe",
+"method": "dry_shake",
+"color": "#E98A9C",
+"flavors": [
+"fruity",
+"sour",
+"creamy"
+],
+"season": [],
+"servings": 1,
+"difficulty": 2,
+"ingredients": [
+{
+"key": "gin",
+"amount": 50,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lemon_juice",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "raspberry_syrup",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "dry_vermouth",
+"amount": 10,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "egg_white",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "3 raspberries",
+"de": "3 Himbeeren"
+},
+"about": {
+"en": "Named after a Philadelphia gentlemen's club of the 1880s.",
+"de": "Benannt nach einem Herrenclub in Philadelphia um 1880."
+},
+"steps": {
+"en": [
+"Chill the coupe with ice water or in the freezer.",
+"Add gin, lemon juice, raspberry syrup, dry vermouth and egg white to a shaker.",
+"Shake without ice for 10 seconds to build foam.",
+"Add ice and shake hard again.",
+"Double-strain into the chilled coupe.",
+"Garnish: 3 raspberries."
+],
+"de": [
+"Glas (Coupette) mit Eiswasser oder im Gefrierfach vorkühlen.",
+"Gin, Zitronensaft, Himbeersirup, Trockener Wermut und Eiweiß in einen Shaker geben.",
+"Ohne Eis 10 Sekunden shaken, um Schaum aufzubauen (Dry Shake).",
+"Eis dazugeben und nochmal kräftig shaken.",
+"Doppelt ins vorgekühlte Glas abseihen (Fein- und Barsieb).",
+"Garnitur: 3 Himbeeren."
+]
+}
+},
+{
+"id": "white_lady",
+"name": "White Lady",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"sour",
+"classic",
+"gin"
+],
+"glass": "coupe",
+"method": "dry_shake",
+"color": "#F4F1DE",
+"flavors": [
+"sour",
+"fresh"
+],
+"season": [],
+"servings": 1,
+"difficulty": 2,
+"ingredients": [
+{
+"key": "gin",
+"amount": 45,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "cointreau",
+"amount": 25,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lemon_juice",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "egg_white",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "lemon twist",
+"de": "Zitronenzeste"
+},
+"about": null,
+"steps": {
+"en": [
+"Chill the coupe with ice water or in the freezer.",
+"Add gin, Cointreau, lemon juice and egg white to a shaker.",
+"Shake without ice for 10 seconds to build foam.",
+"Add ice and shake hard again.",
+"Double-strain into the chilled coupe.",
+"Garnish: lemon twist."
+],
+"de": [
+"Glas (Coupette) mit Eiswasser oder im Gefrierfach vorkühlen.",
+"Gin, Cointreau, Zitronensaft und Eiweiß in einen Shaker geben.",
+"Ohne Eis 10 Sekunden shaken, um Schaum aufzubauen (Dry Shake).",
+"Eis dazugeben und nochmal kräftig shaken.",
+"Doppelt ins vorgekühlte Glas abseihen (Fein- und Barsieb).",
+"Garnitur: Zitronenzeste."
+]
+}
+},
+{
+"id": "corpse_reviver_2",
+"name": "Corpse Reviver No. 2",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"classic",
+"gin"
+],
+"glass": "coupe",
+"method": "shake_up",
+"color": "#EDE6B5",
+"flavors": [
+"sour",
+"herbal",
+"fresh"
+],
+"season": [],
+"servings": 1,
+"difficulty": 2,
+"ingredients": [
+{
+"key": "absinthe",
+"amount": 1,
+"unit": "bsp",
+"flag": "r"
+},
+{
+"key": "gin",
+"amount": 22,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "cointreau",
+"amount": 22,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lillet",
+"amount": 22,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lemon_juice",
+"amount": 22,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "orange twist",
+"de": "Orangenzeste"
+},
+"about": {
+"en": "Originally meant as a hangover cure.",
+"de": "Ursprünglich als Katerkur gedacht."
+},
+"steps": {
+"en": [
+"Chill the coupe with ice water or in the freezer.",
+"Rinse the glass with absinthe and discard the excess.",
+"Add gin, Cointreau, Lillet Blanc and lemon juice to a shaker.",
+"Fill with ice and shake hard for 10–15 seconds.",
+"Double-strain into the chilled coupe.",
+"Garnish: orange twist."
+],
+"de": [
+"Glas (Coupette) mit Eiswasser oder im Gefrierfach vorkühlen.",
+"Das Glas mit Absinth ausschwenken, den Rest wegkippen.",
+"Gin, Cointreau, Lillet Blanc und Zitronensaft in einen Shaker geben.",
+"Mit Eis füllen und 10–15 Sekunden kräftig shaken.",
+"Doppelt ins vorgekühlte Glas abseihen (Fein- und Barsieb).",
+"Garnitur: Orangenzeste."
+]
+}
+},
+{
+"id": "jack_rose",
+"name": "Jack Rose",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"sour",
+"classic",
+"brandy"
+],
+"glass": "coupe",
+"method": "shake_up",
+"color": "#E5727A",
+"flavors": [
+"fruity",
+"sour"
+],
+"season": [
+"autumn"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "calvados",
+"amount": 50,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lemon_juice",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "grenadine",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "apple slice",
+"de": "Apfelscheibe"
+},
+"about": null,
+"steps": {
+"en": [
+"Chill the coupe with ice water or in the freezer.",
+"Add Calvados, lemon juice and Grenadine to a shaker.",
+"Fill with ice and shake hard for 10–15 seconds.",
+"Double-strain into the chilled coupe.",
+"Garnish: apple slice."
+],
+"de": [
+"Glas (Coupette) mit Eiswasser oder im Gefrierfach vorkühlen.",
+"Calvados, Zitronensaft und Grenadine in einen Shaker geben.",
+"Mit Eis füllen und 10–15 Sekunden kräftig shaken.",
+"Doppelt ins vorgekühlte Glas abseihen (Fein- und Barsieb).",
+"Garnitur: Apfelscheibe."
+]
+}
+},
+{
+"id": "brandy_alexander",
+"name": "Brandy Alexander",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"dessert",
+"classic",
+"creamy"
+],
+"glass": "coupe",
+"method": "shake_up",
+"color": "#D9B48A",
+"flavors": [
+"creamy",
+"sweet"
+],
+"season": [
+"winter"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "cognac",
+"amount": 30,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "creme_de_cacao",
+"amount": 30,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "cream",
+"amount": 30,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "freshly grated nutmeg",
+"de": "frisch geriebene Muskatnuss"
+},
+"about": null,
+"steps": {
+"en": [
+"Chill the coupe with ice water or in the freezer.",
+"Add Cognac, crème de cacao and heavy cream to a shaker.",
+"Fill with ice and shake hard for 10–15 seconds.",
+"Double-strain into the chilled coupe.",
+"Garnish: freshly grated nutmeg."
+],
+"de": [
+"Glas (Coupette) mit Eiswasser oder im Gefrierfach vorkühlen.",
+"Cognac, Crème de Cacao und Sahne in einen Shaker geben.",
+"Mit Eis füllen und 10–15 Sekunden kräftig shaken.",
+"Doppelt ins vorgekühlte Glas abseihen (Fein- und Barsieb).",
+"Garnitur: frisch geriebene Muskatnuss."
+]
+}
+},
+{
+"id": "grasshopper",
+"name": "Grasshopper",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"dessert",
+"classic",
+"creamy"
+],
+"glass": "coupe",
+"method": "shake_up",
+"color": "#A9DDA0",
+"flavors": [
+"creamy",
+"sweet",
+"minty"
+],
+"season": [
+"winter"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "creme_de_menthe",
+"amount": 30,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "creme_de_cacao",
+"amount": 30,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "cream",
+"amount": 30,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "grated chocolate",
+"de": "geriebene Schokolade"
+},
+"about": null,
+"steps": {
+"en": [
+"Chill the coupe with ice water or in the freezer.",
+"Add crème de menthe, crème de cacao and heavy cream to a shaker.",
+"Fill with ice and shake hard for 10–15 seconds.",
+"Double-strain into the chilled coupe.",
+"Garnish: grated chocolate."
+],
+"de": [
+"Glas (Coupette) mit Eiswasser oder im Gefrierfach vorkühlen.",
+"Crème de Menthe, Crème de Cacao und Sahne in einen Shaker geben.",
+"Mit Eis füllen und 10–15 Sekunden kräftig shaken.",
+"Doppelt ins vorgekühlte Glas abseihen (Fein- und Barsieb).",
+"Garnitur: geriebene Schokolade."
+]
+}
+},
+{
+"id": "espresso_martini",
+"name": "Espresso Martini",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"modern",
+"coffee",
+"vodka"
+],
+"glass": "coupe",
+"method": "shake_up",
+"color": "#3B2418",
+"flavors": [
+"bitter",
+"sweet",
+"coffee"
+],
+"season": [],
+"servings": 1,
+"difficulty": 2,
+"ingredients": [
+{
+"key": "vodka",
+"amount": 50,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "coffee_liqueur",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "espresso",
+"amount": 30,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "simple_syrup",
+"amount": 5,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "3 coffee beans",
+"de": "3 Kaffeebohnen"
+},
+"about": {
+"en": "Created in 1980s London for a guest who wanted something that wakes you up and gets you going.",
+"de": "In den 1980ern in London für einen Gast erfunden, der etwas zum Wachwerden wollte."
+},
+"steps": {
+"en": [
+"Chill the coupe with ice water or in the freezer.",
+"Add vodka, coffee liqueur, espresso and simple syrup to a shaker.",
+"Fill with ice and shake hard for 10–15 seconds.",
+"Double-strain into the chilled coupe.",
+"Garnish: 3 coffee beans."
+],
+"de": [
+"Glas (Coupette) mit Eiswasser oder im Gefrierfach vorkühlen.",
+"Wodka, Kaffeelikör, Espresso und Zuckersirup in einen Shaker geben.",
+"Mit Eis füllen und 10–15 Sekunden kräftig shaken.",
+"Doppelt ins vorgekühlte Glas abseihen (Fein- und Barsieb).",
+"Garnitur: 3 Kaffeebohnen."
+]
+}
+},
+{
+"id": "french_martini",
+"name": "French Martini",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"modern",
+"fruity",
+"vodka"
+],
+"glass": "martini",
+"method": "shake_up",
+"color": "#C5607A",
+"flavors": [
+"fruity",
+"sweet"
+],
+"season": [],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "vodka",
+"amount": 45,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "pineapple_juice",
+"amount": 45,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "creme_de_cassis",
+"amount": 10,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": null,
+"about": null,
+"steps": {
+"en": [
+"Chill the martini glass with ice water or in the freezer.",
+"Add vodka, pineapple juice and crème de cassis to a shaker.",
+"Fill with ice and shake hard for 10–15 seconds.",
+"Double-strain into the chilled martini glass."
+],
+"de": [
+"Glas (Martiniglas) mit Eiswasser oder im Gefrierfach vorkühlen.",
+"Wodka, Ananassaft und Crème de Cassis in einen Shaker geben.",
+"Mit Eis füllen und 10–15 Sekunden kräftig shaken.",
+"Doppelt ins vorgekühlte Glas abseihen (Fein- und Barsieb)."
+]
+}
+},
+{
+"id": "pornstar_martini",
+"name": "Passion Fruit Martini",
+"nameDe": "Maracuja-Martini",
+"type": "cocktail",
+"styles": [
+"modern",
+"fruity",
+"vodka"
+],
+"glass": "coupe",
+"method": "shake_up",
+"color": "#F2B640",
+"flavors": [
+"fruity",
+"sour",
+"sweet"
+],
+"season": [
+"summer"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "vodka",
+"amount": 40,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "passion_fruit_juice",
+"amount": 30,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lime_juice",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "vanilla_syrup",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "prosecco",
+"amount": 50,
+"unit": "ml",
+"flag": "t"
+}
+],
+"garnish": {
+"en": "half a passion fruit; prosecco on the side",
+"de": "halbe Maracuja; Prosecco als Beilage"
+},
+"about": null,
+"steps": {
+"en": [
+"Chill the coupe with ice water or in the freezer.",
+"Add vodka, passion fruit juice, lime juice and vanilla syrup to a shaker.",
+"Fill with ice and shake hard for 10–15 seconds.",
+"Double-strain into the chilled coupe.",
+"Top up with Prosecco and stir gently.",
+"Garnish: half a passion fruit; prosecco on the side."
+],
+"de": [
+"Glas (Coupette) mit Eiswasser oder im Gefrierfach vorkühlen.",
+"Wodka, Maracujasaft, Limettensaft und Vanillesirup in einen Shaker geben.",
+"Mit Eis füllen und 10–15 Sekunden kräftig shaken.",
+"Doppelt ins vorgekühlte Glas abseihen (Fein- und Barsieb).",
+"Mit Prosecco auffüllen und vorsichtig umrühren.",
+"Garnitur: halbe Maracuja; Prosecco als Beilage."
+]
+}
+},
+{
+"id": "lemon_drop",
+"name": "Lemon Drop",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"sour",
+"modern",
+"vodka"
+],
+"glass": "martini",
+"method": "shake_up",
+"color": "#F4EAA0",
+"flavors": [
+"sour",
+"sweet"
+],
+"season": [],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "vodka",
+"amount": 50,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "triple_sec",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lemon_juice",
+"amount": 25,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "simple_syrup",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "sugared rim",
+"de": "Zuckerrand"
+},
+"about": null,
+"steps": {
+"en": [
+"Chill the martini glass with ice water or in the freezer.",
+"Add vodka, triple sec, lemon juice and simple syrup to a shaker.",
+"Fill with ice and shake hard for 10–15 seconds.",
+"Double-strain into the chilled martini glass.",
+"Garnish: sugared rim."
+],
+"de": [
+"Glas (Martiniglas) mit Eiswasser oder im Gefrierfach vorkühlen.",
+"Wodka, Triple Sec, Zitronensaft und Zuckersirup in einen Shaker geben.",
+"Mit Eis füllen und 10–15 Sekunden kräftig shaken.",
+"Doppelt ins vorgekühlte Glas abseihen (Fein- und Barsieb).",
+"Garnitur: Zuckerrand."
+]
+}
+},
+{
+"id": "southside",
+"name": "Southside",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"sour",
+"classic",
+"gin"
+],
+"glass": "coupe",
+"method": "shake_up",
+"color": "#CFEAB6",
+"flavors": [
+"fresh",
+"minty",
+"sour"
+],
+"season": [
+"summer"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "gin",
+"amount": 60,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lime_juice",
+"amount": 25,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "simple_syrup",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "mint",
+"amount": 6,
+"unit": "leaf",
+"flag": ""
+}
+],
+"garnish": {
+"en": "mint sprig",
+"de": "Minzzweig"
+},
+"about": null,
+"steps": {
+"en": [
+"Chill the coupe with ice water or in the freezer.",
+"Add gin, lime juice, simple syrup and mint to a shaker.",
+"Fill with ice and shake hard for 10–15 seconds.",
+"Double-strain into the chilled coupe.",
+"Garnish: mint sprig."
+],
+"de": [
+"Glas (Coupette) mit Eiswasser oder im Gefrierfach vorkühlen.",
+"Gin, Limettensaft, Zuckersirup und Minze in einen Shaker geben.",
+"Mit Eis füllen und 10–15 Sekunden kräftig shaken.",
+"Doppelt ins vorgekühlte Glas abseihen (Fein- und Barsieb).",
+"Garnitur: Minzzweig."
+]
+}
+},
+{
+"id": "bramble",
+"name": "Bramble",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"sour",
+"modern",
+"gin"
+],
+"glass": "rocks",
+"method": "crushed",
+"color": "#8E3F6A",
+"flavors": [
+"fruity",
+"sour"
+],
+"season": [
+"autumn"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "gin",
+"amount": 50,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lemon_juice",
+"amount": 25,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "simple_syrup",
+"amount": 10,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "creme_de_mure",
+"amount": 15,
+"unit": "ml",
+"flag": "f"
+}
+],
+"garnish": {
+"en": "blackberry and lemon slice",
+"de": "Brombeere und Zitronenscheibe"
+},
+"about": {
+"en": "Created in 1980s London as a British answer to the Sour.",
+"de": "In den 1980ern in London als britische Antwort auf den Sour entstanden."
+},
+"steps": {
+"en": [
+"Add gin, lemon juice and simple syrup to a shaker.",
+"Fill with ice and shake hard for 10–15 seconds.",
+"Strain into a rocks glass filled with crushed ice.",
+"Gently float crème de mûre on top.",
+"Garnish: blackberry and lemon slice."
+],
+"de": [
+"Gin, Zitronensaft und Zuckersirup in einen Shaker geben.",
+"Mit Eis füllen und 10–15 Sekunden kräftig shaken.",
+"In ein mit Crushed Ice gefülltes Glas (Tumbler) abseihen.",
+"Brombeerlikör vorsichtig obenauf gießen (floaten).",
+"Garnitur: Brombeere und Zitronenscheibe."
+]
+}
+},
+{
+"id": "old_fashioned",
+"name": "Old Fashioned",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"stirred",
+"classic",
+"whiskey"
+],
+"glass": "rocks",
+"method": "stir_rocks",
+"color": "#C77A2E",
+"flavors": [
+"strong",
+"sweet",
+"bitter"
+],
+"season": [
+"autumn",
+"winter"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "bourbon",
+"amount": 60,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "demerara_syrup",
+"amount": 7,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "angostura",
+"amount": 2,
+"unit": "dash",
+"flag": ""
+},
+{
+"key": "orange_bitters",
+"amount": 1,
+"unit": "dash",
+"flag": ""
+}
+],
+"garnish": {
+"en": "orange twist",
+"de": "Orangenzeste"
+},
+"about": {
+"en": "The original 'cocktail': spirit, sugar, water and bitters.",
+"de": "Der ursprüngliche „Cocktail“: Spirituose, Zucker, Wasser und Bitter."
+},
+"steps": {
+"en": [
+"Add bourbon, demerara syrup, Angostura bitters and orange bitters to a mixing glass filled with ice.",
+"Stir for about 30 seconds until well chilled.",
+"Strain into a rocks glass over one large ice cube.",
+"Garnish: orange twist."
+],
+"de": [
+"Bourbon, Rohrzuckersirup, Angostura Bitter und Orangenbitter in ein mit Eis gefülltes Rührglas geben.",
+"Etwa 30 Sekunden rühren, bis alles gut gekühlt ist.",
+"Auf einen großen Eiswürfel ins Glas (Tumbler) abseihen.",
+"Garnitur: Orangenzeste."
+]
+}
+},
+{
+"id": "manhattan",
+"name": "Manhattan",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"stirred",
+"classic",
+"whiskey"
+],
+"glass": "coupe",
+"method": "stir_up",
+"color": "#9C3D22",
+"flavors": [
+"strong",
+"sweet",
+"bitter"
+],
+"season": [
+"winter"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "rye",
+"amount": 50,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "sweet_vermouth",
+"amount": 25,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "angostura",
+"amount": 2,
+"unit": "dash",
+"flag": ""
+}
+],
+"garnish": {
+"en": "cocktail cherry",
+"de": "Cocktailkirsche"
+},
+"about": {
+"en": "A New York classic from the 1870s.",
+"de": "Ein New Yorker Klassiker aus den 1870ern."
+},
+"steps": {
+"en": [
+"Chill the coupe with ice water or in the freezer.",
+"Add rye whiskey, sweet vermouth and Angostura bitters to a mixing glass filled with ice.",
+"Stir for about 30 seconds until well chilled.",
+"Strain into the chilled coupe.",
+"Garnish: cocktail cherry."
+],
+"de": [
+"Glas (Coupette) mit Eiswasser oder im Gefrierfach vorkühlen.",
+"Rye Whiskey, Roter Wermut und Angostura Bitter in ein mit Eis gefülltes Rührglas geben.",
+"Etwa 30 Sekunden rühren, bis alles gut gekühlt ist.",
+"Ins vorgekühlte Glas abseihen.",
+"Garnitur: Cocktailkirsche."
+]
+}
+},
+{
+"id": "martini",
+"name": "Dry Martini",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"stirred",
+"classic",
+"gin"
+],
+"glass": "martini",
+"method": "stir_up",
+"color": "#F1F2E8",
+"flavors": [
+"strong",
+"dry",
+"herbal"
+],
+"season": [],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "gin",
+"amount": 60,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "dry_vermouth",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "orange_bitters",
+"amount": 1,
+"unit": "dash",
+"flag": ""
+}
+],
+"garnish": {
+"en": "lemon twist or olive",
+"de": "Zitronenzeste oder Olive"
+},
+"about": {
+"en": "The most debated cocktail of all – everyone has a ratio.",
+"de": "Der umstrittenste Cocktail überhaupt – jeder hat sein eigenes Verhältnis."
+},
+"steps": {
+"en": [
+"Chill the martini glass with ice water or in the freezer.",
+"Add gin, dry vermouth and orange bitters to a mixing glass filled with ice.",
+"Stir for about 30 seconds until well chilled.",
+"Strain into the chilled martini glass.",
+"Garnish: lemon twist or olive."
+],
+"de": [
+"Glas (Martiniglas) mit Eiswasser oder im Gefrierfach vorkühlen.",
+"Gin, Trockener Wermut und Orangenbitter in ein mit Eis gefülltes Rührglas geben.",
+"Etwa 30 Sekunden rühren, bis alles gut gekühlt ist.",
+"Ins vorgekühlte Glas abseihen.",
+"Garnitur: Zitronenzeste oder Olive."
+]
+}
+},
+{
+"id": "vesper",
+"name": "Vesper",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"stirred",
+"classic",
+"gin"
+],
+"glass": "martini",
+"method": "stir_up",
+"color": "#F2EFD8",
+"flavors": [
+"strong",
+"dry"
+],
+"season": [],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "gin",
+"amount": 45,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "vodka",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lillet",
+"amount": 7,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "lemon twist",
+"de": "Zitronenzeste"
+},
+"about": {
+"en": "Introduced in a 1953 spy novel.",
+"de": "Zuerst in einem Spionageroman von 1953 beschrieben."
+},
+"steps": {
+"en": [
+"Chill the martini glass with ice water or in the freezer.",
+"Add gin, vodka and Lillet Blanc to a mixing glass filled with ice.",
+"Stir for about 30 seconds until well chilled.",
+"Strain into the chilled martini glass.",
+"Garnish: lemon twist."
+],
+"de": [
+"Glas (Martiniglas) mit Eiswasser oder im Gefrierfach vorkühlen.",
+"Gin, Wodka und Lillet Blanc in ein mit Eis gefülltes Rührglas geben.",
+"Etwa 30 Sekunden rühren, bis alles gut gekühlt ist.",
+"Ins vorgekühlte Glas abseihen.",
+"Garnitur: Zitronenzeste."
+]
+}
+},
+{
+"id": "negroni",
+"name": "Negroni",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"stirred",
+"classic",
+"bitter",
+"gin"
+],
+"glass": "rocks",
+"method": "stir_rocks",
+"color": "#C2262E",
+"flavors": [
+"bitter",
+"sweet",
+"strong"
+],
+"season": [],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "gin",
+"amount": 30,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "campari",
+"amount": 30,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "sweet_vermouth",
+"amount": 30,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "orange slice",
+"de": "Orangenscheibe"
+},
+"about": {
+"en": "Florence, around 1919: an Americano made stronger with gin.",
+"de": "Florenz, um 1919: ein Americano, mit Gin verstärkt."
+},
+"steps": {
+"en": [
+"Add gin, Campari and sweet vermouth to a mixing glass filled with ice.",
+"Stir for about 30 seconds until well chilled.",
+"Strain into a rocks glass over one large ice cube.",
+"Garnish: orange slice."
+],
+"de": [
+"Gin, Campari und Roter Wermut in ein mit Eis gefülltes Rührglas geben.",
+"Etwa 30 Sekunden rühren, bis alles gut gekühlt ist.",
+"Auf einen großen Eiswürfel ins Glas (Tumbler) abseihen.",
+"Garnitur: Orangenscheibe."
+]
+}
+},
+{
+"id": "boulevardier",
+"name": "Boulevardier",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"stirred",
+"classic",
+"bitter",
+"whiskey"
+],
+"glass": "coupe",
+"method": "stir_up",
+"color": "#9E2A20",
+"flavors": [
+"bitter",
+"sweet",
+"strong"
+],
+"season": [
+"autumn",
+"winter"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "bourbon",
+"amount": 40,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "campari",
+"amount": 25,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "sweet_vermouth",
+"amount": 25,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "orange twist",
+"de": "Orangenzeste"
+},
+"about": null,
+"steps": {
+"en": [
+"Chill the coupe with ice water or in the freezer.",
+"Add bourbon, Campari and sweet vermouth to a mixing glass filled with ice.",
+"Stir for about 30 seconds until well chilled.",
+"Strain into the chilled coupe.",
+"Garnish: orange twist."
+],
+"de": [
+"Glas (Coupette) mit Eiswasser oder im Gefrierfach vorkühlen.",
+"Bourbon, Campari und Roter Wermut in ein mit Eis gefülltes Rührglas geben.",
+"Etwa 30 Sekunden rühren, bis alles gut gekühlt ist.",
+"Ins vorgekühlte Glas abseihen.",
+"Garnitur: Orangenzeste."
+]
+}
+},
+{
+"id": "mezcal_negroni",
+"name": "Mezcal Negroni",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"stirred",
+"modern",
+"bitter",
+"agave",
+"smoky"
+],
+"glass": "rocks",
+"method": "stir_rocks",
+"color": "#B4262C",
+"flavors": [
+"bitter",
+"smoky"
+],
+"season": [],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "mezcal",
+"amount": 30,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "campari",
+"amount": 30,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "sweet_vermouth",
+"amount": 30,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "orange twist",
+"de": "Orangenzeste"
+},
+"about": null,
+"steps": {
+"en": [
+"Add mezcal, Campari and sweet vermouth to a mixing glass filled with ice.",
+"Stir for about 30 seconds until well chilled.",
+"Strain into a rocks glass over one large ice cube.",
+"Garnish: orange twist."
+],
+"de": [
+"Mezcal, Campari und Roter Wermut in ein mit Eis gefülltes Rührglas geben.",
+"Etwa 30 Sekunden rühren, bis alles gut gekühlt ist.",
+"Auf einen großen Eiswürfel ins Glas (Tumbler) abseihen.",
+"Garnitur: Orangenzeste."
+]
+}
+},
+{
+"id": "white_negroni",
+"name": "White Negroni",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"stirred",
+"modern",
+"bitter",
+"gin"
+],
+"glass": "rocks",
+"method": "stir_rocks",
+"color": "#EFE3A8",
+"flavors": [
+"bitter",
+"herbal"
+],
+"season": [],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "gin",
+"amount": 40,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lillet",
+"amount": 30,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "blanc_vermouth",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "lemon twist",
+"de": "Zitronenzeste"
+},
+"about": null,
+"steps": {
+"en": [
+"Add gin, Lillet Blanc and bianco vermouth to a mixing glass filled with ice.",
+"Stir for about 30 seconds until well chilled.",
+"Strain into a rocks glass over one large ice cube.",
+"Garnish: lemon twist."
+],
+"de": [
+"Gin, Lillet Blanc und Weißer Wermut (Bianco) in ein mit Eis gefülltes Rührglas geben.",
+"Etwa 30 Sekunden rühren, bis alles gut gekühlt ist.",
+"Auf einen großen Eiswürfel ins Glas (Tumbler) abseihen.",
+"Garnitur: Zitronenzeste."
+]
+}
+},
+{
+"id": "sazerac",
+"name": "Sazerac",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"stirred",
+"classic",
+"whiskey"
+],
+"glass": "rocks",
+"method": "stir_up",
+"color": "#B5562C",
+"flavors": [
+"strong",
+"herbal",
+"spicy"
+],
+"season": [],
+"servings": 1,
+"difficulty": 3,
+"ingredients": [
+{
+"key": "absinthe",
+"amount": 1,
+"unit": "bsp",
+"flag": "r"
+},
+{
+"key": "rye",
+"amount": 60,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "simple_syrup",
+"amount": 7,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "peychauds",
+"amount": 3,
+"unit": "dash",
+"flag": ""
+}
+],
+"garnish": {
+"en": "lemon twist",
+"de": "Zitronenzeste"
+},
+"about": {
+"en": "New Orleans' signature drink; served neat in an absinthe-rinsed glass.",
+"de": "Der Signature-Drink von New Orleans; pur in einem mit Absinth ausgeschwenkten Glas."
+},
+"steps": {
+"en": [
+"Chill the rocks glass with ice water or in the freezer.",
+"Rinse the glass with absinthe and discard the excess.",
+"Add rye whiskey, simple syrup and Peychaud's bitters to a mixing glass filled with ice.",
+"Stir for about 30 seconds until well chilled.",
+"Strain into the chilled rocks glass.",
+"Garnish: lemon twist."
+],
+"de": [
+"Glas (Tumbler) mit Eiswasser oder im Gefrierfach vorkühlen.",
+"Das Glas mit Absinth ausschwenken, den Rest wegkippen.",
+"Rye Whiskey, Zuckersirup und Peychaud's Bitter in ein mit Eis gefülltes Rührglas geben.",
+"Etwa 30 Sekunden rühren, bis alles gut gekühlt ist.",
+"Ins vorgekühlte Glas abseihen.",
+"Garnitur: Zitronenzeste."
+]
+}
+},
+{
+"id": "vieux_carre",
+"name": "Vieux Carré",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"stirred",
+"classic",
+"whiskey"
+],
+"glass": "rocks",
+"method": "stir_rocks",
+"color": "#8F3A1E",
+"flavors": [
+"strong",
+"herbal",
+"sweet"
+],
+"season": [
+"winter"
+],
+"servings": 1,
+"difficulty": 2,
+"ingredients": [
+{
+"key": "rye",
+"amount": 25,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "cognac",
+"amount": 25,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "sweet_vermouth",
+"amount": 25,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "benedictine",
+"amount": 5,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "angostura",
+"amount": 1,
+"unit": "dash",
+"flag": ""
+},
+{
+"key": "peychauds",
+"amount": 1,
+"unit": "dash",
+"flag": ""
+}
+],
+"garnish": {
+"en": "cocktail cherry",
+"de": "Cocktailkirsche"
+},
+"about": null,
+"steps": {
+"en": [
+"Add rye whiskey, Cognac, sweet vermouth, Bénédictine, Angostura bitters and Peychaud's bitters to a mixing glass filled with ice.",
+"Stir for about 30 seconds until well chilled.",
+"Strain into a rocks glass over one large ice cube.",
+"Garnish: cocktail cherry."
+],
+"de": [
+"Rye Whiskey, Cognac, Roter Wermut, Bénédictine, Angostura Bitter und Peychaud's Bitter in ein mit Eis gefülltes Rührglas geben.",
+"Etwa 30 Sekunden rühren, bis alles gut gekühlt ist.",
+"Auf einen großen Eiswürfel ins Glas (Tumbler) abseihen.",
+"Garnitur: Cocktailkirsche."
+]
+}
+},
+{
+"id": "rob_roy",
+"name": "Rob Roy",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"stirred",
+"classic",
+"whiskey"
+],
+"glass": "coupe",
+"method": "stir_up",
+"color": "#9A4524",
+"flavors": [
+"strong",
+"sweet"
+],
+"season": [
+"winter"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "scotch",
+"amount": 50,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "sweet_vermouth",
+"amount": 25,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "angostura",
+"amount": 2,
+"unit": "dash",
+"flag": ""
+}
+],
+"garnish": {
+"en": "cocktail cherry",
+"de": "Cocktailkirsche"
+},
+"about": null,
+"steps": {
+"en": [
+"Chill the coupe with ice water or in the freezer.",
+"Add Blended Scotch, sweet vermouth and Angostura bitters to a mixing glass filled with ice.",
+"Stir for about 30 seconds until well chilled.",
+"Strain into the chilled coupe.",
+"Garnish: cocktail cherry."
+],
+"de": [
+"Glas (Coupette) mit Eiswasser oder im Gefrierfach vorkühlen.",
+"Blended Scotch, Roter Wermut und Angostura Bitter in ein mit Eis gefülltes Rührglas geben.",
+"Etwa 30 Sekunden rühren, bis alles gut gekühlt ist.",
+"Ins vorgekühlte Glas abseihen.",
+"Garnitur: Cocktailkirsche."
+]
+}
+},
+{
+"id": "rusty_nail",
+"name": "Rusty Nail",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"stirred",
+"classic",
+"whiskey"
+],
+"glass": "rocks",
+"method": "stir_rocks",
+"color": "#C4782A",
+"flavors": [
+"strong",
+"sweet",
+"herbal"
+],
+"season": [
+"winter"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "scotch",
+"amount": 50,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "benedictine",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "lemon twist",
+"de": "Zitronenzeste"
+},
+"about": null,
+"steps": {
+"en": [
+"Add Blended Scotch and Bénédictine to a mixing glass filled with ice.",
+"Stir for about 30 seconds until well chilled.",
+"Strain into a rocks glass over one large ice cube.",
+"Garnish: lemon twist."
+],
+"de": [
+"Blended Scotch und Bénédictine in ein mit Eis gefülltes Rührglas geben.",
+"Etwa 30 Sekunden rühren, bis alles gut gekühlt ist.",
+"Auf einen großen Eiswürfel ins Glas (Tumbler) abseihen.",
+"Garnitur: Zitronenzeste."
+]
+}
+},
+{
+"id": "black_russian",
+"name": "Black Russian",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"stirred",
+"classic",
+"coffee",
+"vodka"
+],
+"glass": "rocks",
+"method": "build",
+"color": "#2A1A12",
+"flavors": [
+"sweet",
+"coffee",
+"strong"
+],
+"season": [],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "vodka",
+"amount": 50,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "coffee_liqueur",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": null,
+"about": null,
+"steps": {
+"en": [
+"Fill a rocks glass with ice.",
+"Pour in vodka and coffee liqueur."
+],
+"de": [
+"Glas (Tumbler) mit Eis füllen.",
+"Wodka und Kaffeelikör hineingießen."
+]
+}
+},
+{
+"id": "white_russian",
+"name": "White Russian",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"creamy",
+"classic",
+"coffee",
+"vodka"
+],
+"glass": "rocks",
+"method": "build",
+"color": "#D9C3A5",
+"flavors": [
+"creamy",
+"sweet",
+"coffee"
+],
+"season": [],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "vodka",
+"amount": 50,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "coffee_liqueur",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "cream",
+"amount": 30,
+"unit": "ml",
+"flag": "f"
+}
+],
+"garnish": null,
+"about": {
+"en": "Got a second life thanks to a 1998 cult film.",
+"de": "Erlebte dank eines Kultfilms von 1998 ein zweites Leben."
+},
+"steps": {
+"en": [
+"Fill a rocks glass with ice.",
+"Pour in vodka and coffee liqueur.",
+"Gently float heavy cream on top."
+],
+"de": [
+"Glas (Tumbler) mit Eis füllen.",
+"Wodka und Kaffeelikör hineingießen.",
+"Sahne vorsichtig obenauf gießen (floaten)."
+]
+}
+},
+{
+"id": "godfather",
+"name": "Godfather",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"stirred",
+"classic",
+"whiskey"
+],
+"glass": "rocks",
+"method": "build",
+"color": "#B66A2A",
+"flavors": [
+"sweet",
+"nutty",
+"strong"
+],
+"season": [
+"winter"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "scotch",
+"amount": 45,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "amaretto",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": null,
+"about": null,
+"steps": {
+"en": [
+"Fill a rocks glass with ice.",
+"Pour in Blended Scotch and Amaretto."
+],
+"de": [
+"Glas (Tumbler) mit Eis füllen.",
+"Blended Scotch und Amaretto hineingießen."
+]
+}
+},
+{
+"id": "gin_tonic",
+"name": "Gin & Tonic",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"highball",
+"classic",
+"gin"
+],
+"glass": "wine",
+"method": "build",
+"color": "#E9F2EE",
+"flavors": [
+"bitter",
+"fresh",
+"refreshing"
+],
+"season": [
+"summer"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "gin",
+"amount": 50,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "tonic",
+"amount": 150,
+"unit": "ml",
+"flag": "t"
+}
+],
+"garnish": {
+"en": "lime wedge or cucumber",
+"de": "Limettenspalte oder Gurke"
+},
+"about": {
+"en": "Born from quinine tonic used against malaria in British India.",
+"de": "Entstanden aus chininhaltigem Tonic, das in Britisch-Indien gegen Malaria half."
+},
+"steps": {
+"en": [
+"Fill a wine glass with ice.",
+"Pour in gin.",
+"Top up with tonic water and stir gently.",
+"Garnish: lime wedge or cucumber."
+],
+"de": [
+"Glas (Weinglas) mit Eis füllen.",
+"Gin hineingießen.",
+"Mit Tonic Water auffüllen und vorsichtig umrühren.",
+"Garnitur: Limettenspalte oder Gurke."
+]
+}
+},
+{
+"id": "moscow_mule",
+"name": "Moscow Mule",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"highball",
+"classic",
+"vodka"
+],
+"glass": "copper_mug",
+"method": "build",
+"color": "#E6D9A2",
+"flavors": [
+"spicy",
+"fresh",
+"refreshing"
+],
+"season": [],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "vodka",
+"amount": 50,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lime_juice",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "ginger_beer",
+"amount": 120,
+"unit": "ml",
+"flag": "t"
+}
+],
+"garnish": {
+"en": "lime wedge",
+"de": "Limettenspalte"
+},
+"about": {
+"en": "A 1940s marketing idea to sell vodka, ginger beer and copper mugs.",
+"de": "Eine Marketingidee der 1940er, um Wodka, Ginger Beer und Kupferbecher zu verkaufen."
+},
+"steps": {
+"en": [
+"Fill a copper mug with ice.",
+"Pour in vodka and lime juice.",
+"Top up with ginger beer and stir gently.",
+"Garnish: lime wedge."
+],
+"de": [
+"Glas (Kupferbecher) mit Eis füllen.",
+"Wodka und Limettensaft hineingießen.",
+"Mit Ginger Beer auffüllen und vorsichtig umrühren.",
+"Garnitur: Limettenspalte."
+]
+}
+},
+{
+"id": "dark_n_stormy",
+"name": "Dark 'n' Stormy",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"highball",
+"classic",
+"rum"
+],
+"glass": "highball",
+"method": "build",
+"color": "#7A4A22",
+"flavors": [
+"spicy",
+"sweet",
+"refreshing"
+],
+"season": [],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "ginger_beer",
+"amount": 120,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lime_juice",
+"amount": 10,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "dark_rum",
+"amount": 50,
+"unit": "ml",
+"flag": "f"
+}
+],
+"garnish": {
+"en": "lime wedge",
+"de": "Limettenspalte"
+},
+"about": {
+"en": "Bermuda's national drink.",
+"de": "Das Nationalgetränk Bermudas."
+},
+"steps": {
+"en": [
+"Fill a highball glass with ice.",
+"Pour in ginger beer and lime juice.",
+"Gently float dark rum on top.",
+"Garnish: lime wedge."
+],
+"de": [
+"Glas (Longdrinkglas) mit Eis füllen.",
+"Ginger Beer und Limettensaft hineingießen.",
+"Dunkler Rum vorsichtig obenauf gießen (floaten).",
+"Garnitur: Limettenspalte."
+]
+}
+},
+{
+"id": "cuba_libre",
+"name": "Cuba Libre",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"highball",
+"classic",
+"rum"
+],
+"glass": "highball",
+"method": "build",
+"color": "#4A2614",
+"flavors": [
+"sweet",
+"refreshing"
+],
+"season": [],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "white_rum",
+"amount": 50,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lime_juice",
+"amount": 10,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "cola",
+"amount": 120,
+"unit": "ml",
+"flag": "t"
+}
+],
+"garnish": {
+"en": "lime wedge",
+"de": "Limettenspalte"
+},
+"about": null,
+"steps": {
+"en": [
+"Fill a highball glass with ice.",
+"Pour in white rum and lime juice.",
+"Top up with Cola and stir gently.",
+"Garnish: lime wedge."
+],
+"de": [
+"Glas (Longdrinkglas) mit Eis füllen.",
+"Weißer Rum und Limettensaft hineingießen.",
+"Mit Cola auffüllen und vorsichtig umrühren.",
+"Garnitur: Limettenspalte."
+]
+}
+},
+{
+"id": "paloma",
+"name": "Paloma",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"highball",
+"classic",
+"agave"
+],
+"glass": "highball",
+"method": "build",
+"color": "#F5B7A0",
+"flavors": [
+"sour",
+"bitter",
+"refreshing"
+],
+"season": [
+"summer"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "tequila",
+"amount": 50,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lime_juice",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "salt",
+"amount": 1,
+"unit": "pinch",
+"flag": ""
+},
+{
+"key": "grapefruit_soda",
+"amount": 120,
+"unit": "ml",
+"flag": "t"
+}
+],
+"garnish": {
+"en": "grapefruit wedge",
+"de": "Grapefruitspalte"
+},
+"about": {
+"en": "Probably more popular in Mexico than the Margarita.",
+"de": "In Mexiko vermutlich beliebter als die Margarita."
+},
+"steps": {
+"en": [
+"Fill a highball glass with ice.",
+"Pour in tequila blanco, lime juice and salt.",
+"Top up with grapefruit soda and stir gently.",
+"Garnish: grapefruit wedge."
+],
+"de": [
+"Glas (Longdrinkglas) mit Eis füllen.",
+"Tequila blanco, Limettensaft und Salz hineingießen.",
+"Mit Grapefruitlimonade auffüllen und vorsichtig umrühren.",
+"Garnitur: Grapefruitspalte."
+]
+}
+},
+{
+"id": "tom_collins",
+"name": "Tom Collins",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"highball",
+"classic",
+"gin",
+"sour"
+],
+"glass": "collins",
+"method": "shake_top",
+"color": "#F2F0D2",
+"flavors": [
+"sour",
+"refreshing"
+],
+"season": [
+"summer"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "gin",
+"amount": 50,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lemon_juice",
+"amount": 25,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "simple_syrup",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "soda",
+"amount": 60,
+"unit": "ml",
+"flag": "t"
+}
+],
+"garnish": {
+"en": "lemon slice & cherry",
+"de": "Zitronenscheibe & Kirsche"
+},
+"about": null,
+"steps": {
+"en": [
+"Add gin, lemon juice and simple syrup to a shaker.",
+"Fill with ice and shake hard for 10–15 seconds.",
+"Strain into a Collins glass over fresh ice.",
+"Top up with soda water and stir gently.",
+"Garnish: lemon slice & cherry."
+],
+"de": [
+"Gin, Zitronensaft und Zuckersirup in einen Shaker geben.",
+"Mit Eis füllen und 10–15 Sekunden kräftig shaken.",
+"Auf frisches Eis ins Glas (Collinsglas) abseihen.",
+"Mit Sodawasser auffüllen und vorsichtig umrühren.",
+"Garnitur: Zitronenscheibe & Kirsche."
+]
+}
+},
+{
+"id": "whiskey_highball",
+"name": "Whisky Highball",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"highball",
+"classic",
+"whiskey"
+],
+"glass": "highball",
+"method": "build",
+"color": "#E6C681",
+"flavors": [
+"dry",
+"refreshing"
+],
+"season": [],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "scotch",
+"amount": 45,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "soda",
+"amount": 150,
+"unit": "ml",
+"flag": "t"
+}
+],
+"garnish": {
+"en": "lemon twist",
+"de": "Zitronenzeste"
+},
+"about": {
+"en": "Hugely popular in Japan, served with lots of ice and a lemon twist.",
+"de": "In Japan extrem beliebt, mit viel Eis und Zitronenzeste."
+},
+"steps": {
+"en": [
+"Fill a highball glass with ice.",
+"Pour in Blended Scotch.",
+"Top up with soda water and stir gently.",
+"Garnish: lemon twist."
+],
+"de": [
+"Glas (Longdrinkglas) mit Eis füllen.",
+"Blended Scotch hineingießen.",
+"Mit Sodawasser auffüllen und vorsichtig umrühren.",
+"Garnitur: Zitronenzeste."
+]
+}
+},
+{
+"id": "americano",
+"name": "Americano",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"highball",
+"classic",
+"bitter",
+"low_abv"
+],
+"glass": "highball",
+"method": "build",
+"color": "#C8402E",
+"flavors": [
+"bitter",
+"sweet",
+"refreshing"
+],
+"season": [],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "campari",
+"amount": 30,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "sweet_vermouth",
+"amount": 30,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "soda",
+"amount": 90,
+"unit": "ml",
+"flag": "t"
+}
+],
+"garnish": {
+"en": "orange slice",
+"de": "Orangenscheibe"
+},
+"about": null,
+"steps": {
+"en": [
+"Fill a highball glass with ice.",
+"Pour in Campari and sweet vermouth.",
+"Top up with soda water and stir gently.",
+"Garnish: orange slice."
+],
+"de": [
+"Glas (Longdrinkglas) mit Eis füllen.",
+"Campari und Roter Wermut hineingießen.",
+"Mit Sodawasser auffüllen und vorsichtig umrühren.",
+"Garnitur: Orangenscheibe."
+]
+}
+},
+{
+"id": "aperol_spritz",
+"name": "Aperol Spritz",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"spritz",
+"bitter",
+"low_abv"
+],
+"glass": "wine",
+"method": "build",
+"color": "#F26A21",
+"flavors": [
+"bitter",
+"sweet",
+"refreshing"
+],
+"season": [
+"summer"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "prosecco",
+"amount": 90,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "aperol",
+"amount": 60,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "soda",
+"amount": 30,
+"unit": "ml",
+"flag": "t"
+}
+],
+"garnish": {
+"en": "orange slice",
+"de": "Orangenscheibe"
+},
+"about": {
+"en": "The Venetian 3-2-1 rule: prosecco, Aperol, soda.",
+"de": "Die venezianische 3-2-1-Regel: Prosecco, Aperol, Soda."
+},
+"steps": {
+"en": [
+"Fill a wine glass with ice.",
+"Pour in Prosecco and Aperol.",
+"Top up with soda water and stir gently.",
+"Garnish: orange slice."
+],
+"de": [
+"Glas (Weinglas) mit Eis füllen.",
+"Prosecco und Aperol hineingießen.",
+"Mit Sodawasser auffüllen und vorsichtig umrühren.",
+"Garnitur: Orangenscheibe."
+]
+}
+},
+{
+"id": "campari_spritz",
+"name": "Campari Spritz",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"spritz",
+"bitter",
+"low_abv"
+],
+"glass": "wine",
+"method": "build",
+"color": "#D02A2A",
+"flavors": [
+"bitter",
+"refreshing"
+],
+"season": [
+"summer"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "prosecco",
+"amount": 90,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "campari",
+"amount": 45,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "soda",
+"amount": 30,
+"unit": "ml",
+"flag": "t"
+}
+],
+"garnish": {
+"en": "orange slice",
+"de": "Orangenscheibe"
+},
+"about": null,
+"steps": {
+"en": [
+"Fill a wine glass with ice.",
+"Pour in Prosecco and Campari.",
+"Top up with soda water and stir gently.",
+"Garnish: orange slice."
+],
+"de": [
+"Glas (Weinglas) mit Eis füllen.",
+"Prosecco und Campari hineingießen.",
+"Mit Sodawasser auffüllen und vorsichtig umrühren.",
+"Garnitur: Orangenscheibe."
+]
+}
+},
+{
+"id": "hugo",
+"name": "Hugo",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"spritz",
+"floral",
+"low_abv"
+],
+"glass": "wine",
+"method": "muddle",
+"color": "#E9F4D6",
+"flavors": [
+"floral",
+"fresh",
+"refreshing"
+],
+"season": [
+"summer",
+"spring"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "mint",
+"amount": 6,
+"unit": "leaf",
+"flag": "m"
+},
+{
+"key": "lime",
+"amount": 2,
+"unit": "slice",
+"flag": "m"
+},
+{
+"key": "elderflower_syrup",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "prosecco",
+"amount": 120,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "soda",
+"amount": 40,
+"unit": "ml",
+"flag": "t"
+}
+],
+"garnish": {
+"en": "mint sprig",
+"de": "Minzzweig"
+},
+"about": {
+"en": "Created in South Tyrol in 2005 and a summer staple in German-speaking countries.",
+"de": "2005 in Südtirol entstanden, inzwischen ein Sommer-Standard im deutschsprachigen Raum."
+},
+"steps": {
+"en": [
+"Gently muddle mint and lime in the wine glass.",
+"Add elderflower cordial and Prosecco and fill the glass with crushed ice.",
+"Stir from the bottom up until the glass frosts.",
+"Top up with soda water and stir gently.",
+"Garnish: mint sprig."
+],
+"de": [
+"Minze und Limette im Glas sanft andrücken (muddeln).",
+"Holunderblütensirup und Prosecco dazugeben und das Glas mit Crushed Ice füllen.",
+"Von unten nach oben rühren, bis das Glas beschlägt.",
+"Mit Sodawasser auffüllen und vorsichtig umrühren.",
+"Garnitur: Minzzweig."
+]
+}
+},
+{
+"id": "lillet_vive",
+"name": "Lillet Wild Berry",
+"nameDe": "Lillet Wild Berry",
+"type": "cocktail",
+"styles": [
+"spritz",
+"fruity",
+"low_abv"
+],
+"glass": "wine",
+"method": "build",
+"color": "#F3A1B2",
+"flavors": [
+"fruity",
+"refreshing"
+],
+"season": [
+"summer"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "lillet",
+"amount": 50,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "tonic",
+"amount": 100,
+"unit": "ml",
+"flag": "t"
+},
+{
+"key": "strawberries",
+"amount": 2,
+"unit": "pc",
+"flag": ""
+}
+],
+"garnish": {
+"en": "berries & mint",
+"de": "Beeren & Minze"
+},
+"about": null,
+"steps": {
+"en": [
+"Fill a wine glass with ice.",
+"Pour in Lillet Blanc and strawberries.",
+"Top up with tonic water and stir gently.",
+"Garnish: berries & mint."
+],
+"de": [
+"Glas (Weinglas) mit Eis füllen.",
+"Lillet Blanc und Erdbeeren hineingießen.",
+"Mit Tonic Water auffüllen und vorsichtig umrühren.",
+"Garnitur: Beeren & Minze."
+]
+}
+},
+{
+"id": "french_75",
+"name": "French 75",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"sparkling",
+"classic",
+"gin"
+],
+"glass": "flute",
+"method": "shake_top",
+"color": "#F5EFC8",
+"flavors": [
+"sour",
+"fresh",
+"sparkling"
+],
+"season": [
+"winter"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "gin",
+"amount": 30,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lemon_juice",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "simple_syrup",
+"amount": 10,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "champagne",
+"amount": 90,
+"unit": "ml",
+"flag": "t"
+}
+],
+"garnish": {
+"en": "lemon twist",
+"de": "Zitronenzeste"
+},
+"about": {
+"en": "Named after a French WWI field gun – because of its kick.",
+"de": "Benannt nach einem französischen Geschütz aus dem Ersten Weltkrieg – wegen seiner Wirkung."
+},
+"steps": {
+"en": [
+"Add gin, lemon juice and simple syrup to a shaker.",
+"Fill with ice and shake hard for 10–15 seconds.",
+"Strain into the chilled champagne flute.",
+"Top up with Champagne and stir gently.",
+"Garnish: lemon twist."
+],
+"de": [
+"Gin, Zitronensaft und Zuckersirup in einen Shaker geben.",
+"Mit Eis füllen und 10–15 Sekunden kräftig shaken.",
+"Ins vorgekühlte Glas abseihen.",
+"Mit Champagner auffüllen und vorsichtig umrühren.",
+"Garnitur: Zitronenzeste."
+]
+}
+},
+{
+"id": "kir_royal",
+"name": "Kir Royal",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"sparkling",
+"classic",
+"low_abv"
+],
+"glass": "flute",
+"method": "build_noice",
+"color": "#9E2C4E",
+"flavors": [
+"fruity",
+"sparkling"
+],
+"season": [
+"winter"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "creme_de_cassis",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "champagne",
+"amount": 120,
+"unit": "ml",
+"flag": "t"
+}
+],
+"garnish": null,
+"about": null,
+"steps": {
+"en": [
+"Pour crème de cassis into a champagne flute.",
+"Top up with Champagne and stir gently."
+],
+"de": [
+"Crème de Cassis ins Glas (Sektflöte) gießen.",
+"Mit Champagner auffüllen und vorsichtig umrühren."
+]
+}
+},
+{
+"id": "mimosa",
+"name": "Mimosa",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"sparkling",
+"brunch",
+"low_abv"
+],
+"glass": "flute",
+"method": "build_noice",
+"color": "#F8B840",
+"flavors": [
+"fruity",
+"sparkling"
+],
+"season": [
+"spring"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "orange_juice",
+"amount": 75,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "sparkling_wine",
+"amount": 75,
+"unit": "ml",
+"flag": "t"
+}
+],
+"garnish": null,
+"about": null,
+"steps": {
+"en": [
+"Pour orange juice into a champagne flute.",
+"Top up with sparkling wine and stir gently."
+],
+"de": [
+"Orangensaft ins Glas (Sektflöte) gießen.",
+"Mit Sekt auffüllen und vorsichtig umrühren."
+]
+}
+},
+{
+"id": "bellini",
+"name": "Bellini",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"sparkling",
+"brunch",
+"low_abv"
+],
+"glass": "flute",
+"method": "build_noice",
+"color": "#F6C7A0",
+"flavors": [
+"fruity",
+"sparkling"
+],
+"season": [
+"summer"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "peach_puree",
+"amount": 50,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "prosecco",
+"amount": 100,
+"unit": "ml",
+"flag": "t"
+}
+],
+"garnish": null,
+"about": {
+"en": "Invented at Harry's Bar in Venice.",
+"de": "Erfunden in Harry's Bar in Venedig."
+},
+"steps": {
+"en": [
+"Pour peach purée into a champagne flute.",
+"Top up with Prosecco and stir gently."
+],
+"de": [
+"Pfirsichpüree ins Glas (Sektflöte) gießen.",
+"Mit Prosecco auffüllen und vorsichtig umrühren."
+]
+}
+},
+{
+"id": "mojito",
+"name": "Mojito",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"highball",
+"classic",
+"rum"
+],
+"glass": "highball",
+"method": "muddle",
+"color": "#D6EFC2",
+"flavors": [
+"fresh",
+"minty",
+"sour",
+"refreshing"
+],
+"season": [
+"summer"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "mint",
+"amount": 10,
+"unit": "leaf",
+"flag": "m"
+},
+{
+"key": "lime_juice",
+"amount": 25,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "simple_syrup",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "white_rum",
+"amount": 50,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "soda",
+"amount": 50,
+"unit": "ml",
+"flag": "t"
+}
+],
+"garnish": {
+"en": "mint sprig",
+"de": "Minzzweig"
+},
+"about": {
+"en": "A Havana classic built on mint, lime and sugar cane.",
+"de": "Ein Havanna-Klassiker aus Minze, Limette und Zuckerrohr."
+},
+"steps": {
+"en": [
+"Gently muddle mint in the highball glass.",
+"Add lime juice, simple syrup and white rum and fill the glass with crushed ice.",
+"Stir from the bottom up until the glass frosts.",
+"Top up with soda water and stir gently.",
+"Garnish: mint sprig."
+],
+"de": [
+"Minze im Glas sanft andrücken (muddeln).",
+"Limettensaft, Zuckersirup und Weißer Rum dazugeben und das Glas mit Crushed Ice füllen.",
+"Von unten nach oben rühren, bis das Glas beschlägt.",
+"Mit Sodawasser auffüllen und vorsichtig umrühren.",
+"Garnitur: Minzzweig."
+]
+}
+},
+{
+"id": "caipirinha",
+"name": "Caipirinha",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"classic",
+"sour"
+],
+"glass": "rocks",
+"method": "muddle",
+"color": "#E5F0B8",
+"flavors": [
+"sour",
+"fresh",
+"strong"
+],
+"season": [
+"summer"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "lime",
+"amount": 1,
+"unit": "pc",
+"flag": "m"
+},
+{
+"key": "sugar",
+"amount": 2,
+"unit": "tsp",
+"flag": "m"
+},
+{
+"key": "cachaca",
+"amount": 60,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": null,
+"about": {
+"en": "Brazil's national cocktail.",
+"de": "Brasiliens Nationalcocktail."
+},
+"steps": {
+"en": [
+"Cut the lime into eighths before muddling.",
+"Gently muddle lime and sugar in the rocks glass.",
+"Add cachaça and fill the glass with crushed ice.",
+"Stir from the bottom up until the glass frosts."
+],
+"de": [
+"Limette vor dem Stößeln in Achtel schneiden.",
+"Limette und Zucker im Glas sanft andrücken (muddeln).",
+"Cachaça dazugeben und das Glas mit Crushed Ice füllen.",
+"Von unten nach oben rühren, bis das Glas beschlägt."
+]
+}
+},
+{
+"id": "mint_julep",
+"name": "Mint Julep",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"classic",
+"whiskey"
+],
+"glass": "julep",
+"method": "muddle",
+"color": "#D0E6AE",
+"flavors": [
+"minty",
+"strong",
+"sweet"
+],
+"season": [
+"summer"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "mint",
+"amount": 8,
+"unit": "leaf",
+"flag": "m"
+},
+{
+"key": "simple_syrup",
+"amount": 15,
+"unit": "ml",
+"flag": "m"
+},
+{
+"key": "bourbon",
+"amount": 60,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "mint sprig",
+"de": "Minzzweig"
+},
+"about": {
+"en": "The official drink of the Kentucky Derby.",
+"de": "Das offizielle Getränk des Kentucky Derby."
+},
+"steps": {
+"en": [
+"Gently muddle mint and simple syrup in the julep cup.",
+"Add bourbon and fill the glass with crushed ice.",
+"Stir from the bottom up until the glass frosts.",
+"Garnish: mint sprig."
+],
+"de": [
+"Minze und Zuckersirup im Glas sanft andrücken (muddeln).",
+"Bourbon dazugeben und das Glas mit Crushed Ice füllen.",
+"Von unten nach oben rühren, bis das Glas beschlägt.",
+"Garnitur: Minzzweig."
+]
+}
+},
+{
+"id": "bloody_mary",
+"name": "Bloody Mary",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"savory",
+"brunch",
+"vodka"
+],
+"glass": "highball",
+"method": "roll",
+"color": "#B8262A",
+"flavors": [
+"savory",
+"spicy"
+],
+"season": [],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "vodka",
+"amount": 50,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "tomato_juice",
+"amount": 120,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lemon_juice",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "worcestershire",
+"amount": 3,
+"unit": "dash",
+"flag": ""
+},
+{
+"key": "hot_sauce",
+"amount": 2,
+"unit": "dash",
+"flag": ""
+},
+{
+"key": "salt",
+"amount": 1,
+"unit": "pinch",
+"flag": ""
+},
+{
+"key": "pepper",
+"amount": 1,
+"unit": "pinch",
+"flag": ""
+}
+],
+"garnish": {
+"en": "celery stalk & lemon wedge",
+"de": "Selleriestange & Zitronenspalte"
+},
+"about": {
+"en": "The classic brunch drink, born in 1920s Paris.",
+"de": "Der Brunch-Klassiker, im Paris der 1920er geboren."
+},
+"steps": {
+"en": [
+"Add vodka, tomato juice, lemon juice, Worcestershire sauce, hot sauce, salt and black pepper to a shaker with ice and gently roll it back and forth between two tins (don't shake).",
+"Strain into a highball glass over fresh ice.",
+"Garnish: celery stalk & lemon wedge."
+],
+"de": [
+"Wodka, Tomatensaft, Zitronensaft, Worcestershiresauce, Scharfe Soße, Salz und Schwarzer Pfeffer mit Eis in einen Shaker geben und vorsichtig zwischen zwei Behältern hin und her gießen (nicht shaken).",
+"Auf frisches Eis ins Glas (Longdrinkglas) abseihen.",
+"Garnitur: Selleriestange & Zitronenspalte."
+]
+}
+},
+{
+"id": "long_island",
+"name": "Long Island Iced Tea",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"highball",
+"party"
+],
+"glass": "collins",
+"method": "build",
+"color": "#9A5A2A",
+"flavors": [
+"strong",
+"sweet"
+],
+"season": [],
+"servings": 1,
+"difficulty": 2,
+"ingredients": [
+{
+"key": "vodka",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "gin",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "white_rum",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "tequila",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "triple_sec",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lemon_juice",
+"amount": 25,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "simple_syrup",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "cola",
+"amount": 30,
+"unit": "ml",
+"flag": "t"
+}
+],
+"garnish": {
+"en": "lemon wedge",
+"de": "Zitronenspalte"
+},
+"about": null,
+"steps": {
+"en": [
+"Fill a Collins glass with ice.",
+"Pour in vodka, gin, white rum, tequila blanco, triple sec, lemon juice and simple syrup.",
+"Top up with Cola and stir gently.",
+"Garnish: lemon wedge."
+],
+"de": [
+"Glas (Collinsglas) mit Eis füllen.",
+"Wodka, Gin, Weißer Rum, Tequila blanco, Triple Sec, Zitronensaft und Zuckersirup hineingießen.",
+"Mit Cola auffüllen und vorsichtig umrühren.",
+"Garnitur: Zitronenspalte."
+]
+}
+},
+{
+"id": "tequila_sunrise",
+"name": "Tequila Sunrise",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"highball",
+"fruity",
+"agave"
+],
+"glass": "highball",
+"method": "build",
+"color": "#F28A2E",
+"flavors": [
+"fruity",
+"sweet"
+],
+"season": [
+"summer"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "tequila",
+"amount": 50,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "orange_juice",
+"amount": 120,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "grenadine",
+"amount": 15,
+"unit": "ml",
+"flag": "f"
+}
+],
+"garnish": {
+"en": "orange slice",
+"de": "Orangenscheibe"
+},
+"about": null,
+"steps": {
+"en": [
+"Fill a highball glass with ice.",
+"Pour in tequila blanco and orange juice.",
+"Gently float Grenadine on top.",
+"Pour the grenadine slowly so it sinks and creates the sunrise.",
+"Garnish: orange slice."
+],
+"de": [
+"Glas (Longdrinkglas) mit Eis füllen.",
+"Tequila blanco und Orangensaft hineingießen.",
+"Grenadine vorsichtig obenauf gießen (floaten).",
+"Grenadine langsam eingießen, damit sie absinkt und den Sonnenaufgang bildet.",
+"Garnitur: Orangenscheibe."
+]
+}
+},
+{
+"id": "sex_on_the_beach",
+"name": "Sex on the Beach",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"highball",
+"fruity",
+"party",
+"vodka"
+],
+"glass": "highball",
+"method": "build",
+"color": "#F26A4F",
+"flavors": [
+"fruity",
+"sweet"
+],
+"season": [
+"summer"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "vodka",
+"amount": 40,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "peach_schnapps",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "orange_juice",
+"amount": 60,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "cranberry_juice",
+"amount": 60,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "orange slice",
+"de": "Orangenscheibe"
+},
+"about": null,
+"steps": {
+"en": [
+"Fill a highball glass with ice.",
+"Pour in vodka, peach schnapps, orange juice and cranberry juice.",
+"Garnish: orange slice."
+],
+"de": [
+"Glas (Longdrinkglas) mit Eis füllen.",
+"Wodka, Pfirsichlikör, Orangensaft und Cranberrysaft hineingießen.",
+"Garnitur: Orangenscheibe."
+]
+}
+},
+{
+"id": "screwdriver",
+"name": "Screwdriver",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"highball",
+"classic",
+"vodka"
+],
+"glass": "highball",
+"method": "build",
+"color": "#F6B03A",
+"flavors": [
+"fruity"
+],
+"season": [],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "vodka",
+"amount": 50,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "orange_juice",
+"amount": 120,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "orange slice",
+"de": "Orangenscheibe"
+},
+"about": null,
+"steps": {
+"en": [
+"Fill a highball glass with ice.",
+"Pour in vodka and orange juice.",
+"Garnish: orange slice."
+],
+"de": [
+"Glas (Longdrinkglas) mit Eis füllen.",
+"Wodka und Orangensaft hineingießen.",
+"Garnitur: Orangenscheibe."
+]
+}
+},
+{
+"id": "harvey_wallbanger",
+"name": "Harvey Wallbanger",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"highball",
+"retro",
+"vodka"
+],
+"glass": "highball",
+"method": "build",
+"color": "#F4B23A",
+"flavors": [
+"fruity",
+"herbal"
+],
+"season": [],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "vodka",
+"amount": 45,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "orange_juice",
+"amount": 120,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "galliano",
+"amount": 15,
+"unit": "ml",
+"flag": "f"
+}
+],
+"garnish": {
+"en": "orange slice",
+"de": "Orangenscheibe"
+},
+"about": null,
+"steps": {
+"en": [
+"Fill a highball glass with ice.",
+"Pour in vodka and orange juice.",
+"Gently float Galliano on top.",
+"Garnish: orange slice."
+],
+"de": [
+"Glas (Longdrinkglas) mit Eis füllen.",
+"Wodka und Orangensaft hineingießen.",
+"Galliano vorsichtig obenauf gießen (floaten).",
+"Garnitur: Orangenscheibe."
+]
+}
+},
+{
+"id": "el_diablo",
+"name": "El Diablo",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"highball",
+"agave"
+],
+"glass": "highball",
+"method": "build",
+"color": "#9E3A5E",
+"flavors": [
+"fruity",
+"spicy"
+],
+"season": [],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "tequila",
+"amount": 45,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lime_juice",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "ginger_beer",
+"amount": 100,
+"unit": "ml",
+"flag": "t"
+},
+{
+"key": "creme_de_cassis",
+"amount": 15,
+"unit": "ml",
+"flag": "f"
+}
+],
+"garnish": {
+"en": "lime wedge",
+"de": "Limettenspalte"
+},
+"about": null,
+"steps": {
+"en": [
+"Fill a highball glass with ice.",
+"Pour in tequila blanco and lime juice.",
+"Top up with ginger beer and stir gently.",
+"Gently float crème de cassis on top.",
+"Garnish: lime wedge."
+],
+"de": [
+"Glas (Longdrinkglas) mit Eis füllen.",
+"Tequila blanco und Limettensaft hineingießen.",
+"Mit Ginger Beer auffüllen und vorsichtig umrühren.",
+"Crème de Cassis vorsichtig obenauf gießen (floaten).",
+"Garnitur: Limettenspalte."
+]
+}
+},
+{
+"id": "irish_coffee",
+"name": "Irish Coffee",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"hot",
+"coffee",
+"classic",
+"whiskey"
+],
+"glass": "mug",
+"method": "hot",
+"color": "#3E2416",
+"flavors": [
+"coffee",
+"sweet",
+"creamy",
+"warm"
+],
+"season": [
+"winter"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "irish_whiskey",
+"amount": 40,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "demerara_syrup",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "coffee",
+"amount": 100,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "cream",
+"amount": 30,
+"unit": "ml",
+"flag": "f"
+}
+],
+"garnish": null,
+"about": {
+"en": "Created at Foynes airport in Ireland in the 1940s for cold transatlantic travellers.",
+"de": "In den 1940ern am Flughafen Foynes in Irland für durchgefrorene Transatlantik-Reisende erfunden."
+},
+"steps": {
+"en": [
+"Warm the heat-proof mug with hot water, then discard the water.",
+"Add Irish whiskey, demerara syrup and hot coffee and stir well.",
+"Gently float heavy cream on top.",
+"Lightly whip the cream and float it over the back of a spoon."
+],
+"de": [
+"Glas (hitzefester Becher) mit heißem Wasser vorwärmen, dann ausleeren.",
+"Irischer Whiskey, Rohrzuckersirup und Heißer Kaffee hineingeben und gut umrühren.",
+"Sahne vorsichtig obenauf gießen (floaten).",
+"Sahne leicht anschlagen und über einen Löffelrücken auflegen."
+]
+}
+},
+{
+"id": "hot_toddy",
+"name": "Hot Toddy",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"hot",
+"classic",
+"whiskey"
+],
+"glass": "mug",
+"method": "hot",
+"color": "#D49A4A",
+"flavors": [
+"warm",
+"sweet",
+"spicy"
+],
+"season": [
+"winter"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "scotch",
+"amount": 45,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "honey",
+"amount": 2,
+"unit": "tsp",
+"flag": ""
+},
+{
+"key": "lemon_juice",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "hot_water",
+"amount": 120,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "cloves",
+"amount": 3,
+"unit": "pc",
+"flag": ""
+}
+],
+"garnish": {
+"en": "lemon wheel & cinnamon stick",
+"de": "Zitronenscheibe & Zimtstange"
+},
+"about": null,
+"steps": {
+"en": [
+"Warm the heat-proof mug with hot water, then discard the water.",
+"Add Blended Scotch, honey, lemon juice, hot water and cloves and stir well.",
+"Garnish: lemon wheel & cinnamon stick."
+],
+"de": [
+"Glas (hitzefester Becher) mit heißem Wasser vorwärmen, dann ausleeren.",
+"Blended Scotch, Honig, Zitronensaft, Heißes Wasser und Gewürznelken hineingeben und gut umrühren.",
+"Garnitur: Zitronenscheibe & Zimtstange."
+]
+}
+},
+{
+"id": "gluhwein",
+"name": "Mulled Wine",
+"nameDe": "Glühwein",
+"type": "punch",
+"styles": [
+"hot",
+"punch",
+"holiday"
+],
+"glass": "mug",
+"method": "simmer",
+"color": "#7A1E2E",
+"flavors": [
+"warm",
+"spicy",
+"fruity"
+],
+"season": [
+"winter",
+"christmas"
+],
+"servings": 6,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "red_wine",
+"amount": 750,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "orange",
+"amount": 1,
+"unit": "pc",
+"flag": ""
+},
+{
+"key": "cinnamon_stick",
+"amount": 2,
+"unit": "pc",
+"flag": ""
+},
+{
+"key": "cloves",
+"amount": 6,
+"unit": "pc",
+"flag": ""
+},
+{
+"key": "star_anise",
+"amount": 2,
+"unit": "pc",
+"flag": ""
+},
+{
+"key": "sugar",
+"amount": 60,
+"unit": "g",
+"flag": ""
+},
+{
+"key": "brandy",
+"amount": 50,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "orange slice",
+"de": "Orangenscheibe"
+},
+"about": {
+"en": "A Christmas-market staple across Germany, Austria and beyond.",
+"de": "Ein Weihnachtsmarkt-Klassiker in Deutschland, Österreich und darüber hinaus."
+},
+"steps": {
+"en": [
+"Put red wine, cinnamon stick, cloves, star anise, sugar and brandy in a pot.",
+"Slice the orange and add it.",
+"Heat gently for 15–20 minutes – do not boil.",
+"Ladle into glasses (heat-proof mug).",
+"Garnish: orange slice."
+],
+"de": [
+"Rotwein, Zimtstange, Gewürznelken, Sternanis, Zucker und Weinbrand in einen Topf geben.",
+"Die Orange in Scheiben schneiden und dazugeben.",
+"15–20 Minuten sanft erhitzen – nicht kochen lassen.",
+"In Gläser schöpfen (hitzefester Becher).",
+"Garnitur: Orangenscheibe."
+]
+}
+},
+{
+"id": "eggnog",
+"name": "Eggnog",
+"nameDe": "Eierpunsch (Eggnog)",
+"type": "punch",
+"styles": [
+"holiday",
+"creamy",
+"punch"
+],
+"glass": "mug",
+"method": "blend_noice",
+"color": "#F1DEB0",
+"flavors": [
+"creamy",
+"sweet",
+"warm"
+],
+"season": [
+"winter",
+"christmas"
+],
+"servings": 4,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "whole_egg",
+"amount": 2,
+"unit": "pc",
+"flag": ""
+},
+{
+"key": "sugar",
+"amount": 40,
+"unit": "g",
+"flag": ""
+},
+{
+"key": "milk",
+"amount": 250,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "cream",
+"amount": 100,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "bourbon",
+"amount": 60,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "aged_rum",
+"amount": 30,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "nutmeg",
+"amount": 1,
+"unit": "pinch",
+"flag": ""
+}
+],
+"garnish": {
+"en": "freshly grated nutmeg",
+"de": "frisch geriebene Muskatnuss"
+},
+"about": null,
+"steps": {
+"en": [
+"Add whole egg, sugar, milk, heavy cream, bourbon, aged rum and nutmeg to a blender.",
+"Blend for 30–60 seconds until smooth.",
+"Pour into a heat-proof mug.",
+"Garnish: freshly grated nutmeg."
+],
+"de": [
+"Ganzes Ei, Zucker, Milch, Sahne, Bourbon, Gereifter Rum und Muskatnuss in einen Mixer geben.",
+"30–60 Sekunden mixen, bis alles glatt ist.",
+"Ins Glas (hitzefester Becher) gießen.",
+"Garnitur: frisch geriebene Muskatnuss."
+]
+}
+},
+{
+"id": "mai_tai",
+"name": "Mai Tai",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"tiki",
+"classic",
+"rum"
+],
+"glass": "rocks",
+"method": "crushed",
+"color": "#E4A04A",
+"flavors": [
+"fruity",
+"nutty",
+"strong"
+],
+"season": [
+"summer"
+],
+"servings": 1,
+"difficulty": 2,
+"ingredients": [
+{
+"key": "aged_rum",
+"amount": 30,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "dark_rum",
+"amount": 30,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "orange_curacao",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "orgeat",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lime_juice",
+"amount": 25,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "mint sprig & spent lime shell",
+"de": "Minzzweig & ausgepresste Limettenhälfte"
+},
+"about": {
+"en": "Trader Vic's 1944 recipe; 'maita'i' means 'good' in Tahitian.",
+"de": "Trader Vics Rezept von 1944; „maita'i“ heißt auf Tahitianisch „gut“."
+},
+"steps": {
+"en": [
+"Add aged rum, dark rum, orange curaçao, Orgeat (almond syrup) and lime juice to a shaker.",
+"Fill with ice and shake hard for 10–15 seconds.",
+"Strain into a rocks glass filled with crushed ice.",
+"Garnish: mint sprig & spent lime shell."
+],
+"de": [
+"Gereifter Rum, Dunkler Rum, Orange Curaçao, Orgeat (Mandelsirup) und Limettensaft in einen Shaker geben.",
+"Mit Eis füllen und 10–15 Sekunden kräftig shaken.",
+"In ein mit Crushed Ice gefülltes Glas (Tumbler) abseihen.",
+"Garnitur: Minzzweig & ausgepresste Limettenhälfte."
+]
+}
+},
+{
+"id": "pina_colada",
+"name": "Piña Colada",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"tiki",
+"creamy",
+"rum"
+],
+"glass": "hurricane",
+"method": "blend",
+"color": "#F7EDC4",
+"flavors": [
+"creamy",
+"sweet",
+"fruity"
+],
+"season": [
+"summer"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "white_rum",
+"amount": 50,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "cream_of_coconut",
+"amount": 40,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "pineapple_juice",
+"amount": 90,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lime_juice",
+"amount": 10,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "pineapple wedge & cherry",
+"de": "Ananasstück & Kirsche"
+},
+"about": {
+"en": "Puerto Rico's national drink since 1978.",
+"de": "Seit 1978 Nationalgetränk von Puerto Rico."
+},
+"steps": {
+"en": [
+"Add white rum, cream of coconut, pineapple juice and lime juice to a blender with a cup (about 150 g) of ice.",
+"Blend for 30–60 seconds until smooth.",
+"Pour into a hurricane glass.",
+"Garnish: pineapple wedge & cherry."
+],
+"de": [
+"Weißer Rum, Kokoscreme (gesüßt), Ananassaft und Limettensaft mit einer Tasse (ca. 150 g) Eis in einen Mixer geben.",
+"30–60 Sekunden mixen, bis alles glatt ist.",
+"Ins Glas (Hurricane-Glas) gießen.",
+"Garnitur: Ananasstück & Kirsche."
+]
+}
+},
+{
+"id": "zombie",
+"name": "Zombie",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"tiki",
+"classic",
+"rum"
+],
+"glass": "tiki",
+"method": "crushed",
+"color": "#C8642E",
+"flavors": [
+"strong",
+"fruity",
+"spicy"
+],
+"season": [],
+"servings": 1,
+"difficulty": 3,
+"ingredients": [
+{
+"key": "white_rum",
+"amount": 30,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "aged_rum",
+"amount": 30,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "overproof_rum",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lime_juice",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "grapefruit_juice",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "cinnamon_syrup",
+"amount": 10,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "falernum",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "grenadine",
+"amount": 5,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "angostura",
+"amount": 1,
+"unit": "dash",
+"flag": ""
+},
+{
+"key": "absinthe",
+"amount": 3,
+"unit": "dash",
+"flag": ""
+}
+],
+"garnish": {
+"en": "mint sprig",
+"de": "Minzzweig"
+},
+"about": {
+"en": "Don the Beachcomber limited guests to two per visit.",
+"de": "Don the Beachcomber erlaubte seinen Gästen höchstens zwei pro Besuch."
+},
+"steps": {
+"en": [
+"Add white rum, aged rum, overproof rum, lime juice, grapefruit juice, cinnamon syrup, Falernum, Grenadine, Angostura bitters and absinthe to a shaker.",
+"Fill with ice and shake hard for 10–15 seconds.",
+"Strain into a tiki mug filled with crushed ice.",
+"Garnish: mint sprig."
+],
+"de": [
+"Weißer Rum, Gereifter Rum, Overproof-Rum, Limettensaft, Grapefruitsaft, Zimtsirup, Falernum, Grenadine, Angostura Bitter und Absinth in einen Shaker geben.",
+"Mit Eis füllen und 10–15 Sekunden kräftig shaken.",
+"In ein mit Crushed Ice gefülltes Glas (Tiki-Becher) abseihen.",
+"Garnitur: Minzzweig."
+]
+}
+},
+{
+"id": "jungle_bird",
+"name": "Jungle Bird",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"tiki",
+"modern",
+"bitter",
+"rum"
+],
+"glass": "rocks",
+"method": "shake_rocks",
+"color": "#B84A3A",
+"flavors": [
+"bitter",
+"fruity"
+],
+"season": [],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "dark_rum",
+"amount": 45,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "campari",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "pineapple_juice",
+"amount": 45,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lime_juice",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "demerara_syrup",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "pineapple wedge",
+"de": "Ananasstück"
+},
+"about": {
+"en": "Created in 1970s Kuala Lumpur.",
+"de": "In den 1970ern in Kuala Lumpur entstanden."
+},
+"steps": {
+"en": [
+"Add dark rum, Campari, pineapple juice, lime juice and demerara syrup to a shaker.",
+"Fill with ice and shake hard for 10–15 seconds.",
+"Strain into a rocks glass over fresh ice.",
+"Garnish: pineapple wedge."
+],
+"de": [
+"Dunkler Rum, Campari, Ananassaft, Limettensaft und Rohrzuckersirup in einen Shaker geben.",
+"Mit Eis füllen und 10–15 Sekunden kräftig shaken.",
+"Auf frisches Eis ins Glas (Tumbler) abseihen.",
+"Garnitur: Ananasstück."
+]
+}
+},
+{
+"id": "painkiller",
+"name": "Painkiller",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"tiki",
+"creamy",
+"rum"
+],
+"glass": "hurricane",
+"method": "shake_crushed",
+"color": "#F2CB7C",
+"flavors": [
+"creamy",
+"fruity",
+"sweet"
+],
+"season": [
+"summer"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "dark_rum",
+"amount": 60,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "pineapple_juice",
+"amount": 120,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "orange_juice",
+"amount": 30,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "cream_of_coconut",
+"amount": 30,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "freshly grated nutmeg",
+"de": "frisch geriebene Muskatnuss"
+},
+"about": null,
+"steps": {
+"en": [
+"Add dark rum, pineapple juice, orange juice and cream of coconut to a shaker.",
+"Add a handful of crushed ice and shake briefly.",
+"Pour everything into a hurricane glass and top with crushed ice.",
+"Garnish: freshly grated nutmeg."
+],
+"de": [
+"Dunkler Rum, Ananassaft, Orangensaft und Kokoscreme (gesüßt) in einen Shaker geben.",
+"Eine Handvoll Crushed Ice dazugeben und kurz shaken.",
+"Alles ins Glas (Hurricane-Glas) gießen und mit Crushed Ice auffüllen.",
+"Garnitur: frisch geriebene Muskatnuss."
+]
+}
+},
+{
+"id": "hurricane",
+"name": "Hurricane",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"tiki",
+"fruity",
+"rum"
+],
+"glass": "hurricane",
+"method": "shake_crushed",
+"color": "#E6402E",
+"flavors": [
+"fruity",
+"sweet",
+"strong"
+],
+"season": [
+"summer"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "white_rum",
+"amount": 45,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "dark_rum",
+"amount": 45,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "passion_fruit_juice",
+"amount": 45,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "orange_juice",
+"amount": 30,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lime_juice",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "grenadine",
+"amount": 10,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "orange slice",
+"de": "Orangenscheibe"
+},
+"about": null,
+"steps": {
+"en": [
+"Add white rum, dark rum, passion fruit juice, orange juice, lime juice and Grenadine to a shaker.",
+"Add a handful of crushed ice and shake briefly.",
+"Pour everything into a hurricane glass and top with crushed ice.",
+"Garnish: orange slice."
+],
+"de": [
+"Weißer Rum, Dunkler Rum, Maracujasaft, Orangensaft, Limettensaft und Grenadine in einen Shaker geben.",
+"Eine Handvoll Crushed Ice dazugeben und kurz shaken.",
+"Alles ins Glas (Hurricane-Glas) gießen und mit Crushed Ice auffüllen.",
+"Garnitur: Orangenscheibe."
+]
+}
+},
+{
+"id": "planters_punch",
+"name": "Planter's Punch",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"tiki",
+"classic",
+"rum"
+],
+"glass": "collins",
+"method": "shake_crushed",
+"color": "#D7652E",
+"flavors": [
+"fruity",
+"spicy"
+],
+"season": [],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "dark_rum",
+"amount": 60,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lime_juice",
+"amount": 30,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "demerara_syrup",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "angostura",
+"amount": 3,
+"unit": "dash",
+"flag": ""
+},
+{
+"key": "soda",
+"amount": 30,
+"unit": "ml",
+"flag": "t"
+}
+],
+"garnish": {
+"en": "mint sprig",
+"de": "Minzzweig"
+},
+"about": {
+"en": "Jamaican rhyme: one of sour, two of sweet, three of strong, four of weak.",
+"de": "Jamaikanischer Merkspruch: eins sauer, zwei süß, drei stark, vier schwach."
+},
+"steps": {
+"en": [
+"Add dark rum, lime juice, demerara syrup and Angostura bitters to a shaker.",
+"Add a handful of crushed ice and shake briefly.",
+"Pour everything into a Collins glass and top with crushed ice.",
+"Top up with soda water and stir gently.",
+"Garnish: mint sprig."
+],
+"de": [
+"Dunkler Rum, Limettensaft, Rohrzuckersirup und Angostura Bitter in einen Shaker geben.",
+"Eine Handvoll Crushed Ice dazugeben und kurz shaken.",
+"Alles ins Glas (Collinsglas) gießen und mit Crushed Ice auffüllen.",
+"Mit Sodawasser auffüllen und vorsichtig umrühren.",
+"Garnitur: Minzzweig."
+]
+}
+},
+{
+"id": "blue_hawaiian",
+"name": "Blue Hawaiian",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"tiki",
+"party",
+"rum"
+],
+"glass": "hurricane",
+"method": "blend",
+"color": "#2DA8D8",
+"flavors": [
+"sweet",
+"fruity",
+"creamy"
+],
+"season": [
+"summer"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "white_rum",
+"amount": 30,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "blue_curacao",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "pineapple_juice",
+"amount": 60,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "cream_of_coconut",
+"amount": 30,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "pineapple wedge",
+"de": "Ananasstück"
+},
+"about": null,
+"steps": {
+"en": [
+"Add white rum, blue curaçao, pineapple juice and cream of coconut to a blender with a cup (about 150 g) of ice.",
+"Blend for 30–60 seconds until smooth.",
+"Pour into a hurricane glass.",
+"Garnish: pineapple wedge."
+],
+"de": [
+"Weißer Rum, Blue Curaçao, Ananassaft und Kokoscreme (gesüßt) mit einer Tasse (ca. 150 g) Eis in einen Mixer geben.",
+"30–60 Sekunden mixen, bis alles glatt ist.",
+"Ins Glas (Hurricane-Glas) gießen.",
+"Garnitur: Ananasstück."
+]
+}
+},
+{
+"id": "frozen_strawberry_daiquiri",
+"name": "Frozen Strawberry Daiquiri",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"frozen",
+"fruity",
+"rum"
+],
+"glass": "hurricane",
+"method": "blend",
+"color": "#E8445A",
+"flavors": [
+"fruity",
+"sweet",
+"sour"
+],
+"season": [
+"summer"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "white_rum",
+"amount": 50,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "strawberries",
+"amount": 6,
+"unit": "pc",
+"flag": ""
+},
+{
+"key": "lime_juice",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "simple_syrup",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "strawberry",
+"de": "Erdbeere"
+},
+"about": null,
+"steps": {
+"en": [
+"Add white rum, strawberries, lime juice and simple syrup to a blender with a cup (about 150 g) of ice.",
+"Blend for 30–60 seconds until smooth.",
+"Pour into a hurricane glass.",
+"Garnish: strawberry."
+],
+"de": [
+"Weißer Rum, Erdbeeren, Limettensaft und Zuckersirup mit einer Tasse (ca. 150 g) Eis in einen Mixer geben.",
+"30–60 Sekunden mixen, bis alles glatt ist.",
+"Ins Glas (Hurricane-Glas) gießen.",
+"Garnitur: Erdbeere."
+]
+}
+},
+{
+"id": "frozen_margarita",
+"name": "Frozen Margarita",
+"nameDe": null,
+"type": "cocktail",
+"styles": [
+"frozen",
+"agave"
+],
+"glass": "hurricane",
+"method": "blend",
+"color": "#DDE7A4",
+"flavors": [
+"sour",
+"fresh"
+],
+"season": [
+"summer"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "tequila",
+"amount": 50,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "triple_sec",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lime_juice",
+"amount": 30,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "agave_syrup",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "lime wheel",
+"de": "Limettenscheibe"
+},
+"about": null,
+"steps": {
+"en": [
+"Add tequila blanco, triple sec, lime juice and agave syrup to a blender with a cup (about 150 g) of ice.",
+"Blend for 30–60 seconds until smooth.",
+"Pour into a hurricane glass.",
+"Garnish: lime wheel."
+],
+"de": [
+"Tequila blanco, Triple Sec, Limettensaft und Agavendicksaft mit einer Tasse (ca. 150 g) Eis in einen Mixer geben.",
+"30–60 Sekunden mixen, bis alles glatt ist.",
+"Ins Glas (Hurricane-Glas) gießen.",
+"Garnitur: Limettenscheibe."
+]
+}
+},
+{
+"id": "b52",
+"name": "B-52",
+"nameDe": null,
+"type": "shot",
+"styles": [
+"shot",
+"layered",
+"coffee"
+],
+"glass": "shot",
+"method": "layer",
+"color": "#6B3A1E",
+"flavors": [
+"sweet",
+"creamy",
+"coffee"
+],
+"season": [],
+"servings": 1,
+"difficulty": 2,
+"ingredients": [
+{
+"key": "coffee_liqueur",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "irish_cream",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "orange_curacao",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": null,
+"about": null,
+"steps": {
+"en": [
+"Pour coffee liqueur into a shot glass.",
+"Slowly layer Irish cream liqueur over the back of a bar spoon.",
+"Slowly layer orange curaçao over the back of a bar spoon."
+],
+"de": [
+"Kaffeelikör ins Glas (Schnapsglas) gießen.",
+"Irish-Cream-Likör langsam über einen Barlöffelrücken darüberschichten.",
+"Orange Curaçao langsam über einen Barlöffelrücken darüberschichten."
+]
+}
+},
+{
+"id": "lemon_drop_shot",
+"name": "Kamikaze",
+"nameDe": null,
+"type": "shot",
+"styles": [
+"shot",
+"sour",
+"vodka"
+],
+"glass": "shot",
+"method": "shake_up",
+"color": "#EEF0B0",
+"flavors": [
+"sour"
+],
+"season": [],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "vodka",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "triple_sec",
+"amount": 10,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lime_juice",
+"amount": 10,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": null,
+"about": null,
+"steps": {
+"en": [
+"Chill the shot glass with ice water or in the freezer.",
+"Add vodka, triple sec and lime juice to a shaker.",
+"Fill with ice and shake hard for 10–15 seconds.",
+"Double-strain into the chilled shot glass."
+],
+"de": [
+"Glas (Schnapsglas) mit Eiswasser oder im Gefrierfach vorkühlen.",
+"Wodka, Triple Sec und Limettensaft in einen Shaker geben.",
+"Mit Eis füllen und 10–15 Sekunden kräftig shaken.",
+"Doppelt ins vorgekühlte Glas abseihen (Fein- und Barsieb)."
+]
+}
+},
+{
+"id": "baby_guinness",
+"name": "Baby Guinness",
+"nameDe": null,
+"type": "shot",
+"styles": [
+"shot",
+"layered",
+"coffee"
+],
+"glass": "shot",
+"method": "layer",
+"color": "#2A1A12",
+"flavors": [
+"sweet",
+"coffee"
+],
+"season": [],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "coffee_liqueur",
+"amount": 25,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "irish_cream",
+"amount": 10,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": null,
+"about": null,
+"steps": {
+"en": [
+"Pour coffee liqueur into a shot glass.",
+"Slowly layer Irish cream liqueur over the back of a bar spoon."
+],
+"de": [
+"Kaffeelikör ins Glas (Schnapsglas) gießen.",
+"Irish-Cream-Likör langsam über einen Barlöffelrücken darüberschichten."
+]
+}
+},
+{
+"id": "sangria",
+"name": "Sangria",
+"nameDe": null,
+"type": "punch",
+"styles": [
+"punch",
+"party",
+"wine"
+],
+"glass": "punch_bowl",
+"method": "punch",
+"color": "#8E1E3A",
+"flavors": [
+"fruity",
+"sweet",
+"refreshing"
+],
+"season": [
+"summer"
+],
+"servings": 8,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "red_wine",
+"amount": 750,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "brandy",
+"amount": 60,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "orange_juice",
+"amount": 150,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "simple_syrup",
+"amount": 60,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "orange",
+"amount": 1,
+"unit": "pc",
+"flag": ""
+},
+{
+"key": "apple",
+"amount": 1,
+"unit": "pc",
+"flag": ""
+},
+{
+"key": "soda",
+"amount": 250,
+"unit": "ml",
+"flag": "t"
+}
+],
+"garnish": {
+"en": "orange & apple pieces",
+"de": "Orangen- & Apfelstücke"
+},
+"about": {
+"en": "Spain's party punch; best made a few hours ahead.",
+"de": "Spaniens Party-Bowle; am besten ein paar Stunden vorher ansetzen."
+},
+"steps": {
+"en": [
+"Combine red wine, brandy, orange juice, simple syrup, orange and apple in a punch bowl.",
+"Stir and chill for at least 1 hour.",
+"Just before serving, add a large block of ice and top up with soda water.",
+"Garnish: orange & apple pieces."
+],
+"de": [
+"Rotwein, Weinbrand, Orangensaft, Zuckersirup, Orange und Apfel in einer Bowleschüssel vermengen.",
+"Umrühren und mindestens 1 Stunde kalt stellen.",
+"Kurz vor dem Servieren einen großen Eisblock hineingeben und mit Sodawasser auffüllen.",
+"Garnitur: Orangen- & Apfelstücke."
+]
+}
+},
+{
+"id": "fish_house_punch",
+"name": "Fish House Punch",
+"nameDe": null,
+"type": "punch",
+"styles": [
+"punch",
+"classic",
+"holiday"
+],
+"glass": "punch_bowl",
+"method": "punch",
+"color": "#D49A4A",
+"flavors": [
+"strong",
+"fruity"
+],
+"season": [
+"christmas"
+],
+"servings": 12,
+"difficulty": 2,
+"ingredients": [
+{
+"key": "dark_rum",
+"amount": 375,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "cognac",
+"amount": 250,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "peach_schnapps",
+"amount": 60,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lemon_juice",
+"amount": 250,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "demerara_syrup",
+"amount": 200,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "water",
+"amount": 750,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "lemon wheels",
+"de": "Zitronenscheiben"
+},
+"about": {
+"en": "Served in Philadelphia since the 1730s.",
+"de": "Wird in Philadelphia seit den 1730ern serviert."
+},
+"steps": {
+"en": [
+"Combine dark rum, Cognac, peach schnapps, lemon juice, demerara syrup and water in a punch bowl.",
+"Stir and chill for at least 1 hour.",
+"Just before serving, add a large block of ice.",
+"Garnish: lemon wheels."
+],
+"de": [
+"Dunkler Rum, Cognac, Pfirsichlikör, Zitronensaft, Rohrzuckersirup und Wasser in einer Bowleschüssel vermengen.",
+"Umrühren und mindestens 1 Stunde kalt stellen.",
+"Kurz vor dem Servieren einen großen Eisblock hineingeben.",
+"Garnitur: Zitronenscheiben."
+]
+}
+},
+{
+"id": "bowle",
+"name": "Strawberry Bowle",
+"nameDe": "Erdbeerbowle",
+"type": "punch",
+"styles": [
+"punch",
+"party",
+"wine"
+],
+"glass": "punch_bowl",
+"method": "punch",
+"color": "#F2A2A8",
+"flavors": [
+"fruity",
+"sparkling"
+],
+"season": [
+"summer"
+],
+"servings": 10,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "strawberries",
+"amount": 500,
+"unit": "g",
+"flag": ""
+},
+{
+"key": "sugar",
+"amount": 50,
+"unit": "g",
+"flag": ""
+},
+{
+"key": "white_wine",
+"amount": 750,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "sparkling_wine",
+"amount": 750,
+"unit": "ml",
+"flag": "t"
+}
+],
+"garnish": {
+"en": "mint",
+"de": "Minze"
+},
+"about": {
+"en": "The classic German summer party punch.",
+"de": "Die klassische deutsche Sommerfest-Bowle."
+},
+"steps": {
+"en": [
+"Combine strawberries, sugar and dry white wine in a punch bowl.",
+"Stir and chill for at least 1 hour.",
+"Just before serving, add a large block of ice and top up with sparkling wine.",
+"Garnish: mint."
+],
+"de": [
+"Erdbeeren, Zucker und Trockener Weißwein in einer Bowleschüssel vermengen.",
+"Umrühren und mindestens 1 Stunde kalt stellen.",
+"Kurz vor dem Servieren einen großen Eisblock hineingeben und mit Sekt auffüllen.",
+"Garnitur: Minze."
+]
+}
+},
+{
+"id": "rum_punch_party",
+"name": "Party Rum Punch",
+"nameDe": null,
+"type": "punch",
+"styles": [
+"punch",
+"tiki",
+"party"
+],
+"glass": "punch_bowl",
+"method": "punch",
+"color": "#E86A3A",
+"flavors": [
+"fruity",
+"sweet"
+],
+"season": [
+"summer"
+],
+"servings": 12,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "dark_rum",
+"amount": 500,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "pineapple_juice",
+"amount": 500,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "orange_juice",
+"amount": 500,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lime_juice",
+"amount": 150,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "grenadine",
+"amount": 60,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "angostura",
+"amount": 6,
+"unit": "dash",
+"flag": ""
+}
+],
+"garnish": {
+"en": "orange wheels & nutmeg",
+"de": "Orangenscheiben & Muskat"
+},
+"about": null,
+"steps": {
+"en": [
+"Combine dark rum, pineapple juice, orange juice, lime juice, Grenadine and Angostura bitters in a punch bowl.",
+"Stir and chill for at least 1 hour.",
+"Just before serving, add a large block of ice.",
+"Garnish: orange wheels & nutmeg."
+],
+"de": [
+"Dunkler Rum, Ananassaft, Orangensaft, Limettensaft, Grenadine und Angostura Bitter in einer Bowleschüssel vermengen.",
+"Umrühren und mindestens 1 Stunde kalt stellen.",
+"Kurz vor dem Servieren einen großen Eisblock hineingeben.",
+"Garnitur: Orangenscheiben & Muskat."
+]
+}
+},
+{
+"id": "christmas_punch",
+"name": "Holiday Cranberry Punch",
+"nameDe": "Weihnachts-Cranberry-Punsch",
+"type": "punch",
+"styles": [
+"punch",
+"holiday",
+"sparkling"
+],
+"glass": "punch_bowl",
+"method": "punch",
+"color": "#B8243A",
+"flavors": [
+"fruity",
+"sparkling",
+"spicy"
+],
+"season": [
+"winter",
+"christmas"
+],
+"servings": 12,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "vodka",
+"amount": 300,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "cranberry_juice",
+"amount": 750,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "orange_juice",
+"amount": 250,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "cinnamon_syrup",
+"amount": 60,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "prosecco",
+"amount": 750,
+"unit": "ml",
+"flag": "t"
+}
+],
+"garnish": {
+"en": "cranberries & rosemary",
+"de": "Cranberries & Rosmarin"
+},
+"about": null,
+"steps": {
+"en": [
+"Combine vodka, cranberry juice, orange juice and cinnamon syrup in a punch bowl.",
+"Stir and chill for at least 1 hour.",
+"Just before serving, add a large block of ice and top up with Prosecco.",
+"Garnish: cranberries & rosemary."
+],
+"de": [
+"Wodka, Cranberrysaft, Orangensaft und Zimtsirup in einer Bowleschüssel vermengen.",
+"Umrühren und mindestens 1 Stunde kalt stellen.",
+"Kurz vor dem Servieren einen großen Eisblock hineingeben und mit Prosecco auffüllen.",
+"Garnitur: Cranberries & Rosmarin."
+]
+}
+},
+{
+"id": "virgin_mojito",
+"name": "Virgin Mojito",
+"nameDe": null,
+"type": "mocktail",
+"styles": [
+"mocktail",
+"highball"
+],
+"glass": "highball",
+"method": "muddle",
+"color": "#DCF2C8",
+"flavors": [
+"fresh",
+"minty",
+"refreshing"
+],
+"season": [
+"summer"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "mint",
+"amount": 10,
+"unit": "leaf",
+"flag": "m"
+},
+{
+"key": "lime_juice",
+"amount": 25,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "simple_syrup",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "soda",
+"amount": 150,
+"unit": "ml",
+"flag": "t"
+}
+],
+"garnish": {
+"en": "mint sprig",
+"de": "Minzzweig"
+},
+"about": null,
+"steps": {
+"en": [
+"Gently muddle mint in the highball glass.",
+"Add lime juice and simple syrup and fill the glass with crushed ice.",
+"Stir from the bottom up until the glass frosts.",
+"Top up with soda water and stir gently.",
+"Garnish: mint sprig."
+],
+"de": [
+"Minze im Glas sanft andrücken (muddeln).",
+"Limettensaft und Zuckersirup dazugeben und das Glas mit Crushed Ice füllen.",
+"Von unten nach oben rühren, bis das Glas beschlägt.",
+"Mit Sodawasser auffüllen und vorsichtig umrühren.",
+"Garnitur: Minzzweig."
+]
+}
+},
+{
+"id": "virgin_pina_colada",
+"name": "Virgin Piña Colada",
+"nameDe": null,
+"type": "mocktail",
+"styles": [
+"mocktail",
+"tiki",
+"creamy"
+],
+"glass": "hurricane",
+"method": "blend",
+"color": "#F7EFD0",
+"flavors": [
+"creamy",
+"sweet",
+"fruity"
+],
+"season": [
+"summer"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "cream_of_coconut",
+"amount": 45,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "pineapple_juice",
+"amount": 120,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lime_juice",
+"amount": 10,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "pineapple wedge",
+"de": "Ananasstück"
+},
+"about": null,
+"steps": {
+"en": [
+"Add cream of coconut, pineapple juice and lime juice to a blender with a cup (about 150 g) of ice.",
+"Blend for 30–60 seconds until smooth.",
+"Pour into a hurricane glass.",
+"Garnish: pineapple wedge."
+],
+"de": [
+"Kokoscreme (gesüßt), Ananassaft und Limettensaft mit einer Tasse (ca. 150 g) Eis in einen Mixer geben.",
+"30–60 Sekunden mixen, bis alles glatt ist.",
+"Ins Glas (Hurricane-Glas) gießen.",
+"Garnitur: Ananasstück."
+]
+}
+},
+{
+"id": "shirley_temple",
+"name": "Shirley Temple",
+"nameDe": null,
+"type": "mocktail",
+"styles": [
+"mocktail",
+"classic"
+],
+"glass": "highball",
+"method": "build",
+"color": "#F28A9A",
+"flavors": [
+"sweet",
+"fruity"
+],
+"season": [],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "ginger_ale",
+"amount": 180,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "grenadine",
+"amount": 15,
+"unit": "ml",
+"flag": "f"
+}
+],
+"garnish": {
+"en": "cocktail cherry",
+"de": "Cocktailkirsche"
+},
+"about": null,
+"steps": {
+"en": [
+"Fill a highball glass with ice.",
+"Pour in ginger ale.",
+"Gently float Grenadine on top.",
+"Garnish: cocktail cherry."
+],
+"de": [
+"Glas (Longdrinkglas) mit Eis füllen.",
+"Ginger Ale hineingießen.",
+"Grenadine vorsichtig obenauf gießen (floaten).",
+"Garnitur: Cocktailkirsche."
+]
+}
+},
+{
+"id": "nojito_ginger",
+"name": "Ginger Lime Fizz",
+"nameDe": "Ingwer-Limetten-Fizz",
+"type": "mocktail",
+"styles": [
+"mocktail",
+"highball"
+],
+"glass": "highball",
+"method": "build",
+"color": "#EBE2A8",
+"flavors": [
+"spicy",
+"sour",
+"refreshing"
+],
+"season": [],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "lime_juice",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "ginger_syrup",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "soda",
+"amount": 150,
+"unit": "ml",
+"flag": "t"
+}
+],
+"garnish": {
+"en": "lime wedge",
+"de": "Limettenspalte"
+},
+"about": null,
+"steps": {
+"en": [
+"Fill a highball glass with ice.",
+"Pour in lime juice and ginger syrup.",
+"Top up with soda water and stir gently.",
+"Garnish: lime wedge."
+],
+"de": [
+"Glas (Longdrinkglas) mit Eis füllen.",
+"Limettensaft und Ingwersirup hineingießen.",
+"Mit Sodawasser auffüllen und vorsichtig umrühren.",
+"Garnitur: Limettenspalte."
+]
+}
+},
+{
+"id": "virgin_mule",
+"name": "Virgin Mule",
+"nameDe": null,
+"type": "mocktail",
+"styles": [
+"mocktail",
+"highball"
+],
+"glass": "copper_mug",
+"method": "build",
+"color": "#E6D9A2",
+"flavors": [
+"spicy",
+"fresh"
+],
+"season": [],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "lime_juice",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "ginger_beer",
+"amount": 180,
+"unit": "ml",
+"flag": "t"
+}
+],
+"garnish": {
+"en": "mint sprig",
+"de": "Minzzweig"
+},
+"about": null,
+"steps": {
+"en": [
+"Fill a copper mug with ice.",
+"Pour in lime juice.",
+"Top up with ginger beer and stir gently.",
+"Garnish: mint sprig."
+],
+"de": [
+"Glas (Kupferbecher) mit Eis füllen.",
+"Limettensaft hineingießen.",
+"Mit Ginger Beer auffüllen und vorsichtig umrühren.",
+"Garnitur: Minzzweig."
+]
+}
+},
+{
+"id": "cranberry_spritzer",
+"name": "Cranberry Spritzer",
+"nameDe": null,
+"type": "mocktail",
+"styles": [
+"mocktail",
+"spritz",
+"holiday"
+],
+"glass": "wine",
+"method": "build",
+"color": "#C8324A",
+"flavors": [
+"fruity",
+"sour",
+"refreshing"
+],
+"season": [
+"winter",
+"christmas"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "cranberry_juice",
+"amount": 90,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "orange_juice",
+"amount": 30,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "soda",
+"amount": 90,
+"unit": "ml",
+"flag": "t"
+}
+],
+"garnish": {
+"en": "rosemary sprig",
+"de": "Rosmarinzweig"
+},
+"about": null,
+"steps": {
+"en": [
+"Fill a wine glass with ice.",
+"Pour in cranberry juice and orange juice.",
+"Top up with soda water and stir gently.",
+"Garnish: rosemary sprig."
+],
+"de": [
+"Glas (Weinglas) mit Eis füllen.",
+"Cranberrysaft und Orangensaft hineingießen.",
+"Mit Sodawasser auffüllen und vorsichtig umrühren.",
+"Garnitur: Rosmarinzweig."
+]
+}
+},
+{
+"id": "elderflower_cooler",
+"name": "Elderflower Cooler",
+"nameDe": "Holunderblüten-Cooler",
+"type": "mocktail",
+"styles": [
+"mocktail",
+"floral",
+"spritz"
+],
+"glass": "wine",
+"method": "build",
+"color": "#EEF3D8",
+"flavors": [
+"floral",
+"fresh",
+"refreshing"
+],
+"season": [
+"spring",
+"summer"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "elderflower_syrup",
+"amount": 25,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lime_juice",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "cucumber",
+"amount": 3,
+"unit": "slice",
+"flag": ""
+},
+{
+"key": "soda",
+"amount": 150,
+"unit": "ml",
+"flag": "t"
+}
+],
+"garnish": {
+"en": "mint sprig",
+"de": "Minzzweig"
+},
+"about": null,
+"steps": {
+"en": [
+"Fill a wine glass with ice.",
+"Pour in elderflower cordial, lime juice and cucumber.",
+"Top up with soda water and stir gently.",
+"Garnish: mint sprig."
+],
+"de": [
+"Glas (Weinglas) mit Eis füllen.",
+"Holunderblütensirup, Limettensaft und Gurke hineingießen.",
+"Mit Sodawasser auffüllen und vorsichtig umrühren.",
+"Garnitur: Minzzweig."
+]
+}
+},
+{
+"id": "virgin_mary",
+"name": "Virgin Mary",
+"nameDe": null,
+"type": "mocktail",
+"styles": [
+"mocktail",
+"savory",
+"brunch"
+],
+"glass": "highball",
+"method": "roll",
+"color": "#B8262A",
+"flavors": [
+"savory",
+"spicy"
+],
+"season": [],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "tomato_juice",
+"amount": 150,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lemon_juice",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "worcestershire",
+"amount": 3,
+"unit": "dash",
+"flag": ""
+},
+{
+"key": "hot_sauce",
+"amount": 2,
+"unit": "dash",
+"flag": ""
+},
+{
+"key": "salt",
+"amount": 1,
+"unit": "pinch",
+"flag": ""
+},
+{
+"key": "pepper",
+"amount": 1,
+"unit": "pinch",
+"flag": ""
+}
+],
+"garnish": {
+"en": "celery stalk",
+"de": "Selleriestange"
+},
+"about": null,
+"steps": {
+"en": [
+"Add tomato juice, lemon juice, Worcestershire sauce, hot sauce, salt and black pepper to a shaker with ice and gently roll it back and forth between two tins (don't shake).",
+"Strain into a highball glass over fresh ice.",
+"Garnish: celery stalk."
+],
+"de": [
+"Tomatensaft, Zitronensaft, Worcestershiresauce, Scharfe Soße, Salz und Schwarzer Pfeffer mit Eis in einen Shaker geben und vorsichtig zwischen zwei Behältern hin und her gießen (nicht shaken).",
+"Auf frisches Eis ins Glas (Longdrinkglas) abseihen.",
+"Garnitur: Selleriestange."
+]
+}
+},
+{
+"id": "passion_fruit_nojito",
+"name": "Passion Fruit Soda",
+"nameDe": "Maracuja-Soda",
+"type": "mocktail",
+"styles": [
+"mocktail",
+"fruity"
+],
+"glass": "highball",
+"method": "shake_top",
+"color": "#F2B640",
+"flavors": [
+"fruity",
+"sour",
+"refreshing"
+],
+"season": [
+"summer"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "passion_fruit_juice",
+"amount": 60,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lime_juice",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "vanilla_syrup",
+"amount": 10,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "soda",
+"amount": 100,
+"unit": "ml",
+"flag": "t"
+}
+],
+"garnish": {
+"en": "half a passion fruit",
+"de": "halbe Maracuja"
+},
+"about": null,
+"steps": {
+"en": [
+"Add passion fruit juice, lime juice and vanilla syrup to a shaker.",
+"Fill with ice and shake hard for 10–15 seconds.",
+"Strain into a highball glass over fresh ice.",
+"Top up with soda water and stir gently.",
+"Garnish: half a passion fruit."
+],
+"de": [
+"Maracujasaft, Limettensaft und Vanillesirup in einen Shaker geben.",
+"Mit Eis füllen und 10–15 Sekunden kräftig shaken.",
+"Auf frisches Eis ins Glas (Longdrinkglas) abseihen.",
+"Mit Sodawasser auffüllen und vorsichtig umrühren.",
+"Garnitur: halbe Maracuja."
+]
+}
+},
+{
+"id": "sunrise_mocktail",
+"name": "Sunrise Cooler",
+"nameDe": null,
+"type": "mocktail",
+"styles": [
+"mocktail",
+"fruity"
+],
+"glass": "highball",
+"method": "build",
+"color": "#F5902E",
+"flavors": [
+"fruity",
+"sweet"
+],
+"season": [
+"summer"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "orange_juice",
+"amount": 120,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "pineapple_juice",
+"amount": 60,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "grenadine",
+"amount": 15,
+"unit": "ml",
+"flag": "f"
+}
+],
+"garnish": {
+"en": "orange slice",
+"de": "Orangenscheibe"
+},
+"about": null,
+"steps": {
+"en": [
+"Fill a highball glass with ice.",
+"Pour in orange juice and pineapple juice.",
+"Gently float Grenadine on top.",
+"Garnish: orange slice."
+],
+"de": [
+"Glas (Longdrinkglas) mit Eis füllen.",
+"Orangensaft und Ananassaft hineingießen.",
+"Grenadine vorsichtig obenauf gießen (floaten).",
+"Garnitur: Orangenscheibe."
+]
+}
+},
+{
+"id": "espresso_tonic",
+"name": "Espresso Tonic",
+"nameDe": null,
+"type": "mocktail",
+"styles": [
+"mocktail",
+"coffee",
+"highball"
+],
+"glass": "highball",
+"method": "build",
+"color": "#7A4A2A",
+"flavors": [
+"bitter",
+"coffee",
+"refreshing"
+],
+"season": [],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "tonic",
+"amount": 150,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "espresso",
+"amount": 40,
+"unit": "ml",
+"flag": "f"
+}
+],
+"garnish": {
+"en": "orange twist",
+"de": "Orangenzeste"
+},
+"about": null,
+"steps": {
+"en": [
+"Fill a highball glass with ice.",
+"Pour in tonic water.",
+"Gently float espresso on top.",
+"Garnish: orange twist."
+],
+"de": [
+"Glas (Longdrinkglas) mit Eis füllen.",
+"Tonic Water hineingießen.",
+"Espresso vorsichtig obenauf gießen (floaten).",
+"Garnitur: Orangenzeste."
+]
+}
+},
+{
+"id": "arnold_palmer",
+"name": "Arnold Palmer",
+"nameDe": null,
+"type": "mocktail",
+"styles": [
+"mocktail",
+"classic"
+],
+"glass": "highball",
+"method": "build",
+"color": "#C88A3E",
+"flavors": [
+"sour",
+"refreshing"
+],
+"season": [
+"summer"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "black_tea",
+"amount": 120,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lemon_juice",
+"amount": 30,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "simple_syrup",
+"amount": 20,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "lemon wheel",
+"de": "Zitronenscheibe"
+},
+"about": null,
+"steps": {
+"en": [
+"Fill a highball glass with ice.",
+"Pour in black tea, lemon juice and simple syrup.",
+"Garnish: lemon wheel."
+],
+"de": [
+"Glas (Longdrinkglas) mit Eis füllen.",
+"Schwarzer Tee, Zitronensaft und Zuckersirup hineingießen.",
+"Garnitur: Zitronenscheibe."
+]
+}
+},
+{
+"id": "apple_ginger_mule",
+"name": "Apple Ginger Mule",
+"nameDe": "Apfel-Ingwer-Mule",
+"type": "mocktail",
+"styles": [
+"mocktail",
+"highball"
+],
+"glass": "copper_mug",
+"method": "build",
+"color": "#E3C680",
+"flavors": [
+"fruity",
+"spicy"
+],
+"season": [
+"autumn"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "apple_juice",
+"amount": 90,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "lime_juice",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "ginger_beer",
+"amount": 90,
+"unit": "ml",
+"flag": "t"
+}
+],
+"garnish": {
+"en": "apple slice",
+"de": "Apfelscheibe"
+},
+"about": null,
+"steps": {
+"en": [
+"Fill a copper mug with ice.",
+"Pour in apple juice and lime juice.",
+"Top up with ginger beer and stir gently.",
+"Garnish: apple slice."
+],
+"de": [
+"Glas (Kupferbecher) mit Eis füllen.",
+"Apfelsaft und Limettensaft hineingießen.",
+"Mit Ginger Beer auffüllen und vorsichtig umrühren.",
+"Garnitur: Apfelscheibe."
+]
+}
+},
+{
+"id": "watermelon_cooler",
+"name": "Watermelon Cooler",
+"nameDe": "Wassermelonen-Cooler",
+"type": "mocktail",
+"styles": [
+"mocktail",
+"frozen",
+"fruity"
+],
+"glass": "highball",
+"method": "blend",
+"color": "#F26A74",
+"flavors": [
+"fruity",
+"fresh"
+],
+"season": [
+"summer"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "watermelon",
+"amount": 200,
+"unit": "g",
+"flag": ""
+},
+{
+"key": "lime_juice",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "mint",
+"amount": 4,
+"unit": "leaf",
+"flag": ""
+},
+{
+"key": "simple_syrup",
+"amount": 10,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "mint sprig",
+"de": "Minzzweig"
+},
+"about": null,
+"steps": {
+"en": [
+"Add watermelon, lime juice, mint and simple syrup to a blender with a cup (about 150 g) of ice.",
+"Blend for 30–60 seconds until smooth.",
+"Pour into a highball glass.",
+"Garnish: mint sprig."
+],
+"de": [
+"Wassermelone, Limettensaft, Minze und Zuckersirup mit einer Tasse (ca. 150 g) Eis in einen Mixer geben.",
+"30–60 Sekunden mixen, bis alles glatt ist.",
+"Ins Glas (Longdrinkglas) gießen.",
+"Garnitur: Minzzweig."
+]
+}
+},
+{
+"id": "hot_apple_cider",
+"name": "Spiced Hot Apple",
+"nameDe": "Heißer Gewürzapfel",
+"type": "mocktail",
+"styles": [
+"mocktail",
+"hot",
+"holiday"
+],
+"glass": "mug",
+"method": "simmer",
+"color": "#C8823A",
+"flavors": [
+"warm",
+"spicy",
+"sweet"
+],
+"season": [
+"winter",
+"christmas"
+],
+"servings": 4,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "apple_juice",
+"amount": 1000,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "cinnamon_stick",
+"amount": 2,
+"unit": "pc",
+"flag": ""
+},
+{
+"key": "cloves",
+"amount": 4,
+"unit": "pc",
+"flag": ""
+},
+{
+"key": "star_anise",
+"amount": 1,
+"unit": "pc",
+"flag": ""
+},
+{
+"key": "orange",
+"amount": 1,
+"unit": "pc",
+"flag": ""
+}
+],
+"garnish": {
+"en": "orange slice",
+"de": "Orangenscheibe"
+},
+"about": null,
+"steps": {
+"en": [
+"Put apple juice, cinnamon stick, cloves and star anise in a pot.",
+"Slice the orange and add it.",
+"Heat gently for 15–20 minutes – do not boil.",
+"Ladle into glasses (heat-proof mug).",
+"Garnish: orange slice."
+],
+"de": [
+"Apfelsaft, Zimtstange, Gewürznelken und Sternanis in einen Topf geben.",
+"Die Orange in Scheiben schneiden und dazugeben.",
+"15–20 Minuten sanft erhitzen – nicht kochen lassen.",
+"In Gläser schöpfen (hitzefester Becher).",
+"Garnitur: Orangenscheibe."
+]
+}
+},
+{
+"id": "kinderpunsch",
+"name": "Children's Punch",
+"nameDe": "Kinderpunsch",
+"type": "mocktail",
+"styles": [
+"mocktail",
+"hot",
+"holiday",
+"punch"
+],
+"glass": "mug",
+"method": "simmer",
+"color": "#A8283A",
+"flavors": [
+"warm",
+"fruity",
+"spicy"
+],
+"season": [
+"winter",
+"christmas"
+],
+"servings": 4,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "black_tea",
+"amount": 500,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "orange_juice",
+"amount": 250,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "cranberry_juice",
+"amount": 250,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "honey",
+"amount": 3,
+"unit": "tsp",
+"flag": ""
+},
+{
+"key": "cinnamon_stick",
+"amount": 2,
+"unit": "pc",
+"flag": ""
+},
+{
+"key": "cloves",
+"amount": 4,
+"unit": "pc",
+"flag": ""
+}
+],
+"garnish": {
+"en": "orange slice",
+"de": "Orangenscheibe"
+},
+"about": {
+"en": "The alcohol-free sibling of mulled wine at German Christmas markets.",
+"de": "Der alkoholfreie Bruder des Glühweins auf deutschen Weihnachtsmärkten."
+},
+"steps": {
+"en": [
+"Put black tea, orange juice, cranberry juice, honey, cinnamon stick and cloves in a pot.",
+"Heat gently for 15–20 minutes – do not boil.",
+"Ladle into glasses (heat-proof mug).",
+"Garnish: orange slice."
+],
+"de": [
+"Schwarzer Tee, Orangensaft, Cranberrysaft, Honig, Zimtstange und Gewürznelken in einen Topf geben.",
+"15–20 Minuten sanft erhitzen – nicht kochen lassen.",
+"In Gläser schöpfen (hitzefester Becher).",
+"Garnitur: Orangenscheibe."
+]
+}
+},
+{
+"id": "strawberry_banana",
+"name": "Strawberry Banana Smoothie",
+"nameDe": "Erdbeer-Bananen-Smoothie",
+"type": "smoothie",
+"styles": [
+"smoothie"
+],
+"glass": "highball",
+"method": "blend_noice",
+"color": "#F28A9A",
+"flavors": [
+"fruity",
+"creamy",
+"sweet"
+],
+"season": [],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "strawberries",
+"amount": 150,
+"unit": "g",
+"flag": ""
+},
+{
+"key": "banana",
+"amount": 1,
+"unit": "pc",
+"flag": ""
+},
+{
+"key": "yogurt",
+"amount": 150,
+"unit": "g",
+"flag": ""
+},
+{
+"key": "milk",
+"amount": 100,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "honey",
+"amount": 1,
+"unit": "tsp",
+"flag": ""
+}
+],
+"garnish": {
+"en": "strawberry",
+"de": "Erdbeere"
+},
+"about": null,
+"steps": {
+"en": [
+"Add strawberries, banana, yogurt, milk and honey to a blender.",
+"Blend for 30–60 seconds until smooth.",
+"Pour into a highball glass.",
+"Garnish: strawberry."
+],
+"de": [
+"Erdbeeren, Banane, Joghurt, Milch und Honig in einen Mixer geben.",
+"30–60 Sekunden mixen, bis alles glatt ist.",
+"Ins Glas (Longdrinkglas) gießen.",
+"Garnitur: Erdbeere."
+]
+}
+},
+{
+"id": "mango_lassi",
+"name": "Mango Lassi",
+"nameDe": null,
+"type": "smoothie",
+"styles": [
+"smoothie",
+"creamy"
+],
+"glass": "highball",
+"method": "blend_noice",
+"color": "#F6B640",
+"flavors": [
+"creamy",
+"fruity",
+"sweet"
+],
+"season": [
+"summer"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "mango",
+"amount": 200,
+"unit": "g",
+"flag": ""
+},
+{
+"key": "yogurt",
+"amount": 200,
+"unit": "g",
+"flag": ""
+},
+{
+"key": "milk",
+"amount": 80,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "honey",
+"amount": 2,
+"unit": "tsp",
+"flag": ""
+}
+],
+"garnish": {
+"en": "pinch of cardamom",
+"de": "Prise Kardamom"
+},
+"about": null,
+"steps": {
+"en": [
+"Add mango, yogurt, milk and honey to a blender.",
+"Blend for 30–60 seconds until smooth.",
+"Pour into a highball glass.",
+"Garnish: pinch of cardamom."
+],
+"de": [
+"Mango, Joghurt, Milch und Honig in einen Mixer geben.",
+"30–60 Sekunden mixen, bis alles glatt ist.",
+"Ins Glas (Longdrinkglas) gießen.",
+"Garnitur: Prise Kardamom."
+]
+}
+},
+{
+"id": "green_smoothie",
+"name": "Green Smoothie",
+"nameDe": "Grüner Smoothie",
+"type": "smoothie",
+"styles": [
+"smoothie",
+"healthy"
+],
+"glass": "highball",
+"method": "blend_noice",
+"color": "#7EC85A",
+"flavors": [
+"fresh",
+"fruity"
+],
+"season": [],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "spinach",
+"amount": 40,
+"unit": "g",
+"flag": ""
+},
+{
+"key": "banana",
+"amount": 1,
+"unit": "pc",
+"flag": ""
+},
+{
+"key": "apple",
+"amount": 1,
+"unit": "pc",
+"flag": ""
+},
+{
+"key": "ginger",
+"amount": 5,
+"unit": "g",
+"flag": ""
+},
+{
+"key": "lemon_juice",
+"amount": 15,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "water",
+"amount": 150,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": null,
+"about": null,
+"steps": {
+"en": [
+"Add spinach, banana, apple, fresh ginger, lemon juice and water to a blender.",
+"Blend for 30–60 seconds until smooth.",
+"Pour into a highball glass."
+],
+"de": [
+"Spinat, Banane, Apfel, Frischer Ingwer, Zitronensaft und Wasser in einen Mixer geben.",
+"30–60 Sekunden mixen, bis alles glatt ist.",
+"Ins Glas (Longdrinkglas) gießen."
+]
+}
+},
+{
+"id": "berry_smoothie",
+"name": "Mixed Berry Smoothie",
+"nameDe": "Beeren-Smoothie",
+"type": "smoothie",
+"styles": [
+"smoothie"
+],
+"glass": "highball",
+"method": "blend_noice",
+"color": "#8E3F6A",
+"flavors": [
+"fruity",
+"creamy"
+],
+"season": [],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "blueberries",
+"amount": 80,
+"unit": "g",
+"flag": ""
+},
+{
+"key": "raspberries",
+"amount": 80,
+"unit": "g",
+"flag": ""
+},
+{
+"key": "banana",
+"amount": 1,
+"unit": "pc",
+"flag": ""
+},
+{
+"key": "yogurt",
+"amount": 150,
+"unit": "g",
+"flag": ""
+},
+{
+"key": "apple_juice",
+"amount": 100,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": null,
+"about": null,
+"steps": {
+"en": [
+"Add blueberries, raspberries, banana, yogurt and apple juice to a blender.",
+"Blend for 30–60 seconds until smooth.",
+"Pour into a highball glass."
+],
+"de": [
+"Heidelbeeren, Himbeeren, Banane, Joghurt und Apfelsaft in einen Mixer geben.",
+"30–60 Sekunden mixen, bis alles glatt ist.",
+"Ins Glas (Longdrinkglas) gießen."
+]
+}
+},
+{
+"id": "tropical_smoothie",
+"name": "Tropical Smoothie",
+"nameDe": "Tropen-Smoothie",
+"type": "smoothie",
+"styles": [
+"smoothie",
+"tiki"
+],
+"glass": "hurricane",
+"method": "blend_noice",
+"color": "#F7C14A",
+"flavors": [
+"fruity",
+"sweet"
+],
+"season": [
+"summer"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "pineapple",
+"amount": 150,
+"unit": "g",
+"flag": ""
+},
+{
+"key": "mango",
+"amount": 100,
+"unit": "g",
+"flag": ""
+},
+{
+"key": "banana",
+"amount": 1,
+"unit": "pc",
+"flag": ""
+},
+{
+"key": "coconut_water",
+"amount": 150,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "pineapple wedge",
+"de": "Ananasstück"
+},
+"about": null,
+"steps": {
+"en": [
+"Add pineapple, mango, banana and coconut water to a blender.",
+"Blend for 30–60 seconds until smooth.",
+"Pour into a hurricane glass.",
+"Garnish: pineapple wedge."
+],
+"de": [
+"Ananas, Mango, Banane und Kokoswasser in einen Mixer geben.",
+"30–60 Sekunden mixen, bis alles glatt ist.",
+"Ins Glas (Hurricane-Glas) gießen.",
+"Garnitur: Ananasstück."
+]
+}
+},
+{
+"id": "pb_banana",
+"name": "Peanut Butter Banana Shake",
+"nameDe": "Erdnuss-Bananen-Shake",
+"type": "smoothie",
+"styles": [
+"smoothie",
+"creamy",
+"dessert"
+],
+"glass": "highball",
+"method": "blend_noice",
+"color": "#D9A86A",
+"flavors": [
+"creamy",
+"nutty",
+"sweet"
+],
+"season": [],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "banana",
+"amount": 1,
+"unit": "pc",
+"flag": ""
+},
+{
+"key": "peanut_butter",
+"amount": 2,
+"unit": "tsp",
+"flag": ""
+},
+{
+"key": "oats",
+"amount": 30,
+"unit": "g",
+"flag": ""
+},
+{
+"key": "milk",
+"amount": 250,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "honey",
+"amount": 1,
+"unit": "tsp",
+"flag": ""
+}
+],
+"garnish": null,
+"about": null,
+"steps": {
+"en": [
+"Add banana, peanut butter, rolled oats, milk and honey to a blender.",
+"Blend for 30–60 seconds until smooth.",
+"Pour into a highball glass."
+],
+"de": [
+"Banane, Erdnussbutter, Haferflocken, Milch und Honig in einen Mixer geben.",
+"30–60 Sekunden mixen, bis alles glatt ist.",
+"Ins Glas (Longdrinkglas) gießen."
+]
+}
+},
+{
+"id": "coffee_shake",
+"name": "Iced Coffee Shake",
+"nameDe": "Eiskaffee-Shake",
+"type": "smoothie",
+"styles": [
+"smoothie",
+"coffee",
+"dessert"
+],
+"glass": "highball",
+"method": "blend",
+"color": "#8A5A3A",
+"flavors": [
+"coffee",
+"creamy",
+"sweet"
+],
+"season": [
+"summer"
+],
+"servings": 1,
+"difficulty": 1,
+"ingredients": [
+{
+"key": "espresso",
+"amount": 60,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "milk",
+"amount": 150,
+"unit": "ml",
+"flag": ""
+},
+{
+"key": "vanilla_ice_cream",
+"amount": 2,
+"unit": "scoop",
+"flag": ""
+},
+{
+"key": "vanilla_syrup",
+"amount": 10,
+"unit": "ml",
+"flag": ""
+}
+],
+"garnish": {
+"en": "whipped cream",
+"de": "Schlagsahne"
+},
+"about": null,
+"steps": {
+"en": [
+"Add espresso, milk, vanilla ice cream and vanilla syrup to a blender with a cup (about 150 g) of ice.",
+"Blend for 30–60 seconds until smooth.",
+"Pour into a highball glass.",
+"Garnish: whipped cream."
+],
+"de": [
+"Espresso, Milch, Vanilleeis und Vanillesirup mit einer Tasse (ca. 150 g) Eis in einen Mixer geben.",
+"30–60 Sekunden mixen, bis alles glatt ist.",
+"Ins Glas (Longdrinkglas) gießen.",
+"Garnitur: Schlagsahne."
+]
+}
+}
+]
