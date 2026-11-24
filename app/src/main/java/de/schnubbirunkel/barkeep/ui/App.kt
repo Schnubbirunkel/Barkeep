@@ -63,6 +63,7 @@ object Routes {
     const val EDIT = "edit?id={id}&base={base}"
     const val SCAN = "scan?mode={mode}"
     const val SETTINGS = "settings"
+    const val FINDER = "finder"
 
     fun search(style: String = "", type: String = "", q: String = "") = "search?style=${Uri.encode(style)}&type=${Uri.encode(type)}&q=${Uri.encode(q)}"
     fun bar(tab: Int = 0) = "bar?tab=$tab"
@@ -144,6 +145,7 @@ fun BarkeepApp(vm: AppViewModel, start: String = Routes.DISCOVER, nav: NavHostCo
                     ScanScreen(vm, nav, e.arguments?.getString("mode") ?: "cocktail")
                 }
                 composable(Routes.SETTINGS) { SettingsScreen(vm, nav) }
+                composable(Routes.FINDER) { de.schnubbirunkel.barkeep.ui.screens.FinderScreen(vm, nav) }
             }
         }
         if (!user.onboarded && start == Routes.DISCOVER) {

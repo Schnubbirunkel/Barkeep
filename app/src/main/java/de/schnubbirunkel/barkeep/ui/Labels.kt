@@ -103,4 +103,13 @@ object Labels {
         "wine" to R.string.spirit_wine,
         "liqueur" to R.string.spirit_liqueur,
     )
+    val occasion: Map<String, Int> = mapOf(
+        "aperitif" to R.string.occasion_aperitif,
+        "summer" to R.string.occasion_summer,
+        "party" to R.string.occasion_party,
+        "dessert" to R.string.occasion_dessert,
+        "cozy" to R.string.occasion_cozy,
+        "classic" to R.string.occasion_classic,
+        "tiki" to R.string.occasion_tiki,
+    )
 }

@@ -102,7 +102,23 @@ class VisionClient(
         return AppJson.decodeFromString(IngredientGuess.serializer(), extractJson(ask(prompt, imageB64)))
     }
 
-    private suspend fun ask(prompt: String, imageB64: String): String = withContext(Dispatchers.IO) {
+    /** Turns a free-text wish ("something fresh with gin, not too sweet") into structured criteria. */
+    suspend fun parseWish(text: String): de.schnubbirunkel.barkeep.data.Wish {
+        val prompt = """
+            A user describes what drink they want: "${text.replace("\"", "'")}"
+            Translate this into JSON with exactly these fields:
+            {"alcohol": "yes"|"no"|"any",
+             "flavors": subset of ["sweet","sour","bitter","fruity","refreshing","creamy","herbal","smoky","spicy","minty","coffee","floral"],
+             "spirits": subset of ["gin","vodka","rum","agave","whiskey","brandy","wine"],
+             "strength": 0 (any) | 1 (light) | 2 (medium) | 3 (strong),
+             "occasions": subset of ["aperitif","summer","party","dessert","cozy","classic","tiki"],
+             "maxMissing": -1}
+            Answer ONLY with the JSON.
+        """.trimIndent()
+        return AppJson.decodeFromString(de.schnubbirunkel.barkeep.data.Wish.serializer(), extractJson(ask(prompt, null)))
+    }
+
+    private suspend fun ask(prompt: String, imageB64: String?): String = withContext(Dispatchers.IO) {
         if (apiKey.isBlank()) throw AiException("NO_KEY")
         when (provider) {
             "anthropic" -> anthropic(prompt, imageB64)
@@ -111,13 +127,13 @@ class VisionClient(
         }
     }
 
-    private fun gemini(prompt: String, img: String): String {
+    private fun gemini(prompt: String, img: String?): String {
         val body = buildJsonObject {
             putJsonArray("contents") {
                 addJsonObject {
                     putJsonArray("parts") {
                         addJsonObject { put("text", prompt) }
-                        addJsonObject { putJsonObject("inline_data") { put("mime_type", "image/jpeg"); put("data", img) } }
+                        if (img != null) addJsonObject { putJsonObject("inline_data") { put("mime_type", "image/jpeg"); put("data", img) } }
                     }
                 }
             }
@@ -131,7 +147,7 @@ class VisionClient(
             ?: throw AiException("Empty answer")
     }
 
-    private fun anthropic(prompt: String, img: String): String {
+    private fun anthropic(prompt: String, img: String?): String {
         val body = buildJsonObject {
             put("model", usedModel)
             put("max_tokens", 1500)
@@ -139,7 +155,7 @@ class VisionClient(
                 addJsonObject {
                     put("role", "user")
                     putJsonArray("content") {
-                        addJsonObject {
+                        if (img != null) addJsonObject {
                             put("type", "image")
                             putJsonObject("source") { put("type", "base64"); put("media_type", "image/jpeg"); put("data", img) }
                         }
@@ -154,7 +170,7 @@ class VisionClient(
         return content.joinToString("") { (it.jsonObject["text"] as? JsonPrimitive)?.contentOrNull.orEmpty() }
     }
 
-    private fun openai(prompt: String, img: String): String {
+    private fun openai(prompt: String, img: String?): String {
         val body = buildJsonObject {
             put("model", usedModel)
             putJsonObject("response_format") { put("type", "json_object") }
@@ -163,7 +179,7 @@ class VisionClient(
                     put("role", "user")
                     putJsonArray("content") {
                         addJsonObject { put("type", "text"); put("text", prompt) }
-                        addJsonObject {
+                        if (img != null) addJsonObject {
                             put("type", "image_url")
                             putJsonObject("image_url") { put("url", "data:image/jpeg;base64,$img") }
                         }

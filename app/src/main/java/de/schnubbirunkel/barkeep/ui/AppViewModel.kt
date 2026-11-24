@@ -348,6 +348,15 @@ class AppViewModel @JvmOverloads constructor(
         }
     }
 
+    /** Free-text wish -> criteria via the user's AI provider. */
+    suspend fun parseWish(text: String): Result<de.schnubbirunkel.barkeep.data.Wish> = runCatching {
+        val s = user.value.settings
+        if (s.aiKey.isBlank()) throw AiException("NO_KEY")
+        VisionClient(s.aiProvider, s.aiKey, s.aiModel).parseWish(text)
+    }
+
+    fun favoriteRecipes(): List<Recipe> = user.value.folders.values.flatten().distinct().mapNotNull { recipe(it) }
+
     fun findByName(name: String): Recipe? {
         val n = Catalog.norm(name)
         if (n.isEmpty()) return null

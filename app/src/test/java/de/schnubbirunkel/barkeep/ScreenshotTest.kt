@@ -63,6 +63,7 @@ abstract class ScreenshotBase(private val lang: String) {
     @Test fun search() = shoot("5_search", Routes.search(q = "whisky"))
     @Test fun favorites() = shoot("6_favorites", Routes.FAVORITES)
     @Test fun settings() = shoot("7_settings", Routes.SETTINGS)
+    @Test fun finder() = shoot("8_finder", Routes.FINDER)
 }
 
 @Config(sdk = [34], qualifiers = "de-w411dp-h891dp-xxhdpi")

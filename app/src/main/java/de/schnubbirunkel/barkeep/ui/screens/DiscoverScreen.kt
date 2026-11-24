@@ -22,6 +22,7 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AutoAwesome
 import androidx.compose.material.icons.filled.CameraAlt
 import androidx.compose.material.icons.filled.DocumentScanner
 import androidx.compose.material.icons.filled.Settings
@@ -78,9 +79,16 @@ fun DiscoverScreen(vm: AppViewModel, nav: NavController) {
     val scope = rememberCoroutineScope()
     var dailyOffset by remember { mutableIntStateOf(0) }
     val inv = user.available
-    val makeable = remember(all, inv) { if (inv.isEmpty()) emptyList() else all.filter { Matcher.match(it, inv, vm.catalog).missingCount == 0 } }
     val curated = remember(all) { all.filter { it.source == "local" || it.source == "custom" } }
-    val daily = remember(makeable, curated, dailyOffset) { Discovery.daily(makeable.ifEmpty { curated }, offset = dailyOffset) }
+    val favorites = remember(all, user.folders) { vm.favoriteRecipes() }
+    val forYou = remember(all, favorites) { de.schnubbirunkel.barkeep.data.Finder.forYou(favorites, all, vm.catalog) }
+    val becauseOf = remember(all, favorites) {
+        favorites.shuffled(java.util.Random(java.time.LocalDate.now().toEpochDay())).take(2)
+            .map { f -> f to Discovery.similar(f, all, vm.catalog, 10).filter { s -> favorites.none { it.id == s.id } } }
+            .filter { it.second.isNotEmpty() }
+    }
+    val daily = remember(forYou, curated, dailyOffset) { Discovery.daily(forYou.take(10).ifEmpty { curated }, offset = dailyOffset) }
+    val makeable = remember(daily, inv) { daily != null && inv.isNotEmpty() && Matcher.match(daily, inv, vm.catalog).missingCount == 0 }
     val popular = remember(all) { Discovery.POPULAR.mapNotNull { id -> all.firstOrNull { it.id == id } } }
     val season = remember { Discovery.currentSeason() }
     val seasonal = remember(all) { curated.filter { r -> r.season.any { it in season } }.shuffled(java.util.Random(java.time.LocalDate.now().toEpochDay())) }
@@ -101,6 +109,31 @@ fun DiscoverScreen(vm: AppViewModel, nav: NavController) {
                 Column(Modifier.padding(horizontal = 20.dp)) {
                     Text(stringResource(R.string.greeting), style = MaterialTheme.typography.headlineMedium)
                     Text(stringResource(R.string.total_recipes, all.size), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                }
+            }
+            item {
+                Card(
+                    onClick = { nav.navigate(Routes.FINDER) },
+                    modifier = Modifier.fillMaxWidth().padding(start = 16.dp, end = 16.dp, top = 16.dp),
+                    shape = RoundedCornerShape(24.dp),
+                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
+                ) {
+                    Row(Modifier.padding(18.dp), verticalAlignment = Alignment.CenterVertically) {
+                        Icon(Icons.Filled.AutoAwesome, null, tint = MaterialTheme.colorScheme.onPrimaryContainer, modifier = Modifier.size(36.dp))
+                        Spacer(Modifier.width(14.dp))
+                        Column(Modifier.weight(1f)) {
+                            Text(stringResource(R.string.finder_title), style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.onPrimaryContainer)
+                            Text(stringResource(R.string.finder_sub), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onPrimaryContainer)
+                        }
+                    }
+                }
+            }
+            item {
+                SectionTitle(stringResource(R.string.for_you))
+                if (forYou.isEmpty()) Text(stringResource(R.string.for_you_empty), style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(horizontal = 20.dp))
+                else LazyRow(contentPadding = PaddingValues(horizontal = 12.dp)) {
+                    items(forYou, key = { it.id }) { r -> RecipeTile(r, lang, { nav.navigate(Routes.recipe(r.id)) }) }
                 }
             }
             if (daily != null) item {
@@ -125,11 +158,19 @@ fun DiscoverScreen(vm: AppViewModel, nav: NavController) {
                             Spacer(Modifier.height(4.dp))
                             Text(daily.about?.get(lang) ?: daily.ingredients.joinToString(", ") { vm.catalog.name(it, lang) },
                                 style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 3, overflow = TextOverflow.Ellipsis)
-                            if (makeable.isNotEmpty()) {
+                            if (makeable) {
                                 Spacer(Modifier.height(8.dp))
                                 Pill(stringResource(R.string.daily_makeable), MaterialTheme.colorScheme.secondaryContainer, MaterialTheme.colorScheme.onSecondaryContainer)
                             }
                         }
+                    }
+                }
+            }
+            becauseOf.forEach { (fav, list) ->
+                item(key = "because" + fav.id) {
+                    SectionTitle(stringResource(R.string.because_you_like, fav.displayName(lang)))
+                    LazyRow(contentPadding = PaddingValues(horizontal = 12.dp)) {
+                        items(list, key = { it.id }) { r -> RecipeTile(r, lang, { nav.navigate(Routes.recipe(r.id)) }) }
                     }
                 }
             }
@@ -149,12 +190,6 @@ fun DiscoverScreen(vm: AppViewModel, nav: NavController) {
                         onClick = { scope.launch { vm.randomOnline()?.let { nav.navigate(Routes.recipe(it.id)) } } },
                         label = { Text("TheCocktailDB") }, leadingIcon = { Icon(Icons.Filled.Public, null) },
                     )
-                }
-            }
-            if (makeable.isNotEmpty()) item {
-                SectionTitle(stringResource(R.string.can_make_now) + " · " + makeable.size)
-                LazyRow(contentPadding = PaddingValues(horizontal = 12.dp)) {
-                    items(makeable.take(20), key = { it.id }) { r -> RecipeTile(r, lang, { nav.navigate(Routes.recipe(r.id)) }) }
                 }
             }
             if (seasonal.isNotEmpty()) item {
