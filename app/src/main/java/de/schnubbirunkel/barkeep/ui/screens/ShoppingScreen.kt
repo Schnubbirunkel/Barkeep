@@ -1,6 +1,5 @@
 package de.schnubbirunkel.barkeep.ui.screens
 
-import android.content.Intent
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -31,7 +30,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextDecoration
@@ -42,7 +40,7 @@ import de.schnubbirunkel.barkeep.ui.EmptyHint
 
 @Composable
 fun ShoppingScreen(vm: AppViewModel, nav: androidx.navigation.NavController) {
-    val ctx = LocalContext.current
+    val share = de.schnubbirunkel.barkeep.ui.rememberShareText()
     val user by vm.user.collectAsState()
     var text by remember { mutableStateOf("") }
     val title = stringResource(R.string.shopping_share_title)
@@ -51,7 +49,7 @@ fun ShoppingScreen(vm: AppViewModel, nav: androidx.navigation.NavController) {
             Text(stringResource(R.string.nav_shopping), style = MaterialTheme.typography.headlineMedium, modifier = Modifier.weight(1f))
             IconButton(enabled = user.shopping.isNotEmpty(), onClick = {
                 val body = title + "\n\n" + user.shopping.joinToString("\n") { (if (it.done) "☑ " else "☐ ") + it.text }
-                ctx.startActivity(Intent.createChooser(Intent(Intent.ACTION_SEND).apply { type = "text/plain"; putExtra(Intent.EXTRA_TEXT, body) }, null))
+                share(body)
             }) { Icon(Icons.Filled.Share, stringResource(R.string.share)) }
             de.schnubbirunkel.barkeep.ui.SettingsButton(nav)
         }

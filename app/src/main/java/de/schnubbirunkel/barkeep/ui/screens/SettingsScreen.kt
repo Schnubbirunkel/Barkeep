@@ -2,10 +2,6 @@
 
 package de.schnubbirunkel.barkeep.ui.screens
 
-import android.content.ClipboardManager
-import android.content.Context
-import android.content.Intent
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.size
@@ -43,11 +39,9 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
-import androidx.core.os.LocaleListCompat
 import androidx.navigation.NavController
 import de.schnubbirunkel.barkeep.BuildConfig
 import de.schnubbirunkel.barkeep.R
@@ -61,7 +55,8 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun SettingsScreen(vm: AppViewModel, nav: NavController) {
-    val ctx = LocalContext.current
+    val exportData = de.schnubbirunkel.barkeep.ui.rememberExportData()
+    val importData = de.schnubbirunkel.barkeep.ui.rememberImportData()
     val user by vm.user.collectAsState()
     val downloading by vm.downloading.collectAsState()
     val dlMsg by vm.downloadMessage.collectAsState()
@@ -85,11 +80,11 @@ fun SettingsScreen(vm: AppViewModel, nav: NavController) {
     }) { pad ->
         Column(Modifier.padding(pad).verticalScroll(rememberScrollState()).padding(bottom = 32.dp)) {
             SectionTitle(stringResource(R.string.settings_language))
-            val current = AppCompatDelegate.getApplicationLocales().toLanguageTags()
+            val current = de.schnubbirunkel.barkeep.ui.appLanguageSetting()
             ChipRow {
-                FilterChip(current.isEmpty(), { AppCompatDelegate.setApplicationLocales(LocaleListCompat.getEmptyLocaleList()) }, { Text(stringResource(R.string.lang_system)) })
-                FilterChip(current.startsWith("de"), { AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("de")) }, { Text("Deutsch") })
-                FilterChip(current.startsWith("en"), { AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("en")) }, { Text("English") })
+                FilterChip(current.isEmpty(), { de.schnubbirunkel.barkeep.ui.setAppLanguage("") }, { Text(stringResource(R.string.lang_system)) })
+                FilterChip(current.startsWith("de"), { de.schnubbirunkel.barkeep.ui.setAppLanguage("de") }, { Text("Deutsch") })
+                FilterChip(current.startsWith("en"), { de.schnubbirunkel.barkeep.ui.setAppLanguage("en") }, { Text("English") })
             }
             SectionTitle(stringResource(R.string.settings_theme))
             ChipRow {
@@ -141,13 +136,13 @@ fun SettingsScreen(vm: AppViewModel, nav: NavController) {
 
             SectionTitle(stringResource(R.string.settings_data))
             TextButton(onClick = {
-                ctx.startActivity(Intent.createChooser(Intent(Intent.ACTION_SEND).apply { type = "application/json"; putExtra(Intent.EXTRA_TEXT, vm.exportData()) }, null))
+                exportData(vm.exportData())
             }, modifier = Modifier.padding(horizontal = 8.dp)) { Text(stringResource(R.string.settings_export)) }
             TextButton(onClick = {
-                val cm = ctx.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-                val text = cm.primaryClip?.getItemAt(0)?.coerceToText(ctx)?.toString().orEmpty()
-                val ok = text.isNotBlank() && vm.importData(text)
-                scope.launch { snackbar.showSnackbar(if (ok) importOk else importFail) }
+                importData { text ->
+                    val ok = text.isNotBlank() && vm.importData(text)
+                    scope.launch { snackbar.showSnackbar(if (ok) importOk else importFail) }
+                }
             }, modifier = Modifier.padding(horizontal = 8.dp)) { Text(stringResource(R.string.settings_import)) }
 
             SectionTitle(stringResource(R.string.settings_about))

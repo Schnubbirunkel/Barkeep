@@ -25,7 +25,7 @@ object Units {
     }
 
     private fun trimNum(d: Double): String =
-        if (abs(d - d.roundToInt()) < 0.001) d.roundToInt().toString() else String.format(java.util.Locale.ROOT, "%.1f", d)
+        if (abs(d - d.roundToInt()) < 0.001) d.roundToInt().toString() else ((d * 10).roundToInt() / 10.0).toString()
 
     /** Nice kitchen fractions: 1 ½, ¾ … */
     fun fraction(d: Double, denom: Int): String {
@@ -127,7 +127,7 @@ object Discovery {
     fun daily(all: List<Recipe>, date: LocalDate = LocalDate.now(), offset: Int = 0): Recipe? {
         if (all.isEmpty()) return null
         val seed = date.toEpochDay().toInt() * 31 + offset * 7919
-        return all[Math.floorMod(seed, all.size)]
+        return all[seed.mod(all.size)]
     }
 
     fun currentSeason(date: LocalDate = LocalDate.now()): List<String> {

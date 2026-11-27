@@ -87,7 +87,7 @@ fun DiscoverScreen(vm: AppViewModel, nav: NavController) {
     val makeable = remember(daily, inv) { daily != null && inv.isNotEmpty() && Matcher.match(daily, inv, vm.catalog).missingCount == 0 }
     val popular = remember(all) { Discovery.POPULAR.mapNotNull { id -> all.firstOrNull { it.id == id } } }
     val season = remember { Discovery.currentSeason() }
-    val seasonal = remember(all) { curated.filter { r -> r.season.any { it in season } }.shuffled(java.util.Random(java.time.LocalDate.now().toEpochDay())) }
+    val seasonal = remember(all) { curated.filter { r -> r.season.any { it in season } }.shuffled(kotlin.random.Random(java.time.LocalDate.now().toEpochDay())) }
 
     run {
         // Header scrolls away with the content – nothing stays on top of the cards.

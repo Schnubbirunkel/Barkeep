@@ -1,14 +1,10 @@
 package de.schnubbirunkel.barkeep.data
 
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.contentOrNull
 import kotlinx.serialization.json.jsonObject
-import java.net.HttpURLConnection
-import java.net.URL
 
 data class ProductInfo(
     val barcode: String,
@@ -24,27 +20,25 @@ data class ProductInfo(
 /** Product lookup via Open Food Facts (open database, ODbL). */
 class BarcodeLookup(private val catalog: Catalog) {
 
-    suspend fun lookup(barcode: String): ProductInfo? = withContext(Dispatchers.IO) {
+    suspend fun lookup(barcode: String): ProductInfo? {
         val url = "https://world.openfoodfacts.org/api/v2/product/${barcode.filter { it.isDigit() }}.json" +
             "?fields=product_name,product_name_de,product_name_en,brands,categories_tags,quantity,image_front_small_url"
-        val c = (URL(url).openConnection() as HttpURLConnection).apply {
-            connectTimeout = 10000; readTimeout = 15000
-            setRequestProperty("User-Agent", "Barkeep-Android - https://github.com/Schnubbirunkel/Barkeep")
-        }
-        try {
-            if (c.responseCode == 404) return@withContext null
-            val root = AppJson.parseToJsonElement(c.inputStream.bufferedReader().use { it.readText() }).jsonObject
-            val p = root["product"] as? JsonObject ?: return@withContext null
+        val res = Http.get(url, timeoutMs = 15000)
+        if (res.code == 404) return null
+        if (!res.ok) throw IllegalStateException("HTTP ${res.code}")
+        run {
+            val root = AppJson.parseToJsonElement(res.body).jsonObject
+            val p = root["product"] as? JsonObject ?: return null
             fun s(k: String) = (p[k] as? JsonPrimitive)?.contentOrNull?.trim().orEmpty()
             val name = s("product_name_de").ifEmpty { s("product_name") }.ifEmpty { s("product_name_en") }
             val brand = s("brands").split(',').firstOrNull()?.trim().orEmpty()
             val cats = (p["categories_tags"] as? JsonArray)?.mapNotNull { (it as? JsonPrimitive)?.contentOrNull } ?: emptyList()
-            ProductInfo(
+            return ProductInfo(
                 barcode = barcode, name = name.ifEmpty { brand }, brand = brand, categories = cats,
                 quantityMl = parseQuantity(s("quantity")), imageUrl = s("image_front_small_url").ifEmpty { null },
                 ingredientId = guess(cats, "$name $brand"),
             )
-        } finally { c.disconnect() }
+        }
     }
 
     /** Maps Open Food Facts categories and the product name to an ingredient key. */

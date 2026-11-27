@@ -1,7 +1,6 @@
 package de.schnubbirunkel.barkeep.ui
 
 import android.app.Application
-import android.graphics.Bitmap
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import de.schnubbirunkel.barkeep.ai.AiException
@@ -86,7 +85,7 @@ class AppViewModel @JvmOverloads constructor(
     private fun buildAll(u: UserData, src: Map<String, List<Recipe>>): List<Recipe> {
         // Photos from TheCocktailDB are reused for every recipe with the same name.
         val photos = HashMap<String, String>()
-        (src[SourceIds.COCKTAILDB].orEmpty() + u.savedOnline).forEach { r -> r.imageUrl?.let { photos.putIfAbsent(photoKey(r.name), it) } }
+        (src[SourceIds.COCKTAILDB].orEmpty() + u.savedOnline).forEach { r -> r.imageUrl?.let { photos.getOrPut(photoKey(r.name)) { it } } }
         val seen = HashSet<String>()
         val out = ArrayList<Recipe>()
         fun addAll(list: List<Recipe>) = list.forEach { r ->
@@ -140,7 +139,7 @@ class AppViewModel @JvmOverloads constructor(
                 updateSettings { it.copy(sources = it.sources + id) }
                 if (!quiet) _downloadMessage.value = "OK:$n"
             } catch (e: Exception) {
-                if (!quiet) _downloadMessage.value = "ERR:" + (e.message ?: e.javaClass.simpleName)
+                if (!quiet) _downloadMessage.value = "ERR:" + (e.message ?: e::class.simpleName.orEmpty())
             } finally {
                 _downloading.value = _downloading.value - id
             }
@@ -212,7 +211,7 @@ class AppViewModel @JvmOverloads constructor(
     val becauseOf: StateFlow<List<Pair<Recipe, List<Recipe>>>> = combine(allRecipes, user.map { it.folders }.distinctUntilChanged()) { all, folders ->
         val ids = folders.values.flatten().distinct()
         val favs = ids.mapNotNull { id -> all.firstOrNull { it.id == id } ?: rawRecipe(id) }
-        favs.shuffled(java.util.Random(java.time.LocalDate.now().toEpochDay())).take(2)
+        favs.shuffled(kotlin.random.Random(java.time.LocalDate.now().toEpochDay())).take(2)
             .map { f -> f to de.schnubbirunkel.barkeep.data.Discovery.similar(f, all, catalog, 10).filter { s -> s.id !in ids } }
             .filter { it.second.isNotEmpty() }
     }.flowOn(Dispatchers.Default).stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
@@ -274,14 +273,14 @@ class AppViewModel @JvmOverloads constructor(
             product.onSuccess { p -> _barcode.value = BarcodeState.Result(code, p, known ?: p?.ingredientId) }
                 .onFailure {
                     _barcode.value = if (known != null) BarcodeState.Result(code, null, known)
-                    else BarcodeState.Error(it.message ?: it.javaClass.simpleName)
+                    else BarcodeState.Error(it.message ?: it::class.simpleName.orEmpty())
                 }
         }
     }
 
     fun addBottle(name: String, brand: String, ingredientId: String, barcode: String? = null, volumeMl: Int? = null, imageUrl: String? = null) =
         store.update { u ->
-            val now = System.currentTimeMillis()
+            val now = nowMillis()
             u.copy(
                 bottles = u.bottles + Bottle(now + u.bottles.size, name.ifBlank { catalog.name(ingredientId, "en") }, brand, ingredientId, barcode, 100, volumeMl, imageUrl, now),
                 barcodeMap = if (barcode != null) u.barcodeMap + (barcode to ingredientId) else u.barcodeMap,
@@ -345,7 +344,7 @@ class AppViewModel @JvmOverloads constructor(
         if (t.isEmpty()) return
         store.update { u ->
             if (u.shopping.any { (ingredientId != null && it.ingredientId == ingredientId) || it.text.equals(t, true) }) u
-            else u.copy(shopping = u.shopping + ShoppingItem(System.currentTimeMillis() + u.shopping.size, t, false, ingredientId))
+            else u.copy(shopping = u.shopping + ShoppingItem(nowMillis() + u.shopping.size, t, false, ingredientId))
         }
     }
 
@@ -379,13 +378,13 @@ class AppViewModel @JvmOverloads constructor(
 
     fun resetScan() { _scan.value = ScanState.Idle }
 
-    fun scanImage(bitmap: Bitmap, ingredientsMode: Boolean, lang: String) {
+    fun scanImage(photo: Photo, ingredientsMode: Boolean, lang: String) {
         val s = user.value.settings
         if (s.aiKey.isBlank() && s.aiProvider != "custom") { _scan.value = ScanState.Error("NO_KEY"); return }
         _scan.value = ScanState.Working
         viewModelScope.launch {
             try {
-                val b64 = withContext(Dispatchers.Default) { VisionClient.encode(bitmap) }
+                val b64 = photo.toJpegBase64()
                 val client = VisionClient(s.aiProvider, s.aiKey, s.aiModel, s.aiBaseUrl)
                 if (ingredientsMode) {
                     val g = client.identifyIngredients(b64)
@@ -398,7 +397,7 @@ class AppViewModel @JvmOverloads constructor(
             } catch (e: AiException) {
                 _scan.value = ScanState.Error(e.message ?: "?")
             } catch (e: Exception) {
-                _scan.value = ScanState.Error(e.message ?: e.javaClass.simpleName)
+                _scan.value = ScanState.Error(e.message ?: e::class.simpleName.orEmpty())
             }
         }
     }
@@ -422,7 +421,7 @@ class AppViewModel @JvmOverloads constructor(
     }
 
     fun guessToRecipe(g: CocktailGuess, lang: String): Recipe = Recipe(
-        id = "custom:" + System.currentTimeMillis(),
+        id = "custom:" + nowMillis(),
         name = g.name.ifBlank { "?" },
         glass = de.schnubbirunkel.barkeep.data.CocktailDb.mapGlass(g.glass),
         ingredients = g.ingredients.map {

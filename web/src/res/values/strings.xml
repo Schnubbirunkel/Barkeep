@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Web-only overrides of app/src/main/res/values/strings.xml -->
+<resources>
+    <string name="settings_export">Export (download backup file)</string>
+    <string name="settings_import">Import backup file</string>
+    <string name="import_fail">This file is not a Barkeep backup</string>
+    <string name="barcode_unavailable">Camera not available – allow camera access for this site.</string>
+    <string name="scan_privacy">The photo is sent directly from your device to the provider you chose. Nothing else is uploaded.</string>
+</resources>

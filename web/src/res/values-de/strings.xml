@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Web-only overrides of app/src/main/res/values-de/strings.xml -->
+<resources>
+    <string name="settings_export">Exportieren (Sicherung herunterladen)</string>
+    <string name="settings_import">Sicherung importieren</string>
+    <string name="import_fail">Diese Datei ist keine Barkeep-Sicherung</string>
+    <string name="barcode_unavailable">Kamera nicht verfügbar – bitte Kamerazugriff für diese Seite erlauben.</string>
+    <string name="scan_privacy">Das Foto geht direkt von deinem Gerät an den gewählten Anbieter. Sonst wird nichts hochgeladen.</string>
+</resources>
