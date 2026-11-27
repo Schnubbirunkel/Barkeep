@@ -1,10 +1,7 @@
 package de.schnubbirunkel.barkeep.ai
 
-import android.graphics.Bitmap
-import android.util.Base64
 import de.schnubbirunkel.barkeep.data.AppJson
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import de.schnubbirunkel.barkeep.data.Http
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject
@@ -19,9 +16,6 @@ import kotlinx.serialization.json.jsonPrimitive
 import kotlinx.serialization.json.put
 import kotlinx.serialization.json.putJsonArray
 import kotlinx.serialization.json.putJsonObject
-import java.io.ByteArrayOutputStream
-import java.net.HttpURLConnection
-import java.net.URL
 
 @Serializable
 data class AiIngredient(val name: String = "", val amount: Double? = null, val unit: String = "")
@@ -65,28 +59,18 @@ class VisionClient(
         }
 
         /** Lists Gemini models usable with generateContent for this key. */
-        suspend fun listGeminiModels(apiKey: String): List<String> = withContext(Dispatchers.IO) {
-            val c = (URL("https://generativelanguage.googleapis.com/v1beta/models?pageSize=200").openConnection() as HttpURLConnection).apply {
-                setRequestProperty("x-goog-api-key", apiKey); connectTimeout = 15000; readTimeout = 20000
-            }
-            try {
-                if (c.responseCode !in 200..299) throw AiException("HTTP ${c.responseCode}")
-                val root = AppJson.parseToJsonElement(c.inputStream.bufferedReader().use { it.readText() }).jsonObject
-                (root["models"] as? JsonArray).orEmpty().mapNotNull { m ->
+        suspend fun listGeminiModels(apiKey: String): List<String> {
+            val res = Http.get("https://generativelanguage.googleapis.com/v1beta/models?pageSize=200", mapOf("x-goog-api-key" to apiKey), 20000)
+            if (!res.ok) throw AiException("HTTP ${res.code}")
+            run {
+                val root = AppJson.parseToJsonElement(res.body).jsonObject
+                return (root["models"] as? JsonArray).orEmpty().mapNotNull { m ->
                     val o = m.jsonObject
                     val methods = (o["supportedGenerationMethods"] as? JsonArray)?.mapNotNull { (it as? JsonPrimitive)?.contentOrNull }.orEmpty()
                     val name = (o["name"] as? JsonPrimitive)?.contentOrNull?.removePrefix("models/") ?: return@mapNotNull null
                     name.takeIf { "generateContent" in methods && name.startsWith("gemini") && "tts" !in name && "image" !in name && "embedding" !in name }
                 }.sortedWith(compareBy<String> { if ("lite" in it) 0 else if ("flash" in it) 1 else 2 }.thenByDescending { it })
-            } finally { c.disconnect() }
-        }
-
-        fun encode(bitmap: Bitmap, maxSide: Int = 1024): String {
-            val scale = maxSide.toFloat() / maxOf(bitmap.width, bitmap.height)
-            val b = if (scale < 1f) Bitmap.createScaledBitmap(bitmap, (bitmap.width * scale).toInt(), (bitmap.height * scale).toInt(), true) else bitmap
-            val out = ByteArrayOutputStream()
-            b.compress(Bitmap.CompressFormat.JPEG, 82, out)
-            return Base64.encodeToString(out.toByteArray(), Base64.NO_WRAP)
+            }
         }
 
         /** Finds the first JSON object in a model answer (handles ```json fences). */
@@ -141,9 +125,9 @@ class VisionClient(
         return AppJson.decodeFromString(de.schnubbirunkel.barkeep.data.Wish.serializer(), extractJson(ask(prompt, null)))
     }
 
-    private suspend fun ask(prompt: String, imageB64: String?): String = withContext(Dispatchers.IO) {
+    private suspend fun ask(prompt: String, imageB64: String?): String {
         if (apiKey.isBlank() && provider != "custom") throw AiException("NO_KEY")
-        when (provider) {
+        return when (provider) {
             "anthropic" -> anthropic(prompt, imageB64)
             "openai" -> openai(prompt, imageB64)
             "custom" -> openai(prompt, imageB64)
@@ -157,7 +141,7 @@ class VisionClient(
         }
     }
 
-    private fun gemini(prompt: String, img: String?, model: String): String {
+    private suspend fun gemini(prompt: String, img: String?, model: String): String {
         val body = buildJsonObject {
             putJsonArray("contents") {
                 addJsonObject {
@@ -177,7 +161,7 @@ class VisionClient(
             ?: throw AiException("Empty answer")
     }
 
-    private fun anthropic(prompt: String, img: String?): String {
+    private suspend fun anthropic(prompt: String, img: String?): String {
         val body = buildJsonObject {
             put("model", usedModel)
             put("max_tokens", 1500)
@@ -195,12 +179,12 @@ class VisionClient(
             }
         }
         val res = post("https://api.anthropic.com/v1/messages", body.toString(),
-            mapOf("x-api-key" to apiKey, "anthropic-version" to "2023-06-01"))
+            mapOf("x-api-key" to apiKey, "anthropic-version" to "2023-06-01", "anthropic-dangerous-direct-browser-access" to "true"))
         val content = AppJson.parseToJsonElement(res).jsonObject["content"] as? JsonArray ?: throw AiException("Empty answer")
         return content.joinToString("") { (it.jsonObject["text"] as? JsonPrimitive)?.contentOrNull.orEmpty() }
     }
 
-    private fun openai(prompt: String, img: String?): String {
+    private suspend fun openai(prompt: String, img: String?): String {
         val body = buildJsonObject {
             put("model", usedModel)
             if (provider == "openai") putJsonObject("response_format") { put("type", "json_object") }
@@ -225,35 +209,22 @@ class VisionClient(
             ?.get("content")?.jsonPrimitive?.contentOrNull ?: throw AiException("Empty answer")
     }
 
-    private fun post(url: String, body: String, headers: Map<String, String>): String {
-        val conn = (URL(url).openConnection() as HttpURLConnection).apply {
-            requestMethod = "POST"
-            doOutput = true
-            connectTimeout = 15000
-            readTimeout = 60000
-            setRequestProperty("Content-Type", "application/json")
-            headers.forEach { (k, v) -> setRequestProperty(k, v) }
-        }
-        try {
-            conn.outputStream.use { it.write(body.toByteArray()) }
-            val code = conn.responseCode
-            val stream = if (code in 200..299) conn.inputStream else conn.errorStream
-            val text = stream?.bufferedReader()?.use { it.readText() }.orEmpty()
-            if (code !in 200..299) {
-                val msg = runCatching {
-                    val o = AppJson.parseToJsonElement(text).jsonObject
-                    (o["error"] as? JsonObject)?.get("message")?.jsonPrimitive?.contentOrNull
-                }.getOrNull()
-                if (code == 429) {
-                    val wait = Regex("retry in ([\\d.]+)s", RegexOption.IGNORE_CASE).find(msg ?: text)?.groupValues?.get(1)?.toDoubleOrNull()
-                        ?: Regex("\"retryDelay\":\\s*\"(\\d+)s\"").find(text)?.groupValues?.get(1)?.toDoubleOrNull()
-                    throw RateLimitException(wait?.toInt())
-                }
-                throw AiException("HTTP $code: ${msg ?: text.take(200)}")
+    private suspend fun post(url: String, body: String, headers: Map<String, String>): String {
+        val res = Http.post(url, body, headers, 60000)
+        val code = res.code
+        val text = res.body
+        if (!res.ok) {
+            val msg = runCatching {
+                val o = AppJson.parseToJsonElement(text).jsonObject
+                (o["error"] as? JsonObject)?.get("message")?.jsonPrimitive?.contentOrNull
+            }.getOrNull()
+            if (code == 429) {
+                val wait = Regex("retry in ([\\d.]+)s", RegexOption.IGNORE_CASE).find(msg ?: text)?.groupValues?.get(1)?.toDoubleOrNull()
+                    ?: Regex("\"retryDelay\":\\s*\"(\\d+)s\"").find(text)?.groupValues?.get(1)?.toDoubleOrNull()
+                throw RateLimitException(wait?.toInt())
             }
-            return text
-        } finally {
-            conn.disconnect()
+            throw AiException("HTTP $code: ${msg ?: text.take(200)}")
         }
+        return text
     }
 }

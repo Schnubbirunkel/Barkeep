@@ -1,7 +1,5 @@
 package de.schnubbirunkel.barkeep.data
 
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject
@@ -9,9 +7,6 @@ import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.contentOrNull
 import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
-import java.net.HttpURLConnection
-import java.net.URL
-import java.net.URLEncoder
 
 /**
  * Optional online source: TheCocktailDB (https://www.thecocktaildb.com).
@@ -29,23 +24,15 @@ class CocktailDb(private val keyProvider: () -> String) {
     /** Returns only ids + names + thumbnails, details need lookup(). */
     suspend fun byIngredient(ingredient: String): List<Recipe> = fetch("filter.php?i=" + enc(ingredient))
 
-    private fun enc(s: String) = URLEncoder.encode(s, "UTF-8")
+    private fun enc(s: String) = urlEncode(s)
 
-    private suspend fun fetch(path: String): List<Recipe> = withContext(Dispatchers.IO) {
-        val conn = (URL(base + path).openConnection() as HttpURLConnection).apply {
-            connectTimeout = 8000
-            readTimeout = 10000
-            setRequestProperty("User-Agent", "Barkeep-Android")
-        }
-        try {
-            val body = conn.inputStream.bufferedReader().use { it.readText() }
-            if (body.isBlank()) return@withContext emptyList()
-            val root = json.parseToJsonElement(body).jsonObject
-            val drinks = root["drinks"] as? JsonArray ?: return@withContext emptyList()
-            drinks.mapNotNull { (it as? JsonObject)?.let(::toRecipe) }
-        } finally {
-            conn.disconnect()
-        }
+    private suspend fun fetch(path: String): List<Recipe> {
+        val res = Http.get(base + path, timeoutMs = 10000)
+        if (!res.ok) throw IllegalStateException("HTTP ${res.code}")
+        if (res.body.isBlank()) return emptyList()
+        val root = json.parseToJsonElement(res.body).jsonObject
+        val drinks = root["drinks"] as? JsonArray ?: return emptyList()
+        return drinks.mapNotNull { (it as? JsonObject)?.let(::toRecipe) }
     }
 
     private fun JsonObject.str(k: String): String? = (this[k] as? JsonPrimitive)?.contentOrNull?.trim()?.takeIf { it.isNotEmpty() }

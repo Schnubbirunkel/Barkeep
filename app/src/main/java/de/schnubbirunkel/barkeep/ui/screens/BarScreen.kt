@@ -58,15 +58,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil3.compose.AsyncImage
-import com.google.mlkit.vision.barcode.common.Barcode
-import com.google.mlkit.vision.codescanner.GmsBarcodeScannerOptions
-import com.google.mlkit.vision.codescanner.GmsBarcodeScanning
 import de.schnubbirunkel.barkeep.R
 import de.schnubbirunkel.barkeep.data.Bottle
 import de.schnubbirunkel.barkeep.data.Catalog
@@ -108,7 +104,6 @@ fun BarScreen(vm: AppViewModel, nav: NavController, initialTab: Int) {
 @Composable
 private fun StockTab(vm: AppViewModel, nav: NavController) {
     val lang = appLang()
-    val ctx = LocalContext.current
     val snackbar = LocalSnackbar.current
     val scope = rememberCoroutineScope()
     val user by vm.user.collectAsState()
@@ -120,15 +115,11 @@ private fun StockTab(vm: AppViewModel, nav: NavController) {
     val unavailable = stringResource(R.string.barcode_unavailable)
     val catalog = vm.catalog
 
-    fun startScan() {
-        val options = GmsBarcodeScannerOptions.Builder()
-            .setBarcodeFormats(Barcode.FORMAT_EAN_13, Barcode.FORMAT_EAN_8, Barcode.FORMAT_UPC_A, Barcode.FORMAT_UPC_E)
-            .enableAutoZoom()
-            .build()
-        GmsBarcodeScanning.getClient(ctx, options).startScan()
-            .addOnSuccessListener { code -> code.rawValue?.let { vm.onBarcode(it) } }
-            .addOnFailureListener { scope.launch { snackbar.showSnackbar(unavailable) } }
-    }
+    val scanner = de.schnubbirunkel.barkeep.ui.rememberBarcodeScanner(
+        onCode = { vm.onBarcode(it) },
+        onError = { scope.launch { snackbar.showSnackbar(unavailable) } },
+    )
+    fun startScan() = scanner()
 
     val matches = remember(query) { catalog.search(query) }
     val q = Catalog.spelling(Catalog.norm(query))

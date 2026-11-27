@@ -28,6 +28,17 @@
 APK aus den [Releases](https://github.com/Schnubbirunkel/Barkeep/releases) laden und installieren (Android 8+).
 Der Barcode-Scanner nutzt die Google-Play-Dienste (keine Kamera-Berechtigung nötig).
 
+### iPhone, iPad & Browser (Web-App)
+
+Barkeep läuft auch im Browser: **<https://schnubbirunkel.github.io/Barkeep/>**
+
+Auf dem iPhone in **Safari** öffnen → **Teilen** → **Zum Home-Bildschirm**. Danach startet Barkeep wie eine App
+im Vollbild und funktioniert nach dem ersten Laden auch offline. Benötigt iOS 18.2 oder neuer
+(bzw. einen aktuellen Chrome/Firefox/Edge).
+
+Unterschiede zur Android-App: Daten liegen im Browser-Speicher (Sicherung über *Einstellungen → Exportieren*
+als Datei), der Barcode-Scanner nutzt die Kamera direkt im Browser.
+
 ## Datenquellen & Lizenzen
 
 | Quelle | Inhalt | Hinweis |
@@ -46,8 +57,15 @@ Rezeptdaten neu erzeugen: `python3 tools/gen_data.py` · Übersetzungen: `python
 ```bash
 gradle :app:assembleRelease          # APK
 gradle :app:recordRoborazziDebug     # Screenshots nach docs/screenshots
+gradle -p web wasmJsBrowserDistribution   # Web-App nach web/build/dist/wasmJs/productionExecutable
+gradle -p web wasmJsBrowserDevelopmentRun # Web-App lokal starten
 ```
-GitHub Actions baut bei jedem Push; ein Tag `v*` erzeugt ein Release.
+GitHub Actions baut bei jedem Push; ein Tag `v*` erzeugt ein Release. Die Web-App wird bei jedem Push auf `main`
+nach GitHub Pages veröffentlicht (einmalig in den Repo-Einstellungen *Pages → Source: GitHub Actions* wählen).
+
+Die Web-App (`web/`) nutzt denselben Kotlin-Code wie die Android-App (Compose Multiplatform, WebAssembly).
+Nur die plattformabhängigen Teile – `data/Http.kt`, `data/Stores.kt`, `data/Sources.kt` und `ui/Platform.kt` –
+haben eine eigene Web-Version unter `web/src/wasmJsMain/kotlin/web/`.
 
 ---
 
@@ -61,3 +79,6 @@ GitHub Actions baut bei jedem Push; ein Tag `v*` erzeugt ein Release.
 </p>
 
 Barkeep is a free cocktail app: manage your home bar (barcode scanner via Open Food Facts, fill levels, fresh ingredients), see what you can make right now, browse a bilingual built-in recipe collection plus optional TheCocktailDB (offline) and a community collection (private use), identify drinks or ingredients from a photo using your own Gemini/Claude/OpenAI key, scale and batch recipes, get substitutes, food pairings, folders, a shopping list and a step-by-step mode. German & English UI.
+
+**iPhone / iPad / browser:** open <https://schnubbirunkel.github.io/Barkeep/> in Safari → Share → *Add to Home Screen*
+(iOS 18.2+). It runs full-screen and works offline after the first load.

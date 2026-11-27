@@ -51,7 +51,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -73,7 +72,7 @@ private const val STEPS = 6
 @Composable
 fun FinderScreen(vm: AppViewModel, nav: NavController) {
     val lang = appLang()
-    val ctx = LocalContext.current
+    val strings = de.schnubbirunkel.barkeep.ui.rememberStrings()
     val user by vm.user.collectAsState()
     val all by vm.allRecipes.collectAsState()
     val scope = rememberCoroutineScope()
@@ -97,7 +96,7 @@ fun FinderScreen(vm: AppViewModel, nav: NavController) {
     }) { pad ->
         if (step >= STEPS) {
             val res = remember(wish, all, user.available) {
-                Finder.suggest(wish, all, user.available, vm.catalog, lang, { key -> labelFor(ctx, key) })
+                Finder.suggest(wish, all, user.available, vm.catalog, lang, { key -> labelFor(strings, key) })
             }
             LazyColumn(contentPadding = PaddingValues(top = pad.calculateTopPadding(), bottom = 24.dp)) {
                 item {
@@ -203,7 +202,7 @@ fun FinderScreen(vm: AppViewModel, nav: NavController) {
     }
 }
 
-private fun labelFor(ctx: android.content.Context, key: String): String {
+private fun labelFor(strings: (Int) -> String, key: String): String {
     val (prefix, k) = key.substringBefore('_') to key.substringAfter('_')
     val id = when (prefix) {
         "flavor" -> Labels.flavor[k]
@@ -211,5 +210,5 @@ private fun labelFor(ctx: android.content.Context, key: String): String {
         "occasion" -> Labels.occasion[k]
         else -> if (key == "can_make") R.string.can_make else null
     }
-    return id?.let { ctx.getString(it) } ?: k
+    return id?.let { strings(it) } ?: k
 }

@@ -36,7 +36,6 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.clipPath
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -52,22 +51,22 @@ import de.schnubbirunkel.barkeep.data.Recipe
 import de.schnubbirunkel.barkeep.data.RecipeIngredient
 import de.schnubbirunkel.barkeep.data.Units
 
-@Composable
-fun appLang(): String {
-    val l = LocalConfiguration.current.locales[0]?.language ?: "en"
-    return if (l == "de") "de" else "en"
+fun parseColor(hex: String, fallback: Color = Color(0xFFE8C77A)): Color {
+    val h = hex.trim().removePrefix("#")
+    val v = h.toLongOrNull(16) ?: return fallback
+    return when (h.length) {
+        6 -> Color(0xFF000000 or v)
+        8 -> Color(v)
+        else -> fallback
+    }
 }
-
-fun parseColor(hex: String, fallback: Color = Color(0xFFE8C77A)): Color = try {
-    Color(android.graphics.Color.parseColor(hex))
-} catch (e: Exception) { fallback }
 
 /** Recipe picture: photo when available, otherwise a drawn glass in the drink's colour. */
 @Composable
 fun DrinkArt(recipe: Recipe, modifier: Modifier = Modifier, corner: Dp = 20.dp, sharedKey: String? = null) {
     val tint = parseColor(recipe.color)
     val bg = Brush.linearGradient(listOf(tint.copy(alpha = 0.30f), tint.copy(alpha = 0.06f), Color.White.copy(alpha = 0.05f)))
-    val ctx = androidx.compose.ui.platform.LocalContext.current
+    val ctx = coil3.compose.LocalPlatformContext.current
     Box(
         modifier.sharedArt(sharedKey).clip(RoundedCornerShape(corner)).background(bg)
             .border(1.dp, Brush.linearGradient(listOf(Color.White.copy(alpha = 0.30f), Color.White.copy(alpha = 0.03f))), RoundedCornerShape(corner)),

@@ -2,7 +2,6 @@
 
 package de.schnubbirunkel.barkeep.ui.screens
 
-import android.content.Intent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -78,7 +77,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -134,7 +132,7 @@ fun DetailScreen(vm: AppViewModel, nav: NavController, id: String) {
 @Composable
 private fun RecipeDetail(vm: AppViewModel, nav: NavController, base: Recipe) {
     val lang = appLang()
-    val ctx = LocalContext.current
+    val share = de.schnubbirunkel.barkeep.ui.rememberShareText()
     val snackbar = LocalSnackbar.current
     val scope = rememberCoroutineScope()
     val user by vm.user.collectAsState()
@@ -182,7 +180,7 @@ private fun RecipeDetail(vm: AppViewModel, nav: NavController, base: Recipe) {
                     IconButton(onClick = { folderDialog = true }) { Icon(Icons.Filled.FolderOpen, stringResource(R.string.save_to_folder)) }
                     IconButton(onClick = {
                         val text = shareText(r, catalog, lang, user.settings.unitSystem, unit)
-                        ctx.startActivity(Intent.createChooser(Intent(Intent.ACTION_SEND).apply { type = "text/plain"; putExtra(Intent.EXTRA_TEXT, text) }, null))
+                        share(text)
                     }) { Icon(Icons.Filled.Share, stringResource(R.string.share)) }
                     if (base.source == RecipeSource.CUSTOM) {
                         IconButton(onClick = { nav.navigate(Routes.edit(id = base.id)) }) { Icon(Icons.Filled.Edit, stringResource(R.string.edit)) }

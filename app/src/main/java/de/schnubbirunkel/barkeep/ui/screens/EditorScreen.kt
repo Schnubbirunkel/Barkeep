@@ -88,7 +88,7 @@ fun EditorScreen(vm: AppViewModel, nav: NavController, id: String, baseId: Strin
                 actions = {
                     TextButton(enabled = name.isNotBlank() && ings.any { it.id != null }, onClick = {
                         val r = Recipe(
-                            id = original?.id ?: ("custom:" + System.currentTimeMillis()),
+                            id = original?.id ?: ("custom:" + de.schnubbirunkel.barkeep.ui.nowMillis()),
                             name = name.trim(), type = type, glass = glass,
                             styles = base?.styles.orEmpty(), flavors = base?.flavors.orEmpty(), color = base?.color ?: "#E8C77A",
                             method = base?.method.orEmpty(), servings = 1, difficulty = base?.difficulty ?: 1,

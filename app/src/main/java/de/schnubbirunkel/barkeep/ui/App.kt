@@ -2,7 +2,7 @@
 
 package de.schnubbirunkel.barkeep.ui
 
-import android.net.Uri
+import de.schnubbirunkel.barkeep.data.urlEncode
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.animation.SharedTransitionLayout
@@ -79,10 +79,10 @@ object Routes {
     const val SETTINGS = "settings"
     const val FINDER = "finder"
 
-    fun search(style: String = "", type: String = "", q: String = "") = "search?style=${Uri.encode(style)}&type=${Uri.encode(type)}&q=${Uri.encode(q)}"
+    fun search(style: String = "", type: String = "", q: String = "") = "search?style=${urlEncode(style)}&type=${urlEncode(type)}&q=${urlEncode(q)}"
     fun bar(tab: Int = 0) = "bar?tab=$tab"
-    fun recipe(id: String) = "recipe/${Uri.encode(id)}"
-    fun edit(id: String = "", base: String = "") = "edit?id=${Uri.encode(id)}&base=${Uri.encode(base)}"
+    fun recipe(id: String) = "recipe/${urlEncode(id)}"
+    fun edit(id: String = "", base: String = "") = "edit?id=${urlEncode(id)}&base=${urlEncode(base)}"
     fun scan(mode: String) = "scan?mode=$mode"
 }
 

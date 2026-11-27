@@ -2,13 +2,6 @@
 
 package de.schnubbirunkel.barkeep.ui.screens
 
-import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.net.Uri
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.PickVisualMediaRequest
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -55,47 +48,30 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.core.content.FileProvider
 import androidx.navigation.NavController
 import de.schnubbirunkel.barkeep.R
 import de.schnubbirunkel.barkeep.ui.AppViewModel
 import de.schnubbirunkel.barkeep.ui.Routes
 import de.schnubbirunkel.barkeep.ui.ScanState
 import de.schnubbirunkel.barkeep.ui.appLang
-import java.io.File
+import de.schnubbirunkel.barkeep.ui.toImageBitmap
 import kotlin.math.roundToInt
-
-private fun loadBitmap(ctx: Context, uri: Uri, maxSide: Int = 1600): Bitmap? = runCatching {
-    val bounds = BitmapFactory.Options().apply { inJustDecodeBounds = true }
-    ctx.contentResolver.openInputStream(uri)?.use { BitmapFactory.decodeStream(it, null, bounds) }
-    var sample = 1
-    while (maxOf(bounds.outWidth, bounds.outHeight) / sample > maxSide) sample *= 2
-    ctx.contentResolver.openInputStream(uri)?.use { BitmapFactory.decodeStream(it, null, BitmapFactory.Options().apply { inSampleSize = sample }) }
-}.getOrNull()
 
 @Composable
 fun ScanScreen(vm: AppViewModel, nav: NavController, initialMode: String) {
-    val ctx = LocalContext.current
     val lang = appLang()
     val state by vm.scan.collectAsState()
     var ingredientsMode by remember { mutableStateOf(initialMode == "ingredients") }
-    var bitmap by remember { mutableStateOf<Bitmap?>(null) }
-    val photoFile = remember { File(ctx.cacheDir, "scan.jpg") }
-    val photoUri = remember { FileProvider.getUriForFile(ctx, ctx.packageName + ".files", photoFile) }
+    var bitmap by remember { mutableStateOf<de.schnubbirunkel.barkeep.ui.Photo?>(null) }
     DisposableEffect(Unit) { onDispose { vm.resetScan() } }
 
-    fun analyse(b: Bitmap?) {
-        if (b == null) return
+    val picker = de.schnubbirunkel.barkeep.ui.rememberPhotoPicker { b ->
         bitmap = b
         vm.scanImage(b, ingredientsMode, lang)
     }
-    val camera = rememberLauncherForActivityResult(ActivityResultContracts.TakePicture()) { ok -> if (ok) analyse(loadBitmap(ctx, photoUri)) }
-    val gallery = rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri -> if (uri != null) analyse(loadBitmap(ctx, uri)) }
 
     Scaffold(topBar = {
         TopAppBar(
@@ -112,14 +88,14 @@ fun ScanScreen(vm: AppViewModel, nav: NavController, initialMode: String) {
             Text(stringResource(if (ingredientsMode) R.string.scan_ingredients_sub else R.string.scan_cocktail_sub), style = MaterialTheme.typography.bodyMedium)
             Spacer(Modifier.height(16.dp))
             Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                Button(onClick = { camera.launch(photoUri) }, modifier = Modifier.weight(1f)) { Icon(Icons.Filled.CameraAlt, null); Spacer(Modifier.width(8.dp)); Text(stringResource(R.string.take_photo)) }
-                OutlinedButton(onClick = { gallery.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)) }, modifier = Modifier.weight(1f)) {
+                Button(onClick = picker.takePhoto, modifier = Modifier.weight(1f)) { Icon(Icons.Filled.CameraAlt, null); Spacer(Modifier.width(8.dp)); Text(stringResource(R.string.take_photo)) }
+                OutlinedButton(onClick = picker.pickPhoto, modifier = Modifier.weight(1f)) {
                     Icon(Icons.Filled.PhotoLibrary, null); Spacer(Modifier.width(8.dp)); Text(stringResource(R.string.pick_photo))
                 }
             }
             Spacer(Modifier.height(16.dp))
             bitmap?.let {
-                Image(it.asImageBitmap(), null, contentScale = ContentScale.Crop, modifier = Modifier.fillMaxWidth().height(220.dp).clip(RoundedCornerShape(20.dp)))
+                Image(remember(it) { it.toImageBitmap() }, null, contentScale = ContentScale.Crop, modifier = Modifier.fillMaxWidth().height(220.dp).clip(RoundedCornerShape(20.dp)))
                 Spacer(Modifier.height(16.dp))
             }
             when (val s = state) {

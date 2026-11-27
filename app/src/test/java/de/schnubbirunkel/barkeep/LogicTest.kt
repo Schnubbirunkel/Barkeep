@@ -27,7 +27,7 @@ class LogicTest {
 
     @Test fun csv() {
         val rows = ArrayList<List<String>>()
-        de.schnubbirunkel.barkeep.data.Csv.records(java.io.StringReader("a,b,c\r\n1,\"x, \"\"y\"\"\nz\",3\n")) { rows += it }
+        java.io.StringReader("a,b,c\r\n1,\"x, \"\"y\"\"\nz\",3\n").let { r -> de.schnubbirunkel.barkeep.data.Csv.records({ r.read() }) { rows += it } }
         assertEquals(listOf(listOf("a", "b", "c"), listOf("1", "x, \"y\"\nz", "3")), rows)
     }
 
