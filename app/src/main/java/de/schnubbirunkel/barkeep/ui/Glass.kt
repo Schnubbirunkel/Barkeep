@@ -126,8 +126,11 @@ fun LiquidBackground(modifier: Modifier = Modifier) {
     val base = if (dark) Ink else Color(0xFFF2F3F8)
     val a = if (dark) 0.20f else 0.22f
     val colors = listOf(cs.primary.copy(alpha = a), cs.secondary.copy(alpha = a * 0.9f), cs.tertiary.copy(alpha = a * 0.75f))
-    val t = rememberInfiniteTransition(label = "liquid")
-    val p by t.animateFloat(0f, (2 * kotlin.math.PI).toFloat(), infiniteRepeatable(tween(26000, easing = LinearEasing), RepeatMode.Restart), label = "phase")
+    // Animated only where redrawing every frame is cheap (see ANIMATED_BACKGROUND in Platform.kt).
+    val p = if (ANIMATED_BACKGROUND) {
+        val t = rememberInfiniteTransition(label = "liquid")
+        t.animateFloat(0f, (2 * kotlin.math.PI).toFloat(), infiniteRepeatable(tween(26000, easing = LinearEasing), RepeatMode.Restart), label = "phase").value
+    } else 0.8f
     Canvas(modifier.fillMaxSize().background(base)) {
         val w = size.width
         val h = size.height

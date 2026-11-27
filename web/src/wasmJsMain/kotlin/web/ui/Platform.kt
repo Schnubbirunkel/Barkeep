@@ -30,6 +30,9 @@ import kotlin.io.encoding.ExperimentalEncodingApi
 
 fun nowMillis(): Long = jsNow().toLong()
 
+/** Static in the browser: Compose/Wasm repaints the whole canvas for every animation frame. */
+const val ANIMATED_BACKGROUND = false
+
 @Composable
 fun appLang(): String = WebLang.effective
 
