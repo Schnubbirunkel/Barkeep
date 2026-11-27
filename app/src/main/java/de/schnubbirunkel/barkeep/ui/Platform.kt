@@ -34,6 +34,9 @@ import java.io.File
 
 fun nowMillis(): Long = System.currentTimeMillis()
 
+/** Whether the background drifts (redraws every frame). */
+const val ANIMATED_BACKGROUND = true
+
 /** UI language of the app: "de" or "en". */
 @Composable
 fun appLang(): String {

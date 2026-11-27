@@ -27,7 +27,7 @@ fun main() {
             return@launch
         }
         jsSetDocumentLang(WebLang.effective)
-        ComposeViewport(document.body!!) { WebApp() }
+        ComposeViewport(document.getElementById("app") ?: document.body!!) { WebApp() }
         jsHideSplash()
     }
 }
